@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A67ABC0818D284D100C1D502 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC0718D284D100C1D502 /* Cocoa.framework */; };
+		A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC1018D284D100C1D502 /* InfoPlist.strings */; };
+		A67ABC1418D284D100C1D502 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC1318D284D100C1D502 /* main.m */; };
+		A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC1618D284D100C1D502 /* Credits.rtf */; };
+		A67ABC1B18D284D100C1D502 /* NRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC1A18D284D100C1D502 /* NRAppDelegate.m */; };
+		A67ABC1E18D284D100C1D502 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC1C18D284D100C1D502 /* MainMenu.xib */; };
+		A67ABC2018D284D100C1D502 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC1F18D284D100C1D502 /* Images.xcassets */; };
+		A67ABC2718D284D100C1D502 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC2618D284D100C1D502 /* XCTest.framework */; };
+		A67ABC2818D284D100C1D502 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC0718D284D100C1D502 /* Cocoa.framework */; };
+		A67ABC3018D284D200C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC2E18D284D200C1D502 /* InfoPlist.strings */; };
+		A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A67ABC2918D284D100C1D502 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A67ABBFC18D284D100C1D502 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A67ABC0318D284D100C1D502;
+			remoteInfo = NumpadRemap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A67ABC0418D284D100C1D502 /* NumpadRemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumpadRemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67ABC0718D284D100C1D502 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		A67ABC0A18D284D100C1D502 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A67ABC0B18D284D100C1D502 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A67ABC0C18D284D100C1D502 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A67ABC0F18D284D100C1D502 /* NumpadRemap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NumpadRemap-Info.plist"; sourceTree = "<group>"; };
+		A67ABC1118D284D100C1D502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A67ABC1318D284D100C1D502 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A67ABC1518D284D100C1D502 /* NumpadRemap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NumpadRemap-Prefix.pch"; sourceTree = "<group>"; };
+		A67ABC1718D284D100C1D502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A67ABC1918D284D100C1D502 /* NRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NRAppDelegate.h; sourceTree = "<group>"; };
+		A67ABC1A18D284D100C1D502 /* NRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NRAppDelegate.m; sourceTree = "<group>"; };
+		A67ABC1D18D284D100C1D502 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A67ABC1F18D284D100C1D502 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A67ABC2518D284D100C1D502 /* NumpadRemapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumpadRemapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67ABC2618D284D100C1D502 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A67ABC2D18D284D100C1D502 /* NumpadRemapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NumpadRemapTests-Info.plist"; sourceTree = "<group>"; };
+		A67ABC2F18D284D200C1D502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumpadRemapTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A67ABC0118D284D100C1D502 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67ABC0818D284D100C1D502 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67ABC2218D284D100C1D502 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67ABC2818D284D100C1D502 /* Cocoa.framework in Frameworks */,
+				A67ABC2718D284D100C1D502 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A67ABBFB18D284D100C1D502 = {
+			isa = PBXGroup;
+			children = (
+				A67ABC0D18D284D100C1D502 /* NumpadRemap */,
+				A67ABC2B18D284D100C1D502 /* NumpadRemapTests */,
+				A67ABC0618D284D100C1D502 /* Frameworks */,
+				A67ABC0518D284D100C1D502 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A67ABC0518D284D100C1D502 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A67ABC0418D284D100C1D502 /* NumpadRemap.app */,
+				A67ABC2518D284D100C1D502 /* NumpadRemapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A67ABC0618D284D100C1D502 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A67ABC0718D284D100C1D502 /* Cocoa.framework */,
+				A67ABC2618D284D100C1D502 /* XCTest.framework */,
+				A67ABC0918D284D100C1D502 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A67ABC0918D284D100C1D502 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A67ABC0A18D284D100C1D502 /* AppKit.framework */,
+				A67ABC0B18D284D100C1D502 /* CoreData.framework */,
+				A67ABC0C18D284D100C1D502 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		A67ABC0D18D284D100C1D502 /* NumpadRemap */ = {
+			isa = PBXGroup;
+			children = (
+				A67ABC1918D284D100C1D502 /* NRAppDelegate.h */,
+				A67ABC1A18D284D100C1D502 /* NRAppDelegate.m */,
+				A67ABC1C18D284D100C1D502 /* MainMenu.xib */,
+				A67ABC1F18D284D100C1D502 /* Images.xcassets */,
+				A67ABC0E18D284D100C1D502 /* Supporting Files */,
+			);
+			path = NumpadRemap;
+			sourceTree = "<group>";
+		};
+		A67ABC0E18D284D100C1D502 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A67ABC0F18D284D100C1D502 /* NumpadRemap-Info.plist */,
+				A67ABC1018D284D100C1D502 /* InfoPlist.strings */,
+				A67ABC1318D284D100C1D502 /* main.m */,
+				A67ABC1518D284D100C1D502 /* NumpadRemap-Prefix.pch */,
+				A67ABC1618D284D100C1D502 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A67ABC2B18D284D100C1D502 /* NumpadRemapTests */ = {
+			isa = PBXGroup;
+			children = (
+				A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */,
+				A67ABC2C18D284D100C1D502 /* Supporting Files */,
+			);
+			path = NumpadRemapTests;
+			sourceTree = "<group>";
+		};
+		A67ABC2C18D284D100C1D502 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A67ABC2D18D284D100C1D502 /* NumpadRemapTests-Info.plist */,
+				A67ABC2E18D284D200C1D502 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A67ABC0318D284D100C1D502 /* NumpadRemap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A67ABC3518D284D200C1D502 /* Build configuration list for PBXNativeTarget "NumpadRemap" */;
+			buildPhases = (
+				A67ABC0018D284D100C1D502 /* Sources */,
+				A67ABC0118D284D100C1D502 /* Frameworks */,
+				A67ABC0218D284D100C1D502 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NumpadRemap;
+			productName = NumpadRemap;
+			productReference = A67ABC0418D284D100C1D502 /* NumpadRemap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A67ABC2418D284D100C1D502 /* NumpadRemapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A67ABC3818D284D200C1D502 /* Build configuration list for PBXNativeTarget "NumpadRemapTests" */;
+			buildPhases = (
+				A67ABC2118D284D100C1D502 /* Sources */,
+				A67ABC2218D284D100C1D502 /* Frameworks */,
+				A67ABC2318D284D100C1D502 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A67ABC2A18D284D100C1D502 /* PBXTargetDependency */,
+			);
+			name = NumpadRemapTests;
+			productName = NumpadRemapTests;
+			productReference = A67ABC2518D284D100C1D502 /* NumpadRemapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A67ABBFC18D284D100C1D502 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = NR;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "David Belford";
+				TargetAttributes = {
+					A67ABC2418D284D100C1D502 = {
+						TestTargetID = A67ABC0318D284D100C1D502;
+					};
+				};
+			};
+			buildConfigurationList = A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "NumpadRemap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A67ABBFB18D284D100C1D502;
+			productRefGroup = A67ABC0518D284D100C1D502 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A67ABC0318D284D100C1D502 /* NumpadRemap */,
+				A67ABC2418D284D100C1D502 /* NumpadRemapTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A67ABC0218D284D100C1D502 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */,
+				A67ABC2018D284D100C1D502 /* Images.xcassets in Resources */,
+				A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */,
+				A67ABC1E18D284D100C1D502 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67ABC2318D284D100C1D502 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67ABC3018D284D200C1D502 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A67ABC0018D284D100C1D502 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67ABC1B18D284D100C1D502 /* NRAppDelegate.m in Sources */,
+				A67ABC1418D284D100C1D502 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A67ABC2118D284D100C1D502 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A67ABC2A18D284D100C1D502 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A67ABC0318D284D100C1D502 /* NumpadRemap */;
+			targetProxy = A67ABC2918D284D100C1D502 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A67ABC1018D284D100C1D502 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A67ABC1118D284D100C1D502 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A67ABC1618D284D100C1D502 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A67ABC1718D284D100C1D502 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		A67ABC1C18D284D100C1D502 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A67ABC1D18D284D100C1D502 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		A67ABC2E18D284D200C1D502 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A67ABC2F18D284D200C1D502 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A67ABC3318D284D200C1D502 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A67ABC3418D284D200C1D502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A67ABC3618D284D200C1D502 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
+				INFOPLIST_FILE = "NumpadRemap/NumpadRemap-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A67ABC3718D284D200C1D502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
+				INFOPLIST_FILE = "NumpadRemap/NumpadRemap-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		A67ABC3918D284D200C1D502 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NumpadRemap.app/Contents/MacOS/NumpadRemap";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "NumpadRemapTests/NumpadRemapTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		A67ABC3A18D284D200C1D502 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/NumpadRemap.app/Contents/MacOS/NumpadRemap";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
+				INFOPLIST_FILE = "NumpadRemapTests/NumpadRemapTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "NumpadRemap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A67ABC3318D284D200C1D502 /* Debug */,
+				A67ABC3418D284D200C1D502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A67ABC3518D284D200C1D502 /* Build configuration list for PBXNativeTarget "NumpadRemap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A67ABC3618D284D200C1D502 /* Debug */,
+				A67ABC3718D284D200C1D502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A67ABC3818D284D200C1D502 /* Build configuration list for PBXNativeTarget "NumpadRemapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A67ABC3918D284D200C1D502 /* Debug */,
+				A67ABC3A18D284D200C1D502 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A67ABBFC18D284D100C1D502 /* Project object */;
+}
