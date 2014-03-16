@@ -3,11 +3,3 @@ platform :osx, "10.9"
 
 pod 'MASShortcut'
 
-target "NumpadRemap" do
-
-end
-
-target "NumpadRemapTests" do
-
-end
-

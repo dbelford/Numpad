@@ -7,6 +7,8 @@
 *.tif
 *.tiff
 
+Pods/
+
 #
 # Xcode
 #
