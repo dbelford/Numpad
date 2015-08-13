@@ -2,4 +2,6 @@
 platform :osx, "10.9"
 
 pod 'MASShortcut'
-
+pod 'ObjectiveSugar'
+pod 'Masonry'
+pod 'INAppStoreWindow'

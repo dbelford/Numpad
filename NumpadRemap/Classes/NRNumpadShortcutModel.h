@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *keyName;
 @property (nonatomic, strong) NSString *displayName;
 @property (nonatomic, strong) NSString *applicationBundleIdentifier;
+@property (nonatomic, strong) NSImage *image;
 
 @end

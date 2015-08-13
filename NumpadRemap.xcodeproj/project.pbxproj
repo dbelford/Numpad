@@ -22,6 +22,13 @@
 		A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */; };
 		A6C187A618D63A3C00F7F9BF /* NRNumpadSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C187A518D63A3C00F7F9BF /* NRNumpadSettingsController.m */; };
 		A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */; };
+		A6DE806A18D64D2800115F2E /* NRNumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806918D64D2800115F2E /* NRNumpadView.m */; };
+		A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */; };
+		A6F6872418DA24C000E40A20 /* Butter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F6872318DA24C000E40A20 /* Butter.framework */; };
+		A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872918DA287A00E40A20 /* NRWindowContentView.m */; };
+		A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872C18DB6CDD00E40A20 /* NSArray+NRConvenience.m */; };
+		A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */; };
+		A6F6873218E0A72200E40A20 /* NRNumpadPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6873118E0A72200E40A20 /* NRNumpadPreferencesView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +67,18 @@
 		A6C187A518D63A3C00F7F9BF /* NRNumpadSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadSettingsController.m; path = Classes/NRNumpadSettingsController.m; sourceTree = "<group>"; };
 		A6C187A818D63A7900F7F9BF /* NRNumpadShortcutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadShortcutModel.h; path = Classes/NRNumpadShortcutModel.h; sourceTree = "<group>"; };
 		A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadShortcutModel.m; path = Classes/NRNumpadShortcutModel.m; sourceTree = "<group>"; };
+		A6DE806818D64D2800115F2E /* NRNumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadView.h; path = Classes/NRNumpadView.h; sourceTree = "<group>"; };
+		A6DE806918D64D2800115F2E /* NRNumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadView.m; path = Classes/NRNumpadView.m; sourceTree = "<group>"; };
+		A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyView.h; path = Classes/NRNumpadKeyView.h; sourceTree = "<group>"; };
+		A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyView.m; path = Classes/NRNumpadKeyView.m; sourceTree = "<group>"; };
+		A6F6872318DA24C000E40A20 /* Butter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Butter.framework; path = "../osx.time-boxes/External/ButterKit/build/Debug/Butter.framework"; sourceTree = "<group>"; };
+		A6F6872818DA287A00E40A20 /* NRWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRWindowContentView.h; path = Classes/NRWindowContentView.h; sourceTree = "<group>"; };
+		A6F6872918DA287A00E40A20 /* NRWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRWindowContentView.m; path = Classes/NRWindowContentView.m; sourceTree = "<group>"; };
+		A6F6872B18DB6CDD00E40A20 /* NSArray+NRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+NRConvenience.h"; path = "Classes/NSArray+NRConvenience.h"; sourceTree = "<group>"; };
+		A6F6872C18DB6CDD00E40A20 /* NSArray+NRConvenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSArray+NRConvenience.m"; path = "Classes/NSArray+NRConvenience.m"; sourceTree = "<group>"; };
+		A6F6872E18E0A6F100E40A20 /* NRNumpadPreferencesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadPreferencesView.h; path = Classes/NRNumpadPreferencesView.h; sourceTree = "<group>"; };
+		A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadPreferencesView.m; path = Classes/NRNumpadPreferencesView.m; sourceTree = "<group>"; };
+		A6F6873118E0A72200E40A20 /* NRNumpadPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NRNumpadPreferencesView.xib; path = Classes/NRNumpadPreferencesView.xib; sourceTree = "<group>"; };
 		C5ED5D6372374E7C95523D69 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		E968085159F24D01850FE9B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -69,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F6872418DA24C000E40A20 /* Butter.framework in Frameworks */,
 				A67ABC0818D284D100C1D502 /* Cocoa.framework in Frameworks */,
 				2D1449AAE0FE421EB07CCF74 /* libPods.a in Frameworks */,
 			);
@@ -109,6 +129,7 @@
 		A67ABC0618D284D100C1D502 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6F6872318DA24C000E40A20 /* Butter.framework */,
 				A67ABC0718D284D100C1D502 /* Cocoa.framework */,
 				A67ABC2618D284D100C1D502 /* XCTest.framework */,
 				A67ABC0918D284D100C1D502 /* Other Frameworks */,
@@ -173,12 +194,23 @@
 		A6C187A718D63A4300F7F9BF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A6F6872818DA287A00E40A20 /* NRWindowContentView.h */,
+				A6F6872918DA287A00E40A20 /* NRWindowContentView.m */,
 				A6596A3B18D63879007D6566 /* NRNumpadModel.h */,
 				A6596A3C18D63879007D6566 /* NRNumpadModel.m */,
 				A6C187A818D63A7900F7F9BF /* NRNumpadShortcutModel.h */,
 				A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */,
 				A6C187A418D63A3C00F7F9BF /* NRNumpadSettingsController.h */,
 				A6C187A518D63A3C00F7F9BF /* NRNumpadSettingsController.m */,
+				A6DE806818D64D2800115F2E /* NRNumpadView.h */,
+				A6DE806918D64D2800115F2E /* NRNumpadView.m */,
+				A6F6872B18DB6CDD00E40A20 /* NSArray+NRConvenience.h */,
+				A6F6872C18DB6CDD00E40A20 /* NSArray+NRConvenience.m */,
+				A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */,
+				A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */,
+				A6F6872E18E0A6F100E40A20 /* NRNumpadPreferencesView.h */,
+				A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */,
+				A6F6873118E0A72200E40A20 /* NRNumpadPreferencesView.xib */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -265,6 +297,7 @@
 				A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */,
 				A67ABC2018D284D100C1D502 /* Images.xcassets in Resources */,
 				A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */,
+				A6F6873218E0A72200E40A20 /* NRNumpadPreferencesView.xib in Resources */,
 				A67ABC1E18D284D100C1D502 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -317,10 +350,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */,
 				A6596A3D18D63879007D6566 /* NRNumpadModel.m in Sources */,
+				A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */,
+				A6DE806A18D64D2800115F2E /* NRNumpadView.m in Sources */,
 				A6C187A618D63A3C00F7F9BF /* NRNumpadSettingsController.m in Sources */,
+				A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */,
 				A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */,
 				A67ABC1B18D284D100C1D502 /* NRAppDelegate.m in Sources */,
+				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
 				A67ABC1418D284D100C1D502 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +493,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/dbelford/Projects/osx.time-boxes/External/ButterKit/build/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
 				INFOPLIST_FILE = "NumpadRemap/NumpadRemap-Info.plist";
@@ -469,6 +511,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/dbelford/Projects/osx.time-boxes/External/ButterKit/build/Debug",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
 				INFOPLIST_FILE = "NumpadRemap/NumpadRemap-Info.plist";

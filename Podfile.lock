@@ -1,10 +1,19 @@
 PODS:
+  - INAppStoreWindow (1.4)
+  - Masonry (0.4.0)
   - MASShortcut (1.2.3)
+  - ObjectiveSugar (1.1.0)
 
 DEPENDENCIES:
+  - INAppStoreWindow
+  - Masonry
   - MASShortcut
+  - ObjectiveSugar
 
 SPEC CHECKSUMS:
+  INAppStoreWindow: 5a9eedcedc3ec95e7d8a12292de584b760d96c76
+  Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
   MASShortcut: 6abaedac53a0542f4856f35be4f1f970b652a51e
+  ObjectiveSugar: fed588577bcf9733546aeaa089de444e4bab9a52
 
 COCOAPODS: 0.29.0

@@ -7,9 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <INAppStoreWindow/INAppStoreWindow.h>
+#import "NRNumpadSettingsController.h"
 
 @interface NRAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet INAppStoreWindow *window;
+@property (nonatomic, strong) IBOutlet NRNumpadSettingsController *numpadSettingsController;
+
+- (IBAction)printLayout:(id)sender;
+- (IBAction)printConstraints:(id)sender;
 
 @end

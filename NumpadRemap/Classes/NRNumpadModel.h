@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NRNumpadShortcutModel.h"
 
 @interface NRNumpadModel : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary *numpadKeys;
+
+// Make sure model is up to date.
+- (void)update;
 
 @end
