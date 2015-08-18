@@ -2,6 +2,7 @@
 platform :osx, "10.9"
 
 pod 'MASShortcut'
-pod 'ObjectiveSugar'
+#pod 'ObjectiveSugar'
 pod 'Masonry'
 pod 'INAppStoreWindow'
+pod 'Butter', :git => "https://dbelford@bitbucket.org/dbelford/butter.git"

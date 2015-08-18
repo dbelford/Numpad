@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSString *displayName;
 @property (nonatomic, strong) NSString *applicationBundleIdentifier;
 @property (nonatomic, strong) NSImage *image;
+@property (nonatomic, assign) int processIdentifier;
 
 @end

@@ -11,8 +11,20 @@
 #import <Masonry/Masonry.h>
 #import "NSArray+NRConvenience.h"
 #import "NRNumpadKeyView.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Carbon/Carbon.h>
+
+@interface NRNumpadView ()
+
+@property (nonatomic, strong) NSArray *keyViews;
+
+@end
 
 @implementation NRNumpadView
+
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
 
 - (id)initWithFrame:(NSRect)frame
 {
@@ -20,24 +32,86 @@
     if (self) {
         // Initialization code here.
         
+        NSArray *keyOrder = @[@(kVK_ANSI_Keypad7),
+                              @(kVK_ANSI_Keypad8),
+                              @(kVK_ANSI_Keypad9),
+                              @(kVK_ANSI_Keypad4),
+                              @(kVK_ANSI_Keypad5),
+                              @(kVK_ANSI_Keypad6),
+                              @(kVK_ANSI_Keypad1),
+                              @(kVK_ANSI_Keypad2),
+                              @(kVK_ANSI_Keypad3),
+                              @(kVK_ANSI_Keypad0)
+                              ];
+        @weakify(self)
+        RAC(self, keyViews) = [RACObserve(self, viewModel.numpadKeys) map:^NSArray *(NSDictionary *keyViewModels) {
+            
+            @strongify(self)
+            
+            // Make Views
+            NSArray *views = [keyViewModels map: ^NSView *(NSNumber *key, NRNumpadKeyViewModel *keyViewModel) {
+                NRNumpadKeyView *view = [[NRNumpadKeyView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)];
+                view.iconImageView.image = keyViewModel.image;
+                view.keyLabel.stringValue = keyViewModel.keyName;
+                view.identifier = key.stringValue;
+                [view addTarget:self action:@selector(pressedAppButton:) forControlEvents:BTRControlEventMouseUpInside];
+                
+                return view;
+            }];
+            
+            // Order Views
+            views = [views sortedArrayWithOptions:0 usingComparator:^NSComparisonResult (NRNumpadKeyView *view1, NRNumpadKeyView *view2) {
+                NSInteger v1 = view1.identifier.integerValue;
+                NSInteger v2 = view2.identifier.integerValue;
+                
+                NSUInteger v1Ordered = [keyOrder indexOfObject:@(v1)];
+                NSUInteger v2Ordered = [keyOrder indexOfObject:@(v2)];
+                
+                return v1Ordered < v2Ordered ? NSOrderedAscending : NSOrderedDescending;
+            }];
+            
+            // Display Views
+            [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+            [views each:^(NSView *view) {
+                [self addSubview:view];
+            }];
+            self.needsUpdateConstraints = YES;
+            
+            // Save Views
+            return views;
+        }];
+        
+//        
+//        [RACObserve(self, keyViews) subscribeNext:^(NSArray *keyViews) {
+//            
+//            [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//            [keyViews each:^(NSView *view) {
+//                [self addSubview:view];
+//            }];
+//            self.needsUpdateConstraints = YES;
+//        }];
 
-//        self.wantsLayer = YES;
+        self.wantsLayer = YES;
     }
     return self;
 }
 
-- (void)setKeyViews:(NSMutableArray *)keyViews {
-    
-    [_keyViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    
-    _keyViews = keyViews;
-    
-    [_keyViews each:^(NSView *view) {
-        [self addSubview:view];
-    }];
-
-    self.needsUpdateConstraints = YES;
+- (void)pressedAppButton:(NRNumpadKeyView *)sender {
+    [self.viewModel pressedKeyAtIndex:(sender.identifier.integerValue - kVK_ANSI_Keypad1)];
 }
+
+//- (void)setKeyViews:(NSMukeypadNumtableArray *)keyViews {
+//    
+//    [_keyViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+//    
+//    _keyViews = keyViews;
+//    
+//    [_keyViews each:^(NSView *view) {
+//        [self addSubview:view];
+//    }];
+//
+//    self.needsUpdateConstraints = YES;
+//}
 
 - (void)updateConstraints {
     

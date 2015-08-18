@@ -1,19 +1,28 @@
 PODS:
+  - Butter (0.2.0)
   - INAppStoreWindow (1.4)
-  - Masonry (0.4.0)
-  - MASShortcut (1.2.3)
-  - ObjectiveSugar (1.1.0)
+  - Masonry (0.6.2)
+  - MASShortcut (2.1.2)
 
 DEPENDENCIES:
+  - Butter (from `https://dbelford@bitbucket.org/dbelford/butter.git`)
   - INAppStoreWindow
   - Masonry
   - MASShortcut
-  - ObjectiveSugar
+
+EXTERNAL SOURCES:
+  Butter:
+    :git: https://dbelford@bitbucket.org/dbelford/butter.git
+
+CHECKOUT OPTIONS:
+  Butter:
+    :commit: 782b63904ab33872389e315335de1d582e1e0f85
+    :git: https://dbelford@bitbucket.org/dbelford/butter.git
 
 SPEC CHECKSUMS:
-  INAppStoreWindow: 5a9eedcedc3ec95e7d8a12292de584b760d96c76
-  Masonry: d673617c9cbc24aaea90fba20b10e47fd9970a39
-  MASShortcut: 6abaedac53a0542f4856f35be4f1f970b652a51e
-  ObjectiveSugar: fed588577bcf9733546aeaa089de444e4bab9a52
+  Butter: edab9afbc37a69184ef714fa10fbf9020ce3c9e1
+  INAppStoreWindow: 4fd569f7435557239e78316de139e886ccbaec4d
+  Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
+  MASShortcut: ef92b912469f9f6744dba5f0a906665c26de760c
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.36.1

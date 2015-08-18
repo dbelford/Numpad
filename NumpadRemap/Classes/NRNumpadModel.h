@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+@class MASShortcut;
+
 @interface NRNumpadModel : NSObject
 
-@property (nonatomic, strong) NSMutableDictionary *numpadKeys;
+@property (nonatomic, strong) NSMutableDictionary /*<MASShortcut *>*/ *shortcuts;
+
+
+- (void)launchApplicationAtIndex:(NSInteger)index;
+
 
 // Make sure model is up to date.
-- (void)update;
+//- (void)update;
 
 @end

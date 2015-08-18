@@ -8,9 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Butter/Butter.h>
+#import "NRNumpadViewModel.h"
 
 @interface NRNumpadView : BTRView
 
-@property (nonatomic, strong) NSArray *keyViews;
+@property (nonatomic, strong) NRNumpadViewModel *viewModel;
 
 @end

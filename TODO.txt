@@ -1,0 +1,25 @@
+Todo 
+- App Icon
+- Way to manage shortcuts
+
+Todo [Features]
+- Click Icons to Activate
+- Keypress to Activate 
+- Keep app window centered in screen
+- Remove numpad remap from app switcher
+- Multiple app activation changes app picker
+  - Recent -> Favorites -> Letters
+
+Todo [Preferences]
+- Select Activation hotkey
+
+Todo [Performance]
+- Faster app window switching (how does apple+tab switch so fast?)
+- Faster app loading (how to get app into responsive state faster?)
+
+Todo [Bugs]
+- Keypress not activating correct app
+- Keypress inaccurate indexes because imperfect order in ANSI constants
+- Multiple keypresses required to launch an application
+  - Specifically two presses required occasionally
+

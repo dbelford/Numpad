@@ -14,8 +14,12 @@
 #import "NRNumpadShortcutModel.h"
 #import "NRNumpadKeyView.h"
 #import "NRNumpadPreferencesView.h"
+#import <DABActiveApplications/DABActiveApplications.h>
+#import <Carbon/Carbon.h>
 
 @interface NRNumpadSettingsController ()
+
+@property (nonatomic, strong) DABActiveApplicationsMonitor *monitor;
 
 @end
 
@@ -46,14 +50,53 @@
     return self;
 }
 
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
+- (void)keyDown:(NSEvent *)theEvent {
+
+    
+    int keypadNum = theEvent.keyCode - kVK_ANSI_Keypad0;
+    
+//    int num = theEvent.keyCode - kVK_ANSI_0;
+    
+    if (keypadNum >= 0 && keypadNum < 10) {
+        [self.numpadModel launchApplicationAtIndex:keypadNum];
+    } else if (theEvent.keyCode >= kVK_ANSI_1 && theEvent.keyCode <= kVK_ANSI_0) {
+        if (theEvent.keyCode == kVK_ANSI_Minus || theEvent.keyCode == kVK_ANSI_Equal) {
+            [super keyDown:theEvent];
+            return;
+        }
+        
+        [self.numpadModel launchApplicationAtIndex:theEvent.characters.integerValue];
+        
+    } else {
+        [super keyDown:theEvent];
+    }
+    
+    
+}
+
 - (void)setupObject {
-    self.numpadModel = [[NRNumpadModel alloc] init];
-    [self updateRunningApps];
+//    self.numpadModel = [[NRNumpadModel alloc] init];
+//    NRNumpadViewModel *vm = [[NRNumpadViewModel alloc] init];
+//    vm.model = self.numpadModel;
+//    self.numpadView.viewModel = vm;
+    
+//    self.monitor = [[DABActiveApplicationsMonitor alloc] init];
+//    [self updateRunningApps];
 }
 
 - (void)updateRunningApps {
     
-    NSArray *runningApps = [[NSWorkspace sharedWorkspace] runningApplications];
+    [self.monitor updateApplicationData];
+    
+//    [self.monitor orderedApps];
+    
+//    NSArray *runningApps = [[NSWorkspace sharedWorkspace] runningApplications];
+    NSArray *runningApps = self.monitor.orderedRunningApplications;
+    
     runningApps = [runningApps reject:^ BOOL (NSRunningApplication *app){
         
         return app.activationPolicy != NSApplicationActivationPolicyRegular;
@@ -68,9 +111,17 @@
     
 //    __block int i = 0;
     [self configurePreferencePane];
-    [self configureKeyViews];
+//    [self configureKeyViews];
     [self configureConstraints];
     
+    self.numpadModel = [[NRNumpadModel alloc] init];
+    NRNumpadViewModel *vm = [[NRNumpadViewModel alloc] init];
+    vm.model = self.numpadModel;
+    self.numpadView.viewModel = vm;
+    
+    [self.numpadView.viewModel.keyPressedSignal subscribeNext:^(NSNumber *keypadNum) {
+        [self.numpadModel launchApplicationAtIndex:keypadNum.integerValue];
+    }];
 }
 
 - (void)configurePreferencePane {
@@ -78,43 +129,43 @@
     [[NSBundle mainBundle] loadNibNamed:@"NRNumpadPreferencesView" owner:nil topLevelObjects:&topLevel];
     self.prefView = [topLevel reject:^BOOL(id obj) {
         return ![obj isKindOfClass:[NRNumpadPreferencesView class]];
-    }].first;
+    }].firstObject;
     
     [self.view addSubview:self.prefView];
 
 }
 
 - (void)configureKeyViews {
-    [self.numpadModel update];
-    NSArray *keyOrder = @[@(kVK_ANSI_Keypad7),
-                          @(kVK_ANSI_Keypad8),
-                          @(kVK_ANSI_Keypad9),
-                          @(kVK_ANSI_Keypad4),
-                          @(kVK_ANSI_Keypad5),
-                          @(kVK_ANSI_Keypad6),
-                          @(kVK_ANSI_Keypad1),
-                          @(kVK_ANSI_Keypad2),
-                          @(kVK_ANSI_Keypad3),
-                          @(kVK_ANSI_Keypad0)
-                          ];
-    self.numpadView.keyViews = [self.numpadModel.numpadKeys map:^ NSView* (NSNumber *key, NRNumpadShortcutModel *shortcut){
-        NRNumpadKeyView *view = [[NRNumpadKeyView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)];
-        view.iconImageView.image = shortcut.image;
-        view.keyLabel.stringValue = shortcut.keyCodeString;
-        view.identifier = key.stringValue;
-        
-        return view;
-    }];
-    
-    self.numpadView.keyViews = [self.numpadView.keyViews sortedArrayWithOptions:0 usingComparator:^NSComparisonResult (NRNumpadKeyView *view1, NRNumpadKeyView *view2) {
-        NSInteger v1 = view1.identifier.integerValue;
-        NSInteger v2 = view2.identifier.integerValue;
-        
-        NSUInteger v1Ordered = [keyOrder indexOfObject:@(v1)];
-        NSUInteger v2Ordered = [keyOrder indexOfObject:@(v2)];
-        
-        return v1Ordered < v2Ordered ? NSOrderedAscending : NSOrderedDescending;
-    }];
+//    [self.numpadModel update];
+//    NSArray *keyOrder = @[@(kVK_ANSI_Keypad7),
+//                          @(kVK_ANSI_Keypad8),
+//                          @(kVK_ANSI_Keypad9),
+//                          @(kVK_ANSI_Keypad4),
+//                          @(kVK_ANSI_Keypad5),
+//                          @(kVK_ANSI_Keypad6),
+//                          @(kVK_ANSI_Keypad1),
+//                          @(kVK_ANSI_Keypad2),
+//                          @(kVK_ANSI_Keypad3),
+//                          @(kVK_ANSI_Keypad0)
+//                          ];
+//    self.numpadView.keyViews = [self.numpadModel.numpadKeys map:^ NSView* (NSNumber *key, NRNumpadShortcutModel *shortcut){
+//        NRNumpadKeyView *view = [[NRNumpadKeyView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)];
+//        view.iconImageView.image = shortcut.image;
+//        view.keyLabel.stringValue = shortcut.keyCodeString;
+//        view.identifier = key.stringValue;
+//        
+//        return view;
+//    }];
+//    
+//    self.numpadView.keyViews = [self.numpadView.keyViews sortedArrayWithOptions:0 usingComparator:^NSComparisonResult (NRNumpadKeyView *view1, NRNumpadKeyView *view2) {
+//        NSInteger v1 = view1.identifier.integerValue;
+//        NSInteger v2 = view2.identifier.integerValue;
+//        
+//        NSUInteger v1Ordered = [keyOrder indexOfObject:@(v1)];
+//        NSUInteger v2Ordered = [keyOrder indexOfObject:@(v2)];
+//        
+//        return v1Ordered < v2Ordered ? NSOrderedAscending : NSOrderedDescending;
+//    }];
 }
 
 - (void)configureConstraints {
@@ -142,6 +193,9 @@
 
 - (void)loadView {
     [super loadView];
+    
+    self.nextResponder = self.numpadView.nextResponder;
+    self.numpadView.nextResponder = self;
     
     [self updateRunningApps];
     

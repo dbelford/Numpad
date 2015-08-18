@@ -23,7 +23,19 @@
     self.window.inactiveTitleBarEndColor = [NSColor whiteColor];
     self.window.showsBaselineSeparator = NO;
     self.window.movableByWindowBackground = YES;
+    self.window.nextResponder = self; // TODO: Use WindowController instead of shortcircuit responder chain
+    
+    [self.window setInitialFirstResponder:self.numpadSettingsController.view];
 
+
+}
+
+- (BOOL)acceptsFirstResponder {
+    return YES;
+}
+
+- (void)keyDown:(NSEvent *)theEvent {
+    [super keyDown:theEvent];
 }
 
 - (IBAction)printLayout:(id)sender {
