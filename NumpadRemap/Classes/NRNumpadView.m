@@ -7,12 +7,12 @@
 //
 
 #import "NRNumpadView.h"
+#import <Carbon/Carbon.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import <Masonry/Masonry.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "NSArray+NRConvenience.h"
 #import "NRNumpadKeyView.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
-#import <Carbon/Carbon.h>
 
 @interface NRNumpadView ()
 
@@ -81,16 +81,6 @@
             return views;
         }];
         
-//        
-//        [RACObserve(self, keyViews) subscribeNext:^(NSArray *keyViews) {
-//            
-//            [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//            [keyViews each:^(NSView *view) {
-//                [self addSubview:view];
-//            }];
-//            self.needsUpdateConstraints = YES;
-//        }];
-
         self.wantsLayer = YES;
     }
     return self;
@@ -100,24 +90,9 @@
     [self.viewModel pressedKeyAtIndex:(sender.identifier.integerValue - kVK_ANSI_Keypad1)];
 }
 
-//- (void)setKeyViews:(NSMukeypadNumtableArray *)keyViews {
-//    
-//    [_keyViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-//    
-//    _keyViews = keyViews;
-//    
-//    [_keyViews each:^(NSView *view) {
-//        [self addSubview:view];
-//    }];
-//
-//    self.needsUpdateConstraints = YES;
-//}
-
 - (void)updateConstraints {
     
     [super updateConstraints];
-    
-//    [self layoutVerticalRows];
     [self layoutKeys];
 
 }
@@ -208,49 +183,6 @@
         make.width.equalTo(widthViews);
     }];
      
-}
-
-- (void)layoutVerticalRows {
-    [self.keyViews eachWithIndex:^(NSView *view, NSUInteger index) {
-        
-        NSView *prevView = [self.keyViews objectBeforeIndex:index];
-        NSView *nextView = [self.keyViews objectAfterIndex:index];
-        
-        [view mas_makeConstraints:^(MASConstraintMaker *make) {
-            
-            //            make.height.equalTo(@[view1.mas_height, view2.mas_height]);
-            
-            if (!prevView) {
-                make.top.equalTo(self.mas_top).offset(10);
-            } else {
-                make.top.equalTo(prevView.mas_bottom).with.offset(10); //with is an optional semantic filler
-            }
-            make.left.equalTo(self.mas_left).with.offset(10);
-            make.right.equalTo(self.mas_right).with.offset(-10);
-            
-            if (!nextView) {
-                make.bottom.equalTo(self.mas_bottom).offset(-10);
-            } else {
-                make.bottom.equalTo(nextView.mas_top).with.offset(-10);
-            }
-        }];
-        
-    }];
-    
-    
-    NSView *firstView = [self.keyViews firstObject];
-    [firstView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        NSArray *relatedViews = [self.keyViews subarrayWithRange:NSMakeRange(1, self.keyViews.count - 1)];
-        make.height.equalTo(relatedViews);
-    }];
-}
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
 }
 
 @end

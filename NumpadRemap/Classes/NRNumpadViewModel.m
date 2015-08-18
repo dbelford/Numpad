@@ -75,14 +75,6 @@
 
 @implementation NRNumpadKeyViewModel
 
-//@property (nonatomic, readonly) NSString *keyName; //MASShortcut.keyCodeString
-//@property (nonatomic, readonly) NSString *identifier; //key.stringValue for ordering keys
-//@property (nonatomic, readonly) NSString *displayName;
-//@property (nonatomic, readonly) NSString *applicationBundleIdentifier;
-//@property (nonatomic, readonly) NSImage *image;
-
-
-
 - (NSString *)keyName {
     return self.shortcut.keyCodeString;
 }
@@ -96,9 +88,6 @@
 //}
 
 - (NSImage *)image {
-    // TODO: Ensure this grabs the intended application instead of the first matching application (App should pass around PID where possible)
-//    NSArray *apps = [NSRunningApplication runningApplicationsWithBundleIdentifier:self.applicationBundleIdentifier];
-//    NSArray *apps =
     NSRunningApplication *app = [NSRunningApplication runningApplicationWithProcessIdentifier:self.shortcut.processIdentifier];
     return app.icon;
 }
