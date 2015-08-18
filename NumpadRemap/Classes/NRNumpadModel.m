@@ -34,8 +34,6 @@
 #pragma mark - Setup Numpad
 
 - (void)setup {
-//    [self makeKeys];
-//    [self makeHandlers];
     self.monitor = [[DABActiveApplicationsMonitor alloc] init];
     
     RAC(self, shortcuts) = [RACObserve(self.monitor, orderedRunningApplications) map:^ NSMutableDictionary *(NSArray *orderedApps) {
@@ -64,27 +62,9 @@
                 
                 shortcut.applicationBundleIdentifier = app.bundleIdentifier;
                 shortcut.processIdentifier = app.processIdentifier;
-                
-            
-                
+
                 [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
                     [self launchApplication:app];
-//                    [self launchApplicationWithProcessIdentifier:shortcut.processIdentifier];
-
-//                        NSRunningApplication *app = orderedApps[MIN(keypadNum, orderedApps.count - 1 )];
-//                        BOOL appAlreadyActive = app.bundleIdentifier == [NSWorkspace sharedWorkspace].frontmostApplication.bundleIdentifier;
-//
-//                        if (appAlreadyActive) {
-//                            [self launchApp:self.lastAppIdentifier];
-//                        } else {
-//                            self.lastAppIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.bundleIdentifier;
-//                            [self launchApp:app.bundleIdentifier];
-//                        }
-//                        
-//                        
-//                        NSLog(@"Pressed a global handler at %d", keypadNum);
-                    
-                    
                 }];
             }
 
@@ -96,51 +76,6 @@
     }];
 }
 
-//- (void)makeKeys {
-//    
-//    self.numpadKeys = [NSMutableDictionary dictionary];
-//    for (int i = kVK_ANSI_Keypad0; i <= kVK_ANSI_Keypad9; i++) {
-//        if (i == kVK_F20) { continue; }
-//        self.numpadKeys[@(i)] = [NRNumpadShortcutModel shortcutWithKeyCode:i modifierFlags:NSCommandKeyMask];
-//    }
-//}
-
-//- (void)makeHandlers {
-//    [self.numpadKeys each:^(NSNumber *key, NRNumpadShortcutModel *shortcut) {
-//        
-//        int keypadNum = key.intValue - kVK_ANSI_Keypad0;
-//        __weak NRNumpadModel *weakSelf = self;
-//        
-//        
-//        [[MASShortcutMonitor sharedMonitor] registerShortcut:self.numpadKeys[key] withAction:^{
-//            
-//            
-//            NSArray *runningApps = [[[NSWorkspace sharedWorkspace] runningApplications] reject:^ BOOL (NSRunningApplication *app){
-//                return app.activationPolicy != NSApplicationActivationPolicyRegular;
-//            }];
-//            
-//            NSRunningApplication *app = runningApps[MIN(keypadNum, runningApps.count - 1 )];
-//            BOOL appAlreadyActive = app.bundleIdentifier == [NSWorkspace sharedWorkspace].frontmostApplication.bundleIdentifier;
-//            
-//            if (appAlreadyActive) {
-//                [weakSelf launchApp:weakSelf.lastAppIdentifier];
-//            } else {
-//                weakSelf.lastAppIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.bundleIdentifier;
-//                [weakSelf launchApp:app.bundleIdentifier];
-//            }
-//            
-//            
-//            NSLog(@"Pressed a global handler at %d", keypadNum);
-//
-//        }];
-//        
-////        [MASShortcut addGlobalHotkeyMonitorWithShortcut:self.numpadKeys[key] handler:^(void){
-////        
-////        }];
-//        
-//    }];
-//}
-
 - (void)launchApplicationAtIndex:(NSInteger)index {
     NSRunningApplication *app = self.monitor.orderedRunningApplications[index];
     [self launchApplication:app];
@@ -150,13 +85,9 @@
     BOOL appAlreadyActive = app.processIdentifier == [NSWorkspace sharedWorkspace].frontmostApplication.processIdentifier;
     
     if (appAlreadyActive) {
-//        [self launchApp:self.lastAppIdentifier];
         [self launchApplicationWithProcessIdentifier:self.lastProcessIdentifier];
     } else {
         self.lastProcessIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.processIdentifier;
-
-//        self.lastAppIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.bundleIdentifier;
-//        [self launchApp:app.bundleIdentifier];
         [self launchApplicationWithProcessIdentifier:app.processIdentifier];
     }
 }
@@ -174,27 +105,5 @@
                                   additionalEventParamDescriptor:nil
                                                 launchIdentifier:NULL];
 }
-
-
-
-#pragma mark - Update Numpad Model
-
-//- (void)update {
-//    [self updateAppIconImages];
-//}
-//
-//- (void)updateAppIconImages {
-//    NSArray *runningApps = [[NSWorkspace sharedWorkspace] runningApplications];
-//    runningApps = [runningApps reject:^ BOOL (NSRunningApplication *app){
-//        return app.activationPolicy != NSApplicationActivationPolicyRegular;
-//    }];
-//    
-//    for (int i = 0; i < runningApps.count; i++) {
-//        
-//        NRNumpadShortcutModel *shortcut = self.shortcuts[@(kVK_ANSI_Keypad0 + i)];
-//        NSRunningApplication *app = runningApps[i];
-//        shortcut.image = app.icon;
-//    }
-//}
 
 @end
