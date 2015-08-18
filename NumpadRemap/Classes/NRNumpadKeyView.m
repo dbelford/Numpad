@@ -50,18 +50,18 @@
     [super setHighlighted:highlighted];
     
     if (highlighted) {
-        self.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
+        self.btr_backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
     } else {
-        self.backgroundColor = nil;
+        self.btr_backgroundColor = nil;
     }
 }
 
 - (void)setSelected:(BOOL)selected {
     [super setSelected:selected];
     if (selected) {
-        self.backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
+        self.btr_backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
     } else {
-        self.backgroundColor = nil;
+        self.btr_backgroundColor = nil;
     }
 }
 
