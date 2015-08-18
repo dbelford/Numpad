@@ -93,10 +93,14 @@
 }
 
 - (void)launchApplicationWithProcessIdentifier:(int)processIdentifier {
-//    NSRunningApplication *app = [NSRunningApplication runningApplicationWithProcessIdentifier:processIdentifier];
-//    [self launchApp:app.bundleIdentifier];
+    if (processIdentifier == -1) { return; }
+    //Faster application fronting
+    ProcessSerialNumber pn = {};
+    GetProcessForPID(processIdentifier, &pn);
+    SetFrontProcessWithOptions(&pn, kSetFrontProcessFrontWindowOnly);
     
-    [[NSRunningApplication runningApplicationWithProcessIdentifier:processIdentifier] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
+    //Slower, but not deprecated, application fronting
+    //[[NSRunningApplication runningApplicationWithProcessIdentifier:processIdentifier] activateWithOptions:NSApplicationActivateIgnoringOtherApps];
 }
 
 - (void)launchApp:(NSString *)bundleIdentifier {
