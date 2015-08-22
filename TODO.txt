@@ -1,6 +1,19 @@
 Todo 
-- App Icon
+x App Icon
 - Way to manage shortcuts
+
+Letter Responder
+- Need first responder to accumulate key presses in text field
+- Then if there is a uniquely resolvable set of keys launch matching app, escape to clear
+- Preference to resolve app on first letter
+- Preference to prefer open apps, then prefer frequently used apps
+
+3 Views
+- Contain keypad in view that can contain multiple keypads
+	- Create view that can contain multiple keypads
+	- Insert that into hierarchy of views in-between contentView and keypad view
+- Containing view responds to key presses to switch them out
+- ViewModel update for apps ordered by favorites
 
 Todo [Features]
 - Click Icons to Activate
@@ -12,6 +25,7 @@ Todo [Features]
 
 Todo [Preferences]
 - Select Activation hotkey
+- Use visual order of keypad or numerical order
 
 Todo [Performance]
 - Faster app window switching (how does apple+tab switch so fast?)

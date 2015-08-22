@@ -16,10 +16,13 @@
 #import "NRNumpadPreferencesView.h"
 #import <DABActiveApplications/DABActiveApplications.h>
 #import <Carbon/Carbon.h>
+#import <FontAwesomeIconFactory/FontAwesomeIconFactory.h>
+#import "NRWindowContentView.h"
 
 @interface NRNumpadSettingsController ()
 
 @property (nonatomic, strong) DABActiveApplicationsMonitor *monitor;
+@property (nonatomic, strong) NSArray *appList;
 
 @end
 
@@ -61,23 +64,26 @@
 - (void)keyDown:(NSEvent *)theEvent {
 
     
-    int keypadNum = theEvent.keyCode - kVK_ANSI_Keypad0;
+//    int keypadNum = theEvent.keyCode - kVK_ANSI_Keypad0;
     
 //    int num = theEvent.keyCode - kVK_ANSI_0;
     
-    if (keypadNum >= 0 && keypadNum < 10) {
-        [self.numpadModel launchApplicationAtIndex:keypadNum];
-    } else if (theEvent.keyCode >= kVK_ANSI_1 && theEvent.keyCode <= kVK_ANSI_0) {
-        if (theEvent.keyCode == kVK_ANSI_Minus || theEvent.keyCode == kVK_ANSI_Equal) {
-            [super keyDown:theEvent];
-            return;
-        }
-        
-        [self.numpadModel launchApplicationAtIndex:theEvent.characters.integerValue];
-        
-    } else {
+    NRNumpadKeyOrdering order = NRNumpadKeyOrderingNumeric;
+    
+    NSInteger appIndex = [NRNumpadModel indexForKeyCode:theEvent.keyCode usingOrdering:order];
+    
+    if (appIndex != NSNotFound) {
+        [self.numpadModel launchApplicationAtIndex:appIndex];
+    } else if (theEvent.keyCode) {
         [super keyDown:theEvent];
     }
+    
+    
+//    [NSWorkspace sharedWorkspace] launch
+    
+    // TODO: Handle files not in NSApplicationDirectory, or nested more deeply like Utilities/Terminal etc
+    
+
     
     
 }
@@ -106,6 +112,31 @@
     self.nextResponder = self.numpadView.nextResponder;
     self.numpadView.nextResponder = self;
     
+    [self loadApplist];
+//    NIKFontAwesomeButton *b = [NIKFontAwesomeButton
+
+    
+}
+
+- (void)loadApplist {
+    
+    NSArray *urls = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationDirectory inDomains:NSLocalDomainMask];
+    
+    NSError *error = nil;
+    NSArray *properties = [NSArray arrayWithObjects: NSURLLocalizedNameKey,
+                           NSURLCreationDateKey, NSURLLocalizedTypeDescriptionKey, nil];
+    
+    NSArray *array = [[NSFileManager defaultManager]
+                      contentsOfDirectoryAtURL:[urls objectAtIndex:0]
+                      includingPropertiesForKeys:properties
+                      options:(NSDirectoryEnumerationSkipsHiddenFiles)
+                      error:&error];
+    if (array == nil) {
+        // Handle the error
+    }
+    
+    self.appList = array;
+    
 }
 
 - (void)configurePreferencePane {
@@ -117,10 +148,61 @@
     
     [self.view addSubview:self.prefView];
 
+    
+    
+    NSButton *prefButton = ((NRWindowContentView *)self.numpadView.superview).settingsButton;
+    NSMenu *m = [[NSMenu alloc] initWithTitle:@"Actions"];
+    NSMenuItem *i = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(tryQuit:) keyEquivalent:@"q"];
+//    i.keyEquivalentModifierMask = nil;
+//    [m addItemWithTitle:@"Quit" action: keyEquivalent:@"Q"];
+    
+    NSMenuItem *i2 = [[NSMenuItem alloc] initWithTitle:@"About" action:@selector(tryAbout:) keyEquivalent:@","];
+    NSMenuItem *i3 = [[NSMenuItem alloc] initWithTitle:@"Todos" action:@selector(tryTodos:) keyEquivalent:@"t"];
+    
+    [m addItem:i2];
+    [m addItem:i3];
+    [m addItem:[NSMenuItem separatorItem]];
+    [m addItem:i];
+    
+    
+
+    prefButton.menu = m;
+    prefButton.action = @selector(showMenu:);
+    prefButton.target = self;
+
+//    [prefButton addTarget:self action:@selector(showMenu:) forControlEvents:BTRControlEventMouseDownInside];
+}
+
+
+
+- (void)showMenu:(NSButton *)sender {
+    
+    [NSMenu popUpContextMenu:sender.menu withEvent:[[NSApplication sharedApplication] currentEvent] forView:sender];
+//    sender.menu pop
+    
+}
+
+- (void)tryTodos:(NSMenuItem *)sender {
+    [[NSWorkspace sharedWorkspace] openFile:@"/Users/dbelford/Projects/osx.launchpad-remap/TODO.txt" withApplication:@"todo-txt"];
+}
+
+- (void)tryQuit:(NSMenuItem *)sender {
+    [[NSRunningApplication currentApplication] terminate];
+}
+
+- (void)tryAbout:(NSMenuItem *)sender {
+    
 }
 
 - (void)configureConstraints {
     [self.numpadView.superview removeConstraints:self.numpadView.superview.constraints];
+    
+    NSButton *prefButton = ((NRWindowContentView *)self.numpadView.superview).settingsButton;
+    
+    [prefButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.numpadView.superview).offset(-20);
+        make.bottom.equalTo(self.numpadView.superview).offset(-20);
+    }];
     //    [self.numpadView.superview removeConstraints:self.numpadView.constraints];
     
     [self.prefView mas_makeConstraints:^(MASConstraintMaker *make) {

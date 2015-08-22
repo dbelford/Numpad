@@ -1,11 +1,13 @@
 PODS:
   - Butter (0.2.0)
+  - FontAwesomeIconFactory (2.0.2)
   - INAppStoreWindow (1.4)
   - Masonry (0.6.2)
-  - MASShortcut (2.1.2)
+  - MASShortcut (2.2.0)
 
 DEPENDENCIES:
   - Butter (from `https://dbelford@bitbucket.org/dbelford/butter.git`)
+  - FontAwesomeIconFactory
   - INAppStoreWindow
   - Masonry
   - MASShortcut
@@ -21,8 +23,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Butter: edab9afbc37a69184ef714fa10fbf9020ce3c9e1
+  FontAwesomeIconFactory: 36ea917783d4df460a6a3abf7e26481d7d49aef2
   INAppStoreWindow: 4fd569f7435557239e78316de139e886ccbaec4d
   Masonry: 362e8a1cc0beada4a4c4832d5e863da2a51533be
-  MASShortcut: ef92b912469f9f6744dba5f0a906665c26de760c
+  MASShortcut: f016adee0731ece84a143ba39204afe46a68e1d9
 
-COCOAPODS: 0.36.1
+COCOAPODS: 0.38.2

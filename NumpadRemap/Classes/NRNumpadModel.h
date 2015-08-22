@@ -10,10 +10,21 @@
 
 @class MASShortcut;
 
+typedef NS_ENUM(NSInteger, NRNumpadKeyOrdering) {
+    NRNumpadKeyOrderingNumeric,
+    NRNumpadKeyOrderingVisual
+};
+
+
 @interface NRNumpadModel : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary /*<MASShortcut *>*/ *shortcuts;
 
+
 - (void)launchApplicationAtIndex:(NSInteger)index;
+
++ (BOOL)isNumpadNumber:(unsigned short)keyCode;
++ (BOOL)isKeyboardNumber:(unsigned short)keyCode;
++ (NSInteger)indexForKeyCode:(unsigned short)keyCode usingOrdering:(NRNumpadKeyOrdering)ordering;
 
 @end

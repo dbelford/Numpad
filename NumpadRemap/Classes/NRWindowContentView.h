@@ -10,4 +10,6 @@
 
 @interface NRWindowContentView : NSView
 
+@property(nonatomic, strong) IBOutlet NSButton *settingsButton;
+
 @end

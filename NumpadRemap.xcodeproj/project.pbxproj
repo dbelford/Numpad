@@ -25,6 +25,7 @@
 		A67ABC2818D284D100C1D502 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC0718D284D100C1D502 /* Cocoa.framework */; };
 		A67ABC3018D284D200C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC2E18D284D200C1D502 /* InfoPlist.strings */; };
 		A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */; };
+		A687FE2B1B87E4AD0007F379 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = A687FE2A1B87E4AD0007F379 /* TODO.txt */; };
 		A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; };
 		A6A92CFD1B82FE9400F606A4 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6C187A618D63A3C00F7F9BF /* NRNumpadSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C187A518D63A3C00F7F9BF /* NRNumpadSettingsController.m */; };
@@ -91,6 +92,7 @@
 		A67ABC2D18D284D100C1D502 /* NumpadRemapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NumpadRemapTests-Info.plist"; sourceTree = "<group>"; };
 		A67ABC2F18D284D200C1D502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumpadRemapTests.m; sourceTree = "<group>"; };
+		A687FE2A1B87E4AD0007F379 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		A6C187A418D63A3C00F7F9BF /* NRNumpadSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadSettingsController.h; path = Classes/NRNumpadSettingsController.h; sourceTree = "<group>"; };
 		A6C187A518D63A3C00F7F9BF /* NRNumpadSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadSettingsController.m; path = Classes/NRNumpadSettingsController.m; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		A67ABBFB18D284D100C1D502 = {
 			isa = PBXGroup;
 			children = (
+				A687FE2A1B87E4AD0007F379 /* TODO.txt */,
 				A67ABC0D18D284D100C1D502 /* NumpadRemap */,
 				A67ABC2B18D284D100C1D502 /* NumpadRemapTests */,
 				A67ABC0618D284D100C1D502 /* Frameworks */,
@@ -339,6 +342,7 @@
 			files = (
 				A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */,
 				A67ABC2018D284D100C1D502 /* Images.xcassets in Resources */,
+				A687FE2B1B87E4AD0007F379 /* TODO.txt in Resources */,
 				A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */,
 				A6F6873218E0A72200E40A20 /* NRNumpadPreferencesView.xib in Resources */,
 				A67ABC1E18D284D100C1D502 /* MainMenu.xib in Resources */,
