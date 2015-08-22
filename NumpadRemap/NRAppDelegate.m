@@ -27,8 +27,19 @@
     
     [self.window setInitialFirstResponder:self.numpadSettingsController.view];
 
-
 }
+
+#pragma mark - Application Lifecycle
+
+- (void)applicationWillBecomeActive:(NSNotification *)notification {
+    [self.window makeKeyAndOrderFront:self];
+}
+
+- (void)applicationWillResignActive:(NSNotification *)notification {
+    [[NSApplication sharedApplication] hide:self];
+}
+
+#pragma mark - Etc.
 
 - (BOOL)acceptsFirstResponder {
     return YES;

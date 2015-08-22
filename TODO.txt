@@ -1,5 +1,6 @@
 Todo 
 x App Icon
+x Hide app when not active
 - Way to manage shortcuts
 
 Letter Responder
