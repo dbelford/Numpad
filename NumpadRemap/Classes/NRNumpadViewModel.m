@@ -11,6 +11,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "NRNumpadModel.h"
 #import "NRNumpadShortcutModel.h"
+#import <ObjectiveSugar/ObjectiveSugar.h>
 
 //kVK_ANSI_KeypadMultiply       = 0x43,
 //kVK_ANSI_KeypadPlus           = 0x45,
@@ -39,21 +40,13 @@
     
     if (self) {
         
-        RAC(self, numpadKeys) = [RACObserve(self, model.shortcuts) map:^NSMutableDictionary *(NSDictionary *shortCuts) {
-            NSMutableDictionary *keys = [NSMutableDictionary dictionary];
-            
-            for (int i = kVK_ANSI_Keypad0; i <= kVK_ANSI_Keypad9; i++) {
-                if (i == kVK_F20) { continue; }
-                
-                NRNumpadShortcutModel *shortcut = shortCuts[@(i)];
-                keys[@(i)] = [NRNumpadViewModel keyViewModelForShortcut:shortcut andIdentifier:i];
-            }
-            return keys;
+        RAC(self, numpadKeys) = [RACObserve(self, model.shortcuts) map:^NSArray *(NSArray *shortCuts) {
+            return [shortCuts map:^id(NRNumpadShortcutModel *shortcut) {
+                return [NRNumpadViewModel keyViewModelForShortcut:shortcut andIdentifier:shortcut.keyCodeString.intValue];
+            }];
         }];
-        
-        self.keyPressedSignal = [RACSubject subject];
-                                 
 
+        self.keyPressedSignal = [RACSubject subject];
     }
     
     return self;
@@ -82,10 +75,6 @@
 - (NSString *)applicationBundleIdentifier {
     return self.shortcut.applicationBundleIdentifier ? self.shortcut.applicationBundleIdentifier : @"";
 }
-
-//- (NSString *)applicationPID {
-//    return ;
-//}
 
 - (NSImage *)image {
     NSRunningApplication *app = [NSRunningApplication runningApplicationWithProcessIdentifier:self.shortcut.processIdentifier];

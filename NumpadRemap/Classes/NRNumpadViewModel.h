@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) NRNumpadModel *model;
 
-@property (nonatomic, strong) NSMutableDictionary /* NRNumpadKeyViewModel * */ *numpadKeys;
+@property (nonatomic, strong) NSArray /* NRNumpadKeyViewModel * */ *numpadKeys;
 @property (nonatomic, strong) NSArray /* NSImage *  */ *keyImages;
 @property (nonatomic, strong) NSArray /* NSString * */ *displayNames;
 @property (nonatomic, strong) NSArray /* NSString * */ *keyNames;

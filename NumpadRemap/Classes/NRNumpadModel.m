@@ -25,7 +25,12 @@
 - (id)init {
     
     if (self = [super init]) {
+        
+        self.ordering = NRNumpadKeyOrderingNumeric;
+        
+        
         [self setup];
+        
     }
     
     return self;
@@ -36,43 +41,41 @@
 - (void)setup {
     self.monitor = [[DABActiveApplicationsMonitor alloc] init];
     
-    RAC(self, shortcuts) = [RACObserve(self.monitor, orderedRunningApplications) map:^ NSMutableDictionary *(NSArray *orderedApps) {
+
+    RAC(self, shortcuts) = [RACSignal combineLatest:@[RACObserve(self.monitor, orderedRunningApplications), RACObserve(self, ordering)] reduce:^NSArray *(NSArray *orderedApps, NSNumber *ordering){
+//        NSMutableArray *keys = [NSMutable array];
         
         // TODO: Don't use unregisterAllShortcuts but just unregister the keys, or register the shortcuts in the viewModel and have the action sensitive to that context
-        
+
         [[MASShortcutMonitor sharedMonitor] unregisterAllShortcuts];
-        
+
         [[MASShortcutMonitor sharedMonitor] registerShortcut:[MASShortcut shortcutWithKeyCode:kVK_F4 modifierFlags:NSCommandKeyMask] withAction:^{
             [self launchApplication:[NSRunningApplication currentApplication]];
         }];
+
         
+        NSArray *orderedKeys = [NRNumpadModel orderedNumpadANSIKeysForOrdering:ordering.integerValue];
         
-        NSMutableDictionary *keys = [NSMutableDictionary dictionary];
-        for (int i = kVK_ANSI_Keypad0; i <= kVK_ANSI_Keypad9; i++) {
-            if (i == kVK_F20) { continue; }
-            
+        return [orderedKeys map:^NRNumpadShortcutModel *(NSNumber *key) {
             //Configure Variables
-            int keypadNum = i - kVK_ANSI_Keypad0;
-            NRNumpadShortcutModel *shortcut = [NRNumpadShortcutModel shortcutWithKeyCode:i modifierFlags:NSCommandKeyMask];
+//            int keypadNum = i - kVK_ANSI_Keypad0;
+            NRNumpadShortcutModel *shortcut = [NRNumpadShortcutModel shortcutWithKeyCode:key.unsignedShortValue modifierFlags:NSCommandKeyMask];
             
             if (orderedApps.count) {
-
-               //Configure Shortcut
-                NSRunningApplication *app = orderedApps[MIN(keypadNum, orderedApps.count - 1 )];
+                
+                //Configure Shortcut
+                NSRunningApplication *app = orderedApps[[orderedKeys indexOfObject:key]];
                 
                 shortcut.applicationBundleIdentifier = app.bundleIdentifier;
                 shortcut.processIdentifier = app.processIdentifier;
-
-                [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
-                    [self launchApplication:app];
-                }];
+//                
+//                [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
+//                    [self launchApplication:app];
+//                }];
+                
             }
-
-            
-            //Assign Shortcut to Key
-            keys[@(i)] = shortcut;
-        }
-        return keys;
+            return shortcut;
+        }];
     }];
 }
 

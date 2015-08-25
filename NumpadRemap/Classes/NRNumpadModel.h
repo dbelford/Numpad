@@ -19,12 +19,14 @@ typedef NS_ENUM(NSInteger, NRNumpadKeyOrdering) {
 @interface NRNumpadModel : NSObject
 
 @property (nonatomic, strong) NSMutableDictionary /*<MASShortcut *>*/ *shortcuts;
+@property (nonatomic, assign) NRNumpadKeyOrdering ordering;
 
 
 - (void)launchApplicationAtIndex:(NSInteger)index;
 
 + (BOOL)isNumpadNumber:(unsigned short)keyCode;
 + (BOOL)isKeyboardNumber:(unsigned short)keyCode;
++ (NSArray *)orderedNumpadANSIKeysForOrdering:(NRNumpadKeyOrdering)ordering;
 + (NSInteger)indexForKeyCode:(unsigned short)keyCode usingOrdering:(NRNumpadKeyOrdering)ordering;
 
 @end

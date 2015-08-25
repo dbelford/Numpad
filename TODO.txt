@@ -1,7 +1,6 @@
 Todo 
 x App Icon
-x Hide app when not active
-- Way to manage shortcuts
+- Delete cruft & commit
 
 Letter Responder
 - Need first responder to accumulate key presses in text field
@@ -17,24 +16,31 @@ Letter Responder
 - ViewModel update for apps ordered by favorites
 
 Todo [Features]
-- Click Icons to Activate
-- Keypress to Activate 
-- Keep app window centered in screen
-- Remove numpad remap from app switcher
+x Click Icons to Activate
+x Keypress to Activate
+x Keep app window centered in screen
+x Remove numpad remap from app switcher
+- App appears on screen with mouse
 - Multiple app activation changes app picker
-  - Recent -> Favorites -> Letters
+    - Recent -> Favorites -> Letters
+
+Todo [Keyboard Support]
+- Create app activation shortcut in correct place
+- Escape hides app (is this an app mode?)
+- Way to manage shortcuts
+- Select Activation hotkey
 
 Todo [Preferences]
-- Select Activation hotkey
 - Use visual order of keypad or numerical order
+- Create preferences menu button in better part of code
 
 Todo [Performance]
 - Faster app window switching (how does apple+tab switch so fast?)
 - Faster app loading (how to get app into responsive state faster?)
 
 Todo [Bugs]
-- Keypress not activating correct app
-- Keypress inaccurate indexes because imperfect order in ANSI constants
-- Multiple keypresses required to launch an application
-  - Specifically two presses required occasionally
-
+x Keypress not activating correct app
+x Keypress inaccurate indexes because imperfect order in ANSI constants
+x Multiple keypresses required to launch an application
+  x Specifically two presses required occasionally
+- Numpad model probably shouldn't be making MASShortcuts

@@ -44,16 +44,16 @@
                               @(kVK_ANSI_Keypad0)
                               ];
         @weakify(self)
-        RAC(self, keyViews) = [RACObserve(self, viewModel.numpadKeys) map:^NSArray *(NSDictionary *keyViewModels) {
+        RAC(self, keyViews) = [RACObserve(self, viewModel.numpadKeys) map:^NSArray *(NSArray *keyViewModels) {
             
             @strongify(self)
             
             // Make Views
-            NSArray *views = [keyViewModels map: ^NSView *(NSNumber *key, NRNumpadKeyViewModel *keyViewModel) {
+            NSArray *views = [keyViewModels map: ^NSView *(NRNumpadKeyViewModel *keyViewModel) {
                 NRNumpadKeyView *view = [[NRNumpadKeyView alloc] initWithFrame:NSMakeRect(0, 0, 400, 400)];
                 view.iconImageView.image = keyViewModel.image;
                 view.keyLabel.stringValue = keyViewModel.keyName;
-                view.identifier = key.stringValue;
+                view.identifier = @(keyViewModel.shortcut.keyCode).stringValue;
                 [view addTarget:self action:@selector(pressedAppButton:) forControlEvents:BTRControlEventMouseUpInside];
                 
                 return view;
@@ -87,7 +87,9 @@
 }
 
 - (void)pressedAppButton:(NRNumpadKeyView *)sender {
-    [self.viewModel pressedKeyAtIndex:(sender.identifier.integerValue - kVK_ANSI_Keypad1)];
+    
+    NSInteger i = [NRNumpadModel indexForKeyCode:@(sender.identifier.integerValue).unsignedShortValue usingOrdering:NRNumpadKeyOrderingVisual];
+    [self.viewModel pressedKeyAtIndex:i];
 }
 
 - (void)updateConstraints {

@@ -19,6 +19,9 @@
 #import <FontAwesomeIconFactory/FontAwesomeIconFactory.h>
 #import "NRWindowContentView.h"
 
+
+static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
+
 @interface NRNumpadSettingsController ()
 
 @property (nonatomic, strong) DABActiveApplicationsMonitor *monitor;
@@ -68,7 +71,7 @@
     
 //    int num = theEvent.keyCode - kVK_ANSI_0;
     
-    NRNumpadKeyOrdering order = NRNumpadKeyOrderingNumeric;
+    NRNumpadKeyOrdering order = kCurrentOrdering;
     
     NSInteger appIndex = [NRNumpadModel indexForKeyCode:theEvent.keyCode usingOrdering:order];
     
@@ -102,7 +105,12 @@
     self.numpadView.viewModel = vm;
     
     [self.numpadView.viewModel.keyPressedSignal subscribeNext:^(NSNumber *keypadNum) {
-        [self.numpadModel launchApplicationAtIndex:keypadNum.integerValue];
+        
+        int arr[10] = {7, 8, 9, 4, 5, 6, 1, 2, 3, 0};
+
+        NSInteger i = kCurrentOrdering == NRNumpadKeyOrderingNumeric ? arr[keypadNum.intValue] : keypadNum.integerValue;
+        
+        [self.numpadModel launchApplicationAtIndex:i];
     }];
 }
 
