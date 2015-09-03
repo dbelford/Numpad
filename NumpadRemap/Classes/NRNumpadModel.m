@@ -49,10 +49,9 @@
 
         [[MASShortcutMonitor sharedMonitor] unregisterAllShortcuts];
 
-        [[MASShortcutMonitor sharedMonitor] registerShortcut:[MASShortcut shortcutWithKeyCode:kVK_F4 modifierFlags:NSCommandKeyMask] withAction:^{
+        [[MASShortcutMonitor sharedMonitor] registerShortcut:[MASShortcut shortcutWithKeyCode:kVK_ANSI_KeypadClear modifierFlags:0] withAction:^{
             [self launchApplication:[NSRunningApplication currentApplication]];
         }];
-
         
         NSArray *orderedKeys = [NRNumpadModel orderedNumpadANSIKeysForOrdering:ordering.integerValue];
         
@@ -88,7 +87,8 @@
     BOOL appAlreadyActive = app.processIdentifier == [NSWorkspace sharedWorkspace].frontmostApplication.processIdentifier;
     
     if (appAlreadyActive) {
-        [self launchApplicationWithProcessIdentifier:self.lastProcessIdentifier];
+//        [self launchApplicationWithProcessIdentifier:self.lastProcessIdentifier];
+        [self launchApplicationAtIndex:0];
     } else {
         self.lastProcessIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.processIdentifier;
         [self launchApplicationWithProcessIdentifier:app.processIdentifier];

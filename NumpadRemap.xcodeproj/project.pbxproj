@@ -36,6 +36,8 @@
 		A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872C18DB6CDD00E40A20 /* NSArray+NRConvenience.m */; };
 		A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */; };
 		A6F6873218E0A72200E40A20 /* NRNumpadPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6873118E0A72200E40A20 /* NRNumpadPreferencesView.xib */; };
+		A6FDC27B1B978A79003FC592 /* DABKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FDC27A1B978A79003FC592 /* DABKit.framework */; };
+		A6FDC27C1B978A79003FC592 /* DABKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6FDC27A1B978A79003FC592 /* DABKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,7 @@
 				A636862E1B7DB13900001A35 /* DABActiveApplications.framework in Embed Frameworks */,
 				A6A92CFD1B82FE9400F606A4 /* ReactiveCocoa.framework in Embed Frameworks */,
 				A63686311B7DB13B00001A35 /* ObjectiveSugar.framework in Embed Frameworks */,
+				A6FDC27C1B978A79003FC592 /* DABKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,6 +112,7 @@
 		A6F6872E18E0A6F100E40A20 /* NRNumpadPreferencesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadPreferencesView.h; path = Classes/NRNumpadPreferencesView.h; sourceTree = "<group>"; };
 		A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadPreferencesView.m; path = Classes/NRNumpadPreferencesView.m; sourceTree = "<group>"; };
 		A6F6873118E0A72200E40A20 /* NRNumpadPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NRNumpadPreferencesView.xib; path = Classes/NRNumpadPreferencesView.xib; sourceTree = "<group>"; };
+		A6FDC27A1B978A79003FC592 /* DABKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DABKit.framework; path = Carthage/Build/Mac/DABKit.framework; sourceTree = "<group>"; };
 		E968085159F24D01850FE9B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -120,6 +124,7 @@
 				A67ABC0818D284D100C1D502 /* Cocoa.framework in Frameworks */,
 				A636862B1B7DB08B00001A35 /* ObjectiveSugar.framework in Frameworks */,
 				2D1449AAE0FE421EB07CCF74 /* libPods.a in Frameworks */,
+				A6FDC27B1B978A79003FC592 /* DABKit.framework in Frameworks */,
 				A636862A1B7DB08B00001A35 /* DABActiveApplications.framework in Frameworks */,
 				A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */,
 			);
@@ -140,6 +145,7 @@
 		A67ABBFB18D284D100C1D502 = {
 			isa = PBXGroup;
 			children = (
+				A6FDC27A1B978A79003FC592 /* DABKit.framework */,
 				A687FE2A1B87E4AD0007F379 /* TODO.txt */,
 				A67ABC0D18D284D100C1D502 /* NumpadRemap */,
 				A67ABC2B18D284D100C1D502 /* NumpadRemapTests */,

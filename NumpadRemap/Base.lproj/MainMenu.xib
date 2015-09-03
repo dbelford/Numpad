@@ -394,17 +394,17 @@
         <window title="NumpadRemap" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g" customClass="INAppStoreWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="500" height="376"/>
+            <rect key="contentRect" x="335" y="390" width="500" height="500"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="EiT-Mj-1SZ" customClass="NRWindowContentView">
-                <rect key="frame" x="0.0" y="0.0" width="500" height="376"/>
+                <rect key="frame" x="0.0" y="0.0" width="500" height="500"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mNR-dh-gyc" customClass="NRNumpadView">
-                        <rect key="frame" x="225" y="0.0" width="275" height="376"/>
+                        <rect key="frame" x="225" y="124" width="275" height="376"/>
                     </customView>
                     <button misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z7O-Ud-hZb" customClass="NIKFontAwesomeButton">
-                        <rect key="frame" x="450" y="17" width="32" height="26"/>
+                        <rect key="frame" x="450" y="141" width="32" height="26"/>
                         <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" borderStyle="border" inset="2" id="wWy-h2-Li2">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>

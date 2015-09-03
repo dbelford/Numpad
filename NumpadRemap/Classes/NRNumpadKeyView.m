@@ -74,7 +74,7 @@
 // TODO: Figure out why deleteing intrinsicContentSize breaks window resizing!
 
 - (CGSize)intrinsicContentSize {
-    return CGSizeMake(40, 40);
+    return CGSizeMake(60, 60);
 }
 
 - (void)updateConstraints {

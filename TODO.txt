@@ -1,6 +1,7 @@
 Todo 
-x App Icon
 - Delete cruft & commit
+x Larger starting icon size
+x App Icon
 
 Letter Responder
 - Need first responder to accumulate key presses in text field
@@ -16,13 +17,15 @@ Letter Responder
 - ViewModel update for apps ordered by favorites
 
 Todo [Features]
+- Activation hotkey should work on launch
+- App appears on screen with mouse
+- App autolaunches on restart
+- Multiple app activation changes app picker
+    - Recent -> Favorites -> Letters
 x Click Icons to Activate
 x Keypress to Activate
 x Keep app window centered in screen
 x Remove numpad remap from app switcher
-- App appears on screen with mouse
-- Multiple app activation changes app picker
-    - Recent -> Favorites -> Letters
 
 Todo [Keyboard Support]
 - Create app activation shortcut in correct place
@@ -39,8 +42,9 @@ Todo [Performance]
 - Faster app loading (how to get app into responsive state faster?)
 
 Todo [Bugs]
+- Numpad model probably shouldn't be making MASShortcuts
 x Keypress not activating correct app
 x Keypress inaccurate indexes because imperfect order in ANSI constants
 x Multiple keypresses required to launch an application
   x Specifically two presses required occasionally
-- Numpad model probably shouldn't be making MASShortcuts
+
