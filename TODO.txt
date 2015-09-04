@@ -1,5 +1,6 @@
 Todo 
 - Delete cruft & commit
+x Escape should hide app
 x Larger starting icon size
 x App Icon
 
@@ -17,7 +18,7 @@ Letter Responder
 - ViewModel update for apps ordered by favorites
 
 Todo [Features]
-- Activation hotkey should work on launch
+x Activation hotkey should work on launch
 - App appears on screen with mouse
 - App autolaunches on restart
 - Multiple app activation changes app picker
