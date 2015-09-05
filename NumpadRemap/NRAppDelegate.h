@@ -10,12 +10,14 @@
 #import <INAppStoreWindow/INAppStoreWindow.h>
 #import "NRNumpadSettingsController.h"
 
-@interface NRAppDelegate : NSResponder <NSApplicationDelegate>
+@interface NRAppDelegate : NSResponder <NSApplicationDelegate, NSWindowDelegate>
 
-@property (assign) IBOutlet INAppStoreWindow *window;
+@property (assign) IBOutlet NSWindow *window;
 @property (nonatomic, strong) IBOutlet NRNumpadSettingsController *numpadSettingsController;
 
 - (IBAction)printLayout:(id)sender;
 - (IBAction)printConstraints:(id)sender;
+
+- (IBAction)showPreferencesWindow:(id)sender;
 
 @end

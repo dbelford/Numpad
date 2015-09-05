@@ -1,5 +1,8 @@
 Todo 
+- Implement preferences
 - Delete cruft & commit
+- Hide yellow/green button
+- Fix window jitter on appearance
 x Escape should hide app
 x Larger starting icon size
 x App Icon
@@ -18,11 +21,11 @@ Letter Responder
 - ViewModel update for apps ordered by favorites
 
 Todo [Features]
-x Activation hotkey should work on launch
-- App appears on screen with mouse
 - App autolaunches on restart
 - Multiple app activation changes app picker
     - Recent -> Favorites -> Letters
+x App appears on screen with mouse
+x Activation hotkey should work on launch
 x Click Icons to Activate
 x Keypress to Activate
 x Keep app window centered in screen
@@ -35,6 +38,7 @@ Todo [Keyboard Support]
 - Select Activation hotkey
 
 Todo [Preferences]
+- Always center app
 - Use visual order of keypad or numerical order
 - Create preferences menu button in better part of code
 
@@ -49,3 +53,6 @@ x Keypress inaccurate indexes because imperfect order in ANSI constants
 x Multiple keypresses required to launch an application
   x Specifically two presses required occasionally
 
+Todo [Release]
+- Make sure licenses are correct and included
+- (https://www.bignerdranch.com/blog/using-cocoapods-without-going-court/)

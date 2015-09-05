@@ -38,6 +38,13 @@
 		A6F6873218E0A72200E40A20 /* NRNumpadPreferencesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F6873118E0A72200E40A20 /* NRNumpadPreferencesView.xib */; };
 		A6FDC27B1B978A79003FC592 /* DABKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6FDC27A1B978A79003FC592 /* DABKit.framework */; };
 		A6FDC27C1B978A79003FC592 /* DABKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6FDC27A1B978A79003FC592 /* DABKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A6FDC2831B9962F1003FC592 /* NRWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FDC2821B9962F1003FC592 /* NRWindow.m */; };
+		A6FDC2871B9A1E58003FC592 /* WAYAppStoreWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FDC2861B9A1E58003FC592 /* WAYAppStoreWindow.m */; };
+		A6FDC28B1B9A1EDD003FC592 /* WAYWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FDC28A1B9A1EDD003FC592 /* WAYWindow.m */; };
+		A6FDC28E1B9A4D1A003FC592 /* NRPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FDC28D1B9A4D1A003FC592 /* NRPreferences.m */; };
+		A6FDC2921B9A558B003FC592 /* NRPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FDC2911B9A558B003FC592 /* NRPreferencesViewController.m */; };
+		A6FDC2961B9A55A6003FC592 /* NRGeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FDC2941B9A55A6003FC592 /* NRGeneralPreferencesViewController.m */; };
+		A6FDC2971B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FDC2951B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +120,19 @@
 		A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadPreferencesView.m; path = Classes/NRNumpadPreferencesView.m; sourceTree = "<group>"; };
 		A6F6873118E0A72200E40A20 /* NRNumpadPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NRNumpadPreferencesView.xib; path = Classes/NRNumpadPreferencesView.xib; sourceTree = "<group>"; };
 		A6FDC27A1B978A79003FC592 /* DABKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DABKit.framework; path = Carthage/Build/Mac/DABKit.framework; sourceTree = "<group>"; };
+		A6FDC2811B9962F1003FC592 /* NRWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRWindow.h; path = Classes/NRWindow.h; sourceTree = "<group>"; };
+		A6FDC2821B9962F1003FC592 /* NRWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRWindow.m; path = Classes/NRWindow.m; sourceTree = "<group>"; };
+		A6FDC2851B9A1E58003FC592 /* WAYAppStoreWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYAppStoreWindow.h; sourceTree = "<group>"; };
+		A6FDC2861B9A1E58003FC592 /* WAYAppStoreWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAYAppStoreWindow.m; sourceTree = "<group>"; };
+		A6FDC2891B9A1EDD003FC592 /* WAYWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WAYWindow.h; sourceTree = "<group>"; };
+		A6FDC28A1B9A1EDD003FC592 /* WAYWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WAYWindow.m; sourceTree = "<group>"; };
+		A6FDC28C1B9A4D1A003FC592 /* NRPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRPreferences.h; path = Classes/Preferences/NRPreferences.h; sourceTree = "<group>"; };
+		A6FDC28D1B9A4D1A003FC592 /* NRPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRPreferences.m; path = Classes/Preferences/NRPreferences.m; sourceTree = "<group>"; };
+		A6FDC2901B9A558B003FC592 /* NRPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRPreferencesViewController.h; path = Classes/Preferences/NRPreferencesViewController.h; sourceTree = "<group>"; };
+		A6FDC2911B9A558B003FC592 /* NRPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRPreferencesViewController.m; path = Classes/Preferences/NRPreferencesViewController.m; sourceTree = "<group>"; };
+		A6FDC2931B9A55A6003FC592 /* NRGeneralPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRGeneralPreferencesViewController.h; path = Classes/Preferences/NRGeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		A6FDC2941B9A55A6003FC592 /* NRGeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRGeneralPreferencesViewController.m; path = Classes/Preferences/NRGeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		A6FDC2951B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NRGeneralPreferencesViewController.xib; path = Classes/Preferences/NRGeneralPreferencesViewController.xib; sourceTree = "<group>"; };
 		E968085159F24D01850FE9B2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -191,6 +211,7 @@
 		A67ABC0D18D284D100C1D502 /* NumpadRemap */ = {
 			isa = PBXGroup;
 			children = (
+				A6FDC2841B9A1E58003FC592 /* WAYAppStoreWindow */,
 				A6C187A718D63A4300F7F9BF /* Classes */,
 				A67ABC1918D284D100C1D502 /* NRAppDelegate.h */,
 				A67ABC1A18D284D100C1D502 /* NRAppDelegate.m */,
@@ -234,6 +255,9 @@
 		A6C187A718D63A4300F7F9BF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A6FDC28F1B9A4D20003FC592 /* Preferences */,
+				A6FDC2811B9962F1003FC592 /* NRWindow.h */,
+				A6FDC2821B9962F1003FC592 /* NRWindow.m */,
 				A6F6872818DA287A00E40A20 /* NRWindowContentView.h */,
 				A6F6872918DA287A00E40A20 /* NRWindowContentView.m */,
 				A6596A3B18D63879007D6566 /* NRNumpadModel.h */,
@@ -257,6 +281,41 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		A6FDC2841B9A1E58003FC592 /* WAYAppStoreWindow */ = {
+			isa = PBXGroup;
+			children = (
+				A6FDC2881B9A1EDD003FC592 /* WAYWindow */,
+				A6FDC2851B9A1E58003FC592 /* WAYAppStoreWindow.h */,
+				A6FDC2861B9A1E58003FC592 /* WAYAppStoreWindow.m */,
+			);
+			name = WAYAppStoreWindow;
+			path = External/WAYAppStoreWindow;
+			sourceTree = SOURCE_ROOT;
+		};
+		A6FDC2881B9A1EDD003FC592 /* WAYWindow */ = {
+			isa = PBXGroup;
+			children = (
+				A6FDC2891B9A1EDD003FC592 /* WAYWindow.h */,
+				A6FDC28A1B9A1EDD003FC592 /* WAYWindow.m */,
+			);
+			name = WAYWindow;
+			path = External/WAYWindow;
+			sourceTree = SOURCE_ROOT;
+		};
+		A6FDC28F1B9A4D20003FC592 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				A6FDC2901B9A558B003FC592 /* NRPreferencesViewController.h */,
+				A6FDC2911B9A558B003FC592 /* NRPreferencesViewController.m */,
+				A6FDC2931B9A55A6003FC592 /* NRGeneralPreferencesViewController.h */,
+				A6FDC2941B9A55A6003FC592 /* NRGeneralPreferencesViewController.m */,
+				A6FDC2951B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib */,
+				A6FDC28C1B9A4D1A003FC592 /* NRPreferences.h */,
+				A6FDC28D1B9A4D1A003FC592 /* NRPreferences.m */,
+			);
+			name = Preferences;
+			sourceTree = "<group>";
+		};
 		C9567C5AC9C9E7FF208C6482 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,9 +328,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A67ABC0318D284D100C1D502 /* NumpadRemap */ = {
+		A67ABC0318D284D100C1D502 /* Numpad */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A67ABC3518D284D200C1D502 /* Build configuration list for PBXNativeTarget "NumpadRemap" */;
+			buildConfigurationList = A67ABC3518D284D200C1D502 /* Build configuration list for PBXNativeTarget "Numpad" */;
 			buildPhases = (
 				9DCC62513E674977BE8D7C1F /* Check Pods Manifest.lock */,
 				A67ABC0018D284D100C1D502 /* Sources */,
@@ -284,7 +343,7 @@
 			);
 			dependencies = (
 			);
-			name = NumpadRemap;
+			name = Numpad;
 			productName = NumpadRemap;
 			productReference = A67ABC0418D284D100C1D502 /* NumpadRemap.app */;
 			productType = "com.apple.product-type.application";
@@ -322,7 +381,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "NumpadRemap" */;
+			buildConfigurationList = A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "Numpad" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -335,7 +394,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A67ABC0318D284D100C1D502 /* NumpadRemap */,
+				A67ABC0318D284D100C1D502 /* Numpad */,
 				A67ABC2418D284D100C1D502 /* NumpadRemapTests */,
 			);
 		};
@@ -351,6 +410,7 @@
 				A687FE2B1B87E4AD0007F379 /* TODO.txt in Resources */,
 				A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */,
 				A6F6873218E0A72200E40A20 /* NRNumpadPreferencesView.xib in Resources */,
+				A6FDC2971B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib in Resources */,
 				A67ABC1E18D284D100C1D502 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,17 +463,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6FDC2871B9A1E58003FC592 /* WAYAppStoreWindow.m in Sources */,
+				A6FDC28B1B9A1EDD003FC592 /* WAYWindow.m in Sources */,
+				A6FDC28E1B9A4D1A003FC592 /* NRPreferences.m in Sources */,
 				A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */,
 				A6596A3D18D63879007D6566 /* NRNumpadModel.m in Sources */,
 				A63686361B7E82CC00001A35 /* NRNumpadViewModel.m in Sources */,
 				A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */,
 				A6DE806A18D64D2800115F2E /* NRNumpadView.m in Sources */,
 				A6C187A618D63A3C00F7F9BF /* NRNumpadSettingsController.m in Sources */,
+				A6FDC2921B9A558B003FC592 /* NRPreferencesViewController.m in Sources */,
 				A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */,
 				A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */,
 				A67ABC1B18D284D100C1D502 /* NRAppDelegate.m in Sources */,
+				A6FDC2831B9962F1003FC592 /* NRWindow.m in Sources */,
 				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
 				A67ABC1418D284D100C1D502 /* main.m in Sources */,
+				A6FDC2961B9A55A6003FC592 /* NRGeneralPreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +496,7 @@
 /* Begin PBXTargetDependency section */
 		A67ABC2A18D284D100C1D502 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A67ABC0318D284D100C1D502 /* NumpadRemap */;
+			target = A67ABC0318D284D100C1D502 /* Numpad */;
 			targetProxy = A67ABC2918D284D100C1D502 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -622,7 +688,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "NumpadRemap" */ = {
+		A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "Numpad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A67ABC3318D284D200C1D502 /* Debug */,
@@ -631,7 +697,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A67ABC3518D284D200C1D502 /* Build configuration list for PBXNativeTarget "NumpadRemap" */ = {
+		A67ABC3518D284D200C1D502 /* Build configuration list for PBXNativeTarget "Numpad" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A67ABC3618D284D200C1D502 /* Debug */,

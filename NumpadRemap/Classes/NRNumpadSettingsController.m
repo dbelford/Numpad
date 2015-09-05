@@ -18,6 +18,7 @@
 #import <Carbon/Carbon.h>
 #import <FontAwesomeIconFactory/FontAwesomeIconFactory.h>
 #import "NRWindowContentView.h"
+#import "NRAppDelegate.h"
 
 
 static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
@@ -98,6 +99,8 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
     
     [self configurePreferencePane];
     [self configureConstraints];
+    
+    [self.prefView removeFromSuperview];
     
     self.numpadModel = [[NRNumpadModel alloc] init];
     NRNumpadViewModel *vm = [[NRNumpadViewModel alloc] init];
@@ -191,7 +194,7 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
 }
 
 - (void)tryTodos:(NSMenuItem *)sender {
-    [[NSWorkspace sharedWorkspace] openFile:@"/Users/dbelford/Projects/osx.launchpad-remap/TODO.txt" withApplication:@"todo-txt"];
+    [[NSWorkspace sharedWorkspace] openFile:@"/Users/dbelford/Projects/osx.launchpad-remap/TODO.txt" withApplication:@"Sublime Text 3.app"];
 }
 
 - (void)tryQuit:(NSMenuItem *)sender {
@@ -199,7 +202,7 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
 }
 
 - (void)tryAbout:(NSMenuItem *)sender {
-    
+    [self.view doCommandBySelector:@selector(showPreferencesWindow:)];
 }
 
 - (void)configureConstraints {
@@ -213,22 +216,23 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
     }];
     //    [self.numpadView.superview removeConstraints:self.numpadView.constraints];
     
-    [self.prefView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view);
-        make.left.equalTo(self.view);
-        make.bottom.equalTo(self.view).offset(-10);
-        make.height.lessThanOrEqualTo(self.view.mas_height);
-        make.right.equalTo(self.numpadView.mas_left);
-        make.width.greaterThanOrEqualTo(@200);
-        
-    }];
+//    [self.prefView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.view);
+//        make.left.equalTo(self.view);
+//        make.bottom.equalTo(self.view).offset(-10);
+//        make.height.lessThanOrEqualTo(self.view.mas_height);
+//        make.right.equalTo(self.numpadView.mas_left);
+//        make.width.greaterThanOrEqualTo(@200);
+//        
+//    }];
     
     [self.numpadView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.numpadView.superview.mas_top).offset(10);
-        make.bottom.equalTo(self.numpadView.superview.mas_bottom).offset(-10);
-        make.right.equalTo(self.numpadView.superview.mas_right).offset(-10);
-        make.left.greaterThanOrEqualTo(self.prefView.mas_right).offset(10);
-        make.height.equalTo(self.numpadView.superview.mas_height).offset(-20);
+        make.edges.equalTo(self.view).insets(NSEdgeInsetsMake(7, 7, 7, 7));
+//        make.top.equalTo(self.numpadView.superview.mas_top).offset(10);
+//        make.bottom.equalTo(self.numpadView.superview.mas_bottom).offset(-10);
+//        make.right.equalTo(self.numpadView.superview.mas_right).offset(-10);
+//        make.left.greaterThanOrEqualTo(self.prefView.mas_right).offset(10);
+//        make.height.equalTo(self.numpadView.superview.mas_height).offset(-20);
     }];
 }
 

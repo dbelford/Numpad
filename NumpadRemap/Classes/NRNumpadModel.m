@@ -41,7 +41,7 @@
 - (void)setup {
     self.monitor = [[DABActiveApplicationsMonitor alloc] init];
     
-
+    @weakify(self);
     RAC(self, shortcuts) = [RACSignal combineLatest:@[RACObserve(self.monitor, orderedRunningApplications), RACObserve(self, ordering)] reduce:^NSArray *(NSArray *orderedApps, NSNumber *ordering){
 //        NSMutableArray *keys = [NSMutable array];
         
@@ -49,7 +49,9 @@
 
         [[MASShortcutMonitor sharedMonitor] unregisterAllShortcuts];
 
+        
         [[MASShortcutMonitor sharedMonitor] registerShortcut:[MASShortcut shortcutWithKeyCode:kVK_ANSI_KeypadClear modifierFlags:0] withAction:^{
+            @strongify(self);
             [self launchApplication:[NSRunningApplication currentApplication]];
         }];
         
@@ -87,7 +89,7 @@
     BOOL appAlreadyActive = app.processIdentifier == [NSWorkspace sharedWorkspace].frontmostApplication.processIdentifier;
     
     if (appAlreadyActive) {
-//        [self launchApplicationWithProcessIdentifier:self.lastProcessIdentifier];
+        [[NSApplication sharedApplication] hide:self]; //Hiding app in delegate willResign is too slow
         [self launchApplicationAtIndex:0];
     } else {
         self.lastProcessIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.processIdentifier;

@@ -7,3 +7,7 @@ pod 'Masonry'
 pod 'INAppStoreWindow'
 pod 'Butter', :git => "https://dbelford@bitbucket.org/dbelford/butter.git"
 pod 'FontAwesomeIconFactory'
+
+pod 'MASPreferences'
+pod 'PAPreferences'
+

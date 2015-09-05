@@ -17,7 +17,7 @@
     if (self) {
         // Initialization code here.
 //        self.translatesAutoresizingMaskIntoConstraints = NO;
-        
+        self.layer.backgroundColor = [NSColor whiteColor].CGColor;
         self.iconImageView = [[NSImageView alloc] initWithFrame:frame];
         self.iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
 
