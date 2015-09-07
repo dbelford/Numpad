@@ -100,8 +100,13 @@ NSString *const kAppActivationShortcutKey = @"randomKey";
     
     if (launchAtLogin) {
         CFURLRef appUrl = (__bridge CFURLRef)[[NSBundle mainBundle] bundleURL];
-        LSSharedFileListItemRef itemRef = LSSharedFileListInsertItemURL(loginItemsRef, kLSSharedFileListItemLast, NULL,
-                                                                        NULL, appUrl, NULL, NULL);
+        LSSharedFileListItemRef itemRef = LSSharedFileListInsertItemURL(loginItemsRef,
+                                                                        kLSSharedFileListItemLast,
+                                                                        NULL,
+                                                                        NULL,
+                                                                        appUrl,
+                                                                        (__bridge CFDictionaryRef)@{ (__bridge NSString *)kLSSharedFileListLoginItemHidden : @(YES) }
+                                                                        , NULL);
         if (itemRef) CFRelease(itemRef);
     } else {
         LSSharedFileListItemRef loginItem = [self loginItem];

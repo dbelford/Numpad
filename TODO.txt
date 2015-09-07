@@ -1,13 +1,7 @@
 Todo 
-- Implement preferences
 - Delete cruft & commit
 - Fix window jitter on appearance
-- Add about page
-x Change About -> Preferences
-x Hide yellow/green button
-x Escape should hide app
-x Larger starting icon size
-x App Icon
+x Hide on restart
 
 Letter Responder
 - Need first responder to accumulate key presses in text field
@@ -23,44 +17,30 @@ Letter Responder
 - ViewModel update for apps ordered by favorites
 
 Todo [Features]
-- App autolaunches on restart
+x App autolaunches on restart
 	x Implement
-	- Test
+	x Test
 - Multiple app activation changes app picker
     - Recent -> Favorites -> Letters
-x App appears on screen with mouse
-x Activation hotkey should work on launch
-x Click Icons to Activate
-x Keypress to Activate
-x Keep app window centered in screen
-x Remove numpad remap from app switcher
 
 Todo [Keyboard Support]
 - Way to manage shortcuts
-x Create app activation shortcut in correct place
-x Escape hides app (is this an app mode?)
-x Select Activation hotkey
 
 Todo [About]
 - About information
 - TextView of acknowledgements or link to file?
 
 Todo [Preferences]
-x Always center app
-x Use visual order of keypad or numerical order
-x Create preferences menu button in better part of code
 
 Todo [Performance]
+- What's app doing when in background, is it still updating views?
 - Faster app window switching (how does apple+tab switch so fast?)
 - Faster app loading (how to get app into responsive state faster?)
 
 Todo [Bugs]
+- First launch doesn't show app icons
 - Numpad model probably shouldn't be making MASShortcuts
 - Cannot restore user defaults to default state
-x Keypress not activating correct app
-x Keypress inaccurate indexes because imperfect order in ANSI constants
-x Multiple keypresses required to launch an application
-  x Specifically two presses required occasionally
 
 Todo [Release]
 - Make sure licenses are correct and included
