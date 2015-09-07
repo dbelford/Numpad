@@ -20,10 +20,9 @@
 @property (nonatomic, strong) NSArray /* NSString * */ *displayNames;
 @property (nonatomic, strong) NSArray /* NSString * */ *keyNames;
 
-@property (nonatomic, strong) RACSubject *keyPressedSignal;
+@property (nonatomic, strong) RACSubject *keycodeActivatedSignal;
 
-
-- (IBAction)pressedKeyAtIndex:(NSInteger)index;
+- (IBAction)pressedKeyForKeycode:(NSUInteger)keycode;
 
 @end
 

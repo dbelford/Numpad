@@ -7,14 +7,22 @@
 //
 
 #import "NRPreferences.h"
+#import <MASShortcut/Shortcut.h>
+
+// Pick a preference key to store the shortcut between launches
+NSString *const kAppActivationShortcutKey = @"randomKey";
 
 @implementation NRPreferences
 
 @dynamic hasSeenIntro;
 //@dynamic launchAtLogin;
-@dynamic iconSize;
+@dynamic keyHeight;
+@dynamic keyOrdering;
+@dynamic centerNumpad;
+@dynamic hideNumpadNumbers;
 @dynamic firstVersionInstalled;
 @dynamic latestVersionInstalled;
+@dynamic appActivationKey;
 
 - (instancetype)init
 {
@@ -26,8 +34,7 @@
     [NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
     
     // This is a fresh install. Set default preferences.
-    if (!self.firstVersionInstalled)
-    {
+    if (!self.firstVersionInstalled) {
         self.firstVersionInstalled = version;
         [self loadFirstLaunchPreferences];
         
@@ -51,7 +58,12 @@
 - (void)loadFirstLaunchPreferences {
     self.hasSeenIntro = NO;
     self.launchAtLogin = YES;
-    self.iconSize = 64;
+    self.keyHeight = NRNumpadKeyHeightMedium;
+    self.keyOrdering = NRNumpadKeyOrderingNumeric;
+    self.centerNumpad = YES;
+    self.hideNumpadNumbers = NO;
+
+    [[MASShortcutBinder sharedBinder] registerDefaultShortcuts:@{ kAppActivationShortcutKey : [MASShortcut shortcutWithKeyCode:kVK_ANSI_KeypadClear modifierFlags:0]}];
 }
 
 - (void)loadDefaultUserDefaults {
@@ -68,8 +80,7 @@
 // License is BSD
 // From: https://gist.github.com/joerick/73670eba228c177bceb3
 
-- (BOOL)launchAtLogin
-{
+- (BOOL)launchAtLogin {
     LSSharedFileListItemRef loginItem = [self loginItem];
     BOOL result = loginItem ? YES : NO;
     
@@ -80,8 +91,7 @@
     return result;
 }
 
-- (void)setLaunchAtLogin:(BOOL)launchAtLogin
-{
+- (void)setLaunchAtLogin:(BOOL)launchAtLogin {
     if (launchAtLogin == self.launchAtLogin) {
         return;
     }
@@ -105,8 +115,7 @@
 
 #pragma mark Private
 
-- (LSSharedFileListItemRef)loginItem
-{
+- (LSSharedFileListItemRef)loginItem {
     NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
     
     LSSharedFileListRef loginItemsRef = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);

@@ -8,7 +8,16 @@
 
 #import "NRPreferencesViewController.h"
 #import <MASPreferences/MASPreferencesViewController.h>
+#import <MASShortcut/Shortcut.h>
+#import "NRNumpadModel.h"
 
 @interface NRGeneralPreferencesViewController : NRPreferencesViewController <MASPreferencesViewController>
+
+@property (nonatomic, strong) IBOutlet MASShortcutView *shortcutView;
+//@property (nonatomic, strong) NSMatrix *sizeMatrix;
+
+@end
+
+@interface NRShortcutValidator : MASShortcutValidator
 
 @end

@@ -23,14 +23,22 @@
     return [NRPreferences sharedInstance];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do view setup here.
+- (void)viewWillAppear {
+    [self.view.window makeFirstResponder:self.view];
 }
-
 
 - (IBAction)restoreDefaults:(id)sender {
     [self.preferences resetPreferences];
+}
+
+#pragma mark - Handle Window Closing
+
+- (void)keyDown:(nonnull NSEvent *)theEvent {
+    [self interpretKeyEvents:@[theEvent]];
+}
+
+- (void)cancelOperation:(nullable id)sender {
+    [self.view.window close];
 }
 
 @end

@@ -21,7 +21,6 @@
 #import "NRAppDelegate.h"
 
 
-static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
 
 @interface NRNumpadSettingsController ()
 
@@ -66,30 +65,21 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
 }
 
 - (void)keyDown:(NSEvent *)theEvent {
-
-    
-//    int keypadNum = theEvent.keyCode - kVK_ANSI_Keypad0;
-    
-//    int num = theEvent.keyCode - kVK_ANSI_0;
-    
-    NRNumpadKeyOrdering order = kCurrentOrdering;
-    
-    NSInteger appIndex = [NRNumpadModel indexForKeyCode:theEvent.keyCode usingOrdering:order];
-    
-    if (appIndex != NSNotFound) {
-        [self.numpadModel launchApplicationAtIndex:appIndex];
-    } else if (theEvent.keyCode) {
+    if (![self handleNumpadKeypress:theEvent.keyCode]) {
         [super keyDown:theEvent];
     }
-    
-    
-//    [NSWorkspace sharedWorkspace] launch
-    
-    // TODO: Handle files not in NSApplicationDirectory, or nested more deeply like Utilities/Terminal etc
-    
+}
 
+- (BOOL)handleNumpadKeypress:(NSUInteger)keyCode {
+    NRNumpadKeyOrdering order = [NRPreferences sharedInstance].keyOrdering;
     
-    
+    NSInteger appIndex = [NRNumpadModel indexForKeyCode:keyCode usingOrdering:order];
+    if (appIndex != NSNotFound) {
+        [self.numpadModel launchApplicationAtIndex:appIndex];
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 #pragma mark - Configure Controller
@@ -107,13 +97,10 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
     vm.model = self.numpadModel;
     self.numpadView.viewModel = vm;
     
-    [self.numpadView.viewModel.keyPressedSignal subscribeNext:^(NSNumber *keypadNum) {
-        
-        int arr[10] = {7, 8, 9, 4, 5, 6, 1, 2, 3, 0};
-
-        NSInteger i = kCurrentOrdering == NRNumpadKeyOrderingNumeric ? arr[keypadNum.intValue] : keypadNum.integerValue;
-        
-        [self.numpadModel launchApplicationAtIndex:i];
+    @weakify(self);
+    [self.numpadView.viewModel.keycodeActivatedSignal subscribeNext:^(NSNumber *keyCode) {
+        @strongify(self);
+        [self handleNumpadKeypress:keyCode.integerValue];
     }];
 }
 
@@ -147,7 +134,6 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
     }
     
     self.appList = array;
-    
 }
 
 - (void)configurePreferencePane {
@@ -167,10 +153,12 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
 //    i.keyEquivalentModifierMask = nil;
 //    [m addItemWithTitle:@"Quit" action: keyEquivalent:@"Q"];
     
-    NSMenuItem *i2 = [[NSMenuItem alloc] initWithTitle:@"About" action:@selector(tryAbout:) keyEquivalent:@","];
+    NSMenuItem *i2 = [[NSMenuItem alloc] initWithTitle:@"About" action:@selector(tryAbout:) keyEquivalent:@""];
+    NSMenuItem *pref = [[NSMenuItem alloc] initWithTitle:@"Preferences" action:@selector(tryPreferences:) keyEquivalent:@","];
     NSMenuItem *i3 = [[NSMenuItem alloc] initWithTitle:@"Todos" action:@selector(tryTodos:) keyEquivalent:@"t"];
     
     [m addItem:i2];
+    [m addItem:pref];
     [m addItem:i3];
     [m addItem:[NSMenuItem separatorItem]];
     [m addItem:i];
@@ -202,6 +190,10 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
 }
 
 - (void)tryAbout:(NSMenuItem *)sender {
+    
+}
+
+- (void)tryPreferences:(NSMenuItem *)sender {
     [self.view doCommandBySelector:@selector(showPreferencesWindow:)];
 }
 
@@ -214,25 +206,9 @@ static NRNumpadKeyOrdering kCurrentOrdering = NRNumpadKeyOrderingNumeric;
         make.right.equalTo(self.numpadView.superview).offset(-20);
         make.bottom.equalTo(self.numpadView.superview).offset(-20);
     }];
-    //    [self.numpadView.superview removeConstraints:self.numpadView.constraints];
-    
-//    [self.prefView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.view);
-//        make.left.equalTo(self.view);
-//        make.bottom.equalTo(self.view).offset(-10);
-//        make.height.lessThanOrEqualTo(self.view.mas_height);
-//        make.right.equalTo(self.numpadView.mas_left);
-//        make.width.greaterThanOrEqualTo(@200);
-//        
-//    }];
-    
+
     [self.numpadView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view).insets(NSEdgeInsetsMake(7, 7, 7, 7));
-//        make.top.equalTo(self.numpadView.superview.mas_top).offset(10);
-//        make.bottom.equalTo(self.numpadView.superview.mas_bottom).offset(-10);
-//        make.right.equalTo(self.numpadView.superview.mas_right).offset(-10);
-//        make.left.greaterThanOrEqualTo(self.prefView.mas_right).offset(10);
-//        make.height.equalTo(self.numpadView.superview.mas_height).offset(-20);
     }];
 }
 

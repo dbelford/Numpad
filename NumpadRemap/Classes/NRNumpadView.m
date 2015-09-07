@@ -43,6 +43,7 @@
                               @(kVK_ANSI_Keypad3),
                               @(kVK_ANSI_Keypad0)
                               ];
+
         @weakify(self)
         RAC(self, keyViews) = [RACObserve(self, viewModel.numpadKeys) map:^NSArray *(NSArray *keyViewModels) {
             
@@ -55,7 +56,8 @@
                 view.keyLabel.stringValue = keyViewModel.keyName;
                 view.identifier = @(keyViewModel.shortcut.keyCode).stringValue;
                 [view addTarget:self action:@selector(pressedAppButton:) forControlEvents:BTRControlEventMouseUpInside];
-                
+            
+                RAC(view.keyLabel,hidden) = RACObserve([NRPreferences sharedInstance], hideNumpadNumbers);
                 return view;
             }];
             
@@ -87,9 +89,7 @@
 }
 
 - (void)pressedAppButton:(NRNumpadKeyView *)sender {
-    
-    NSInteger i = [NRNumpadModel indexForKeyCode:@(sender.identifier.integerValue).unsignedShortValue usingOrdering:NRNumpadKeyOrderingVisual];
-    [self.viewModel pressedKeyAtIndex:i];
+    [self.viewModel pressedKeyForKeycode:sender.identifier.integerValue];
 }
 
 - (void)updateConstraints {

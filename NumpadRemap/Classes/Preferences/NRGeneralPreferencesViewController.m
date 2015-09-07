@@ -7,12 +7,23 @@
 //
 
 #import "NRGeneralPreferencesViewController.h"
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface NRGeneralPreferencesViewController ()
 
 @end
 
 @implementation NRGeneralPreferencesViewController
+
+- (void)viewDidLoad {
+    
+    
+    [super viewDidLoad];
+    
+    self.shortcutView.shortcutValidator = [[NRShortcutValidator alloc] init];
+    self.shortcutView.associatedUserDefaultsKey = kAppActivationShortcutKey;
+    
+}
 
 - (NSString *)identifier {
     return @"General";
@@ -26,5 +37,19 @@
     return NSLocalizedString(@"General", @"Preference pane title.");
 }
 
+
+@end
+
+
+@implementation NRShortcutValidator
+
+- (BOOL)isShortcutValid: (MASShortcut*) shortcut {
+    
+    if (shortcut.keyCode == kVK_ANSI_KeypadClear) {
+        return YES;
+    } else {
+        return [super isShortcutValid:shortcut];
+    }
+}
 
 @end

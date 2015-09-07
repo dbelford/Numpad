@@ -10,7 +10,9 @@
 #import <DABKit/DABKit.h>
 #import "NRGeneralPreferencesViewController.h"
 #import <MASPreferences/MASPreferencesWindowController.h>
-
+#import <MASShortcut/Shortcut.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "NRPreferencesWindowController.h"
 
 @interface NRAppDelegate ()
 
@@ -39,6 +41,7 @@
     self.window.collectionBehavior = NSWindowCollectionBehaviorMoveToActiveSpace | NSWindowCollectionBehaviorTransient;
 //    self.window.miniaturizable = NO;
 //    self.window.miniaturizable
+
     [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationDisableHideApplication];
 
     
@@ -46,7 +49,37 @@
     
     self.window.delegate = self;
     
-//    self.window.nextResponder
+    
+    @weakify(self);
+    [RACObserve([NRPreferences sharedInstance], keyHeight) subscribeNext:^(NSNumber *heightClass) {
+        @strongify(self);
+        switch (heightClass.integerValue) {
+            case NRNumpadKeyHeightSmall:
+                [self.window setContentSize:NSMakeSize(320, 320)];
+                break;
+            case NRNumpadKeyHeightMedium:
+                [self.window setContentSize:NSMakeSize(480, 480)];
+                break;
+            case NRNumpadKeyHeightLarge:
+                [self.window setContentSize:NSMakeSize(640, 640)];
+                break;
+            default:
+//                [self.window setContentSize:NSMakeSize(600, 600)];
+                break;
+        }
+        if ([NRPreferences sharedInstance].centerNumpad) {
+            [self.window centerWindowInScreen:self.window.screen];
+        }
+    }];
+    
+    [NSUserDefaults resetStandardUserDefaults];
+
+    [[MASShortcutBinder sharedBinder] bindShortcutWithDefaultsKey:kAppActivationShortcutKey
+     toAction:^{
+         // Let me know if you find a better or a more convenient API.
+         @strongify(self);
+         [self.numpadSettingsController.numpadModel launchApplication:[NSRunningApplication currentApplication]];
+     }];
     
 }
 
@@ -61,7 +94,9 @@
 
 - (void)applicationWillBecomeActive:(NSNotification *)notification {
 
-    [self.window centerWindowInScreen:[NSScreen mouseScreen]];
+    if ([NRPreferences sharedInstance].centerNumpad) {
+        [self.window centerWindowInScreen:[NSScreen mouseScreen]];
+    }
     
     [self.window makeKeyAndOrderFront:self];
 
@@ -76,8 +111,8 @@
 - (MASPreferencesWindowController *)preferencesWindowController {
     if (_preferencesWindowController == nil) {
         NSArray *vcs = @[[[NRGeneralPreferencesViewController alloc] init]];
-        MASPreferencesWindowController *wc = [[MASPreferencesWindowController alloc] initWithViewControllers:vcs title:@"Preferences"];
-        
+        MASPreferencesWindowController *wc = [[NRPreferencesWindowController alloc] initWithViewControllers:vcs title:@"Preferences"];
+        [wc.window setInitialFirstResponder:wc.window.contentView];
         _preferencesWindowController = wc;
     }
     return _preferencesWindowController;
@@ -85,6 +120,7 @@
 
 - (IBAction)showPreferencesWindow:(id)sender {
     [self.preferencesWindowController showWindow:sender];
+    [self.preferencesWindowController.window makeKeyWindow];
 }
 
 #pragma mark - Etc.

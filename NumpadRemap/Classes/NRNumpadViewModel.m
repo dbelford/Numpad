@@ -12,6 +12,7 @@
 #import "NRNumpadModel.h"
 #import "NRNumpadShortcutModel.h"
 #import <ObjectiveSugar/ObjectiveSugar.h>
+#import "NRPreferences.h"
 
 //kVK_ANSI_KeypadMultiply       = 0x43,
 //kVK_ANSI_KeypadPlus           = 0x45,
@@ -45,8 +46,8 @@
                 return [NRNumpadViewModel keyViewModelForShortcut:shortcut andIdentifier:shortcut.keyCodeString.intValue];
             }];
         }];
-
-        self.keyPressedSignal = [RACSubject subject];
+        
+        self.keycodeActivatedSignal = [RACSubject subject];
     }
     
     return self;
@@ -60,8 +61,8 @@
     return vm;
 }
 
-- (IBAction)pressedKeyAtIndex:(NSInteger)index {
-    [self.keyPressedSignal sendNext:@(index)];
+- (IBAction)pressedKeyForKeycode:(NSUInteger)keycode {
+    [self.keycodeActivatedSignal sendNext:@(keycode)];
 }
 
 @end

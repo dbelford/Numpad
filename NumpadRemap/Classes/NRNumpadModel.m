@@ -42,24 +42,17 @@
     self.monitor = [[DABActiveApplicationsMonitor alloc] init];
     
     @weakify(self);
+    [RACObserve([NRPreferences sharedInstance], keyOrdering) subscribeNext:^(NSNumber *ordering) {
+        @strongify(self);
+        self.ordering = ordering.integerValue;
+    }];
+    
     RAC(self, shortcuts) = [RACSignal combineLatest:@[RACObserve(self.monitor, orderedRunningApplications), RACObserve(self, ordering)] reduce:^NSArray *(NSArray *orderedApps, NSNumber *ordering){
-//        NSMutableArray *keys = [NSMutable array];
-        
-        // TODO: Don't use unregisterAllShortcuts but just unregister the keys, or register the shortcuts in the viewModel and have the action sensitive to that context
-
-        [[MASShortcutMonitor sharedMonitor] unregisterAllShortcuts];
-
-        
-        [[MASShortcutMonitor sharedMonitor] registerShortcut:[MASShortcut shortcutWithKeyCode:kVK_ANSI_KeypadClear modifierFlags:0] withAction:^{
-            @strongify(self);
-            [self launchApplication:[NSRunningApplication currentApplication]];
-        }];
         
         NSArray *orderedKeys = [NRNumpadModel orderedNumpadANSIKeysForOrdering:ordering.integerValue];
         
         return [orderedKeys map:^NRNumpadShortcutModel *(NSNumber *key) {
             //Configure Variables
-//            int keypadNum = i - kVK_ANSI_Keypad0;
             NRNumpadShortcutModel *shortcut = [NRNumpadShortcutModel shortcutWithKeyCode:key.unsignedShortValue modifierFlags:NSCommandKeyMask];
             
             if (orderedApps.count) {
@@ -69,10 +62,6 @@
                 
                 shortcut.applicationBundleIdentifier = app.bundleIdentifier;
                 shortcut.processIdentifier = app.processIdentifier;
-//                
-//                [[MASShortcutMonitor sharedMonitor] registerShortcut:shortcut withAction:^{
-//                    [self launchApplication:app];
-//                }];
                 
             }
             return shortcut;

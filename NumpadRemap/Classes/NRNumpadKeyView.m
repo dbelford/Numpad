@@ -79,87 +79,24 @@
 
 - (void)updateConstraints {
     [super updateConstraints];
-    
-
     [self constraintsV2];
 }
 
 - (void)constraintsV2 {
-    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        //        make.size.lessThanOrEqualTo(self).sizeOffset(CGSizeMake(0, 0));
+    [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         
         make.edges.equalTo(self).insets(NSEdgeInsetsMake(20, 20, 20, 20));
         
-//        make.top.equalTo(self.mas_top);
-//        make.right.equalTo(self.mas_right);
-//        make.bottom.equalTo(self.keyLabel.mas_top);
-//        make.left.equalTo(self.mas_left);
-        
-//        make.width.equalTo(self.mas_width);
-//        make.height.greaterThanOrEqualTo(self.keyLabel.mas_height).multipliedBy(1.5);
-        
     }];
     
-    [self.keyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        //        make.size.lessThanOrEqualTo(self).sizeOffset(CGSizeMake(0,0));
-        
-//        make.edges.equalTo(self).multipliedBy(0.3);
+    [self.keyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(self.mas_top).offset(10);
-//        make.left.equalTo(self.iconImageView.mas_right);
         make.right.equalTo(self.mas_right).offset(-10);
         make.height.lessThanOrEqualTo(self.mas_height).multipliedBy(0.3);
         make.width.lessThanOrEqualTo(self.mas_width).multipliedBy(0.3);
         
-//        make.right.equalTo(self.mas_right);
-//        make.bottom.equalTo(self.mas_bottom);
-//        make.left.equalTo(self.mas_left);
-//        make.width.equalTo(self.mas_width);
-        
-        //        make.height.lessThanOrEqualTo(self.iconImageView.mas_height);
     }];
-}
-
-- (void)constraintsV1 {
-    //    [self removeConstraints:self.constraints];
-    
-    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        //        make.size.lessThanOrEqualTo(self).sizeOffset(CGSizeMake(0, 0));
-        
-        make.top.equalTo(self.mas_top);
-        make.right.equalTo(self.mas_right);
-        make.bottom.equalTo(self.keyLabel.mas_top);
-        make.left.equalTo(self.mas_left);
-        make.width.equalTo(self.mas_width);
-        make.height.greaterThanOrEqualTo(self.keyLabel.mas_height).multipliedBy(1.5);
-        
-    }];
-    
-    [self.keyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        //        make.size.lessThanOrEqualTo(self).sizeOffset(CGSizeMake(0,0));
-        make.top.equalTo(self.iconImageView.mas_bottom);
-        make.right.equalTo(self.mas_right);
-        make.bottom.equalTo(self.mas_bottom);
-        make.left.equalTo(self.mas_left);
-        make.width.equalTo(self.mas_width);
-        
-        //        make.height.lessThanOrEqualTo(self.iconImageView.mas_height);
-    }];
-    
-    //    [self mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        
-    //    }];
-}
-
-- (void)drawRect:(NSRect)dirtyRect
-{
-    [super drawRect:dirtyRect];
-    
-    // Drawing code here.
 }
 
 @end

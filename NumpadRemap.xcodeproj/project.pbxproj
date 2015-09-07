@@ -13,6 +13,7 @@
 		A636862E1B7DB13900001A35 /* DABActiveApplications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A63686271B7DB08B00001A35 /* DABActiveApplications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A63686311B7DB13B00001A35 /* ObjectiveSugar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A63686281B7DB08B00001A35 /* ObjectiveSugar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A63686361B7E82CC00001A35 /* NRNumpadViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A63686351B7E82CC00001A35 /* NRNumpadViewModel.m */; };
+		A639FDA21B9CBDF20026D03D /* NRPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A639FDA11B9CBDF20026D03D /* NRPreferencesWindowController.m */; };
 		A6596A3D18D63879007D6566 /* NRNumpadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6596A3C18D63879007D6566 /* NRNumpadModel.m */; };
 		A67ABC0818D284D100C1D502 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC0718D284D100C1D502 /* Cocoa.framework */; };
 		A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC1018D284D100C1D502 /* InfoPlist.strings */; };
@@ -81,9 +82,11 @@
 		A63686281B7DB08B00001A35 /* ObjectiveSugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveSugar.framework; path = Carthage/Build/Mac/ObjectiveSugar.framework; sourceTree = "<group>"; };
 		A63686341B7E82CC00001A35 /* NRNumpadViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadViewModel.h; path = Classes/NRNumpadViewModel.h; sourceTree = "<group>"; };
 		A63686351B7E82CC00001A35 /* NRNumpadViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadViewModel.m; path = Classes/NRNumpadViewModel.m; sourceTree = "<group>"; };
+		A639FDA01B9CBDF20026D03D /* NRPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRPreferencesWindowController.h; path = Classes/Preferences/NRPreferencesWindowController.h; sourceTree = "<group>"; };
+		A639FDA11B9CBDF20026D03D /* NRPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRPreferencesWindowController.m; path = Classes/Preferences/NRPreferencesWindowController.m; sourceTree = "<group>"; };
 		A6596A3B18D63879007D6566 /* NRNumpadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadModel.h; path = Classes/NRNumpadModel.h; sourceTree = "<group>"; };
 		A6596A3C18D63879007D6566 /* NRNumpadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadModel.m; path = Classes/NRNumpadModel.m; sourceTree = "<group>"; };
-		A67ABC0418D284D100C1D502 /* NumpadRemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumpadRemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A67ABC0418D284D100C1D502 /* Numpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Numpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67ABC0718D284D100C1D502 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A67ABC0A18D284D100C1D502 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A67ABC0B18D284D100C1D502 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -178,7 +181,7 @@
 		A67ABC0518D284D100C1D502 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A67ABC0418D284D100C1D502 /* NumpadRemap.app */,
+				A67ABC0418D284D100C1D502 /* Numpad.app */,
 				A67ABC2518D284D100C1D502 /* NumpadRemapTests.xctest */,
 			);
 			name = Products;
@@ -305,6 +308,8 @@
 		A6FDC28F1B9A4D20003FC592 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
+				A639FDA01B9CBDF20026D03D /* NRPreferencesWindowController.h */,
+				A639FDA11B9CBDF20026D03D /* NRPreferencesWindowController.m */,
 				A6FDC2901B9A558B003FC592 /* NRPreferencesViewController.h */,
 				A6FDC2911B9A558B003FC592 /* NRPreferencesViewController.m */,
 				A6FDC2931B9A55A6003FC592 /* NRGeneralPreferencesViewController.h */,
@@ -345,7 +350,7 @@
 			);
 			name = Numpad;
 			productName = NumpadRemap;
-			productReference = A67ABC0418D284D100C1D502 /* NumpadRemap.app */;
+			productReference = A67ABC0418D284D100C1D502 /* Numpad.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A67ABC2418D284D100C1D502 /* NumpadRemapTests */ = {
@@ -381,7 +386,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "Numpad" */;
+			buildConfigurationList = A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "NumpadRemap" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -475,6 +480,7 @@
 				A6FDC2921B9A558B003FC592 /* NRPreferencesViewController.m in Sources */,
 				A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */,
 				A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */,
+				A639FDA21B9CBDF20026D03D /* NRPreferencesWindowController.m in Sources */,
 				A67ABC1B18D284D100C1D502 /* NRAppDelegate.m in Sources */,
 				A6FDC2831B9962F1003FC592 /* NRWindow.m in Sources */,
 				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
@@ -688,7 +694,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "Numpad" */ = {
+		A67ABBFF18D284D100C1D502 /* Build configuration list for PBXProject "NumpadRemap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A67ABC3318D284D200C1D502 /* Debug */,

@@ -7,13 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NRPreferences.h"
 
 @class MASShortcut;
 
-typedef NS_ENUM(NSInteger, NRNumpadKeyOrdering) {
-    NRNumpadKeyOrderingNumeric,
-    NRNumpadKeyOrderingVisual
-};
 
 
 @interface NRNumpadModel : NSObject
@@ -22,6 +19,7 @@ typedef NS_ENUM(NSInteger, NRNumpadKeyOrdering) {
 @property (nonatomic, assign) NRNumpadKeyOrdering ordering;
 
 
+- (void)launchApplication:(NSRunningApplication *)app;
 - (void)launchApplicationAtIndex:(NSInteger)index;
 
 + (BOOL)isNumpadNumber:(unsigned short)keyCode;
