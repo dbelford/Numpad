@@ -1,6 +1,7 @@
+Numpad Remap
+
 Todo 
 - Delete cruft & commit
-- Fix window jitter on appearance
 x Hide on restart
 
 Letter Responder
@@ -30,6 +31,9 @@ Todo [About]
 - About information
 - TextView of acknowledgements or link to file?
 
+Todo [Refactor]
+- Use NSButton to draw icons (NSButton & NSButtonCell.imageScaling)
+
 Todo [Preferences]
 
 Todo [Performance]
@@ -41,6 +45,8 @@ Todo [Bugs]
 - First launch doesn't show app icons
 - Numpad model probably shouldn't be making MASShortcuts
 - Cannot restore user defaults to default state
+- Fix window jitter on appearance
+- Numpad loses first responder (see Flying Fingers solution to fix)
 
 Todo [Release]
 - Make sure licenses are correct and included
