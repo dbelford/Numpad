@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Butter/Butter.h>
 
-@interface NRNumpadKeyView : BTRButton
+@interface NRNumpadKeyView : BTRButton <NSDraggingSource, NSDraggingDestination>
 
 @property (nonatomic, strong) NSImage *iconImage;
 @property (nonatomic, strong) NSImageView *iconImageView;

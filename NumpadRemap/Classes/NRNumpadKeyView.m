@@ -9,6 +9,12 @@
 #import "NRNumpadKeyView.h"
 #import <Masonry/Masonry.h>
 
+@interface NRNumpadKeyView ()
+
+@property (nonatomic, assign) BOOL canDrag;
+
+@end
+
 @implementation NRNumpadKeyView
 
 - (id)initWithFrame:(NSRect)frame
@@ -17,34 +23,69 @@
     if (self) {
         // Initialization code here.
 //        self.translatesAutoresizingMaskIntoConstraints = NO;
-        self.layer.backgroundColor = [NSColor whiteColor].CGColor;
+//        self.layer.backgroundColor = [NSColor whiteColor].CGColor;
+          self.layer.backgroundColor = [NSColor colorWithWhite:0.95 alpha:1].CGColor;
         self.iconImageView = [[NSImageView alloc] initWithFrame:frame];
         self.iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
 
         self.iconImageView.imageScaling = NSImageScaleProportionallyUpOrDown;
 //        self.iconImageView.contentMode = BTRViewContentModeScaleAspectFit;
-        self.layer.borderWidth = 1;
+        
+//        self.layer.borderWidth = 1;
         self.layer.borderColor = [NSColor grayColor].CGColor;
         self.layer.cornerRadius = 7;
+        self.layer.shadowOffset = CGSizeMake(1, 1);
+        self.layer.shadowColor = [NSColor colorWithWhite:0.97 alpha:1].CGColor;
         self.keyLabel = [[BTRLabel alloc] initWithFrame:frame];
         self.keyLabel.stringValue = @"Key Label Work";
-        self.keyLabel.translatesAutoresizingMaskIntoConstraints = NO;
+//        self.keyLabel.translatesAutoresizingMaskIntoConstraints = NO;
         self.keyLabel.font = [NSFont systemFontOfSize:16.0];
         self.keyLabel.textColor = [NSColor colorWithCalibratedWhite:0.3 alpha:1.0];
         
         [self addSubview:_iconImageView];
         [self addSubview:_keyLabel];
-        
+      
+//        [self addList]
+      
+        [self registerForDraggedTypes: @[NSPasteboardTypeString]];
+      
 //        [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.edges.equalTo(self).with.insets(NSEdgeInsetsMake(10, 10, 10, 10));
 //        }];
 
-        
+        self.canDrag = NO;
         self.needsUpdateConstraints = YES;
     }
     return self;
 }
 
+- (void)mouseDown:(NSEvent *)event {
+  [super mouseDown:event];
+  self.canDrag = YES;
+}
+
+- (void)mouseDragged:(NSEvent *)event {
+//  [super mouseDragged:event];
+  if (self.canDrag) {
+    //  NSPasteboardItem *pbItem = [[NSPasteboardItem alloc] init];
+    //  pbItem setDataProvider:self forTypes:@[NSPasteboardTypeString, NSPaste]
+    NSDraggingItem *item = [[NSDraggingItem alloc] initWithPasteboardWriter:self.keyLabel.stringValue];
+    //  item.draggingFrame =
+    NSData *iconData = [self dataWithPDFInsideRect:self.bounds];
+    NSImage *image = [[NSImage alloc] initWithData:iconData];
+    //  NSImage *image = [self.iconImageView.image]
+    //  [self iconImage]
+    [item setDraggingFrame:self.bounds contents:image];
+    //  item setP
+    //  item.
+    //  item.imageComponentsProvider = @[[[NSDraggingImageComponent alloc] init]
+    
+    [self beginDraggingSessionWithItems:@[item]
+                                  event:event
+                                 source:self];
+  }
+
+}
 
 - (void)setHighlighted:(BOOL)highlighted {
     [super setHighlighted:highlighted];
@@ -82,13 +123,24 @@
     [self constraintsV2];
 }
 
+
 - (void)constraintsV2 {
     [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        
-        make.edges.equalTo(self).insets(NSEdgeInsetsMake(20, 20, 20, 20));
-        
+//      make.top.equalTo(self.iconImageView.mas_bottom);
+//      make.top.equalTo(self.icon)
+//      make.trailing.equalTo(self.mas_trailing);
+//      make.left.equalTo(self.iconImageView.mas_right);
+      make.centerX.equalTo(self.mas_centerX);
+      make.centerY.equalTo(self.mas_centerY);
+      make.size.greaterThanOrEqualTo(self).multipliedBy(.65);
+      make.size.lessThanOrEqualTo(self).multipliedBy(.7);//.priority(MASLayoutPriorityFittingSizeCompression);
+      
+//        make.edges.equalTo(self).multipliedBy(.7);
+//        make.edges.equalTo(self).insets(NSEdgeInsetsMake(20, 20, 20, 20));
+      
     }];
-    
+  
+  
     [self.keyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         
         make.top.equalTo(self.mas_top).offset(10);
@@ -97,6 +149,87 @@
         make.width.lessThanOrEqualTo(self.mas_width).multipliedBy(0.3);
         
     }];
+}
+
+// MARK: Dragging Source
+
+- (NSDraggingSession *)beginDraggingSessionWithItems:(NSArray<NSDraggingItem *> *)items event:(NSEvent *)event source:(id<NSDraggingSource>)source {
+  NSLog(@"Begginning dragging");
+  NSDraggingSession *session = [super beginDraggingSessionWithItems:items event:event source:source];
+  
+//  session
+//  [session.draggingPasteboard setData:[self.keyLabel.stringValue dataUsingEncoding:NSUTF8StringEncoding] forType:NSPasteboardTypeString];
+  self.canDrag = NO;
+  return session;
+}
+
+- (NSDragOperation)draggingSession:(nonnull NSDraggingSession *)session sourceOperationMaskForDraggingContext:(NSDraggingContext)context {
+  NSLog(@"Try dragging %@ %ld", session, (long)context);
+  switch (context) {
+    case NSDraggingContextWithinApplication :
+      return NSDragOperationMove;
+    default:
+      return NSDragOperationNone;
+  }
+}
+
+
+
+//- (nullable id)animationForKey:(nonnull NSAnimatablePropertyKey)key {
+//  <#code#>
+//}
+//
+//- (nonnull instancetype)animator {
+//  <#code#>
+//}
+//
+//+ (nullable id)defaultAnimationForKey:(nonnull NSAnimatablePropertyKey)key {
+//  <#code#>
+//}
+//
+//- (NSRect)accessibilityFrame {
+//  <#code#>
+//}
+//
+//- (nullable id)accessibilityParent {
+//  <#code#>
+//}
+//
+//- (void)encodeWithCoder:(nonnull NSCoder *)aCoder {
+//  <#code#>
+//}
+
+// MAKR: Dragging Destination
+
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
+  NSPasteboard *pboard;
+  NSDragOperation sourceDragMask;
+  
+  sourceDragMask = [sender draggingSourceOperationMask];
+  pboard = [sender draggingPasteboard];
+  
+  if ( [[pboard types] containsObject:NSStringPboardType] ) {
+    if (sourceDragMask & NSDragOperationMove) {
+      return NSDragOperationMove;
+    }
+  }
+  return NSDragOperationNone;
+}
+
+- (BOOL)performDragOperation:(id <NSDraggingInfo>)sender {
+  NSPasteboard *pboard;
+  NSDragOperation sourceDragMask;
+  
+  sourceDragMask = [sender draggingSourceOperationMask];
+  pboard = [sender draggingPasteboard];
+  
+  if ( [[pboard types] containsObject:NSPasteboardTypeString] ) {
+    // Only a copy operation allowed so just copy the data
+    NSString *string = [[NSString alloc] initWithData:[pboard dataForType:NSPasteboardTypeString] encoding:NSUTF8StringEncoding];
+    NSLog(string);
+    return YES;
+  }
+  return NO;
 }
 
 @end

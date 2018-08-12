@@ -18,7 +18,7 @@
 #import <Carbon/Carbon.h>
 #import <FontAwesomeIconFactory/FontAwesomeIconFactory.h>
 #import "NRWindowContentView.h"
-#import "NRAppDelegate.h"
+//#import "NRAppDelegate.h"
 
 
 

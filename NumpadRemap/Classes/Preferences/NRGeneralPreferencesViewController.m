@@ -15,6 +15,8 @@
 
 @implementation NRGeneralPreferencesViewController
 
+//@synthesize viewIdentifier;
+
 - (void)viewDidLoad {
     
     
@@ -23,6 +25,10 @@
     self.shortcutView.shortcutValidator = [[NRShortcutValidator alloc] init];
     self.shortcutView.associatedUserDefaultsKey = kAppActivationShortcutKey;
     
+}
+
+- (NSString *)viewIdentifier {
+  return @"General";
 }
 
 - (NSString *)identifier {
@@ -36,6 +42,7 @@
 - (NSString *)toolbarItemLabel {
     return NSLocalizedString(@"General", @"Preference pane title.");
 }
+
 
 
 @end

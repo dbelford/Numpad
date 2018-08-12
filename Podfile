@@ -1,4 +1,7 @@
 # Uncomment this line to define a global platform for your project
+
+target 'Numpad' do
+ 
 platform :osx, "10.9"
 
 pod 'MASShortcut'
@@ -11,3 +14,5 @@ pod 'FontAwesomeIconFactory'
 pod 'MASPreferences'
 pod 'PAPreferences'
 
+
+end

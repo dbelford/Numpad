@@ -56,12 +56,14 @@
             NRNumpadShortcutModel *shortcut = [NRNumpadShortcutModel shortcutWithKeyCode:key.unsignedShortValue modifierFlags:NSCommandKeyMask];
             
             if (orderedApps.count) {
-                
+              NSUInteger idx = [orderedKeys indexOfObject:key];
+              if ( idx < orderedApps.count  ) {
                 //Configure Shortcut
-                NSRunningApplication *app = orderedApps[[orderedKeys indexOfObject:key]];
-                
+                NSRunningApplication *app = orderedApps[idx];
+
                 shortcut.applicationBundleIdentifier = app.bundleIdentifier;
                 shortcut.processIdentifier = app.processIdentifier;
+              }
                 
             }
             return shortcut;
@@ -70,8 +72,10 @@
 }
 
 - (void)launchApplicationAtIndex:(NSInteger)index {
+  if (index < self.monitor.orderedRunningApplications.count) {
     NSRunningApplication *app = self.monitor.orderedRunningApplications[index];
     [self launchApplication:app];
+  }
 }
 
 - (void)launchApplication:(NSRunningApplication *)app {
