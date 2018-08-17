@@ -10,7 +10,8 @@
 
 typedef NS_ENUM(NSInteger, NRNumpadKeyOrdering) {
     NRNumpadKeyOrderingNumeric,
-    NRNumpadKeyOrderingVisual
+    NRNumpadKeyOrderingVisual,
+    NRNumpadKeyOrderingFullNumpad
 };
 
 typedef NS_ENUM(NSInteger, NRNumpadKeyHeight) {

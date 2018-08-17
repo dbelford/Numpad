@@ -10,8 +10,10 @@
 #import <Butter/Butter.h>
 #import "NRNumpadViewModel.h"
 
+
+IB_DESIGNABLE
 @interface NRNumpadView : BTRView
 
-@property (nonatomic, strong) NRNumpadViewModel *viewModel;
+@property (nonatomic, strong) IBOutlet NRNumpadViewModel *viewModel;
 
 @end

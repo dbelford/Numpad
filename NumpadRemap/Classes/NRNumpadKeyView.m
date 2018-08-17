@@ -93,7 +93,8 @@
     if (highlighted) {
         self.btr_backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
     } else {
-        self.btr_backgroundColor = nil;
+        self.btr_backgroundColor = [NSColor colorWithWhite:0.95 alpha:1];
+//        self.btr_backgroundColor = nil;
     }
 }
 
@@ -102,7 +103,8 @@
     if (selected) {
         self.btr_backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
     } else {
-        self.btr_backgroundColor = nil;
+        self.btr_backgroundColor = [NSColor colorWithWhite:0.95 alpha:1];
+//        self.btr_backgroundColor = nil;
     }
 }
 
@@ -114,9 +116,9 @@
 
 // TODO: Figure out why deleteing intrinsicContentSize breaks window resizing!
 
-- (CGSize)intrinsicContentSize {
-    return CGSizeMake(60, 60);
-}
+//- (CGSize)intrinsicContentSize {
+//    return CGSizeMake(60, 60);
+//}
 
 - (void)updateConstraints {
     [super updateConstraints];
@@ -130,13 +132,16 @@
 //      make.top.equalTo(self.icon)
 //      make.trailing.equalTo(self.mas_trailing);
 //      make.left.equalTo(self.iconImageView.mas_right);
-      make.centerX.equalTo(self.mas_centerX);
-      make.centerY.equalTo(self.mas_centerY);
-      make.size.greaterThanOrEqualTo(self).multipliedBy(.65);
-      make.size.lessThanOrEqualTo(self).multipliedBy(.7);//.priority(MASLayoutPriorityFittingSizeCompression);
+//      make.center.equalTo(self);
+//      make.centerX.equalTo(self.mas_centerX).with.priorityLow();
+//      make.centerY.equalTo(self.mas_centerY).with.priorityLow();
+//      make.size.greaterThanOrEqualTo(self).multipliedBy(.8);
+//      make.size.lessThanOrEqualTo(self).multipliedBy(.9);
+//      make.size.equalTo(self).multipliedBy(.8);
+      //.priority(MASLayoutPriorityFittingSizeCompression);
       
 //        make.edges.equalTo(self).multipliedBy(.7);
-//        make.edges.equalTo(self).insets(NSEdgeInsetsMake(20, 20, 20, 20));
+        make.edges.equalTo(self).insets(NSEdgeInsetsMake(7, 7, 7, 7));
       
     }];
   
@@ -157,6 +162,8 @@
   NSLog(@"Begginning dragging");
   NSDraggingSession *session = [super beginDraggingSessionWithItems:items event:event source:source];
   
+  self.highlighted = NO;
+    
 //  session
 //  [session.draggingPasteboard setData:[self.keyLabel.stringValue dataUsingEncoding:NSUTF8StringEncoding] forType:NSPasteboardTypeString];
   self.canDrag = NO;

@@ -1,7 +1,128 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="pDf-r7-4rR">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <scenes/>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="fNX-cR-kS4">
+            <objects>
+                <viewController id="pDf-r7-4rR" customClass="MainViewController" customModule="Numpad" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="AS8-oh-2M4">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hlt-aa-K4r">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <connections>
+                                    <segue destination="LMU-F8-s3B" kind="embed" id="e6a-zh-fm2"/>
+                                </connections>
+                            </containerView>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="i7F-1g-3qd" customClass="NIKFontAwesomeButton">
+                                <rect key="frame" x="408" y="17" width="24" height="27"/>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" borderStyle="border" inset="2" id="boW-Bx-4Mp">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <outlet property="menu" destination="1ra-NN-LQJ" id="CZo-tY-hYm"/>
+                                    </connections>
+                                </buttonCell>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="iconHex" value="f013"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="padded" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="square" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                        <color key="value" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="size">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="edgeInsetTop">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color2">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="edgeInsetBottom">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="edgeInsetLeft">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="edgeInsetRight">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showMenu:" target="pDf-r7-4rR" id="DGl-Cf-vEe"/>
+                                    <outlet property="menu" destination="1ra-NN-LQJ" id="10a-tw-y43"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hlt-aa-K4r" firstAttribute="centerY" secondItem="AS8-oh-2M4" secondAttribute="centerY" id="Nsv-4D-y14"/>
+                            <constraint firstAttribute="bottom" secondItem="i7F-1g-3qd" secondAttribute="bottom" constant="20" id="UhZ-UB-aWF"/>
+                            <constraint firstItem="hlt-aa-K4r" firstAttribute="height" secondItem="AS8-oh-2M4" secondAttribute="height" id="kKh-Xb-yZg"/>
+                            <constraint firstItem="hlt-aa-K4r" firstAttribute="centerX" secondItem="AS8-oh-2M4" secondAttribute="centerX" id="lGe-ix-zz0"/>
+                            <constraint firstItem="hlt-aa-K4r" firstAttribute="width" secondItem="AS8-oh-2M4" secondAttribute="width" id="mEL-ZW-Od5"/>
+                            <constraint firstAttribute="trailing" secondItem="i7F-1g-3qd" secondAttribute="trailing" constant="20" id="ty0-t8-giE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="actionMenu" destination="1ra-NN-LQJ" id="h18-bZ-7qE"/>
+                    </connections>
+                </viewController>
+                <customObject id="c6n-Up-op5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu title="Actions" id="1ra-NN-LQJ">
+                    <items>
+                        <menuItem title="About" id="rh1-Lf-q5e">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="tryAbout:" target="pDf-r7-4rR" id="zTZ-CQ-wKO"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Preferences" id="bPG-HX-kOw">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="tryPreferences:" target="pDf-r7-4rR" id="xHb-A5-cas"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem title="Todo" id="4IW-yq-pKx">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="tryTodos:" target="pDf-r7-4rR" id="Czi-z7-fz5"/>
+                            </connections>
+                        </menuItem>
+                        <menuItem isSeparatorItem="YES" id="bWY-hi-CeB"/>
+                        <menuItem title="Quit" id="sYb-qG-3nF">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="tryQuit:" target="pDf-r7-4rR" id="dJB-mX-ALj"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                    <connections>
+                        <outlet property="delegate" destination="pDf-r7-4rR" id="XQ2-yd-sCl"/>
+                    </connections>
+                </menu>
+            </objects>
+            <point key="canvasLocation" x="172" y="81"/>
+        </scene>
+        <!--NumpadViewController-->
+        <scene sceneID="W65-Jj-Q0C">
+            <objects>
+                <controllerPlaceholder storyboardIdentifier="NumpadViewController" storyboardName="NumpadViewController" id="LMU-F8-s3B" sceneMemberID="viewController"/>
+                <customObject id="EKU-EP-ppr" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="173" y="412"/>
+        </scene>
+    </scenes>
 </document>

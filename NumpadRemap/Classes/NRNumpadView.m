@@ -16,7 +16,7 @@
 
 @interface NRNumpadView ()
 
-@property (nonatomic, strong) NSArray *keyViews;
+@property (nonatomic, strong) NSArray<NRNumpadKeyView *> *keyViews;
 
 @end
 
@@ -99,6 +99,10 @@
 
 }
 
+//- (void)awakeFromNib {
+//  
+//}
+
 - (NSView *)viewAt:(NSIndexPath *)indexPath {
     
     NSUInteger i = [indexPath indexAtPosition:0];
@@ -132,6 +136,10 @@
 }
 
 - (void)layoutKeys {
+  [self layoutKeysNumberStyle];
+}
+
+- (void)layoutKeysNumberStyle {
     [self.keyViews eachWithIndex:^(NRNumpadKeyView *view, NSUInteger index) {
         
 //        view.keyLabel.stringValue = [NSString stringWithFormat:@"%lu", index];
@@ -144,7 +152,8 @@
 //        NSView *nextView = [self.keyViews objectAfterIndex:index];
         NSView *viewAbove = [self viewAbove:indexPath];
         NSView *viewLeading = [self viewLeading:indexPath];
-        
+      
+
         [view mas_makeConstraints:^(MASConstraintMaker *make) {
             
             if (viewAbove) {

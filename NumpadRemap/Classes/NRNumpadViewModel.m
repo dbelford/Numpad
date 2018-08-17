@@ -53,6 +53,14 @@
     return self;
 }
 
+- (instancetype)initWithModel:(NRNumpadModel *)model {
+  self = [self init];
+  if (self) {
+    self.model = model;
+  }
+  return self;
+}
+
 + (NRNumpadKeyViewModel *)keyViewModelForShortcut:(NRNumpadShortcutModel *)shortcut andIdentifier:(int)identifier {
     
     NRNumpadKeyViewModel *vm = [[NRNumpadKeyViewModel alloc] init];

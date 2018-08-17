@@ -1,4 +1,5 @@
 git "git@bitbucket.org:dbelford/dabactiveapplications.git"
 git "git@bitbucket.org:dbelford/dabkit.git"
 github "tmandry/AXSwift" ~> 0.2
-
+git "git@bitbucket.org:dbelford/objectivesugar.git" "338908e382d27fa3a40b55ef1d2619110582dbc8"
+github "ReactiveCocoa/ReactiveCocoa" "v2.5"

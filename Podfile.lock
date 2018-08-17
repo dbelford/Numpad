@@ -8,13 +8,13 @@ PODS:
   - PAPreferences (0.5)
 
 DEPENDENCIES:
-  - "Butter (from `https://dbelford@bitbucket.org/dbelford/butter.git`)"
-  - FontAwesomeIconFactory
-  - INAppStoreWindow
-  - Masonry
-  - MASPreferences
-  - MASShortcut
-  - PAPreferences
+  - "Butter (from `https://dbelford@bitbucket.org/dbelford/butter.git`, commit `dae61bc`)"
+  - FontAwesomeIconFactory (= 3.0)
+  - INAppStoreWindow (= 1.4)
+  - Masonry (= 1.1.0)
+  - MASPreferences (= 1.3)
+  - MASShortcut (= 2.3.6)
+  - PAPreferences (= 0.5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -27,11 +27,12 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   Butter:
+    :commit: dae61bc
     :git: "https://dbelford@bitbucket.org/dbelford/butter.git"
 
 CHECKOUT OPTIONS:
   Butter:
-    :commit: 782b63904ab33872389e315335de1d582e1e0f85
+    :commit: dae61bc
     :git: "https://dbelford@bitbucket.org/dbelford/butter.git"
 
 SPEC CHECKSUMS:
@@ -43,6 +44,6 @@ SPEC CHECKSUMS:
   MASShortcut: 9c215e8a8a78f3d01ce56da48e2730ab66b538fa
   PAPreferences: 9f0ffb1e67174a0df001af9d3320166ceb9ee6f5
 
-PODFILE CHECKSUM: 6b0396010f4db8d4d249ee05d48b65e5e0fa6206
+PODFILE CHECKSUM: b42b105dae07800049744e1773f46dd4fa59aab7
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.3
