@@ -76,8 +76,23 @@ class ExpandedNumpadView : BTRView {
   }
   
   func updateKeys() {
+    let views : [NRNumpadKeyView] = []
     guard let keyViewModels = self.viewModel?.numpadKeys else { return }
-    let views = keyViewModels.map { (vm : NRNumpadKeyViewModel) -> NSView in
+    for (rowIndex, row) in self.keyOrder.enumerated() {
+      for (keyIndex, key) in row.enumerated() {
+        let view = NRNumpadKeyView.init(frame: NSMakeRect(0, 0, 400, 400))
+        let vm = keyViewModels.first(where: { (keyViewModel) -> Bool in
+          return keyViewModel.shortcut.keyCode == keyIndex
+        })
+        view.iconImageView.image = vm?.image
+        view.keyLabel.stringValue = vm?.keyName ?? ""
+        view.identifier = String.init(vm?.shortcut.keyCode)
+        view.addTarget(self, action: #selector(ExpandedNumpadView.pressedAppButton), for: BTRControlEvents.mouseUpInside)
+        
+        _ = RACObserve(target: NRPreferences.sharedInstance(), #keyPath(NRPreferences.hideNumpadNumbers)) ~> RAC(view.keyLabel, #keyPath(BTRLabel.isHidden))
+      }
+    }
+    let views = keyViewModels.map { (vm : NRNumpadKeyViewModel) -> NRNumpadKeyView in
       let view = NRNumpadKeyView.init(frame: NSMakeRect(0, 0, 400, 400))
       view.iconImageView.image = vm.image
       view.keyLabel.stringValue = vm.keyName
@@ -89,6 +104,7 @@ class ExpandedNumpadView : BTRView {
       return view
     }
     
+    self.keyViews = views
     self.subviews.forEach({ (view) in view.removeFromSuperview() })
     views.forEach({ (view) in self.addSubview(view) })
     self.needsUpdateConstraints = true
@@ -122,8 +138,8 @@ class ExpandedNumpadView : BTRView {
       guard let firstView = keyViews.first else { return }
       firstView.mas_makeConstraints({ (make) in
         make?.height.equalTo()( firstView.mas_width )
-        make?.height.equalTo()( keyViews[1...(keyViews.count - 1)] )
-        make?.width.equalTo()( keyViews[1...(keyViews.count - 2)] )
+        make?.height.equalTo()( Array(keyViews[1...(keyViews.count - 1)]) )
+        make?.width.equalTo()( Array(keyViews[1...(keyViews.count - 2)]) )
       })
     }
     
