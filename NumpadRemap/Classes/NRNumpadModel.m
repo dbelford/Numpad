@@ -7,7 +7,6 @@
 //
 
 #import "NRNumpadModel.h"
-#import "NRNumpadShortcutModel.h"
 #import <MASShortcut/Shortcut.h>
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import <DABActiveApplications/DABActiveApplications.h>
@@ -51,24 +50,38 @@
     
     NSArray *orderedKeys = [NRNumpadModel orderedNumpadANSIKeysForOrdering:ordering.integerValue];
     
-    return [orderedKeys map:^NRNumpadShortcutModel *(NSNumber *key) {
+    NSArray<NRNumpadShortcutModel *> *shortcutModels = [orderedKeys map:^NRNumpadShortcutModel *(NSNumber *key) {
       //Configure Variables
       NRNumpadShortcutModel *shortcut = [NRNumpadShortcutModel shortcutWithKeyCode:key.unsignedShortValue modifierFlags:NSCommandKeyMask];
-      
-      if (orderedApps.count) {
-        NSUInteger idx = [orderedKeys indexOfObject:key];
-        if ( idx < orderedApps.count  ) {
-          //Configure Shortcut
-          NSRunningApplication *app = orderedApps[idx];
-          
-          shortcut.applicationBundleIdentifier = app.bundleIdentifier;
-          shortcut.processIdentifier = app.processIdentifier;
-        }
-        
-      }
       return shortcut;
     }];
+    
+    NSInteger idx = 1;
+    for (NSRunningApplication *app in orderedApps) {
+      if (shortcutModels.count > idx) {
+        NRNumpadShortcutModel *shortcut = shortcutModels[idx];
+        shortcut.applicationBundleIdentifier = app.bundleIdentifier;
+        shortcut.processIdentifier = app.processIdentifier;
+      }
+      idx++;
+    }
+    return shortcutModels;
   }];
+}
+
+- (BOOL)launchApplicationForKeycode:(NSUInteger)keyCode {
+  NRNumpadShortcutModel *shortcut = [self.shortcuts find:^BOOL(NRNumpadShortcutModel *shortcutModel) {
+    return shortcutModel.keyCode == keyCode;
+  }];
+  NSRunningApplication *app = [self.monitor.orderedRunningApplications find:^BOOL(NSRunningApplication *app) {
+    return app.processIdentifier == shortcut.processIdentifier;
+  }];
+  if (app != NULL) {
+    [self launchApplication:app];
+    return YES;
+  } else {
+    return NO;
+  }
 }
 
 - (void)launchApplicationAtIndex:(NSInteger)index {
@@ -140,11 +153,11 @@
                         @(kVK_ANSI_8),
                         @(kVK_ANSI_9)];
     fullNumpadOrdering = @[@(kVK_ANSI_KeypadClear), @(kVK_ANSI_KeypadDivide), @(kVK_ANSI_KeypadMultiply), @(kVK_ANSI_KeypadMinus),
-                   @(kVK_ANSI_Keypad7), @(kVK_ANSI_Keypad8), @(kVK_ANSI_Keypad9), @(kVK_ANSI_KeypadPlus),
-                   @(kVK_ANSI_Keypad4), @(kVK_ANSI_Keypad5), @(kVK_ANSI_Keypad6), @(kVK_ANSI_KeypadClear),
-                   @(kVK_ANSI_Keypad1), @(kVK_ANSI_Keypad2), @(kVK_ANSI_Keypad3), @(kVK_ANSI_KeypadEnter),
-                   @(kVK_ANSI_Keypad0), @(kVK_ANSI_KeypadDecimal)
-                   ];
+                           @(kVK_ANSI_Keypad7), @(kVK_ANSI_Keypad8), @(kVK_ANSI_Keypad9), @(kVK_ANSI_KeypadPlus),
+                           @(kVK_ANSI_Keypad4), @(kVK_ANSI_Keypad5), @(kVK_ANSI_Keypad6), @(kVK_ANSI_KeypadClear),
+                           @(kVK_ANSI_Keypad1), @(kVK_ANSI_Keypad2), @(kVK_ANSI_Keypad3), @(kVK_ANSI_KeypadEnter),
+                           @(kVK_ANSI_Keypad0), @(kVK_ANSI_KeypadDecimal)
+                           ];
   });
   
   if (ordering == NRNumpadKeyOrderingVisual) {
@@ -200,11 +213,11 @@
                         @(kVK_ANSI_Keypad8),
                         @(kVK_ANSI_Keypad9)];
     fullNumpadOrdering = @[@(kVK_ANSI_KeypadClear), @(kVK_ANSI_KeypadDivide), @(kVK_ANSI_KeypadMultiply), @(kVK_ANSI_KeypadMinus),
-                   @(kVK_ANSI_Keypad7), @(kVK_ANSI_Keypad8), @(kVK_ANSI_Keypad9), @(kVK_ANSI_KeypadPlus),
-                   @(kVK_ANSI_Keypad4), @(kVK_ANSI_Keypad5), @(kVK_ANSI_Keypad6), @(kVK_ANSI_KeypadClear),
-                   @(kVK_ANSI_Keypad1), @(kVK_ANSI_Keypad2), @(kVK_ANSI_Keypad3), @(kVK_ANSI_KeypadEnter),
-                   @(kVK_ANSI_Keypad0), @(kVK_ANSI_KeypadDecimal)
-                   ];
+                           @(kVK_ANSI_Keypad7), @(kVK_ANSI_Keypad8), @(kVK_ANSI_Keypad9), @(kVK_ANSI_KeypadPlus),
+                           @(kVK_ANSI_Keypad4), @(kVK_ANSI_Keypad5), @(kVK_ANSI_Keypad6), @(kVK_ANSI_KeypadClear),
+                           @(kVK_ANSI_Keypad1), @(kVK_ANSI_Keypad2), @(kVK_ANSI_Keypad3), @(kVK_ANSI_KeypadEnter),
+                           @(kVK_ANSI_Keypad0), @(kVK_ANSI_KeypadDecimal)
+                           ];
   });
   
   if (ordering == NRNumpadKeyOrderingVisual) {

@@ -28,6 +28,7 @@
 		A67A212E2125481700FCBF90 /* NSResponder+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A212D2125481700FCBF90 /* NSResponder+Log.swift */; };
 		A67A213121254AD700FCBF90 /* ExpandedNumpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A213021254AD700FCBF90 /* ExpandedNumpadView.swift */; };
 		A67A21332125F78500FCBF90 /* RACTempBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A21322125F78500FCBF90 /* RACTempBindings.swift */; };
+		A67A21352128D8CF00FCBF90 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A21342128D8CF00FCBF90 /* Keyboard.swift */; };
 		A67ABC0818D284D100C1D502 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC0718D284D100C1D502 /* Cocoa.framework */; };
 		A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC1018D284D100C1D502 /* InfoPlist.strings */; };
 		A67ABC1418D284D100C1D502 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC1318D284D100C1D502 /* main.m */; };
@@ -121,6 +122,7 @@
 		A67A212D2125481700FCBF90 /* NSResponder+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSResponder+Log.swift"; path = "Classes/NSResponder+Log.swift"; sourceTree = "<group>"; };
 		A67A213021254AD700FCBF90 /* ExpandedNumpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpandedNumpadView.swift; path = Classes/ExpandedNumpadView.swift; sourceTree = "<group>"; };
 		A67A21322125F78500FCBF90 /* RACTempBindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RACTempBindings.swift; path = Classes/RACTempBindings.swift; sourceTree = "<group>"; };
+		A67A21342128D8CF00FCBF90 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keyboard.swift; path = Classes/Keyboard.swift; sourceTree = "<group>"; };
 		A67ABC0418D284D100C1D502 /* Numpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Numpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67ABC0718D284D100C1D502 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A67ABC0A18D284D100C1D502 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -245,6 +247,7 @@
 		A6360E56211E7885007F31A4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A67A21342128D8CF00FCBF90 /* Keyboard.swift */,
 				A6596A3B18D63879007D6566 /* NRNumpadModel.h */,
 				A6596A3C18D63879007D6566 /* NRNumpadModel.m */,
 				A6C187A818D63A7900F7F9BF /* NRNumpadShortcutModel.h */,
@@ -674,6 +677,7 @@
 				A6FDC2831B9962F1003FC592 /* NRWindow.m in Sources */,
 				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
 				A67ABC1418D284D100C1D502 /* main.m in Sources */,
+				A67A21352128D8CF00FCBF90 /* Keyboard.swift in Sources */,
 				A6FDC2961B9A55A6003FC592 /* NRGeneralPreferencesViewController.m in Sources */,
 				A63A1B8121234DC700712BEC /* MainViewController.swift in Sources */,
 			);

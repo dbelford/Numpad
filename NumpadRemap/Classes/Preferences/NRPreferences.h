@@ -14,6 +14,14 @@ typedef NS_ENUM(NSInteger, NRNumpadKeyOrdering) {
     NRNumpadKeyOrderingFullNumpad
 };
 
+typedef NS_ENUM(NSInteger, NRKeyboardType) {
+  NRKeyboardTypeUnknown,
+  NRKeyboardTypeKeypadNumbers,
+  NRKeyboardTypeFullNumpad,
+  NRKeyboardType10Keyless,
+  NRKeyboardTypeFullKeyboard
+};
+
 typedef NS_ENUM(NSInteger, NRNumpadKeyHeight) {
     NRNumpadKeyHeightSmall,
     NRNumpadKeyHeightMedium,

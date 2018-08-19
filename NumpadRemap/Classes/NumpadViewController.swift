@@ -36,13 +36,13 @@ class NumpadViewController : NSViewController {
   }
   
   func handleNumpadKeypress(with keyCode : UInt16 ) -> Bool {
-    let order = NRPreferences.sharedInstance().keyOrdering
-    let appIndex = NRNumpadModel.index(forKeyCode: keyCode, using: order)
-    guard appIndex != NSNotFound  else {
-      return false
-    }
-    self.numpadModel?.launchApplication(at: appIndex)
-    return true
+//    let order = NRPreferences.sharedInstance().keyOrdering
+//    let appIndex = NRNumpadModel.index(forKeyCode: keyCode, using: order)
+//    guard appIndex != NSNotFound  else {
+//      return false
+//    }
+//    self.numpadModel?.launchApplication(at: appIndex)
+    return self.numpadModel?.launchApplication(forKeycode: UInt(keyCode)) ?? false
   }
   
   
