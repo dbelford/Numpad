@@ -8,9 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Butter/Butter.h>
+#import "NRNumpadViewModel.h"
+#import "NRNumpadKeyViewModel.h"
 
 @interface NRNumpadKeyView : BTRButton <NSDraggingSource, NSDraggingDestination>
 
+
+@property (nonatomic, strong) NRNumpadKeyViewModel *viewModel;
 @property (nonatomic, strong) NSImage *iconImage;
 @property (nonatomic, strong) NSImageView *iconImageView;
 @property (nonatomic, strong) BTRLabel *keyLabel;

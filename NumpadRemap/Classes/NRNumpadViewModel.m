@@ -13,6 +13,7 @@
 #import "NRNumpadShortcutModel.h"
 #import <ObjectiveSugar/ObjectiveSugar.h>
 #import "NRPreferences.h"
+#import "NRNumpadKeyViewModel.h"
 
 //kVK_ANSI_KeypadMultiply       = 0x43,
 //kVK_ANSI_KeypadPlus           = 0x45,
@@ -36,21 +37,32 @@
 @implementation NRNumpadViewModel
 
 - (instancetype)init {
+  
+  self = [super init];
+  
+  if (self) {
     
-    self = [super init];
+    @weakify(self);
+    RAC(self, numpadKeys) = [RACObserve(self, model.shortcuts) map:^NSArray *(NSArray *shortCuts) {
+      return [shortCuts map:^id(NRNumpadShortcutModel *shortcut) {
+        return [NRNumpadViewModel keyViewModelForShortcut:shortcut andIdentifier:shortcut.keyCodeString.intValue];
+      }];
+    }];
+    [RACObserve(self, numpadKeys) subscribeNext:^(id x) {
+      @strongify(self);
+      [self updateFromModel];
+    }];
     
-    if (self) {
-        
-        RAC(self, numpadKeys) = [RACObserve(self, model.shortcuts) map:^NSArray *(NSArray *shortCuts) {
-            return [shortCuts map:^id(NRNumpadShortcutModel *shortcut) {
-                return [NRNumpadViewModel keyViewModelForShortcut:shortcut andIdentifier:shortcut.keyCodeString.intValue];
-            }];
-        }];
-        
-        self.keycodeActivatedSignal = [RACSubject subject];
-    }
+    self.keycodeActivatedSignal = [RACSubject subject];
+//    _ = RACObserve(target: NRPreferences.sharedInstance(), #keyPath(NRPreferences.hideNumpadNumbers)) ~> RAC(view.keyLabel, #keyPath(BTRLabel.isHidden))
     
-    return self;
+    [RACObserve(self, model) subscribeNext:^(NRNumpadModel *m) {
+      @strongify(self);
+      [self bindModel];
+    }];
+  }
+  
+  return self;
 }
 
 - (instancetype)initWithModel:(NRNumpadModel *)model {
@@ -61,37 +73,37 @@
   return self;
 }
 
-+ (NRNumpadKeyViewModel *)keyViewModelForShortcut:(NRNumpadShortcutModel *)shortcut andIdentifier:(int)identifier {
+- (void)bindModel {
+//  self.hideNumpadNumbers = self.model.hideNumpadNumbers;
+  [self updateFromModel];
+//  RAC(self, hideNumpadNumbers) = RACObserve(self.model, hideNumpadNumbers);
+  @weakify(self);
+  [RACObserve(self.model, hideNumpadNumbers) subscribeNext:^(NSNumber *shouldHide) {
+    @strongify(self);
+    [self updateFromModel];
     
-    NRNumpadKeyViewModel *vm = [[NRNumpadKeyViewModel alloc] init];
-    vm.shortcut = shortcut;
-    vm.identifier = @(identifier).stringValue;
-    return vm;
+  }];
+}
+
+- (void)updateFromModel {
+  self.hideNumpadNumbers = self.model.hideNumpadNumbers;
+  [self.numpadKeys each:^(NRNumpadKeyViewModel *vm) {
+    vm.hideNumpadNumbers = self.hideNumpadNumbers;
+  }];
+}
+
++ (NRNumpadKeyViewModel *)keyViewModelForShortcut:(NRNumpadShortcutModel *)shortcut andIdentifier:(int)identifier {
+  
+  NRNumpadKeyViewModel *vm = [[NRNumpadKeyViewModel alloc] init];
+  vm.shortcut = shortcut;
+  vm.identifier = @(identifier).stringValue;
+  return vm;
 }
 
 - (IBAction)pressedKeyForKeycode:(NSUInteger)keycode {
-    [self.keycodeActivatedSignal sendNext:@(keycode)];
+  [self.keycodeActivatedSignal sendNext:@(keycode)];
 }
 
 @end
 
-@implementation NRNumpadKeyViewModel
 
-- (NSString *)keyName {
-    return self.shortcut.keyCodeString;
-}
-
-- (NSString *)applicationBundleIdentifier {
-    return self.shortcut.applicationBundleIdentifier ? self.shortcut.applicationBundleIdentifier : @"";
-}
-
-- (NSImage *)image {
-    NSRunningApplication *app = [NSRunningApplication runningApplicationWithProcessIdentifier:self.shortcut.processIdentifier];
-    return app.icon;
-}
-
-- (NSString *)displayName {
-    return self.shortcut.keyName;
-}
-
-@end

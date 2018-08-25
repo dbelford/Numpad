@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A61ED1D521127EDF00DF502C /* ActiveAppsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61ED1D421127EDF00DF502C /* ActiveAppsTest.swift */; };
 		A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61ED1DC2112818F00DF502C /* NumpadTests.swift */; };
+		A634A413212B566500A8EC77 /* NRNumpadKeyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */; };
 		A6360E54211E3594007F31A4 /* NRAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBD820211D25C6003EBBDC /* NRAppDelegate.swift */; };
 		A6360EBF211E9F62007F31A4 /* NRNumpadSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6360EBD211E9F62007F31A4 /* NRNumpadSettingsController.m */; };
 		A636862A1B7DB08B00001A35 /* DABActiveApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63686271B7DB08B00001A35 /* DABActiveApplications.framework */; };
@@ -46,6 +47,7 @@
 		A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */; };
 		A6DE806A18D64D2800115F2E /* NRNumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806918D64D2800115F2E /* NRNumpadView.m */; };
 		A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */; };
+		A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */; };
 		A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872918DA287A00E40A20 /* NRWindowContentView.m */; };
 		A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872C18DB6CDD00E40A20 /* NSArray+NRConvenience.m */; };
 		A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */; };
@@ -104,6 +106,8 @@
 		A61ED1DA2112818F00DF502C /* NumpadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumpadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61ED1DC2112818F00DF502C /* NumpadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadTests.swift; sourceTree = "<group>"; };
 		A61ED1DE2112818F00DF502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A634A411212B566500A8EC77 /* NRNumpadKeyViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyViewModel.h; path = Classes/NRNumpadKeyViewModel.h; sourceTree = "<group>"; };
+		A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyViewModel.m; path = Classes/NRNumpadKeyViewModel.m; sourceTree = "<group>"; };
 		A6360EBD211E9F62007F31A4 /* NRNumpadSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadSettingsController.m; path = NumpadRemap/NRNumpadSettingsController.m; sourceTree = SOURCE_ROOT; };
 		A6360EBE211E9F62007F31A4 /* NRNumpadSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadSettingsController.h; path = NumpadRemap/NRNumpadSettingsController.h; sourceTree = SOURCE_ROOT; };
 		A63686271B7DB08B00001A35 /* DABActiveApplications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DABActiveApplications.framework; path = Carthage/Build/Mac/DABActiveApplications.framework; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 		A63A1B842123F1F700712BEC /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
 		A6596A3B18D63879007D6566 /* NRNumpadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadModel.h; path = Classes/NRNumpadModel.h; sourceTree = "<group>"; };
 		A6596A3C18D63879007D6566 /* NRNumpadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadModel.m; path = Classes/NRNumpadModel.m; sourceTree = "<group>"; };
+		A66BA3EE212A11AE00AB7E4A /* Numpad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Numpad.entitlements; sourceTree = "<group>"; };
 		A678F7252113B3FD006908C2 /* AXSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AXSwift.framework; path = Carthage/Build/Mac/AXSwift.framework; sourceTree = "<group>"; };
 		A67A212B2124C2CA00FCBF90 /* NumpadViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NumpadViewController.storyboard; sourceTree = "<group>"; };
 		A67A212D2125481700FCBF90 /* NSResponder+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSResponder+Log.swift"; path = "Classes/NSResponder+Log.swift"; sourceTree = "<group>"; };
@@ -151,6 +156,7 @@
 		A6DE806918D64D2800115F2E /* NRNumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadView.m; path = Classes/NRNumpadView.m; sourceTree = "<group>"; };
 		A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyView.h; path = Classes/NRNumpadKeyView.h; sourceTree = "<group>"; };
 		A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyView.m; path = Classes/NRNumpadKeyView.m; sourceTree = "<group>"; };
+		A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftFourTwoExtensions.swift; path = Classes/SwiftFourTwoExtensions.swift; sourceTree = "<group>"; };
 		A6F6872818DA287A00E40A20 /* NRWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRWindowContentView.h; path = Classes/NRWindowContentView.h; sourceTree = "<group>"; };
 		A6F6872918DA287A00E40A20 /* NRWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRWindowContentView.m; path = Classes/NRWindowContentView.m; sourceTree = "<group>"; };
 		A6F6872B18DB6CDD00E40A20 /* NSArray+NRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+NRConvenience.h"; path = "Classes/NSArray+NRConvenience.h"; sourceTree = "<group>"; };
@@ -259,6 +265,8 @@
 		A6360E57211E788E007F31A4 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				A634A411212B566500A8EC77 /* NRNumpadKeyViewModel.h */,
+				A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */,
 				A63686341B7E82CC00001A35 /* NRNumpadViewModel.h */,
 				A63686351B7E82CC00001A35 /* NRNumpadViewModel.m */,
 			);
@@ -286,6 +294,7 @@
 				A6F6872C18DB6CDD00E40A20 /* NSArray+NRConvenience.m */,
 				A67A212D2125481700FCBF90 /* NSResponder+Log.swift */,
 				A67A21322125F78500FCBF90 /* RACTempBindings.swift */,
+				A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -293,6 +302,7 @@
 		A67ABBFB18D284D100C1D502 = {
 			isa = PBXGroup;
 			children = (
+				A66BA3EE212A11AE00AB7E4A /* Numpad.entitlements */,
 				A678F7252113B3FD006908C2 /* AXSwift.framework */,
 				A6FDC27A1B978A79003FC592 /* DABKit.framework */,
 				A67ABC0D18D284D100C1D502 /* NumpadRemap */,
@@ -469,6 +479,7 @@
 				A636862F1B7DB13900001A35 /* Embed Frameworks */,
 				1EC9B4660AE89E16D8F1856B /* [CP] Copy Pods Resources */,
 				A678F7242113B205006908C2 /* Carthage */,
+				A634A414212B7E3700A8EC77 /* [David] Increment Build */,
 			);
 			buildRules = (
 			);
@@ -514,6 +525,11 @@
 					};
 					A67ABC0318D284D100C1D502 = {
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					A67ABC2418D284D100C1D502 = {
 						LastSwiftMigration = 0940;
@@ -616,6 +632,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A634A414212B7E3700A8EC77 /* [David] Increment Build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[David] Increment Build";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcrun agvtool next-version -all";
+		};
 		A678F7242113B205006908C2 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -665,6 +695,7 @@
 				A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */,
 				A6596A3D18D63879007D6566 /* NRNumpadModel.m in Sources */,
 				A63686361B7E82CC00001A35 /* NRNumpadViewModel.m in Sources */,
+				A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */,
 				A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */,
 				A6DE806A18D64D2800115F2E /* NRNumpadView.m in Sources */,
 				A6972B602124B0880008BC98 /* WindowController.swift in Sources */,
@@ -674,6 +705,7 @@
 				A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */,
 				A639FDA21B9CBDF20026D03D /* NRPreferencesWindowController.m in Sources */,
 				A67A213121254AD700FCBF90 /* ExpandedNumpadView.swift in Sources */,
+				A634A413212B566500A8EC77 /* NRNumpadKeyViewModel.m in Sources */,
 				A6FDC2831B9962F1003FC592 /* NRWindow.m in Sources */,
 				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
 				A67ABC1418D284D100C1D502 /* main.m in Sources */,
@@ -888,6 +920,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -908,6 +941,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 19;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -932,6 +966,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 19;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",

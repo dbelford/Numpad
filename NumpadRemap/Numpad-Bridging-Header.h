@@ -9,6 +9,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <DABKit/DABKit.h>
 #import <DABActiveApplications/DABActiveApplications.h>
+#import <PAPreferences/PAPreferences.h>
 
 //#import <DABKit/NSScreen+MouseScreen.h>
 //#import <DABKit/NSWindow+CenterWindow.h>
@@ -16,5 +17,6 @@
 #import "NRGeneralPreferencesViewController.h"
 #import "NRPreferencesWindowController.h"
 #import "NRNumpadSettingsController.h"
+#import "NRNumpadViewModel.h"
 #import "NRPreferences.h"
 #import "NRNumpadKeyView.h"

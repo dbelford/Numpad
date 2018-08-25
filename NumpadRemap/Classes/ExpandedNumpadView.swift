@@ -13,7 +13,7 @@ class ExpandedNumpadView : BTRView {
     didSet {
       NSLog("Did set \(viewModel)")
       vmObserver = viewModel?.observe(\NRNumpadViewModel.numpadKeys, options: [.new]) { [weak self] (view, change) in
-        NSLog("The change: \(view) \(change)")
+//        NSLog("The change: \(view) \(change)")
         guard let strongSelf = self else { return }
         strongSelf.updateKeys()
       }
@@ -24,10 +24,9 @@ class ExpandedNumpadView : BTRView {
   var keyViews : [NRNumpadKeyView]?
   var keyViewsSignal : RACSignal!
   var vmObserver : NSKeyValueObservation!
+  
   override var acceptsFirstResponder: Bool {
-    get {
-      return true
-    }
+    get { return true }
   }
   
   lazy var keyOrder : [[Int]] = {
@@ -47,24 +46,27 @@ class ExpandedNumpadView : BTRView {
     var visible : Bool = true
     var emptyTrailing: Bool = false
     
-    init(_ width: CGFloat, _ height : CGFloat) {
+    init(width: CGFloat, height : CGFloat) {
       self.width = width
       self.height = height
     }
     
+    init(assignable: Bool, visible : Bool) {
+      self.assignable = assignable
+      self.visible = visible
+    }
     
-    
-    init(emptyTrailing doesNotHaveTrailing: Bool) {
+    init(doesNotHaveTrailing: Bool) {
       self.emptyTrailing = doesNotHaveTrailing
     }
   }
   
   lazy var keyProperties : [Int : KeyAttributes] = {
     return [
-      kVK_ANSI_KeypadClear : KeyAttributes(width: 1, height: 1, assignable: false, visible: false),
-      kVK_ANSI_Keypad0 : KeyAttributes(width: 2, height: 1, assignable: true, visible: true),
-      kVK_ANSI_KeypadEnter : KeyAttributes(width: 1, height: 2, assignable: true, visible: true),
-      kVK_ANSI_KeypadDecimal : KeyAttributes(emptyTrailing: true)
+      kVK_ANSI_KeypadClear : KeyAttributes.init(assignable: false, visible: false),
+      kVK_ANSI_Keypad0 : KeyAttributes(width: 2, height: 1),
+      kVK_ANSI_KeypadEnter : KeyAttributes(width: 1, height: 2),
+      kVK_ANSI_KeypadDecimal : KeyAttributes(doesNotHaveTrailing: true)
     ]
   }()
   
@@ -92,17 +94,22 @@ class ExpandedNumpadView : BTRView {
 //
 //      return views
 //    })
-    
-
-    
-    if case self = self {
-      vmObserver = self.observe(\ExpandedNumpadView.viewModel?) { (view, change) in
-        NSLog("The change: \(change.newValue)")
-      }
-    }
+//
+//
+//
+//    if case self = self {
+//      vmObserver = self.observe(\ExpandedNumpadView.viewModel?) { (view, change) in
+//        NSLog("The change: \(change.newValue)")
+//      }
+//    }
     self.wantsLayer = true
     
   }
+  
+  // TODO: Don't destroy keys on every update, reuse views
+  //       or maintain some state.
+  //       Updates caused by app recency order changes, apps
+  //       closing, apps opening, keyboard presentation style changing
   
   func updateKeys() {
     var views : [NRNumpadKeyView] = []
@@ -115,16 +122,14 @@ class ExpandedNumpadView : BTRView {
         let vm = keyViewModels.first(where: { (keyViewModel) -> Bool in
           return keyViewModel.shortcut.keyCode == keyCode
         })
-        
-        view.iconImageView.image = vm?.image
-        view.keyLabel.stringValue = vm?.keyName ?? ""
-//        if let prop = keyProperties[keyCode] { view.isHidden = !prop.visible }
-        
-        if let keycode = vm?.shortcut.keyCode { view.identifier = String(keycode) }
+        view.viewModel = vm
         
         view.addTarget(self, action: #selector(ExpandedNumpadView.pressedAppButton), for: BTRControlEvents.mouseUpInside)
         
-        _ = RACObserve(target: NRPreferences.sharedInstance(), #keyPath(NRPreferences.hideNumpadNumbers)) ~> RAC(view.keyLabel, #keyPath(BTRLabel.isHidden))
+//        _ = RACObserve(target: NRPreferences.sharedInstance(), #keyPath(NRPreferences.hideNumpadNumbers)) ~> RAC(view.keyLabel, #keyPath(BTRLabel.isHidden))
+//        _ = RACObserve(target: self, #keyPath(ExpandedNumpadView.viewModel.hideNumpadNumbers)) ~> RAC(self, #keyPath(ExpandedNumpadView.hideNumpadNumbers))
+        
+        
         rowOfViews.append(view)
         views.append(view)
       }
@@ -157,8 +162,61 @@ class ExpandedNumpadView : BTRView {
   
   override func updateConstraints() {
     super.updateConstraints()
-    self.layoutKeys2()
+    self.layoutKeys3()
   }
+  
+  func layoutKeys3() {
+    
+    guard let keyViews = self.keyViews else { return }
+    guard let keyViewsGrid = self.keyViewsGrid else { return }
+    guard let firstView = keyViews.first else { return }
+    var previousRow : [NRNumpadKeyView]?
+    for (rowIndex, row) in keyViewsGrid.enumerated() {
+      let aboveView = previousRow?.first
+      for (keyIndex, view) in row.enumerated() {
+        let keyCode = self.keyOrder[rowIndex][keyIndex]
+        let dontPinRight = keyProperties[keyCode]?.emptyTrailing ?? false
+        let leading = keyIndex == 0 ? nil : row[keyIndex - 1]
+        view.mas_makeConstraints { (make) in
+          make?.left.equalTo()(leading?.mas_right ?? self.mas_left)
+          make?.top.equalTo()(aboveView?.mas_bottom ?? self.mas_top)
+          if ((keyIndex + 1 == row.count) && ( !dontPinRight )) {
+            make?.right.equalTo()(self.mas_right)
+          }
+          if (rowIndex + 1 == keyViewsGrid.count) {
+            make?.bottom.equalTo()(self.mas_bottom)
+          }
+          if view != firstView {
+            if let heightMultiplier = keyProperties[keyCode]?.height {
+              make?.height.equalTo()(firstView.mas_height)?.multipliedBy()(heightMultiplier)
+            } else {
+              make?.height.equalTo()(firstView.mas_height)
+            }
+            
+            if let widthMultiplier = keyProperties[keyCode]?.width {
+              make?.width.equalTo()(firstView.mas_width)?.multipliedBy()(widthMultiplier)
+            } else {
+              make?.width.equalTo()(firstView.mas_width)
+            }
+          }
+        }
+      }
+      previousRow = row
+    }
+    
+    firstView.mas_makeConstraints({ (make) in
+      //      let equalSized = keyViews.filter({ (view) -> Bool in
+      //        if let prop = keyProperties[keyCode] { view.isHidden = !prop.visible }
+      //      })
+      make?.height.equalTo()( firstView.mas_width )
+      //      make?.height.equalTo()( Array(keyViews[1...(keyViews.count - 1)]) )
+      //      make?.width.equalTo()( Array(keyViews[1...(keyViews.count - 2)]) )
+    })
+  }
+  
+  // TODO: Fix layout to not use offset/padding between keys.
+  //       Everything should be boxes so multiplier works better
+  //       Then insert padding inside key on keybackground layer
   
   func layoutKeys2() {
     guard let keyViews = self.keyViews else { return }
@@ -173,21 +231,31 @@ class ExpandedNumpadView : BTRView {
 //        make?.top.equalTo()(aboveView?.mas_bottom ?? self.mas_top)?.offset()(7)
 //      }
       for (keyIndex, view) in row.enumerated() {
-        
+        let keyCode = self.keyOrder[rowIndex][keyIndex]
+        let dontPinRight = keyProperties[keyCode]?.emptyTrailing ?? false
         let leading = keyIndex == 0 ? nil : row[keyIndex - 1]
         view.mas_makeConstraints { (make) in
           make?.left.equalTo()(leading?.mas_right ?? self.mas_left)?.offset()(10)
           make?.top.equalTo()(aboveView?.mas_bottom ?? self.mas_top)?.offset()(10)
-          if (keyIndex + 1 == row.count) {
+          if ((keyIndex + 1 == row.count) && ( !dontPinRight )) {
             make?.right.equalTo()(self.mas_right)?.inset()(10)
           }
           if (rowIndex + 1 == keyViewsGrid.count) {
             make?.bottom.equalTo()(self.mas_bottom)?.inset()(10)
           }
+          
           if view != firstView {
-            let keyCode = self.keyOrder[rowIndex][keyIndex]
-            make?.height.equalTo()(firstView.mas_height)?.multipliedBy()(keyProperties[keyCode]?.height ?? 1)
-            make?.width.equalTo()(firstView.mas_width)?.multipliedBy()(keyProperties[keyCode]?.width ?? 1)            
+            if let heightMultiplier = keyProperties[keyCode]?.height {
+              make?.height.equalTo()(firstView.mas_height)?.multipliedBy()(heightMultiplier)?.offset()(heightMultiplier > 1 ? 10 : 0)
+            } else {
+              make?.height.equalTo()(firstView.mas_height)
+            }
+            
+            if let widthMultiplier = keyProperties[keyCode]?.width {
+              make?.width.equalTo()(firstView.mas_width)?.multipliedBy()(widthMultiplier)?.offset()(widthMultiplier > 1 ? 10 : 0)
+            } else {
+              make?.width.equalTo()(firstView.mas_width)
+            }
           }
         }
         

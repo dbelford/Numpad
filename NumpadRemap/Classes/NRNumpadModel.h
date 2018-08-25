@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray<NRNumpadShortcutModel *> *shortcuts;
 @property (nonatomic, assign) NRNumpadKeyOrdering ordering;
 //@property (nonatomic, assign) NRNumpadKeyboardType type;
+@property (nonatomic, assign) Boolean hideNumpadNumbers;
 
 
 - (void)launchApplication:(NSRunningApplication *)app;

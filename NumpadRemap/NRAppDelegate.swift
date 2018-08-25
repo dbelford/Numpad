@@ -86,7 +86,9 @@ import Cocoa
   }
 
   func applicationWillResignActive(_ notification: Notification) {
-    NSApplication.shared().hide(self)
+    if ( NRPreferences.sharedInstance().hideOnDeactivate ) {
+      NSApplication.shared().hide(self)
+    }
   }
 
   // MARK: - Preferences

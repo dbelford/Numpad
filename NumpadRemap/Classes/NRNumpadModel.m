@@ -67,6 +67,8 @@
     }
     return shortcutModels;
   }];
+  self.hideNumpadNumbers = [NRPreferences sharedInstance].hideNumpadNumbers;
+  RAC(self, hideNumpadNumbers) = RACObserve([NRPreferences sharedInstance], hideNumpadNumbers);
 }
 
 - (BOOL)launchApplicationForKeycode:(NSUInteger)keyCode {
@@ -95,7 +97,10 @@
   BOOL appAlreadyActive = app.processIdentifier == [NSWorkspace sharedWorkspace].frontmostApplication.processIdentifier;
   
   if (appAlreadyActive) {
-    [[NSApplication sharedApplication] hide:self]; //Hiding app in delegate willResign is too slow
+    if ( [NRPreferences sharedInstance].hideOnDeactivate ) {
+      [[NSApplication sharedApplication] hide:self]; //Hiding app in delegate willResign is too slow
+    }
+    
     [self launchApplicationAtIndex:0];
   } else {
     self.lastProcessIdentifier = [NSWorkspace sharedWorkspace].frontmostApplication.processIdentifier;

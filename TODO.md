@@ -1,8 +1,9 @@
 Numpad Remap
 
-Todo 
+Todo
 - Delete cruft & commit
 x Hide on restart
+- Delete Icon size selection code
 
 Letter Responder
 - Need first responder to accumulate key presses in text field

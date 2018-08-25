@@ -36,6 +36,7 @@ extern NSString *const kAppActivationShortcutKey;
 @property (assign) BOOL launchAtLogin;
 @property (assign) BOOL centerNumpad;
 @property (assign) BOOL hideNumpadNumbers;
+@property (assign) BOOL hideOnDeactivate;
 @property (assign) NRNumpadKeyHeight keyHeight;
 @property (assign) NRNumpadKeyOrdering keyOrdering;
 

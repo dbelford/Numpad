@@ -82,7 +82,8 @@
             // Save Views
             return views;
         }];
-        
+      
+
         self.wantsLayer = YES;
     }
     return self;

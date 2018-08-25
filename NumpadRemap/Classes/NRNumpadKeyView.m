@@ -8,6 +8,7 @@
 
 #import "NRNumpadKeyView.h"
 #import <Masonry/Masonry.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface NRNumpadKeyView ()
 
@@ -19,44 +20,73 @@
 
 - (id)initWithFrame:(NSRect)frame
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code here.
-//        self.translatesAutoresizingMaskIntoConstraints = NO;
-//        self.layer.backgroundColor = [NSColor whiteColor].CGColor;
-          self.layer.backgroundColor = [NSColor colorWithWhite:0.95 alpha:1].CGColor;
-        self.iconImageView = [[NSImageView alloc] initWithFrame:frame];
-        self.iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
+  self = [super initWithFrame:frame];
+  if (self) {
+    // Initialization code here.
+    //        self.translatesAutoresizingMaskIntoConstraints = NO;
+    //        self.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    self.layer.backgroundColor = [NSColor colorWithWhite:0.95 alpha:1].CGColor;
+    self.iconImageView = [[NSImageView alloc] initWithFrame:frame];
+    self.iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    self.iconImageView.imageScaling = NSImageScaleProportionallyUpOrDown;
+    //        self.iconImageView.contentMode = BTRViewContentModeScaleAspectFit;
+    
+    //        self.layer.borderWidth = 1;
+    self.layer.borderColor = [NSColor grayColor].CGColor;
+    self.layer.cornerRadius = 7;
+    self.layer.shadowOffset = CGSizeMake(1, 1);
+    self.layer.shadowColor = [NSColor colorWithWhite:0.97 alpha:1].CGColor;
+    
+    
+    self.keyLabel = [[BTRLabel alloc] initWithFrame:frame];
+    self.keyLabel.stringValue = @"Key Label Work";
+    //        self.keyLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.keyLabel.font = [NSFont systemFontOfSize:16.0];
+    self.keyLabel.textColor = [NSColor colorWithCalibratedWhite:0.3 alpha:1.0];
+    
+    [self addSubview:_iconImageView];
+    [self addSubview:_keyLabel];
+    
+    //        [self addList]
+    
+    [self registerForDraggedTypes: @[NSPasteboardTypeString]];
+    
+    //        [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    //            make.edges.equalTo(self).with.insets(NSEdgeInsetsMake(10, 10, 10, 10));
+    //        }];
+    
+    self.canDrag = NO;
+    self.needsUpdateConstraints = YES;
+    
+    @weakify(self);
+    [RACObserve(self, viewModel.hideNumpadNumbers) subscribeNext:^(NSNumber *hide) {
+      @strongify(self);
+      [self setNeedsUpdateConstraints:YES];
+    }];
+    [RACObserve(self, viewModel) subscribeNext:^(id _) {
+      @strongify(self);
+      [self bindModel];
+    }];
+  }
+  return self;
+}
 
-        self.iconImageView.imageScaling = NSImageScaleProportionallyUpOrDown;
-//        self.iconImageView.contentMode = BTRViewContentModeScaleAspectFit;
-        
-//        self.layer.borderWidth = 1;
-        self.layer.borderColor = [NSColor grayColor].CGColor;
-        self.layer.cornerRadius = 7;
-        self.layer.shadowOffset = CGSizeMake(1, 1);
-        self.layer.shadowColor = [NSColor colorWithWhite:0.97 alpha:1].CGColor;
-        self.keyLabel = [[BTRLabel alloc] initWithFrame:frame];
-        self.keyLabel.stringValue = @"Key Label Work";
-//        self.keyLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        self.keyLabel.font = [NSFont systemFontOfSize:16.0];
-        self.keyLabel.textColor = [NSColor colorWithCalibratedWhite:0.3 alpha:1.0];
-        
-        [self addSubview:_iconImageView];
-        [self addSubview:_keyLabel];
-      
-//        [self addList]
-      
-        [self registerForDraggedTypes: @[NSPasteboardTypeString]];
-      
-//        [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.edges.equalTo(self).with.insets(NSEdgeInsetsMake(10, 10, 10, 10));
-//        }];
+- (void)bindModel {
+  if (self.viewModel) {
+    self.iconImageView.image = self.viewModel.image;
+    self.keyLabel.stringValue = self.viewModel.keyName;
+    self.identifier = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewModel.shortcut.keyCode];
+    [self setNeedsUpdateConstraints:YES];
+  }
+}
 
-        self.canDrag = NO;
-        self.needsUpdateConstraints = YES;
-    }
-    return self;
+- (NSEdgeInsets)alignmentRectInsets {
+  return NSEdgeInsetsMake(-4, -4, -4, -4);
+}
+
+- (void)dealloc {
+  
 }
 
 - (void)mouseDown:(NSEvent *)event {
@@ -65,7 +95,7 @@
 }
 
 - (void)mouseDragged:(NSEvent *)event {
-//  [super mouseDragged:event];
+  //  [super mouseDragged:event];
   if (self.canDrag) {
     //  NSPasteboardItem *pbItem = [[NSPasteboardItem alloc] init];
     //  pbItem setDataProvider:self forTypes:@[NSPasteboardTypeString, NSPaste]
@@ -84,34 +114,34 @@
                                   event:event
                                  source:self];
   }
-
+  
 }
 
 - (void)setHighlighted:(BOOL)highlighted {
-    [super setHighlighted:highlighted];
-    
-    if (highlighted) {
-        self.btr_backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
-    } else {
-        self.btr_backgroundColor = [NSColor colorWithWhite:0.95 alpha:1];
-//        self.btr_backgroundColor = nil;
-    }
+  [super setHighlighted:highlighted];
+  
+  if (highlighted) {
+    self.btr_backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
+  } else {
+    self.btr_backgroundColor = [NSColor colorWithWhite:0.95 alpha:1];
+    //        self.btr_backgroundColor = nil;
+  }
 }
 
 - (void)setSelected:(BOOL)selected {
-    [super setSelected:selected];
-    if (selected) {
-        self.btr_backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
-    } else {
-        self.btr_backgroundColor = [NSColor colorWithWhite:0.95 alpha:1];
-//        self.btr_backgroundColor = nil;
-    }
+  [super setSelected:selected];
+  if (selected) {
+    self.btr_backgroundColor = [NSColor colorWithCalibratedWhite:0.9 alpha:1.0];
+  } else {
+    self.btr_backgroundColor = [NSColor colorWithWhite:0.95 alpha:1];
+    //        self.btr_backgroundColor = nil;
+  }
 }
 
 - (void)configureView {
-
-//    self.needsUpdateConstraints = YES;
-
+  
+  //    self.needsUpdateConstraints = YES;
+  
 }
 
 // TODO: Figure out why deleteing intrinsicContentSize breaks window resizing!
@@ -121,39 +151,31 @@
 //}
 
 - (void)updateConstraints {
-    [super updateConstraints];
-    [self constraintsV2];
+  [super updateConstraints];
+  [self constraintsV2];
 }
 
 
 - (void)constraintsV2 {
+  if (self.viewModel.hideNumpadNumbers) {
+    self.keyLabel.hidden = YES;
     [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//      make.top.equalTo(self.iconImageView.mas_bottom);
-//      make.top.equalTo(self.icon)
-//      make.trailing.equalTo(self.mas_trailing);
-//      make.left.equalTo(self.iconImageView.mas_right);
-//      make.center.equalTo(self);
-//      make.centerX.equalTo(self.mas_centerX).with.priorityLow();
-//      make.centerY.equalTo(self.mas_centerY).with.priorityLow();
-//      make.size.greaterThanOrEqualTo(self).multipliedBy(.8);
-//      make.size.lessThanOrEqualTo(self).multipliedBy(.9);
-//      make.size.equalTo(self).multipliedBy(.8);
-      //.priority(MASLayoutPriorityFittingSizeCompression);
-      
-//        make.edges.equalTo(self).multipliedBy(.7);
-        make.edges.equalTo(self).insets(NSEdgeInsetsMake(7, 7, 7, 7));
-      
+      make.edges.equalTo(self).insets(NSEdgeInsetsMake(11, 11, 11, 11));
     }];
-  
-  
+  } else {
+    self.keyLabel.hidden = NO;
+    [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+      make.edges.equalTo(self).insets(NSEdgeInsetsMake(18, 11, 11, 18));
+    }];
     [self.keyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-        
-        make.top.equalTo(self.mas_top).offset(10);
-        make.right.equalTo(self.mas_right).offset(-10);
-        make.height.lessThanOrEqualTo(self.mas_height).multipliedBy(0.3);
-        make.width.lessThanOrEqualTo(self.mas_width).multipliedBy(0.3);
-        
+      
+      make.top.equalTo(self.mas_top).offset(7);
+      make.right.equalTo(self.mas_right).offset(-7);
+      make.height.lessThanOrEqualTo(self.mas_height).multipliedBy(0.3);
+      make.width.lessThanOrEqualTo(self.mas_width).multipliedBy(0.3);
+      
     }];
+  }
 }
 
 // MARK: Dragging Source
@@ -163,9 +185,9 @@
   NSDraggingSession *session = [super beginDraggingSessionWithItems:items event:event source:source];
   
   self.highlighted = NO;
-    
-//  session
-//  [session.draggingPasteboard setData:[self.keyLabel.stringValue dataUsingEncoding:NSUTF8StringEncoding] forType:NSPasteboardTypeString];
+  
+  //  session
+  //  [session.draggingPasteboard setData:[self.keyLabel.stringValue dataUsingEncoding:NSUTF8StringEncoding] forType:NSPasteboardTypeString];
   self.canDrag = NO;
   return session;
 }
