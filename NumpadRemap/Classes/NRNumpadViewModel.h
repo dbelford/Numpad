@@ -27,6 +27,7 @@
 
 - (IBAction)pressedKeyForKeycode:(NSUInteger)keycode;
 - (instancetype)initWithModel:(NRNumpadModel *)model;
++ (NRNumpadKeyViewModel *)keyViewModelForShortcut:(NRNumpadShortcutModel *)shortcut andIdentifier:(int)identifier;
 
 @end
 

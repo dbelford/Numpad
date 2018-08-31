@@ -4,6 +4,9 @@ Todo
 - Delete cruft & commit
 x Hide on restart
 - Delete Icon size selection code
+- Program key via right click
+- Load key from key layout history
+- Preference to not hide app on deactivation
 
 Letter Responder
 - Need first responder to accumulate key presses in text field

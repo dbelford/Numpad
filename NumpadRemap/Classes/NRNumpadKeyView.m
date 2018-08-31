@@ -23,14 +23,23 @@
   self = [super initWithFrame:frame];
   if (self) {
     // Initialization code here.
-    //        self.translatesAutoresizingMaskIntoConstraints = NO;
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     //        self.layer.backgroundColor = [NSColor whiteColor].CGColor;
     self.layer.backgroundColor = [NSColor colorWithWhite:0.95 alpha:1].CGColor;
-    self.iconImageView = [[NSImageView alloc] initWithFrame:frame];
-    self.iconImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    
+    self.iconImageView = [[NSImageView alloc] initWithFrame:self.bounds];
+//    self.iconImageView.translatesAutoresizingMaskIntoConstraints = YES;
+//    self.iconImageView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable;
+//    self.iconImageView.autoresizesSubviews = YES;
+//    [self setContentCompressionResistancePriority:NSLayoutPriorityFittingSizeCompression forOrientation:NSLayoutConstraintOrientationHorizontal];
+//    [self setContentCompressionResistancePriority:NSLayoutPriorityFittingSizeCompression forOrientation:NSLayoutConstraintOrientationVertical];
     self.iconImageView.imageScaling = NSImageScaleProportionallyUpOrDown;
-    //        self.iconImageView.contentMode = BTRViewContentModeScaleAspectFit;
+    [self.iconImageView setContentCompressionResistancePriority:NSLayoutPriorityFittingSizeCompression forOrientation:NSLayoutConstraintOrientationHorizontal];
+    [self.iconImageView setContentCompressionResistancePriority:NSLayoutPriorityFittingSizeCompression forOrientation:NSLayoutConstraintOrientationVertical];
+    
+//    [self.iconImageView setImageFrameStyle:NSImageFrameNone];
+//    [self.iconImageView setContentHuggingPriority:NSLayoutPriorityFittingSizeCompression forOrientation:NSLayoutConstraintOrientationHorizontal ];
+//    [self.iconImageView setContentHuggingPriority:NSLayoutPriorityFittingSizeCompression forOrientation:NSLayoutConstraintOrientationVertical ];
+//            self.iconImageView.contentMode = NSLayoutPriorityFittingSizeCompression;
     
     //        self.layer.borderWidth = 1;
     self.layer.borderColor = [NSColor grayColor].CGColor;
@@ -39,14 +48,18 @@
     self.layer.shadowColor = [NSColor colorWithWhite:0.97 alpha:1].CGColor;
     
     
-    self.keyLabel = [[BTRLabel alloc] initWithFrame:frame];
+    self.keyLabel = [[BTRLabel alloc] initWithFrame:self.bounds];
     self.keyLabel.stringValue = @"Key Label Work";
     //        self.keyLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.keyLabel.font = [NSFont systemFontOfSize:16.0];
     self.keyLabel.textColor = [NSColor colorWithCalibratedWhite:0.3 alpha:1.0];
+    self.keyLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self addSubview:_iconImageView];
     [self addSubview:_keyLabel];
+    
+    
+//    self.iconImageView.size
     
     //        [self addList]
     
@@ -77,6 +90,8 @@
     self.iconImageView.image = self.viewModel.image;
     self.keyLabel.stringValue = self.viewModel.keyName;
     self.identifier = [NSString stringWithFormat:@"%lu", (unsigned long)self.viewModel.shortcut.keyCode];
+    [self setNeedsUpdateConstraints:YES];
+  } else {
     [self setNeedsUpdateConstraints:YES];
   }
 }
@@ -147,18 +162,20 @@
 // TODO: Figure out why deleteing intrinsicContentSize breaks window resizing!
 
 //- (CGSize)intrinsicContentSize {
-//    return CGSizeMake(60, 60);
+//    return CGSizeMake(32, 32);
 //}
 
 - (void)updateConstraints {
   [super updateConstraints];
-  [self constraintsV2];
+  [self addConstraintsV2];
 }
 
 
-- (void)constraintsV2 {
+- (void)addConstraintsV2 {
+  
   if (self.viewModel.hideNumpadNumbers) {
     self.keyLabel.hidden = YES;
+    
     [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
       make.edges.equalTo(self).insets(NSEdgeInsetsMake(11, 11, 11, 11));
     }];
@@ -166,13 +183,14 @@
     self.keyLabel.hidden = NO;
     [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
       make.edges.equalTo(self).insets(NSEdgeInsetsMake(18, 11, 11, 18));
+//      make.edges.lessThanOrEqualTo(self).insets(NSEdgeInsetsMake(18, 11, 11, 18));
     }];
     [self.keyLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
       
       make.top.equalTo(self.mas_top).offset(7);
       make.right.equalTo(self.mas_right).offset(-7);
-      make.height.lessThanOrEqualTo(self.mas_height).multipliedBy(0.3);
-      make.width.lessThanOrEqualTo(self.mas_width).multipliedBy(0.3);
+//      make.height.lessThanOrEqualTo(self.mas_height).multipliedBy(0.3);
+//      make.width.lessThanOrEqualTo(self.mas_width).multipliedBy(0.3);
       
     }];
   }

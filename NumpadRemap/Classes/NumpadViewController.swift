@@ -55,7 +55,7 @@ class NumpadViewController : NSViewController {
     //    self.prefView.removeFromSuperview()
     //    self.numpadModel = NRNumpadModel.init()
     //self.numpadView = NRNumpadView.init() // TODO: This goes here? init maybe?
-    self.numpadView = ExpandedNumpadView.init(frame: NSMakeRect(0, 0, 400, 400))
+    self.numpadView = ExpandedNumpadView.init(frame: NSMakeRect(0, 0, 50, 50))
     //    self.numpadView.viewModel = NRNumpadViewModel.init(model: self.numpadModel)
     self.numpadView?.viewModel = self.numpadViewModel;
     self.numpadView?.viewModel?.keycodeActivatedSignal.subscribeNext { [weak self] keyCode in

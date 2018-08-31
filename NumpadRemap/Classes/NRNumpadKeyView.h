@@ -11,7 +11,7 @@
 #import "NRNumpadViewModel.h"
 #import "NRNumpadKeyViewModel.h"
 
-@interface NRNumpadKeyView : BTRButton <NSDraggingSource, NSDraggingDestination>
+@interface NRNumpadKeyView : BTRControl <NSDraggingSource, NSDraggingDestination>
 
 
 @property (nonatomic, strong) NRNumpadKeyViewModel *viewModel;
