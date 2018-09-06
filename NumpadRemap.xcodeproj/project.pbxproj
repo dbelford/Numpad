@@ -47,6 +47,8 @@
 		A67ABC2818D284D100C1D502 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC0718D284D100C1D502 /* Cocoa.framework */; };
 		A67ABC3018D284D200C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC2E18D284D200C1D502 /* InfoPlist.strings */; };
 		A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */; };
+		A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */; };
+		A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629D2140AA4D00C89350 /* NumpadViewModel.swift */; };
 		A6972B5E2124A9CF0008BC98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6972B5D2124A9CE0008BC98 /* Main.storyboard */; };
 		A6972B602124B0880008BC98 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6972B5F2124B0880008BC98 /* WindowController.swift */; };
 		A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; };
@@ -162,6 +164,8 @@
 		A67ABC2D18D284D100C1D502 /* NumpadRemapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NumpadRemapTests-Info.plist"; sourceTree = "<group>"; };
 		A67ABC2F18D284D200C1D502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumpadRemapTests.m; sourceTree = "<group>"; };
+		A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadKeyViewModel.swift; path = Classes/NumpadKeyViewModel.swift; sourceTree = "<group>"; };
+		A684629D2140AA4D00C89350 /* NumpadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadViewModel.swift; path = Classes/NumpadViewModel.swift; sourceTree = "<group>"; };
 		A6972B5D2124A9CE0008BC98 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A6972B5F2124B0880008BC98 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -290,6 +294,8 @@
 		A6360E57211E788E007F31A4 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */,
+				A684629D2140AA4D00C89350 /* NumpadViewModel.swift */,
 				A634A411212B566500A8EC77 /* NRNumpadKeyViewModel.h */,
 				A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */,
 				A63686341B7E82CC00001A35 /* NRNumpadViewModel.h */,
@@ -733,6 +739,7 @@
 				A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */,
 				A6426D3821366ADF00D7709E /* Application.swift in Sources */,
 				A6596A3D18D63879007D6566 /* NRNumpadModel.m in Sources */,
+				A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */,
 				A63686361B7E82CC00001A35 /* NRNumpadViewModel.m in Sources */,
 				A65B02FA2139AF09006D3188 /* ShortcutMappingModel.swift in Sources */,
 				A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */,
@@ -747,6 +754,7 @@
 				A67A213121254AD700FCBF90 /* ExpandedNumpadView.swift in Sources */,
 				A634A413212B566500A8EC77 /* NRNumpadKeyViewModel.m in Sources */,
 				A6FDC2831B9962F1003FC592 /* NRWindow.m in Sources */,
+				A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */,
 				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
 				A67ABC1418D284D100C1D502 /* main.m in Sources */,
 				A67A21352128D8CF00FCBF90 /* Keyboard.swift in Sources */,

@@ -13,7 +13,7 @@ class NRShortcut : MASShortcut {
   var displayName : String?
   var applicationBundleIdentifier : String?
   var image : NSImage?
-  var processIdentifier : Int?
+  var processIdentifier : pid_t?
   
   enum CodingKeys: String, CodingKey {
     case keyName
