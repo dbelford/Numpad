@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		A61ED1D521127EDF00DF502C /* ActiveAppsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61ED1D421127EDF00DF502C /* ActiveAppsTest.swift */; };
 		A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61ED1DC2112818F00DF502C /* NumpadTests.swift */; };
+		A6208F122137347F00AE2535 /* KeyboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6208F112137347F00AE2535 /* KeyboardConstants.swift */; };
+		A634A413212B566500A8EC77 /* NRNumpadKeyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */; };
 		A6360E54211E3594007F31A4 /* NRAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBD820211D25C6003EBBDC /* NRAppDelegate.swift */; };
-		A6360EBF211E9F62007F31A4 /* NRNumpadSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6360EBD211E9F62007F31A4 /* NRNumpadSettingsController.m */; };
 		A636862A1B7DB08B00001A35 /* DABActiveApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63686271B7DB08B00001A35 /* DABActiveApplications.framework */; };
 		A636862B1B7DB08B00001A35 /* ObjectiveSugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63686281B7DB08B00001A35 /* ObjectiveSugar.framework */; };
 		A636862E1B7DB13900001A35 /* DABActiveApplications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A63686271B7DB08B00001A35 /* DABActiveApplications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -20,14 +21,21 @@
 		A63A1B7B212344FC00712BEC /* NumpadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A1B7A212344FC00712BEC /* NumpadViewController.swift */; };
 		A63A1B8121234DC700712BEC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63A1B8021234DC700712BEC /* MainViewController.swift */; };
 		A63A1B852123F1F700712BEC /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A63A1B842123F1F700712BEC /* MainViewController.storyboard */; };
+		A6426D3821366ADF00D7709E /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6426D3721366ADF00D7709E /* Application.swift */; };
+		A6426D3A21366B5C00D7709E /* ApplicationNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6426D3921366B5C00D7709E /* ApplicationNavigator.swift */; };
+		A6426D3C21366CA400D7709E /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6426D3B21366CA400D7709E /* ServiceLocator.swift */; };
 		A6569F9221110F84003BDBD5 /* libPods-Numpad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A024888369C93CD2280B2EAB /* libPods-Numpad.a */; };
 		A6596A3D18D63879007D6566 /* NRNumpadModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6596A3C18D63879007D6566 /* NRNumpadModel.m */; };
+		A65B02FA2139AF09006D3188 /* ShortcutMappingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B02F92139AF09006D3188 /* ShortcutMappingModel.swift */; };
+		A65B02FC2139B376006D3188 /* NRShortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65B02FB2139B376006D3188 /* NRShortcut.swift */; };
+		A65B02FF2139C61A006D3188 /* NumpadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B02FE2139C61A006D3188 /* NumpadTests.m */; };
 		A678F7262113B3FD006908C2 /* AXSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A678F7252113B3FD006908C2 /* AXSwift.framework */; };
 		A678F7272113B3FD006908C2 /* AXSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A678F7252113B3FD006908C2 /* AXSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A67A212C2124C2CA00FCBF90 /* NumpadViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A67A212B2124C2CA00FCBF90 /* NumpadViewController.storyboard */; };
 		A67A212E2125481700FCBF90 /* NSResponder+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A212D2125481700FCBF90 /* NSResponder+Log.swift */; };
 		A67A213121254AD700FCBF90 /* ExpandedNumpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A213021254AD700FCBF90 /* ExpandedNumpadView.swift */; };
 		A67A21332125F78500FCBF90 /* RACTempBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A21322125F78500FCBF90 /* RACTempBindings.swift */; };
+		A67A21352128D8CF00FCBF90 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A21342128D8CF00FCBF90 /* Keyboard.swift */; };
 		A67ABC0818D284D100C1D502 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC0718D284D100C1D502 /* Cocoa.framework */; };
 		A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC1018D284D100C1D502 /* InfoPlist.strings */; };
 		A67ABC1418D284D100C1D502 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC1318D284D100C1D502 /* main.m */; };
@@ -38,13 +46,17 @@
 		A67ABC2818D284D100C1D502 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A67ABC0718D284D100C1D502 /* Cocoa.framework */; };
 		A67ABC3018D284D200C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC2E18D284D200C1D502 /* InfoPlist.strings */; };
 		A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */; };
-		A6972B5E2124A9CF0008BC98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6972B5D2124A9CE0008BC98 /* Main.storyboard */; };
+		A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */; };
+		A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629D2140AA4D00C89350 /* NumpadViewModel.swift */; };
+		A6972B5E2124A9CF0008BC98 /* Main_old.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */; };
 		A6972B602124B0880008BC98 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6972B5F2124B0880008BC98 /* WindowController.swift */; };
 		A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; };
 		A6A92CFD1B82FE9400F606A4 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */; };
+		A6C1E09F2145E561005FACB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6C1E09E2145E4E3005FACB4 /* Main.storyboard */; };
 		A6DE806A18D64D2800115F2E /* NRNumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806918D64D2800115F2E /* NRNumpadView.m */; };
 		A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */; };
+		A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */; };
 		A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872918DA287A00E40A20 /* NRWindowContentView.m */; };
 		A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872C18DB6CDD00E40A20 /* NSArray+NRConvenience.m */; };
 		A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */; };
@@ -58,6 +70,7 @@
 		A6FDC2921B9A558B003FC592 /* NRPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FDC2911B9A558B003FC592 /* NRPreferencesViewController.m */; };
 		A6FDC2961B9A55A6003FC592 /* NRGeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6FDC2941B9A55A6003FC592 /* NRGeneralPreferencesViewController.m */; };
 		A6FDC2971B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6FDC2951B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib */; };
+		CC10034C72CFA4D9029482DB /* libPods-NumpadTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CADB1A155C0E4F1BC9B97D30 /* libPods-NumpadTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +109,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		45CB62085EDCBF75CDB05830 /* Pods-NumpadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumpadTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NumpadTests/Pods-NumpadTests.debug.xcconfig"; sourceTree = "<group>"; };
+		55581E8248E2A5F50C59DEE5 /* Pods-NumpadTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumpadTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NumpadTests/Pods-NumpadTests.release.xcconfig"; sourceTree = "<group>"; };
 		75F10AF4E9F2C96E7CA78388 /* Pods-Numpad.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Numpad.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Numpad/Pods-Numpad.debug.xcconfig"; sourceTree = "<group>"; };
 		A024888369C93CD2280B2EAB /* libPods-Numpad.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Numpad.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61ED1D321127EDE00DF502C /* NumpadRemapTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NumpadRemapTests-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -103,8 +118,9 @@
 		A61ED1DA2112818F00DF502C /* NumpadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumpadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A61ED1DC2112818F00DF502C /* NumpadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadTests.swift; sourceTree = "<group>"; };
 		A61ED1DE2112818F00DF502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6360EBD211E9F62007F31A4 /* NRNumpadSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadSettingsController.m; path = NumpadRemap/NRNumpadSettingsController.m; sourceTree = SOURCE_ROOT; };
-		A6360EBE211E9F62007F31A4 /* NRNumpadSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadSettingsController.h; path = NumpadRemap/NRNumpadSettingsController.h; sourceTree = SOURCE_ROOT; };
+		A6208F112137347F00AE2535 /* KeyboardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardConstants.swift; path = Classes/KeyboardConstants.swift; sourceTree = "<group>"; };
+		A634A411212B566500A8EC77 /* NRNumpadKeyViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyViewModel.h; path = Classes/NRNumpadKeyViewModel.h; sourceTree = "<group>"; };
+		A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyViewModel.m; path = Classes/NRNumpadKeyViewModel.m; sourceTree = "<group>"; };
 		A63686271B7DB08B00001A35 /* DABActiveApplications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DABActiveApplications.framework; path = Carthage/Build/Mac/DABActiveApplications.framework; sourceTree = "<group>"; };
 		A63686281B7DB08B00001A35 /* ObjectiveSugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveSugar.framework; path = Carthage/Build/Mac/ObjectiveSugar.framework; sourceTree = "<group>"; };
 		A63686341B7E82CC00001A35 /* NRNumpadViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadViewModel.h; path = Classes/NRNumpadViewModel.h; sourceTree = "<group>"; };
@@ -114,13 +130,21 @@
 		A63A1B7A212344FC00712BEC /* NumpadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadViewController.swift; path = Classes/NumpadViewController.swift; sourceTree = "<group>"; };
 		A63A1B8021234DC700712BEC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Classes/MainViewController.swift; sourceTree = "<group>"; };
 		A63A1B842123F1F700712BEC /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
+		A6426D3721366ADF00D7709E /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Application.swift; path = Classes/Application.swift; sourceTree = "<group>"; };
+		A6426D3921366B5C00D7709E /* ApplicationNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ApplicationNavigator.swift; path = Classes/ApplicationNavigator.swift; sourceTree = "<group>"; };
+		A6426D3B21366CA400D7709E /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceLocator.swift; path = Classes/ServiceLocator.swift; sourceTree = "<group>"; };
 		A6596A3B18D63879007D6566 /* NRNumpadModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadModel.h; path = Classes/NRNumpadModel.h; sourceTree = "<group>"; };
 		A6596A3C18D63879007D6566 /* NRNumpadModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadModel.m; path = Classes/NRNumpadModel.m; sourceTree = "<group>"; };
+		A65B02F92139AF09006D3188 /* ShortcutMappingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShortcutMappingModel.swift; path = Classes/ShortcutMappingModel.swift; sourceTree = "<group>"; };
+		A65B02FB2139B376006D3188 /* NRShortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NRShortcut.swift; path = Classes/NRShortcut.swift; sourceTree = "<group>"; };
+		A65B02FE2139C61A006D3188 /* NumpadTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumpadTests.m; sourceTree = "<group>"; };
+		A66BA3EE212A11AE00AB7E4A /* Numpad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Numpad.entitlements; sourceTree = "<group>"; };
 		A678F7252113B3FD006908C2 /* AXSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AXSwift.framework; path = Carthage/Build/Mac/AXSwift.framework; sourceTree = "<group>"; };
 		A67A212B2124C2CA00FCBF90 /* NumpadViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NumpadViewController.storyboard; sourceTree = "<group>"; };
 		A67A212D2125481700FCBF90 /* NSResponder+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSResponder+Log.swift"; path = "Classes/NSResponder+Log.swift"; sourceTree = "<group>"; };
 		A67A213021254AD700FCBF90 /* ExpandedNumpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpandedNumpadView.swift; path = Classes/ExpandedNumpadView.swift; sourceTree = "<group>"; };
 		A67A21322125F78500FCBF90 /* RACTempBindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RACTempBindings.swift; path = Classes/RACTempBindings.swift; sourceTree = "<group>"; };
+		A67A21342128D8CF00FCBF90 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keyboard.swift; path = Classes/Keyboard.swift; sourceTree = "<group>"; };
 		A67ABC0418D284D100C1D502 /* Numpad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Numpad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A67ABC0718D284D100C1D502 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A67ABC0A18D284D100C1D502 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -138,17 +162,21 @@
 		A67ABC2D18D284D100C1D502 /* NumpadRemapTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NumpadRemapTests-Info.plist"; sourceTree = "<group>"; };
 		A67ABC2F18D284D200C1D502 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumpadRemapTests.m; sourceTree = "<group>"; };
-		A6972B5D2124A9CE0008BC98 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadKeyViewModel.swift; path = Classes/NumpadKeyViewModel.swift; sourceTree = "<group>"; };
+		A684629D2140AA4D00C89350 /* NumpadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadViewModel.swift; path = Classes/NumpadViewModel.swift; sourceTree = "<group>"; };
+		A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_old.storyboard; sourceTree = "<group>"; };
 		A6972B5F2124B0880008BC98 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		A6BBD81F211D25C6003EBBDC /* Numpad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Numpad-Bridging-Header.h"; sourceTree = "<group>"; };
 		A6BBD820211D25C6003EBBDC /* NRAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRAppDelegate.swift; sourceTree = "<group>"; };
 		A6C187A818D63A7900F7F9BF /* NRNumpadShortcutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadShortcutModel.h; path = Classes/NRNumpadShortcutModel.h; sourceTree = "<group>"; };
 		A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadShortcutModel.m; path = Classes/NRNumpadShortcutModel.m; sourceTree = "<group>"; };
+		A6C1E09E2145E4E3005FACB4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A6DE806818D64D2800115F2E /* NRNumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadView.h; path = Classes/NRNumpadView.h; sourceTree = "<group>"; };
 		A6DE806918D64D2800115F2E /* NRNumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadView.m; path = Classes/NRNumpadView.m; sourceTree = "<group>"; };
 		A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyView.h; path = Classes/NRNumpadKeyView.h; sourceTree = "<group>"; };
 		A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyView.m; path = Classes/NRNumpadKeyView.m; sourceTree = "<group>"; };
+		A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftFourTwoExtensions.swift; path = Classes/SwiftFourTwoExtensions.swift; sourceTree = "<group>"; };
 		A6F6872818DA287A00E40A20 /* NRWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRWindowContentView.h; path = Classes/NRWindowContentView.h; sourceTree = "<group>"; };
 		A6F6872918DA287A00E40A20 /* NRWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRWindowContentView.m; path = Classes/NRWindowContentView.m; sourceTree = "<group>"; };
 		A6F6872B18DB6CDD00E40A20 /* NSArray+NRConvenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSArray+NRConvenience.h"; path = "Classes/NSArray+NRConvenience.h"; sourceTree = "<group>"; };
@@ -171,6 +199,7 @@
 		A6FDC2941B9A55A6003FC592 /* NRGeneralPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRGeneralPreferencesViewController.m; path = Classes/Preferences/NRGeneralPreferencesViewController.m; sourceTree = "<group>"; };
 		A6FDC2951B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NRGeneralPreferencesViewController.xib; path = Classes/Preferences/NRGeneralPreferencesViewController.xib; sourceTree = "<group>"; };
 		B101577414D4D7055D9F1C7B /* Pods-Numpad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Numpad.release.xcconfig"; path = "Pods/Target Support Files/Pods-Numpad/Pods-Numpad.release.xcconfig"; sourceTree = "<group>"; };
+		CADB1A155C0E4F1BC9B97D30 /* libPods-NumpadTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NumpadTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC10034C72CFA4D9029482DB /* libPods-NumpadTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +242,8 @@
 			children = (
 				B101577414D4D7055D9F1C7B /* Pods-Numpad.release.xcconfig */,
 				75F10AF4E9F2C96E7CA78388 /* Pods-Numpad.debug.xcconfig */,
+				45CB62085EDCBF75CDB05830 /* Pods-NumpadTests.debug.xcconfig */,
+				55581E8248E2A5F50C59DEE5 /* Pods-NumpadTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -219,6 +251,7 @@
 		A61ED1DB2112818F00DF502C /* NumpadTests */ = {
 			isa = PBXGroup;
 			children = (
+				A65B02FE2139C61A006D3188 /* NumpadTests.m */,
 				A61ED1DC2112818F00DF502C /* NumpadTests.swift */,
 				A61ED1DE2112818F00DF502C /* Info.plist */,
 			);
@@ -245,8 +278,12 @@
 		A6360E56211E7885007F31A4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A67A21342128D8CF00FCBF90 /* Keyboard.swift */,
+				A6208F112137347F00AE2535 /* KeyboardConstants.swift */,
 				A6596A3B18D63879007D6566 /* NRNumpadModel.h */,
 				A6596A3C18D63879007D6566 /* NRNumpadModel.m */,
+				A65B02F92139AF09006D3188 /* ShortcutMappingModel.swift */,
+				A65B02FB2139B376006D3188 /* NRShortcut.swift */,
 				A6C187A818D63A7900F7F9BF /* NRNumpadShortcutModel.h */,
 				A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */,
 			);
@@ -256,6 +293,10 @@
 		A6360E57211E788E007F31A4 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */,
+				A684629D2140AA4D00C89350 /* NumpadViewModel.swift */,
+				A634A411212B566500A8EC77 /* NRNumpadKeyViewModel.h */,
+				A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */,
 				A63686341B7E82CC00001A35 /* NRNumpadViewModel.h */,
 				A63686351B7E82CC00001A35 /* NRNumpadViewModel.m */,
 			);
@@ -270,8 +311,6 @@
 				A63A1B842123F1F700712BEC /* MainViewController.storyboard */,
 				A63A1B7A212344FC00712BEC /* NumpadViewController.swift */,
 				A67A212B2124C2CA00FCBF90 /* NumpadViewController.storyboard */,
-				A6360EBE211E9F62007F31A4 /* NRNumpadSettingsController.h */,
-				A6360EBD211E9F62007F31A4 /* NRNumpadSettingsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -283,6 +322,7 @@
 				A6F6872C18DB6CDD00E40A20 /* NSArray+NRConvenience.m */,
 				A67A212D2125481700FCBF90 /* NSResponder+Log.swift */,
 				A67A21322125F78500FCBF90 /* RACTempBindings.swift */,
+				A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -290,6 +330,7 @@
 		A67ABBFB18D284D100C1D502 = {
 			isa = PBXGroup;
 			children = (
+				A66BA3EE212A11AE00AB7E4A /* Numpad.entitlements */,
 				A678F7252113B3FD006908C2 /* AXSwift.framework */,
 				A6FDC27A1B978A79003FC592 /* DABKit.framework */,
 				A67ABC0D18D284D100C1D502 /* NumpadRemap */,
@@ -321,6 +362,7 @@
 				A67ABC2618D284D100C1D502 /* XCTest.framework */,
 				A67ABC0918D284D100C1D502 /* Other Frameworks */,
 				A024888369C93CD2280B2EAB /* libPods-Numpad.a */,
+				CADB1A155C0E4F1BC9B97D30 /* libPods-NumpadTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -341,8 +383,12 @@
 				A6FDC2841B9A1E58003FC592 /* WAYAppStoreWindow */,
 				A6C187A718D63A4300F7F9BF /* Classes */,
 				A6BBD820211D25C6003EBBDC /* NRAppDelegate.swift */,
+				A6426D3721366ADF00D7709E /* Application.swift */,
+				A6426D3B21366CA400D7709E /* ServiceLocator.swift */,
+				A6426D3921366B5C00D7709E /* ApplicationNavigator.swift */,
 				A67ABC1C18D284D100C1D502 /* MainMenu.xib */,
-				A6972B5D2124A9CE0008BC98 /* Main.storyboard */,
+				A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */,
+				A6C1E09E2145E4E3005FACB4 /* Main.storyboard */,
 				A67ABC1F18D284D100C1D502 /* Images.xcassets */,
 				A67ABC0E18D284D100C1D502 /* Supporting Files */,
 				A6BBD81F211D25C6003EBBDC /* Numpad-Bridging-Header.h */,
@@ -441,6 +487,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A61ED1E12112818F00DF502C /* Build configuration list for PBXNativeTarget "NumpadTests" */;
 			buildPhases = (
+				BD27B917B613C25A3BC4C756 /* [CP] Check Pods Manifest.lock */,
 				A61ED1D62112818F00DF502C /* Sources */,
 				A61ED1D72112818F00DF502C /* Frameworks */,
 				A61ED1D82112818F00DF502C /* Resources */,
@@ -508,9 +555,15 @@
 					A61ED1D92112818F00DF502C = {
 						CreatedOnToolsVersion = 9.4;
 						ProvisioningStyle = Manual;
+						TestTargetID = A67ABC0318D284D100C1D502;
 					};
 					A67ABC0318D284D100C1D502 = {
 						LastSwiftMigration = 0940;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					A67ABC2418D284D100C1D502 = {
 						LastSwiftMigration = 0940;
@@ -551,7 +604,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */,
-				A6972B5E2124A9CF0008BC98 /* Main.storyboard in Resources */,
+				A6C1E09F2145E561005FACB4 /* Main.storyboard in Resources */,
+				A6972B5E2124A9CF0008BC98 /* Main_old.storyboard in Resources */,
 				A63A1B852123F1F700712BEC /* MainViewController.storyboard in Resources */,
 				A67ABC2018D284D100C1D502 /* Images.xcassets in Resources */,
 				A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */,
@@ -637,6 +691,24 @@
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
+		BD27B917B613C25A3BC4C756 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NumpadTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -644,6 +716,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65B02FF2139C61A006D3188 /* NumpadTests.m in Sources */,
 				A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -654,14 +727,20 @@
 			files = (
 				A6FDC2871B9A1E58003FC592 /* WAYAppStoreWindow.m in Sources */,
 				A6FDC28B1B9A1EDD003FC592 /* WAYWindow.m in Sources */,
+				A6208F122137347F00AE2535 /* KeyboardConstants.swift in Sources */,
 				A67A21332125F78500FCBF90 /* RACTempBindings.swift in Sources */,
 				A67A212E2125481700FCBF90 /* NSResponder+Log.swift in Sources */,
+				A6426D3A21366B5C00D7709E /* ApplicationNavigator.swift in Sources */,
 				A63A1B7B212344FC00712BEC /* NumpadViewController.swift in Sources */,
-				A6360EBF211E9F62007F31A4 /* NRNumpadSettingsController.m in Sources */,
+				A6426D3C21366CA400D7709E /* ServiceLocator.swift in Sources */,
 				A6FDC28E1B9A4D1A003FC592 /* NRPreferences.m in Sources */,
 				A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */,
+				A6426D3821366ADF00D7709E /* Application.swift in Sources */,
 				A6596A3D18D63879007D6566 /* NRNumpadModel.m in Sources */,
+				A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */,
 				A63686361B7E82CC00001A35 /* NRNumpadViewModel.m in Sources */,
+				A65B02FA2139AF09006D3188 /* ShortcutMappingModel.swift in Sources */,
+				A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */,
 				A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */,
 				A6DE806A18D64D2800115F2E /* NRNumpadView.m in Sources */,
 				A6972B602124B0880008BC98 /* WindowController.swift in Sources */,
@@ -671,11 +750,15 @@
 				A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */,
 				A639FDA21B9CBDF20026D03D /* NRPreferencesWindowController.m in Sources */,
 				A67A213121254AD700FCBF90 /* ExpandedNumpadView.swift in Sources */,
+				A634A413212B566500A8EC77 /* NRNumpadKeyViewModel.m in Sources */,
 				A6FDC2831B9962F1003FC592 /* NRWindow.m in Sources */,
+				A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */,
 				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
 				A67ABC1418D284D100C1D502 /* main.m in Sources */,
+				A67A21352128D8CF00FCBF90 /* Keyboard.swift in Sources */,
 				A6FDC2961B9A55A6003FC592 /* NRGeneralPreferencesViewController.m in Sources */,
 				A63A1B8121234DC700712BEC /* MainViewController.swift in Sources */,
+				A65B02FC2139B376006D3188 /* NRShortcut.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,8 +824,10 @@
 /* Begin XCBuildConfiguration section */
 		A61ED1E22112818F00DF502C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45CB62085EDCBF75CDB05830 /* Pods-NumpadTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -767,6 +852,10 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = NumpadTests/Info.plist;
@@ -778,15 +867,19 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Numpad.app/Contents/MacOS/Numpad";
 			};
 			name = Debug;
 		};
 		A61ED1E32112818F00DF502C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 55581E8248E2A5F50C59DEE5 /* Pods-NumpadTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -810,6 +903,10 @@
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = NumpadTests/Info.plist;
@@ -819,14 +916,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbelford.NumpadTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Numpad.app/Contents/MacOS/Numpad";
 			};
 			name = Release;
 		};
 		A67ABC3318D284D200C1D502 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -841,6 +941,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEFINES_MODULE = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -857,7 +959,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -866,6 +968,7 @@
 		A67ABC3418D284D200C1D502 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -881,9 +984,12 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -891,7 +997,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -904,6 +1010,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 284;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -912,7 +1019,7 @@
 				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
 				INFOPLIST_FILE = "NumpadRemap/NumpadRemap-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -928,6 +1035,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 284;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -936,9 +1044,10 @@
 				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
 				INFOPLIST_FILE = "NumpadRemap/NumpadRemap-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};

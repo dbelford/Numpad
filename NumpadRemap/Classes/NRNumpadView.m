@@ -13,6 +13,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import "NSArray+NRConvenience.h"
 #import "NRNumpadKeyView.h"
+#import "Numpad-Swift.h"
 
 @interface NRNumpadView ()
 
@@ -82,14 +83,16 @@
             // Save Views
             return views;
         }];
-        
+      
+
         self.wantsLayer = YES;
     }
     return self;
 }
 
 - (void)pressedAppButton:(NRNumpadKeyView *)sender {
-    [self.viewModel pressedKeyForKeycode:sender.identifier.integerValue];
+//    [self.viewModel pressedKeyForKeycode:sender.identifier.integerValue];
+  [self.viewModel pressedKeyForKeycodeWithKeycode:sender.identifier.integerValue];
 }
 
 - (void)updateConstraints {

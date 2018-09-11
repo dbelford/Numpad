@@ -9,6 +9,20 @@
 import Foundation
 
 class MainViewController : NSViewController {
+  lazy var smallMenu = { () -> NSMenu in
+    let m = NSMenu(title: "Action Menu")
+    let items = [
+      ("About", #selector(NSApplication.orderFrontStandardAboutPanel(_:)), ""),
+      ("Preferences", #selector(MainViewController.tryPreferences(_:)), ""),
+      ("Quit", #selector(NSApplication.terminate(_:)), "")
+    ]
+    for (title, action, keyEquivalent) in items {
+      m.addItem(NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent))
+    }
+    m.insertItem(NSMenuItem.separator(), at: items.count - 1)
+    return m
+  }()
+  
   @IBOutlet var actionMenu : NSMenu!
   @IBAction func tryTodos(_ sender: NSMenuItem) {
     NSWorkspace.shared().openFile("/Users/dbelford/Projects/osx.launchpad-remap/TODO.txt", withApplication: "Sublime Text 3.app")
@@ -25,5 +39,108 @@ class MainViewController : NSViewController {
       NSMenu.popUpContextMenu(menu, with: event, for: sender)
     }
     
+  }
+  
+  init?(preferences: NRPreferences) {
+    super.init(nibName: nil, bundle: nil)
+    self.setup(preferences: preferences)
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.setup(preferences: NRPreferences.sharedInstance())
+//    self.addChildViewController(NumpadViewController(nibName: nil, bundle: <#T##Bundle?#>))
+  }
+  
+  override func loadView() {
+//    super.loadView()
+    let mainView = NRWindowContentView(frame: NSMakeRect(0, 0, 400, 400))
+    
+//    if let v = self.childViewControllers.first?.view {
+//      mainView.addSubview(v)
+//      NSLayoutConstraint.activate([
+//        v.topAnchor.constraint(equalTo: mainView.topAnchor),
+//        v.bottomAnchor.constraint(equalTo: mainView.bottomAnchor),
+//        v.leadingAnchor.constraint(equalTo: mainView.leadingAnchor),
+//        v.trailingAnchor.constraint(equalTo: mainView.trailingAnchor)
+//        //        v.leftAnchor.constraint(equalTo: mainView.leftAnchor),
+//        //        v.rightAnchor.constraint(equalTo: mainView.rightAnchor)
+//        ])
+//      
+//      
+//    }
+    
+    self.view = mainView
+  }
+  
+  func addFontButton() {
+//    let b = NIKFontAwesomeIcon(rawValue: 0xf013)
+    let b = FontAwesomeButton(frame: NSMakeRect(0, 0, 26, 26))
+//    b.iconHex = "f013"
+//    b.icon = .gear
+//    b.iconHex = "f013"
+    self.view.addSubview(b)
+    b.isPadded = true
+    b.isSquare = true
+//    b.strokeColor = NSColor.black
+    b.size = 20
+    b.strokeWidth = 0
+//    b.color2 = NSColor.
+//    b.color = NSColor.black
+    b.edgeInsets = NIKEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
+    b.edgeInsetTop = 7
+    b.bezelStyle = NSBezelStyle.regularSquare
+//    b.setButtonType(.momentaryPushIn)
+    b.isBordered = true
+    b.translatesAutoresizingMaskIntoConstraints = false
+    b.wantsLayer = true
+    
+    b.iconHex = "f013"
+    NSLayoutConstraint.activate([
+      b.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -7),
+      b.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 7),
+      b.widthAnchor.constraint(equalToConstant: 28),
+      b.heightAnchor.constraint(equalToConstant: 28)
+    ])
+//    b.size
+    b.menu = self.smallMenu
+    b.action = #selector(MainViewController.showMenu(_:))
+    b.sizeToFit()
+    
+  }
+  
+  func settingsMenu() {
+
+  }
+  
+  func setup(preferences: NRPreferences) {
+    let model = ShortcutMappingModel(preferences: preferences)
+    let vm = NumpadViewModel(model: model)
+    let numpadViewController = NumpadViewController(viewModel: vm, model: model)
+    if let numpadViewController = numpadViewController {
+      self.addChildViewController(numpadViewController)
+      if let v = self.childViewControllers.first?.view {
+        self.view.addSubview(v)
+        let inset : CGFloat = 3.0 // 3 because keyview inset 4 on a side: 3 + 4 = 7
+        NSLayoutConstraint.activate([
+          v.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 7.0 + 28.0 + inset),
+          v.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -inset),
+          v.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: inset),
+          v.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -inset)
+          //        v.leftAnchor.constraint(equalTo: mainView.leftAnchor),
+          //        v.rightAnchor.constraint(equalTo: mainView.rightAnchor)
+          ])
+        
+        
+      }
+      self.addFontButton()
+      //      self.presentViewController(numpadViewController, animator: NSViewController.TransitionOptions.)
+    }
+    
+    //    self.addChildViewController(numpadViewController)
   }
 }

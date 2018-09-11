@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NRPreferences.h"
+#import "NRNumpadShortcutModel.h"
 
 @class MASShortcut;
 
@@ -15,12 +16,15 @@
 
 @interface NRNumpadModel : NSObject
 
-@property (nonatomic, strong) NSMutableDictionary /*<MASShortcut *>*/ *shortcuts;
+@property (nonatomic, strong) NSArray<NRNumpadShortcutModel *> *shortcuts;
 @property (nonatomic, assign) NRNumpadKeyOrdering ordering;
+//@property (nonatomic, assign) NRNumpadKeyboardType type;
+@property (nonatomic, assign) Boolean hideNumpadNumbers;
 
 
 - (void)launchApplication:(NSRunningApplication *)app;
 - (void)launchApplicationAtIndex:(NSInteger)index;
+- (BOOL)launchApplicationForKeycode:(NSUInteger)keyCode;
 
 + (BOOL)isNumpadNumber:(unsigned short)keyCode;
 + (BOOL)isKeyboardNumber:(unsigned short)keyCode;

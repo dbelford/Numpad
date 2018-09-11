@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hlt-aa-K4r">
-                                <rect key="frame" x="7" y="7" width="436" height="286"/>
+                                <rect key="frame" x="5" y="5" width="440" height="290"/>
                                 <connections>
                                     <segue destination="LMU-F8-s3B" kind="embed" id="e6a-zh-fm2"/>
                                 </connections>
@@ -68,12 +68,12 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="hlt-aa-K4r" firstAttribute="top" secondItem="AS8-oh-2M4" secondAttribute="top" constant="7" id="CCY-ln-qIb"/>
-                            <constraint firstItem="hlt-aa-K4r" firstAttribute="leading" secondItem="AS8-oh-2M4" secondAttribute="leading" constant="7" id="MYA-C6-G5I"/>
+                            <constraint firstItem="hlt-aa-K4r" firstAttribute="top" secondItem="AS8-oh-2M4" secondAttribute="top" constant="5" id="CCY-ln-qIb"/>
+                            <constraint firstItem="hlt-aa-K4r" firstAttribute="leading" secondItem="AS8-oh-2M4" secondAttribute="leading" constant="5" id="MYA-C6-G5I"/>
                             <constraint firstItem="hlt-aa-K4r" firstAttribute="centerY" secondItem="AS8-oh-2M4" secondAttribute="centerY" id="Nsv-4D-y14"/>
                             <constraint firstAttribute="bottom" secondItem="i7F-1g-3qd" secondAttribute="bottom" constant="20" id="UhZ-UB-aWF"/>
-                            <constraint firstAttribute="trailing" secondItem="hlt-aa-K4r" secondAttribute="trailing" constant="7" id="X7I-Xz-2YU"/>
-                            <constraint firstAttribute="bottom" secondItem="hlt-aa-K4r" secondAttribute="bottom" constant="7" id="bzJ-2i-lUr"/>
+                            <constraint firstAttribute="trailing" secondItem="hlt-aa-K4r" secondAttribute="trailing" constant="5" id="X7I-Xz-2YU"/>
+                            <constraint firstAttribute="bottom" secondItem="hlt-aa-K4r" secondAttribute="bottom" constant="5" id="bzJ-2i-lUr"/>
                             <constraint firstItem="hlt-aa-K4r" firstAttribute="centerX" secondItem="AS8-oh-2M4" secondAttribute="centerX" id="lGe-ix-zz0"/>
                             <constraint firstAttribute="trailing" secondItem="i7F-1g-3qd" secondAttribute="trailing" constant="20" id="ty0-t8-giE"/>
                         </constraints>

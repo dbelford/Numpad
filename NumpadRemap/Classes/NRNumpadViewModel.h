@@ -11,18 +11,7 @@
 #import "NRNumpadShortcutModel.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
-
-@interface NRNumpadKeyViewModel : NSObject
-
-@property (nonatomic, strong) NRNumpadShortcutModel *shortcut;
-@property (nonatomic, strong) NSString *identifier; //key.stringValue for ordering keys
-
-@property (nonatomic, readonly) NSString *keyName; //MASShortcut.keyCodeString
-@property (nonatomic, readonly) NSString *displayName;
-@property (nonatomic, readonly) NSString *applicationBundleIdentifier;
-@property (nonatomic, readonly) NSImage *image;
-
-@end
+@class NRNumpadKeyViewModel;
 
 @interface NRNumpadViewModel : NSObject
 
@@ -34,9 +23,11 @@
 @property (nonatomic, strong) NSArray<NSString *> *keyNames;
 
 @property (nonatomic, strong) RACSubject *keycodeActivatedSignal;
+@property (nonatomic, assign) Boolean hideNumpadNumbers;
 
 - (IBAction)pressedKeyForKeycode:(NSUInteger)keycode;
 - (instancetype)initWithModel:(NRNumpadModel *)model;
++ (NRNumpadKeyViewModel *)keyViewModelForShortcut:(NRNumpadShortcutModel *)shortcut andIdentifier:(int)identifier;
 
 @end
 

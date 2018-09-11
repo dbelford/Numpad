@@ -3,20 +3,25 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Numpad View Controller-->
         <scene sceneID="u1u-6e-bOP">
             <objects>
                 <viewController id="mOl-iE-pNy" customClass="NumpadViewController" customModule="Numpad" customModuleProvider="target" sceneMemberID="viewController">
+                    <customView key="view" id="BvS-4A-x0y">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    </customView>
                     <connections>
                         <outlet property="numpadModel" destination="Mqo-Nl-tRA" id="Sno-77-Gbc"/>
                         <outlet property="numpadViewModel" destination="6mH-FL-08U" id="m8f-YI-QkP"/>
                     </connections>
                 </viewController>
                 <customObject id="Fx7-M0-51o" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="Mqo-Nl-tRA" customClass="NRNumpadModel"/>
-                <customObject id="6mH-FL-08U" customClass="NRNumpadViewModel">
+                <customObject id="Mqo-Nl-tRA" customClass="ShortcutMappingModel" customModule="Numpad" customModuleProvider="target"/>
+                <customObject id="6mH-FL-08U" customClass="NumpadViewModel" customModule="Numpad" customModuleProvider="target">
                     <connections>
                         <outlet property="model" destination="Mqo-Nl-tRA" id="rlL-AU-G5o"/>
                     </connections>

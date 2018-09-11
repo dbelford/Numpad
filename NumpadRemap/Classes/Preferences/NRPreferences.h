@@ -14,6 +14,14 @@ typedef NS_ENUM(NSInteger, NRNumpadKeyOrdering) {
     NRNumpadKeyOrderingFullNumpad
 };
 
+typedef NS_ENUM(NSInteger, NRKeyboardType) {
+  NRKeyboardTypeUnknown,
+  NRKeyboardTypeKeypadNumbers,
+  NRKeyboardTypeFullNumpad,
+  NRKeyboardType10Keyless,
+  NRKeyboardTypeFullKeyboard
+};
+
 typedef NS_ENUM(NSInteger, NRNumpadKeyHeight) {
     NRNumpadKeyHeightSmall,
     NRNumpadKeyHeightMedium,
@@ -28,8 +36,10 @@ extern NSString *const kAppActivationShortcutKey;
 @property (assign) BOOL launchAtLogin;
 @property (assign) BOOL centerNumpad;
 @property (assign) BOOL hideNumpadNumbers;
+@property (assign) BOOL hideOnDeactivate;
 @property (assign) NRNumpadKeyHeight keyHeight;
 @property (assign) NRNumpadKeyOrdering keyOrdering;
+@property (assign) NRKeyboardType keyboardType;
 
 @property (assign) NSString *firstVersionInstalled;
 @property (assign) NSString *latestVersionInstalled;

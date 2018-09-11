@@ -12,7 +12,7 @@ import Cocoa
 @objc class NRAppDelegate : NSResponder, NSApplicationDelegate, NSWindowDelegate {
   var keypadWindow: NSWindow?
   @IBOutlet var window: NSWindow?
-  @IBOutlet var numpadSettingsController : NRNumpadSettingsController!
+//  @IBOutlet var numpadSettingsController : NRNumpadSettingsController!
   @IBOutlet var windowController: NSWindowController!
   
   public lazy var preferencesWindowController : MASPreferencesWindowController = {
@@ -41,6 +41,18 @@ import Cocoa
 //    self.window.nextResponder = self
 //    self.window.collectionBehavior = [.moveToActiveSpace, .transient]
     NSApplication.shared().presentationOptions = .disableHideApplication
+    
+    let content = MainViewController(preferences: NRPreferences.sharedInstance())
+    if let content = content {
+//      NSApplication.shared().mainWindow?.windowController?.contentViewController = content
+//      NSApplication.shared().mainWindow?.windowController?.
+//      self.windowController.contentViewController = content
+//      self.windowController.contentViewController.
+      self.window?.contentViewController = content
+//      NSApplication.shared().windows.first?.windowController?.contentViewController = content
+//      print()
+    }
+    print(self.keypadWindow)
 //    self.window.initialFirstResponder = self.numpadSettingsController.view
 //    self.window.delegate = self
 //
@@ -62,16 +74,17 @@ import Cocoa
 //    }
     
 //    UserDefaults.resetStandardUserDefaults()
-    MASShortcutBinder.shared().bindShortcut(withDefaultsKey: kAppActivationShortcutKey) { [weak self] in
-      guard let strongSelf = self else { return }
-      strongSelf.numpadSettingsController.numpadModel.launch(NSRunningApplication.current())
-    }
+//    MASShortcutBinder.shared().bindShortcut(withDefaultsKey: kAppActivationShortcutKey) { [weak self] in
+//      guard let strongSelf = self else { return }
+//      strongSelf.numpadSettingsController.numpadModel.launch(NSRunningApplication.current())
+//    }
   }
   
   func windowShouldClose(_ sender: Any) -> Bool {
     NSApplication.shared().hide(nil)
     return false
   }
+  
   
   
   
@@ -86,7 +99,9 @@ import Cocoa
   }
 
   func applicationWillResignActive(_ notification: Notification) {
-    NSApplication.shared().hide(self)
+    if ( NRPreferences.sharedInstance().hideOnDeactivate ) {
+      NSApplication.shared().hide(self)
+    }
   }
 
   // MARK: - Preferences
