@@ -174,7 +174,8 @@ struct KeyboardLgKeyboardDetails : KeyboardDetailsType {
   var keyOrder = KeyOrders.KeyboardLg
 }
 
-enum Keyboards {
+enum KeyboardTypes : Int {
+  
   case numpad//(NumpadKeyboardDetails)
   case numbers//(NumbersKeyboardDetails)
   case keyboardSm//(KeyboardSmKeyboardDetails)

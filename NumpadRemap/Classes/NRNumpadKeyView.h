@@ -11,10 +11,12 @@
 #import "NRNumpadViewModel.h"
 #import "NRNumpadKeyViewModel.h"
 
+@class NumpadKeyViewModel;
+
 @interface NRNumpadKeyView : BTRControl <NSDraggingSource, NSDraggingDestination>
 
 
-@property (nonatomic, strong) NRNumpadKeyViewModel *viewModel;
+@property (nonatomic, strong) NumpadKeyViewModel *viewModel;
 @property (nonatomic, strong) NSImage *iconImage;
 @property (nonatomic, strong) NSImageView *iconImageView;
 @property (nonatomic, strong) BTRLabel *keyLabel;

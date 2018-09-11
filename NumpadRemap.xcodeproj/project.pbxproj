@@ -12,7 +12,6 @@
 		A6208F122137347F00AE2535 /* KeyboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6208F112137347F00AE2535 /* KeyboardConstants.swift */; };
 		A634A413212B566500A8EC77 /* NRNumpadKeyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */; };
 		A6360E54211E3594007F31A4 /* NRAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBD820211D25C6003EBBDC /* NRAppDelegate.swift */; };
-		A6360EBF211E9F62007F31A4 /* NRNumpadSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6360EBD211E9F62007F31A4 /* NRNumpadSettingsController.m */; };
 		A636862A1B7DB08B00001A35 /* DABActiveApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63686271B7DB08B00001A35 /* DABActiveApplications.framework */; };
 		A636862B1B7DB08B00001A35 /* ObjectiveSugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63686281B7DB08B00001A35 /* ObjectiveSugar.framework */; };
 		A636862E1B7DB13900001A35 /* DABActiveApplications.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A63686271B7DB08B00001A35 /* DABActiveApplications.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -49,11 +48,12 @@
 		A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */; };
 		A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */; };
 		A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629D2140AA4D00C89350 /* NumpadViewModel.swift */; };
-		A6972B5E2124A9CF0008BC98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6972B5D2124A9CE0008BC98 /* Main.storyboard */; };
+		A6972B5E2124A9CF0008BC98 /* Main_old.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */; };
 		A6972B602124B0880008BC98 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6972B5F2124B0880008BC98 /* WindowController.swift */; };
 		A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; };
 		A6A92CFD1B82FE9400F606A4 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6C187AA18D63A7900F7F9BF /* NRNumpadShortcutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */; };
+		A6C1E09F2145E561005FACB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6C1E09E2145E4E3005FACB4 /* Main.storyboard */; };
 		A6DE806A18D64D2800115F2E /* NRNumpadView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806918D64D2800115F2E /* NRNumpadView.m */; };
 		A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */; };
 		A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */; };
@@ -121,8 +121,6 @@
 		A6208F112137347F00AE2535 /* KeyboardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardConstants.swift; path = Classes/KeyboardConstants.swift; sourceTree = "<group>"; };
 		A634A411212B566500A8EC77 /* NRNumpadKeyViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyViewModel.h; path = Classes/NRNumpadKeyViewModel.h; sourceTree = "<group>"; };
 		A634A412212B566500A8EC77 /* NRNumpadKeyViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyViewModel.m; path = Classes/NRNumpadKeyViewModel.m; sourceTree = "<group>"; };
-		A6360EBD211E9F62007F31A4 /* NRNumpadSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadSettingsController.m; path = NumpadRemap/NRNumpadSettingsController.m; sourceTree = SOURCE_ROOT; };
-		A6360EBE211E9F62007F31A4 /* NRNumpadSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadSettingsController.h; path = NumpadRemap/NRNumpadSettingsController.h; sourceTree = SOURCE_ROOT; };
 		A63686271B7DB08B00001A35 /* DABActiveApplications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DABActiveApplications.framework; path = Carthage/Build/Mac/DABActiveApplications.framework; sourceTree = "<group>"; };
 		A63686281B7DB08B00001A35 /* ObjectiveSugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveSugar.framework; path = Carthage/Build/Mac/ObjectiveSugar.framework; sourceTree = "<group>"; };
 		A63686341B7E82CC00001A35 /* NRNumpadViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadViewModel.h; path = Classes/NRNumpadViewModel.h; sourceTree = "<group>"; };
@@ -166,13 +164,14 @@
 		A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumpadRemapTests.m; sourceTree = "<group>"; };
 		A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadKeyViewModel.swift; path = Classes/NumpadKeyViewModel.swift; sourceTree = "<group>"; };
 		A684629D2140AA4D00C89350 /* NumpadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadViewModel.swift; path = Classes/NumpadViewModel.swift; sourceTree = "<group>"; };
-		A6972B5D2124A9CE0008BC98 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_old.storyboard; sourceTree = "<group>"; };
 		A6972B5F2124B0880008BC98 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		A6BBD81F211D25C6003EBBDC /* Numpad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Numpad-Bridging-Header.h"; sourceTree = "<group>"; };
 		A6BBD820211D25C6003EBBDC /* NRAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRAppDelegate.swift; sourceTree = "<group>"; };
 		A6C187A818D63A7900F7F9BF /* NRNumpadShortcutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadShortcutModel.h; path = Classes/NRNumpadShortcutModel.h; sourceTree = "<group>"; };
 		A6C187A918D63A7900F7F9BF /* NRNumpadShortcutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadShortcutModel.m; path = Classes/NRNumpadShortcutModel.m; sourceTree = "<group>"; };
+		A6C1E09E2145E4E3005FACB4 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A6DE806818D64D2800115F2E /* NRNumpadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadView.h; path = Classes/NRNumpadView.h; sourceTree = "<group>"; };
 		A6DE806918D64D2800115F2E /* NRNumpadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadView.m; path = Classes/NRNumpadView.m; sourceTree = "<group>"; };
 		A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyView.h; path = Classes/NRNumpadKeyView.h; sourceTree = "<group>"; };
@@ -312,8 +311,6 @@
 				A63A1B842123F1F700712BEC /* MainViewController.storyboard */,
 				A63A1B7A212344FC00712BEC /* NumpadViewController.swift */,
 				A67A212B2124C2CA00FCBF90 /* NumpadViewController.storyboard */,
-				A6360EBE211E9F62007F31A4 /* NRNumpadSettingsController.h */,
-				A6360EBD211E9F62007F31A4 /* NRNumpadSettingsController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -390,7 +387,8 @@
 				A6426D3B21366CA400D7709E /* ServiceLocator.swift */,
 				A6426D3921366B5C00D7709E /* ApplicationNavigator.swift */,
 				A67ABC1C18D284D100C1D502 /* MainMenu.xib */,
-				A6972B5D2124A9CE0008BC98 /* Main.storyboard */,
+				A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */,
+				A6C1E09E2145E4E3005FACB4 /* Main.storyboard */,
 				A67ABC1F18D284D100C1D502 /* Images.xcassets */,
 				A67ABC0E18D284D100C1D502 /* Supporting Files */,
 				A6BBD81F211D25C6003EBBDC /* Numpad-Bridging-Header.h */,
@@ -606,7 +604,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */,
-				A6972B5E2124A9CF0008BC98 /* Main.storyboard in Resources */,
+				A6C1E09F2145E561005FACB4 /* Main.storyboard in Resources */,
+				A6972B5E2124A9CF0008BC98 /* Main_old.storyboard in Resources */,
 				A63A1B852123F1F700712BEC /* MainViewController.storyboard in Resources */,
 				A67ABC2018D284D100C1D502 /* Images.xcassets in Resources */,
 				A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */,
@@ -734,7 +733,6 @@
 				A6426D3A21366B5C00D7709E /* ApplicationNavigator.swift in Sources */,
 				A63A1B7B212344FC00712BEC /* NumpadViewController.swift in Sources */,
 				A6426D3C21366CA400D7709E /* ServiceLocator.swift in Sources */,
-				A6360EBF211E9F62007F31A4 /* NRNumpadSettingsController.m in Sources */,
 				A6FDC28E1B9A4D1A003FC592 /* NRPreferences.m in Sources */,
 				A6F6872D18DB6CDD00E40A20 /* NSArray+NRConvenience.m in Sources */,
 				A6426D3821366ADF00D7709E /* Application.swift in Sources */,
@@ -928,6 +926,7 @@
 		A67ABC3318D284D200C1D502 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -969,6 +968,7 @@
 		A67ABC3418D284D200C1D502 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -984,7 +984,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1010,7 +1010,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 277;
+				CURRENT_PROJECT_VERSION = 284;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -1035,7 +1035,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 277;
+				CURRENT_PROJECT_VERSION = 284;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -1047,6 +1047,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};

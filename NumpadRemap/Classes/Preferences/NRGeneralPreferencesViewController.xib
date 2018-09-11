@@ -16,11 +16,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="365"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="388"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YlJ-PB-hG8">
-                    <rect key="frame" x="204" y="322" width="157" height="25"/>
+                    <rect key="frame" x="204" y="345" width="157" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Launch At Login" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="xan-oV-JVy">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -31,11 +31,11 @@
                     </connections>
                 </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBk-9Q-hRR" customClass="MASShortcutView">
-                    <rect key="frame" x="206" y="206" width="108" height="26"/>
+                    <rect key="frame" x="206" y="229" width="108" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uOM-Sz-lTE">
-                    <rect key="frame" x="54" y="211" width="146" height="17"/>
+                    <rect key="frame" x="54" y="234" width="146" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Activation Key Combo:" id="BIy-nS-ASa">
                         <font key="font" metaFont="system"/>
@@ -44,28 +44,19 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G1L-S4-Z0R">
-                    <rect key="frame" x="135" y="186" width="65" height="17"/>
+                    <rect key="frame" x="105" y="209" width="95" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Icon Size:" id="XDN-yN-czF">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="87C-oB-0La">
-                    <rect key="frame" x="121" y="116" width="79" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Order Apps:" id="jBS-Sr-rhd">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Keyboard Type" id="XDN-yN-czF">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSV-gb-iIA">
-                    <rect key="frame" x="206" y="141" width="72" height="62"/>
+                    <rect key="frame" x="206" y="141" width="153" height="84"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    <size key="cellSize" width="72" height="18"/>
+                    <size key="cellSize" width="153" height="18"/>
                     <size key="intercellSpacing" width="0.0" height="4"/>
                     <buttonCell key="prototype" type="radio" title="Icon Size" bezelStyle="regularSquare" imagePosition="left" alignment="left" allowsMixedState="YES" inset="2" id="zus-ei-bXX">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -73,26 +64,30 @@
                     </buttonCell>
                     <cells>
                         <column>
-                            <buttonCell type="radio" title="Small" bezelStyle="regularSquare" imagePosition="left" alignment="left" allowsMixedState="YES" inset="2" id="3lP-ct-2PW">
+                            <buttonCell type="radio" title="Unknown" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="3lP-ct-2PW">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <buttonCell type="radio" title="Medium" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" allowsMixedState="YES" inset="2" id="a3O-nf-9Ra">
+                            <buttonCell type="radio" title="Numbers" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="a3O-nf-9Ra">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <buttonCell type="radio" title="Large" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" allowsMixedState="YES" inset="2" id="qup-UN-sYy">
+                            <buttonCell type="radio" title="Numpad" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="qup-UN-sYy">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <buttonCell type="radio" title="Keyboard Small" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="GSO-az-3De">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </column>
                     </cells>
                     <connections>
-                        <binding destination="-2" name="selectedIndex" keyPath="self.preferences.keyHeight" id="ZVX-2m-zqW"/>
+                        <binding destination="-2" name="selectedIndex" keyPath="self.preferences.keyboardType" id="53x-1Z-Ee7"/>
                     </connections>
                 </matrix>
                 <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M85-Ir-1Ts">
-                    <rect key="frame" x="204" y="295" width="157" height="25"/>
+                    <rect key="frame" x="204" y="318" width="157" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Center Numpad" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="b5K-cG-HJl">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -103,7 +98,7 @@
                     </connections>
                 </button>
                 <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMg-iM-tiH">
-                    <rect key="frame" x="204" y="268" width="157" height="25"/>
+                    <rect key="frame" x="204" y="291" width="157" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Hide Numbers" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="vtx-Jg-dcI">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -114,7 +109,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0SZ-Nu-nRB">
-                    <rect key="frame" x="136" y="328" width="64" height="17"/>
+                    <rect key="frame" x="136" y="351" width="64" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Configure:" id="yBP-Vl-kgD">
                         <font key="font" metaFont="system"/>
@@ -122,8 +117,32 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hex-ig-Ldl">
+                    <rect key="frame" x="204" y="264" width="157" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Always Show" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="LvS-Uq-yYX">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.preferences.hideOnDeactivate" id="PN8-nu-Ins">
+                            <dictionary key="options">
+                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                            </dictionary>
+                        </binding>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="87C-oB-0La">
+                    <rect key="frame" x="122" y="116" width="78" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Order Apps:" id="jBS-Sr-rhd">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
                 <button focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ggU-aX-FUz">
-                    <rect key="frame" x="200" y="13" width="143" height="32"/>
+                    <rect key="frame" x="201" y="13" width="141" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Restore Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="FmZ-9R-Hn8">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -134,10 +153,10 @@
                     </connections>
                 </button>
                 <matrix verticalHuggingPriority="750" fixedFrame="YES" allowsEmptySelection="NO" autosizesCells="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lk-SE-B5E">
-                    <rect key="frame" x="206" y="71" width="112" height="62"/>
+                    <rect key="frame" x="206" y="71" width="111" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    <size key="cellSize" width="112" height="18"/>
+                    <size key="cellSize" width="111" height="18"/>
                     <size key="intercellSpacing" width="0.0" height="4"/>
                     <buttonCell key="prototype" type="radio" title="Key Ordering" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="dzP-U4-7UY">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -163,23 +182,8 @@
                         <binding destination="-2" name="selectedIndex" keyPath="self.preferences.keyOrdering" id="Lkb-Om-IlM"/>
                     </connections>
                 </matrix>
-                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hex-ig-Ldl">
-                    <rect key="frame" x="204" y="241" width="157" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Always Show" bezelStyle="regularSquare" imagePosition="left" alignment="left" focusRingType="none" inset="2" id="LvS-Uq-yYX">
-                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <binding destination="-2" name="value" keyPath="self.preferences.hideOnDeactivate" id="PN8-nu-Ins">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </button>
             </subviews>
-            <point key="canvasLocation" x="361" y="397.5"/>
+            <point key="canvasLocation" x="361" y="409"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="98f-K0-QVk"/>
     </objects>

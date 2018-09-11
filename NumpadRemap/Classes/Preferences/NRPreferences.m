@@ -48,9 +48,13 @@ NSString *const kAppActivationShortcutKey = @"randomKey";
     //}];
   }
   
-  if (self.latestVersionInstalled < 14) {
-    NSLog(@"Build version: %@", buildVersion);
+  if (self.latestVersionInstalled.integerValue < 14) {
+    NSLog(@"Build version: %@, adding NRPreferences.hideOnDeactivate", buildVersion);
     self.hideOnDeactivate = YES;
+  }
+  if (self.latestVersionInstalled.integerValue < 277) {
+    NSLog(@"Build version: %@, adding NRPreferences.keyboardType", buildVersion);
+    self.keyboardType = NRKeyboardTypeFullNumpad;
   }
   
   [self loadDefaultUserDefaults];
@@ -70,6 +74,7 @@ NSString *const kAppActivationShortcutKey = @"randomKey";
   self.centerNumpad = YES;
   self.hideNumpadNumbers = NO;
   self.hideOnDeactivate = YES;
+  self.keyboardType = NRKeyboardTypeFullNumpad;
   
   [[MASShortcutBinder sharedBinder] registerDefaultShortcuts:@{ kAppActivationShortcutKey : [MASShortcut shortcutWithKeyCode:kVK_ANSI_KeypadClear modifierFlags:0]}];
 }

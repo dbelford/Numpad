@@ -20,6 +20,10 @@ enum BindingStyle {
   case other
 }
 
+//protocol ShortcutMappingModelUpdates {
+//  func
+//}
+
 protocol ShortcutMappingModelActions {
   func launchApplication(bundleIdentifier : String)
   func launchApplication(runningApplication : NSRunningApplication)
@@ -28,50 +32,86 @@ protocol ShortcutMappingModelActions {
   func launchApplication(keyCode : UInt) -> Bool
 }
 
-class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
+enum ShortcutMappingModelUpdateProperty {
+  case shortcuts
+  case hideNumpadNumbers
+  case lastProcessIdentifier
+  case bindingStyle
+  case keyboardType
+  case monitor
+  case all
+}
 
+@objc
+class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
   
-  var shortcuts : [NRShortcut]
-  var bindingStyle : BindingStyle = .defaultBinding
-  var hideNumpadNumbers : Bool = true
-  var lastProcessIdentifier : pid_t?
-  var monitor : DABActiveApplicationsMonitor?
-  var observers : [NSKeyValueObservation] = []
+  var shortcuts : [NRShortcut]            { didSet { self.modelUpdated(.shortcuts) } }
+  var hideNumpadNumbers : Bool = true     { didSet { self.modelUpdated(.hideNumpadNumbers) } }
+  var lastProcessIdentifier : pid_t?      { didSet { self.modelUpdated(.lastProcessIdentifier) } }
+  var bindingStyle : BindingStyle = .defaultBinding { didSet { self.modelUpdated(.bindingStyle) } }
+  var keyboardType : KeyboardTypes = .numpad  { didSet { self.modelUpdated(.keyboardType) } }
+  var monitor : DABActiveApplicationsMonitor?       { didSet { self.modelUpdated(.monitor) } }
+  var observers : [NSKeyValueObservation?] = [] 
   
   private var orderedApps : [NSRunningApplication] = []
   
+  override init() {
+    self.shortcuts = []
+    super.init()
+    self.setup()
+  }
   
   init(preferences : NRPreferences) {
     // TODO: Implemenation
-    shortcuts = []
-    
+    self.shortcuts = []
+    super.init()
+    self.setup()
   }
   
-  func bindingFromKeyOrdering(keyOrdering : NRNumpadKeyOrdering) -> BindingStyle {
-    return .defaultBinding
+  func convertKeyboardType(_ keyboardType : NRKeyboardType) -> KeyboardTypes {
+    switch keyboardType {
+    case .typeUnknown:
+      return .numpad
+    case .typeKeypadNumbers:
+      return .numbers
+    case .typeFullNumpad:
+      return .numpad
+    case .type10Keyless:
+      return .keyboardSm
+    case .typeFullKeyboard:
+      return .keyboardSm
+    }
   }
   
   func setup() {
     self.monitor = DABActiveApplicationsMonitor()
     self.hideNumpadNumbers = NRPreferences.sharedInstance().hideNumpadNumbers
-    self.bindingStyle = self.bindingFromKeyOrdering(keyOrdering: NRPreferences.sharedInstance().keyOrdering)
+//    self.bindingStyle = self.bindingFromKeyOrdering(keyOrdering: NRPreferences.sharedInstance().keyOrdering)
     
-    observers.append(NRPreferences.sharedInstance().observe(\NRPreferences.keyOrdering, options: NSKeyValueObservingOptions.new) { (preferences, changes) in
-      self.bindingStyle = self.bindingFromKeyOrdering(keyOrdering: NRPreferences.sharedInstance().keyOrdering)
-    })
-    observers.append(self.observe(\ShortcutMappingModel.monitor?.orderedRunningApplications) { [weak self] (monitor, changes) in
-      self?.updateShortcuts()
-    })
-    observers.append(self.observe(\ShortcutMappingModel.bindingStyle) { [weak self] (monitor, changes) in
-      self?.updateShortcuts()
-    })
-    observers.append(NRPreferences.sharedInstance().observe(\NRPreferences.hideNumpadNumbers) { (preferences, changes) in
-      self.hideNumpadNumbers = NRPreferences.sharedInstance().hideNumpadNumbers
-    })
+    self.observers = [
+      NRPreferences.sharedInstance().observe(\NRPreferences.keyboardType, options: NSKeyValueObservingOptions.new) { [weak self] (preferences, changes) in
+        if let keyboardType = self?.convertKeyboardType(NRPreferences.sharedInstance().keyboardType) {
+          self?.keyboardType = keyboardType
+          self?.updateShortcuts()
+        }
+      },
+      NRPreferences.sharedInstance().observe(\NRPreferences.keyOrdering, options: NSKeyValueObservingOptions.new) { [weak self] (preferences, changes) in
+        guard let strongSelf = self else { return }
+//        self?.bindingStyle = strongSelf.bindingFromKeyOrdering(keyOrdering: NRPreferences.sharedInstance().keyOrdering)
+        self?.updateShortcuts()
+      },
+      self.monitor?.observe(\DABActiveApplicationsMonitor.orderedRunningApplications) { [weak self] (monitor, changes) in
+        self?.updateShortcuts()
+      },
+      NRPreferences.sharedInstance().observe(\NRPreferences.hideNumpadNumbers) { [weak self] (preferences, changes) in
+        self?.hideNumpadNumbers = NRPreferences.sharedInstance().hideNumpadNumbers
+      }
+    ]
   }
   
   func updateShortcuts() {
-    let orderedKeys = Keyboards.numpad.data().keyOrder.joined()
+    let keyboardData = self.keyboardType.data()
+    let orderedKeys = keyboardData.keyOrder.joined()
     let shortcutModels = orderedKeys.map { (key) in
       return NRShortcut(keyCode: UInt(key), modifier: .command)
     }
@@ -102,13 +142,18 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
       if NRPreferences.sharedInstance().hideOnDeactivate {
         NSApplication.shared().hide(self)
       }
+//      runningApplication.activate(options: [])
       self.launchApplication(index: 0)
     } else {
       if let bundleIdentifier = runningApplication.bundleIdentifier {
         self.lastProcessIdentifier = frontPid
-        NSWorkspace.shared().launchApplication(withBundleIdentifier: bundleIdentifier, options: .default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
+//        runningApplication.activate(options: [])
+        runningApplication.activate(options: .activateIgnoringOtherApps)
+//        NSWorkspace.shared().launchApplication(withBundleIdentifier: bundleIdentifier, options: .default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
       }
     }
+    
+
 
   }
   
@@ -118,9 +163,10 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
       return app.processIdentifier == processIdentifier
     }).first
     if let app = matchedApp {
-      self.launchApplication(runningApplication: app)
+      app.activate(options: [])
+//      self.launchApplication(runningApplication: app)
     }
-    
+
 //    //Faster application fronting
 //    ProcessSerialNumber pn = {};
     
@@ -134,7 +180,12 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
     }
     guard let shortcut = matchedShortcut.first else { return false }
     guard let bundleIdentifier = shortcut.applicationBundleIdentifier else { return false }
-    self.launchApplication(bundleIdentifier: bundleIdentifier)
+    if let pid = shortcut.processIdentifier {
+      self.launchApplication(processIdentifier: pid)
+    } else {
+      self.launchApplication(bundleIdentifier: bundleIdentifier)
+    }
+//    self.launchApplication(bundleIdentifier: bundleIdentifier)
     return true
   }
   
@@ -142,7 +193,8 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
     if let count = self.monitor?.orderedRunningApplications.count,
       index < count,
       let apps = self.monitor?.orderedRunningApplications as? [NSRunningApplication]   {
-      self.launchApplication(runningApplication : apps[index])
+      apps[index].activate(options: [])
+//      self.launchApplication(runningApplication : apps[index])
     }
   }
 //  func launchApplicationForKeycode(keyCode : UInt) -> Bool { }
@@ -151,4 +203,17 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
 //  func isKeyboardNumber(keyCode : UInt) -> Bool { }
 //  func numpadANSIKeys(bindingStyle : BindingStyle) -> [ANSI_Key_Code] { }
 //  func indexMapping(keyCode : UInt, bindingStyle : BindingStyle) -> Int { }
+  
+  
+  typealias ModelUpdatedCallback = (ShortcutMappingModelUpdateProperty) -> Void
+  var modelUpdatedCallbacks = [ModelUpdatedCallback]()
+  func onModelUpdated(_ callback : @escaping ModelUpdatedCallback) {
+    self.modelUpdatedCallbacks.append(callback)
+  }
+  
+  func modelUpdated(_ property : ShortcutMappingModelUpdateProperty) {
+    for callback in modelUpdatedCallbacks {
+      callback(property)
+    }
+  }
 }

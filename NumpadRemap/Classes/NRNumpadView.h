@@ -8,12 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Butter/Butter.h>
-#import "NRNumpadViewModel.h"
+//#import "NRNumpadViewModel.h"
+//#import "ShortcutMappingModel.h
 
+@class NumpadViewModel;
 
 IB_DESIGNABLE
 @interface NRNumpadView : BTRView
 
-@property (nonatomic, strong) IBOutlet NRNumpadViewModel *viewModel;
+@property (nonatomic, strong) IBOutlet NumpadViewModel *viewModel;
 
 @end

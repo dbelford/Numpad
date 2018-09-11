@@ -9,28 +9,36 @@
 import Foundation
 
 class ExpandedNumpadView : BTRView {
-  @IBOutlet var viewModel : NRNumpadViewModel? {
+  @IBOutlet var viewModel : NumpadViewModel? {
     didSet {
       NSLog("Did set \(viewModel)")
-      vmObserver = viewModel?.observe(\NRNumpadViewModel.numpadKeys, options: [.new]) { [weak self] (view, change) in
-//        NSLog("The change: \(view) \(change)")
-        guard let strongSelf = self else { return }
-        strongSelf.updateKeys()
-      }
+      self.vmObservers = [
+        viewModel?.observe(\NumpadViewModel.numpadKeys, options: [.new]) { [weak self] (viewModel, change) in
+  //        NSLog("The change: \(view) \(change)")
+          guard let strongSelf = self else { return }
+          strongSelf.updateKeys()
+        },
+//        viewModel?.observe(\NumpadViewModel.keyboardType, options: [.new]) {  [weak self] (viewModel, change) in
+//          if let keyboardType = self?.viewModel?.keyboardType, let keyboard = KeyboardTypes(rawValue: keyboardType) {
+//            self?.keyboard = keyboard
+//          }
+//        }
+      ]
     }
     
   }
   var keyViewsGrid: [[NRNumpadKeyView]]?
   var keyViews : [NRNumpadKeyView]?
   var keyViewsSignal : RACSignal!
-  var vmObserver : NSKeyValueObservation!
+  var vmObservers = [NSKeyValueObservation?]()
   var containerView : BTRView!
+  var keyboard = KeyboardTypes.numpad
   
   override var acceptsFirstResponder: Bool {
     get { return true }
   }
 
-  let keyboard = Keyboards.numpad
+  
 //  let keyOrder = KeyOrders.Numbers
 //  let keyProperties = KeyboardProperties.Numbers
   
@@ -47,7 +55,14 @@ class ExpandedNumpadView : BTRView {
   //       Updates caused by app recency order changes, apps
   //       closing, apps opening, keyboard presentation style changing
   
+  func updateKeyboardType() {
+    if let keyboardType = self.viewModel?.keyboardType, let keyboard = KeyboardTypes(rawValue: keyboardType) {
+      self.keyboard = keyboard
+    }
+  }
+  
   func updateKeys() {
+    self.updateKeyboardType()
     var views : [NRNumpadKeyView] = []
     var gridViews : [[NRNumpadKeyView]] = []
     guard let keyViewModels = self.viewModel?.numpadKeys else { return }
@@ -151,7 +166,8 @@ class ExpandedNumpadView : BTRView {
   
   func pressedAppButton(_ sender : NRNumpadKeyView) {
     if let identifier = sender.identifier, let code = UInt(identifier) {
-      self.viewModel?.pressedKey(forKeycode: code)
+      self.viewModel?.pressedKeyForKeycode(keycode: code)
+//      self.viewModel?.pressedKey(forKeycode: code)
     }
   }
 

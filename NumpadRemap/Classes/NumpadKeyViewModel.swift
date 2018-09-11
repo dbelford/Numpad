@@ -8,11 +8,12 @@
 
 import Foundation
 
+@objc
 class NumpadKeyViewModel : NSObject {
   let shortcut : NRShortcut!
   let identifier : String! // key.StringValue for ordering keys
   
-  var hideNumpadNumbers : Bool = false
+  @objc dynamic var hideNumpadNumbers : Bool = false
   var keyName : String {                      get { return self.shortcut.keyCodeString} }
   var applicationBundleIdentifier : String {  get { return shortcut.applicationBundleIdentifier ?? ""} }
   var displayName : String {                  get { return self.shortcut.keyCodeString } }

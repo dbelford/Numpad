@@ -12,38 +12,55 @@ protocol NumpadViewModelActions {
   func pressedKeyForKeycode(keycode : UInt)
 }
 
+@objc
 class NumpadViewModel : NSObject, NumpadViewModelActions {
 
   
-  @IBOutlet var model : ShortcutMappingModel?
-  var numpadKeys : [NumpadKeyViewModel] = []
-  var keyImages : [NSImage] = []
-  var displayNames : [String] = []
-  var keyNames : [String] = []
+  @IBOutlet var model : ShortcutMappingModel? {
+    didSet {
+      self.setupModel()
+    }
+  }
+  @objc dynamic var numpadKeys : [NumpadKeyViewModel] = []
+  @objc dynamic var keyboardType : Int
+//  var keyImages : [NSImage] = []
+//  var displayNames : [String] = []
+//  var keyNames : [String] = []
   
   //keycodeActivatedSignal
-  var hideNumpadNumbers : Bool = false
+  @objc dynamic var hideNumpadNumbers : Bool = false
   var observers = [NSKeyValueObservation]()
+  
+  override init() {
+    self.keyboardType = 0
+    super.init()
+
+  }
 
   init(model : ShortcutMappingModel) {
     self.model = model
+    self.keyboardType = 0
     super.init()
-    observers.append(self.observe(\NumpadViewModel.model?.shortcuts) { [weak self] (model, changes) in
-      self?.numpadKeys = self?.model?.shortcuts.map({ (shortcut) -> NumpadKeyViewModel in
-        return NumpadKeyViewModel(shortcut: shortcut, identifier: shortcut.keyCodeString)
-      }) ?? []
-      self?.updateFromModel()
-    })
-    observers.append(self.observe(\NumpadViewModel.model) { [weak self] (model, changes) in
-      self?.updateFromModel()
-    })
-    observers.append(self.observe(\NumpadViewModel.model?.hideNumpadNumbers) { [weak self] (model, changes) in
+    self.setupModel()
+  }
+  
+  func setupModel() {
+    self.model?.onModelUpdated({ [weak self] (property) in
+      if case .keyboardType = property {
+        self?.keyboardType = self?.model?.keyboardType.rawValue ?? 0
+      }
+      if case .shortcuts = property {
+        self?.numpadKeys = self?.model?.shortcuts.map({ (shortcut) -> NumpadKeyViewModel in
+          return NumpadKeyViewModel(shortcut: shortcut, identifier: shortcut.keyCodeString)
+        }) ?? []
+      }
       self?.updateFromModel()
     })
   }
 
   func updateFromModel() {
     self.hideNumpadNumbers = self.model?.hideNumpadNumbers ?? true
+    self.keyboardType = self.model?.keyboardType.rawValue ?? 0
     for vm in self.numpadKeys {
       vm.hideNumpadNumbers = self.hideNumpadNumbers
     }

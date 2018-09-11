@@ -39,6 +39,7 @@ extern NSString *const kAppActivationShortcutKey;
 @property (assign) BOOL hideOnDeactivate;
 @property (assign) NRNumpadKeyHeight keyHeight;
 @property (assign) NRNumpadKeyOrdering keyOrdering;
+@property (assign) NRKeyboardType keyboardType;
 
 @property (assign) NSString *firstVersionInstalled;
 @property (assign) NSString *latestVersionInstalled;
