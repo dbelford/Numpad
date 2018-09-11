@@ -1,5 +1,5 @@
 
-#Launchpad Remap
+# Launchpad Remap
 
 Shortcuts for apps, search, pages. just two keystrokes away.
 
@@ -10,7 +10,7 @@ The idea is to make it one keystroke to launch the app and one or two keystrokes
 of the app to where you want to be. Hopefully you'd be able to get to an app, to a website, or to
 a search result in a learnable way.
 
-#Interaction
+# Interaction
 
 1. Activate
 2. Page of Numpad Apps
@@ -21,7 +21,7 @@ a search result in a learnable way.
   a. Minimal number of letter to disambiguate
 
 
-#Code Examples
+# Code Examples
 
 
 AXUIElement manipulation
