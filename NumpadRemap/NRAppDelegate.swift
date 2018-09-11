@@ -16,8 +16,6 @@ import Cocoa
   @IBOutlet var windowController: NSWindowController!
   
   public lazy var preferencesWindowController : MASPreferencesWindowController = {
-    //        guard let prefs = NRGeneralPreferencesViewController() else { throw }
-    
     let vcs = [NRGeneralPreferencesViewController()!]
     let wc = NRPreferencesWindowController(viewControllers: vcs, title: "Preferences")
     
@@ -28,31 +26,12 @@ import Cocoa
   // MARK: -
   
   func applicationDidFinishLaunching(_ notification: Notification) {
-//    if #available(OSX 10.10, *) {
-//      self.window.titlebarAppearsTransparent = true
-//      self.window.titleVisibility = .hidden
-//    } else {
-//      // Fallback on earlier versions
-//    }
-//
-//    self.window.styleMask.update(with: .resizable)
-//    self.window.backgroundColor = NSColor.white
-//    self.window.isMovableByWindowBackground = true
-//    self.window.nextResponder = self
-//    self.window.collectionBehavior = [.moveToActiveSpace, .transient]
     NSApplication.shared().presentationOptions = .disableHideApplication
     
     let content = MainViewController(preferences: NRPreferences.sharedInstance())
     if let content = content {
-//      NSApplication.shared().mainWindow?.windowController?.contentViewController = content
-//      NSApplication.shared().mainWindow?.windowController?.
-//      self.windowController.contentViewController = content
-//      self.windowController.contentViewController.
       self.window?.contentViewController = content
-//      NSApplication.shared().windows.first?.windowController?.contentViewController = content
-//      print()
     }
-    print(self.keypadWindow)
 //    self.window.initialFirstResponder = self.numpadSettingsController.view
 //    self.window.delegate = self
 //

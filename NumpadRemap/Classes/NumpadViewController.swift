@@ -15,17 +15,12 @@ class NumpadViewController : NSViewController {
     didSet {
       if let numpadView = numpadView {
         self.view = numpadView
-        //        self.view.isHidden = true
       }
     }
   }
   override var acceptsFirstResponder: Bool { return true }
   var monitor : DABActiveApplicationsMonitor?;
   var appList : [URL]?;
-  
-  //  required init?(coder: NSCoder) {
-  //    return super.init(coder: coder)
-  //  }
   
   // MARK: - Responding to Key Presses
   
@@ -36,13 +31,6 @@ class NumpadViewController : NSViewController {
   }
   
   func handleNumpadKeypress(with keyCode : UInt16 ) -> Bool {
-//    let order = NRPreferences.sharedInstance().keyOrdering
-//    let appIndex = NRNumpadModel.index(forKeyCode: keyCode, using: order)
-//    guard appIndex != NSNotFound  else {
-//      return false
-//    }
-//    self.numpadModel?.launchApplication(at: appIndex)
-//    return self.numpadModel?.launchApplication(forKeycode: UInt(keyCode)) ?? false
     return self.numpadModel?.launchApplication(keyCode: UInt(keyCode)) ?? false
   }
   
@@ -64,8 +52,13 @@ class NumpadViewController : NSViewController {
     super.init(coder: coder)
   }
   
+  // TODO: TODO - Figureout how much of this to save
+  
   override func awakeFromNib() {
     super.awakeFromNib()
+    
+    
+    
     //    self.configurePreferencePane()
     //    self.configureConstraints()
     //    self.prefView.removeFromSuperview()
@@ -94,7 +87,6 @@ class NumpadViewController : NSViewController {
   }
   
   override func loadView() {
-//    super.loadView()
     if self.nibName == nil {
       
     }
@@ -104,14 +96,9 @@ class NumpadViewController : NSViewController {
       guard let keyCodeN = keyCode as? NSNumber else { return }
       _ = self?.handleNumpadKeypress(with: keyCodeN.uint16Value)
     })
-    //    self.nextResponder = self.numpadView?.nextResponder // TODO: This necessary?
-    //    self.numpadView = NRNumpadView.init()
+    
     self.loadApplist()
   }
-  
-  //  override func viewDidLoad() {
-  //
-  //  }
   
   func loadApplist() {
     let urls = FileManager.default.urls(for: .applicationDirectory, in: .localDomainMask)

@@ -25,6 +25,11 @@ Data
 [5]:https://github.com/PureLayout/PureLayout#api-cheat-sheet
 [6]:https://github.com/robb/Cartography
 
+# Floating Panel 
+
+- Seems like best method on [StackOverflow](https://stackoverflow.com/questions/4484521)
+
+
 
 # Activity Log
 

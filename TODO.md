@@ -7,6 +7,7 @@ Todo
 - [ ] Program key via right click
 - [ ] Load key from key layout history
 - [ ] Preference to not hide app on deactivation
+- [ ] Don't steal focus on activation (see NOTES.md for solution)
 
 Letter Responder
 - [ ] Need first responder to accumulate key presses in text field
