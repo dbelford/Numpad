@@ -46,7 +46,7 @@ Todo [Performance]
 - [ ] Faster app loading (how to get app into responsive state faster?)
 
 Todo [Fastlane]
-- [ ] Run tests via fastlane
+- [ ] Run tests via [fastlane](https://docs.fastlane.tools/getting-started/ios/appstore-deployment/)
 - [ ] Build release via fastlane
 
 Todo [Bugs]
