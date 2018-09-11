@@ -11,10 +11,18 @@ import Foundation
 
 class Application: NSObject {
   
-  static let sharedInstance = Application()
-  
+  static let shared = Application()
   private override init() {
     super.init()
+  }
+  
+  func start() {
+    let content = MainViewController(preferences: NRPreferences.sharedInstance())
+    if let content = content, let delegate = NSApplication.shared().delegate as? NRAppDelegate {
+      delegate.window?.contentViewController = content
+      delegate.window?.initialFirstResponder = content.childViewControllers.first?.view
+      delegate.window?.makeFirstResponder(content.childViewControllers.first?.view)
+    }
   }
   
 }

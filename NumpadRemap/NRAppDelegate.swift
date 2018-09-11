@@ -28,10 +28,9 @@ import Cocoa
   func applicationDidFinishLaunching(_ notification: Notification) {
     NSApplication.shared().presentationOptions = .disableHideApplication
     
-    let content = MainViewController(preferences: NRPreferences.sharedInstance())
-    if let content = content {
-      self.window?.contentViewController = content
-    }
+//    NSApplication.shared().mainWindow = self.window
+//    self.window?.makeKeyAndOrderFront(self)
+    Application.shared.start()
 //    self.window.initialFirstResponder = self.numpadSettingsController.view
 //    self.window.delegate = self
 //
