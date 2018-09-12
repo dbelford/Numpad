@@ -49,13 +49,20 @@ class NumpadViewModel : NSObject, NumpadViewModelActions {
       if case .keyboardType = property {
         self?.keyboardType = self?.model?.keyboardType.rawValue ?? 0
       }
-      if case .shortcuts = property {
-        self?.numpadKeys = self?.model?.shortcuts.map({ (shortcut) -> NumpadKeyViewModel in
-          return NumpadKeyViewModel(shortcut: shortcut, identifier: shortcut.keyCodeString)
-        }) ?? []
-      }
+//      if case .shortcuts = property {
+//        self?.buildKeys()
+//      }
+      self?.buildKeys()
       self?.updateFromModel()
     })
+    self.buildKeys()
+    self.updateFromModel()
+  }
+  
+  func buildKeys() {
+    self.numpadKeys = self.model?.shortcuts.map({ (shortcut) -> NumpadKeyViewModel in
+      return NumpadKeyViewModel(shortcut: shortcut, identifier: shortcut.keyCodeString)
+    }) ?? []
   }
 
   func updateFromModel() {

@@ -45,6 +45,7 @@ enum ShortcutMappingModelUpdateProperty {
 @objc
 class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
   
+  var preferences : NRPreferences!
   var shortcuts : [NRShortcut]            { didSet { self.modelUpdated(.shortcuts) } }
   var hideNumpadNumbers : Bool = true     { didSet { self.modelUpdated(.hideNumpadNumbers) } }
   var lastProcessIdentifier : pid_t?      { didSet { self.modelUpdated(.lastProcessIdentifier) } }
@@ -58,13 +59,17 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
   override init() {
     self.shortcuts = []
     super.init()
+    self.preferences = NRPreferences.sharedInstance()
     self.setup()
+    print("Don't use this method, pass preferences to init.")
+    // TODO: TODO - Delete method
   }
   
   init(preferences : NRPreferences) {
     // TODO: Implemenation
     self.shortcuts = []
     super.init()
+    self.preferences = preferences
     self.setup()
   }
   
@@ -84,18 +89,21 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
   }
   
   func setup() {
-    self.monitor = DABActiveApplicationsMonitor()
-    self.hideNumpadNumbers = NRPreferences.sharedInstance().hideNumpadNumbers
+    
+    self.hideNumpadNumbers = self.preferences.hideNumpadNumbers
+    self.monitor = DABActiveApplicationsMonitor() // TODO: Move monitor into service, make sure to
+    self.monitor?.updateApplicationData()         // move this there too
+    self.updateShortcuts()
 //    self.bindingStyle = self.bindingFromKeyOrdering(keyOrdering: NRPreferences.sharedInstance().keyOrdering)
     
     self.observers = [
-      NRPreferences.sharedInstance().observe(\NRPreferences.keyboardType, options: NSKeyValueObservingOptions.new) { [weak self] (preferences, changes) in
-        if let keyboardType = self?.convertKeyboardType(NRPreferences.sharedInstance().keyboardType) {
+      self.preferences.observe(\NRPreferences.keyboardType, options: NSKeyValueObservingOptions.new) { [weak self] (preferences, changes) in
+        if let k = self?.preferences.keyboardType, let keyboardType = self?.convertKeyboardType(k) {
           self?.keyboardType = keyboardType
           self?.updateShortcuts()
         }
       },
-      NRPreferences.sharedInstance().observe(\NRPreferences.keyOrdering, options: NSKeyValueObservingOptions.new) { [weak self] (preferences, changes) in
+      self.preferences.observe(\NRPreferences.keyOrdering, options: NSKeyValueObservingOptions.new) { [weak self] (preferences, changes) in
         guard let strongSelf = self else { return }
 //        self?.bindingStyle = strongSelf.bindingFromKeyOrdering(keyOrdering: NRPreferences.sharedInstance().keyOrdering)
         self?.updateShortcuts()
@@ -103,10 +111,11 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
       self.monitor?.observe(\DABActiveApplicationsMonitor.orderedRunningApplications) { [weak self] (monitor, changes) in
         self?.updateShortcuts()
       },
-      NRPreferences.sharedInstance().observe(\NRPreferences.hideNumpadNumbers) { [weak self] (preferences, changes) in
+      self.preferences.observe(\NRPreferences.hideNumpadNumbers) { [weak self] (preferences, changes) in
         self?.hideNumpadNumbers = NRPreferences.sharedInstance().hideNumpadNumbers
       }
     ]
+
   }
   
   func updateShortcuts() {

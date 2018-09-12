@@ -11,18 +11,10 @@ import Foundation
 class ExpandedNumpadView : BTRView {
   @IBOutlet var viewModel : NumpadViewModel? {
     didSet {
-      NSLog("Did set \(viewModel)")
       self.vmObservers = [
-        viewModel?.observe(\NumpadViewModel.numpadKeys, options: [.new]) { [weak self] (viewModel, change) in
-  //        NSLog("The change: \(view) \(change)")
-          guard let strongSelf = self else { return }
-          strongSelf.updateKeys()
+        viewModel?.observe(\NumpadViewModel.numpadKeys, options: [.new, .initial]) { [weak self] (viewModel, change) in
+          self?.updateKeys()
         },
-//        viewModel?.observe(\NumpadViewModel.keyboardType, options: [.new]) {  [weak self] (viewModel, change) in
-//          if let keyboardType = self?.viewModel?.keyboardType, let keyboard = KeyboardTypes(rawValue: keyboardType) {
-//            self?.keyboard = keyboard
-//          }
-//        }
       ]
     }
     
