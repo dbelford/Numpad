@@ -89,7 +89,39 @@ class MainViewController : NSViewController {
   }
   
   func settingsMenu() {
-
+    let m = NSMenu(title: "Keyboard Select")
+//    let devices = getDevices
+    let deviceMenuItems = devices.map { device -> NSMenuItem in
+//      NSMenuItem(title: "Device A", action: <#T##Selector?#>, keyEquivalent: <#T##String#>)
+      
+    }
+    
+    for keyboard in deviceMenuItems {
+      m.addItem(keyboard)
+    }
+    
+    let c = NSMenu(title: "Config")
+    
+//    let configs = getConfigs
+    let configsMenuItems = configs.map { config -> NSMenuItem in
+      
+    }
+    
+    let configsForKeyboard = [
+      NSMenuItem(title: "Default", action: #selector(MainViewController.selectConfig), keyEquivalent: ""),
+      NSMenuItem(title: "New Keyboard Preferences", action: #selector(MainViewController.newKeyboardPreference), keyEquivalent: "")
+    ]
+    for config in configsForKeyboard {
+      c.addItem(config)
+    }
+  }
+  
+  func selectConfig() {
+    
+  }
+  
+  func newKeyboardPreference() {
+    
   }
   
   func setup(preferences: NRPreferences) {

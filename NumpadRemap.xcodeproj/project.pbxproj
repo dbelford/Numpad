@@ -292,19 +292,14 @@
 			path = NumpadTests;
 			sourceTree = "<group>";
 		};
-		A6360E55211E7866007F31A4 /* Views */ = {
+		A6360E55211E7866007F31A4 /* Keyboard Preference Screen */ = {
 			isa = PBXGroup;
 			children = (
-				A67A213021254AD700FCBF90 /* ExpandedNumpadView.swift */,
-				A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */,
-				A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */,
-				A6F6872818DA287A00E40A20 /* NRWindowContentView.h */,
-				A6F6872918DA287A00E40A20 /* NRWindowContentView.m */,
 				A6F6872F18E0A6F100E40A20 /* NRNumpadPreferencesView.m */,
 				A6F6872E18E0A6F100E40A20 /* NRNumpadPreferencesView.h */,
 				A6F6873118E0A72200E40A20 /* NRNumpadPreferencesView.xib */,
 			);
-			name = Views;
+			name = "Keyboard Preference Screen";
 			sourceTree = "<group>";
 		};
 		A6360E56211E7885007F31A4 /* Models */ = {
@@ -321,25 +316,27 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		A6360E57211E788E007F31A4 /* View Models */ = {
+		A6360E57211E788E007F31A4 /* Keyboard Screen */ = {
 			isa = PBXGroup;
 			children = (
-				A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */,
-				A684629D2140AA4D00C89350 /* NumpadViewModel.swift */,
-			);
-			name = "View Models";
-			sourceTree = "<group>";
-		};
-		A6360EC0211E9F88007F31A4 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				A6972B5F2124B0880008BC98 /* WindowController.swift */,
-				A63A1B8021234DC700712BEC /* MainViewController.swift */,
-				A63A1B842123F1F700712BEC /* MainViewController.storyboard */,
 				A63A1B7A212344FC00712BEC /* NumpadViewController.swift */,
 				A67A212B2124C2CA00FCBF90 /* NumpadViewController.storyboard */,
+				A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */,
+				A684629D2140AA4D00C89350 /* NumpadViewModel.swift */,
+				A67A213021254AD700FCBF90 /* ExpandedNumpadView.swift */,
+				A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */,
+				A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */,
 			);
-			name = Controllers;
+			name = "Keyboard Screen";
+			sourceTree = "<group>";
+		};
+		A6360EC0211E9F88007F31A4 /* Main Window Screen */ = {
+			isa = PBXGroup;
+			children = (
+				A63A1B8021234DC700712BEC /* MainViewController.swift */,
+				A63A1B842123F1F700712BEC /* MainViewController.storyboard */,
+			);
+			name = "Main Window Screen";
 			sourceTree = "<group>";
 		};
 		A65FBFE2214D95A9001385B0 /* NumpadTestsUnhosted */ = {
@@ -430,7 +427,6 @@
 				A6426D3B21366CA400D7709E /* ServiceLocator.swift */,
 				A6426D3921366B5C00D7709E /* ApplicationNavigator.swift */,
 				A67ABC1C18D284D100C1D502 /* MainMenu.xib */,
-				A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */,
 				A6C1E09E2145E4E3005FACB4 /* Main.storyboard */,
 				A67ABC1F18D284D100C1D502 /* Images.xcassets */,
 				A67ABC0E18D284D100C1D502 /* Supporting Files */,
@@ -471,17 +467,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A6C187A718D63A4300F7F9BF /* Classes */ = {
+		A6ACCBB921489726003BF154 /* Windows */ = {
 			isa = PBXGroup;
 			children = (
 				A6FDC2811B9962F1003FC592 /* NRWindow.h */,
 				A6FDC2821B9962F1003FC592 /* NRWindow.m */,
+				A6F6872818DA287A00E40A20 /* NRWindowContentView.h */,
+				A6F6872918DA287A00E40A20 /* NRWindowContentView.m */,
+				A6972B5F2124B0880008BC98 /* WindowController.swift */,
+			);
+			name = Windows;
+			sourceTree = "<group>";
+		};
+		A6C187A718D63A4300F7F9BF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A6ACCBB921489726003BF154 /* Windows */,
 				A67A212F2125482300FCBF90 /* Extensions */,
-				A6FDC28F1B9A4D20003FC592 /* Preferences */,
-				A6360E55211E7866007F31A4 /* Views */,
+				A6FDC28F1B9A4D20003FC592 /* Preferences Pane */,
 				A6360E56211E7885007F31A4 /* Models */,
-				A6360E57211E788E007F31A4 /* View Models */,
-				A6360EC0211E9F88007F31A4 /* Controllers */,
+				A6360E55211E7866007F31A4 /* Keyboard Preference Screen */,
+				A6360E57211E788E007F31A4 /* Keyboard Screen */,
+				A6360EC0211E9F88007F31A4 /* Main Window Screen */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -516,7 +523,7 @@
 			path = External/WAYWindow;
 			sourceTree = SOURCE_ROOT;
 		};
-		A6FDC28F1B9A4D20003FC592 /* Preferences */ = {
+		A6FDC28F1B9A4D20003FC592 /* Preferences Pane */ = {
 			isa = PBXGroup;
 			children = (
 				A639FDA01B9CBDF20026D03D /* NRPreferencesWindowController.h */,
@@ -529,7 +536,7 @@
 				A6FDC28C1B9A4D1A003FC592 /* NRPreferences.h */,
 				A6FDC28D1B9A4D1A003FC592 /* NRPreferences.m */,
 			);
-			name = Preferences;
+			name = "Preferences Pane";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -710,7 +717,6 @@
 			files = (
 				A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */,
 				A6C1E09F2145E561005FACB4 /* Main.storyboard in Resources */,
-				A6972B5E2124A9CF0008BC98 /* Main_old.storyboard in Resources */,
 				A63A1B852123F1F700712BEC /* MainViewController.storyboard in Resources */,
 				A67ABC2018D284D100C1D502 /* Images.xcassets in Resources */,
 				A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */,
