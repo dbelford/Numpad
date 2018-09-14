@@ -1,0 +1,68 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:mac)
+
+platform :mac do
+  desc "Generate new localized screenshots"
+  lane :screenshots do
+    capture_screenshots(workspace: "NumpadRemap.xcworkspace", scheme: "NumpadUITests")
+  end
+  lane :screenshots2 do |options|
+    snapshot(
+      project: 'NumpadRemap.xcodeproj',
+      scheme: 'NumpadUITests',
+      devices: ['Mac'],
+      output_simulator_logs: true,
+       clear_previous_screenshots: true
+    )
+  end
+
+  lane :build do
+    # Maybe use commit_version_bump and increment here instead of every build
+    # and also save that as a commit  
+    increment_build_number(xcodeproj: "NumpadRemap.xcodeproj")
+    # See https://docs.fastlane.tools/actions/build_app/
+    # for optional parameters like "clean" to clean before building,
+    # "configuration" which defaults to release
+    # "silent" which hides info and efaults to false
+    # 
+    build_app(scheme: "Numpad",
+              workspace: "NumpadRemap.xcworkspace",
+              output_directory: "./build",
+              silent: true)
+  end
+
+  lane :beta do
+    ensure_git_status_clean
+    increment_build_number(xcodeproj: "NumpadRemap.xcodeproj")
+    build_app(scheme: "Numpad",
+           workspace: "NumpadRemap.xcworkspace",
+         output_directory: "./build",
+              silent: true)
+    add_git_tag()
+  end
+
+  # see https://docs.fastlane.tools/actions/#building
+  # for additional abilities that may or may not work
+
+  lane :tests do
+    run_tests(workspace: "NumpadRemap.xcworkspace",
+#              devices: ["iPhone 6s", "iPad Air"],
+              scheme: "NumpadTests")
+  end
+
+
+end

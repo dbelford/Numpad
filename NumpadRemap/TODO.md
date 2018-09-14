@@ -39,16 +39,19 @@ Todo [About]
 Todo [Refactor]
 - [ ] Use NSButton to draw icons (NSButton & NSButtonCell.imageScaling)
 
+Todo [Fastlane]
+- Lots of difficulty and little documentation, use xcode's built in tools
+- [ ] Screenshot via fastlane
+  - [ ] Get this [utility](https://docs.fastlane.tools/actions/capture_ios_screenshots/) working first
+- [ ] Run tests via [fastlane](https://docs.fastlane.tools/getting-started/ios/appstore-deployment/)
+- [x] Build release via fastlane
+
 Todo [Preferences]
 
 Todo [Performance]
 - [ ] What's app doing when in background, is it still updating views?
 - [ ] Faster app window switching (how does apple+tab switch so fast?)
 - [ ] Faster app loading (how to get app into responsive state faster?)
-
-Todo [Fastlane]
-- [ ] Run tests via [fastlane](https://docs.fastlane.tools/getting-started/ios/appstore-deployment/)
-- [ ] Build release via fastlane
 
 Todo [Bugs]
 - [ ] First launch doesn't show app icons
@@ -60,3 +63,9 @@ Todo [Bugs]
 Todo [Release]
 - [ ] Make sure licenses are correct and included
 - [ ] (https://www.bignerdranch.com/blog/using-cocoapods-without-going-court/)
+
+
+## Dead Ends
+
+
+
