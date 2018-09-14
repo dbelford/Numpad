@@ -51,6 +51,8 @@
 		A6A92CFD1B82FE9400F606A4 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6C1E09F2145E561005FACB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6C1E09E2145E4E3005FACB4 /* Main.storyboard */; };
 		A6C5B21D214B252500472F87 /* NumpadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5B21C214B252500472F87 /* NumpadUITests.swift */; };
+		A6C5B22A214B7FC300472F87 /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5B229214B7FC300472F87 /* DeviceList.swift */; };
+		A6C5B22B214B7FC300472F87 /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5B229214B7FC300472F87 /* DeviceList.swift */; };
 		A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */; };
 		A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */; };
 		A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872918DA287A00E40A20 /* NRWindowContentView.m */; };
@@ -171,6 +173,7 @@
 		A6C5B21C214B252500472F87 /* NumpadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadUITests.swift; sourceTree = "<group>"; };
 		A6C5B21E214B252500472F87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6C5B224214B352800472F87 /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = TODO.md; path = NumpadRemap/TODO.md; sourceTree = SOURCE_ROOT; };
+		A6C5B229214B7FC300472F87 /* DeviceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceList.swift; path = Classes/DeviceList.swift; sourceTree = "<group>"; };
 		A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyView.h; path = Classes/NRNumpadKeyView.h; sourceTree = "<group>"; };
 		A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyView.m; path = Classes/NRNumpadKeyView.m; sourceTree = "<group>"; };
 		A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftFourTwoExtensions.swift; path = Classes/SwiftFourTwoExtensions.swift; sourceTree = "<group>"; };
@@ -282,6 +285,7 @@
 			children = (
 				A67A21342128D8CF00FCBF90 /* Keyboard.swift */,
 				A6208F112137347F00AE2535 /* KeyboardConstants.swift */,
+				A6C5B229214B7FC300472F87 /* DeviceList.swift */,
 				A65B02F92139AF09006D3188 /* ShortcutMappingModel.swift */,
 				A65B02FB2139B376006D3188 /* NRShortcut.swift */,
 			);
@@ -753,6 +757,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6C5B22B214B7FC300472F87 /* DeviceList.swift in Sources */,
 				A65B02FF2139C61A006D3188 /* NumpadTests.m in Sources */,
 				A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */,
 			);
@@ -777,6 +782,7 @@
 				A65B02FA2139AF09006D3188 /* ShortcutMappingModel.swift in Sources */,
 				A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */,
 				A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */,
+				A6C5B22A214B7FC300472F87 /* DeviceList.swift in Sources */,
 				A6972B602124B0880008BC98 /* WindowController.swift in Sources */,
 				A6360E54211E3594007F31A4 /* NRAppDelegate.swift in Sources */,
 				A6FDC2921B9A558B003FC592 /* NRPreferencesViewController.m in Sources */,
