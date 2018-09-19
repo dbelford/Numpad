@@ -29,7 +29,7 @@ class NumpadTests: XCTestCase {
     
     dump(apps);
   }
-  
+
   func testShortcut() {
 //    init(keyCode : UInt, modifier: NSEventModifierFlags)
     
