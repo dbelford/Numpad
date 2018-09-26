@@ -22,9 +22,9 @@ class NumpadTestsUnhosted: XCTestCase {
   
   
   func testDeviceFetch() {
-    let d = DevicesList()
+    let d = DeviceList()
     print("\(d.devices as AnyObject)")
-    print("\(d.deviceList as AnyObject)")
+//    print("\(d.deviceList as AnyObject)")
 //    dump(d.deviceList)
   }
   

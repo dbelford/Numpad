@@ -121,7 +121,7 @@ struct HidDevice {
   var deviceUsagePairs : [[String : Int]]?
   var primaryUsage : Int?
   var primaryUsagePage : Int?
-  var uniqueID : Int?
+  var uniqueID : UInt
 //  var maxInputReportSize : Int
 //  var maxOutputReportSize : Int
 //  var maxFeatureReportSize : Int
@@ -164,6 +164,8 @@ struct HidDevice {
 //    case uniqueID  = Int
 //  }
   
+  
+  
   init(device : IOHIDDevice) {
     self.transport      = IOHIDDeviceGetProperty(device, kIOHIDTransportKey as CFString) as? String
     self.vendorID       = IOHIDDeviceGetProperty(device, kIOHIDVendorIDKey as CFString) as? Int
@@ -178,7 +180,7 @@ struct HidDevice {
     self.deviceUsagePairs = IOHIDDeviceGetProperty(device, kIOHIDVendorIDKey as CFString) as? [[String : Int]]
     self.primaryUsage   = IOHIDDeviceGetProperty(device, kIOHIDPrimaryUsageKey as CFString) as? Int
     self.primaryUsagePage = IOHIDDeviceGetProperty(device, kIOHIDPrimaryUsagePageKey as CFString) as? Int
-    self.uniqueID       = IOHIDDeviceGetProperty(device, kIOHIDUniqueIDKey as CFString) as? Int
+    self.uniqueID       = IOHIDDeviceGetProperty(device, kIOHIDUniqueIDKey as CFString) as! UInt
 
 //    deviceProperties.forEach { (property) in
 //      let propertyVal = IOHIDDeviceGetProperty(device, property as CFString)
@@ -291,20 +293,33 @@ enum CFValue {
 
 //public func CFDictionaryStrings(_ value: CGPDFDictionaryRef) -> [String: CFDictionary]
 
-class DevicesList {
+protocol DeviceListDelegate {
+  func devicesChanged()
+  func deviceMatches(devices: DeviceList)
+  func deviceRemoval(devices: DeviceList)
+  func deviceValueChanged(devices: DeviceList)
+}
+
+class DeviceList {
   var manager : IOHIDManager?
-  var deviceList : [[String : String]]
-  var devices : [HidDevice]
+//  var deviceList : [[String : String]]
+//  var devices : [HidDevice]
+  var devices : [UInt : HidDevice]
+  var delegate : DeviceListDelegate?
 
   init() {
-    deviceList = []
-    devices = []
+//    deviceList = []
+//    devices = []
+    devices = [:]
     self.start()
   }
   
   func start() {
-    let manager = IOHIDManagerCreate(kCFAllocatorDefault, IOOptionBits(kIOHIDOptionsTypeNone))
-    
+    self.manager = IOHIDManagerCreate(kCFAllocatorDefault, IOOptionBits(kIOHIDOptionsTypeNone))
+    guard let manager = self.manager else {
+      print("Failed to start device manager")
+      return
+    }
     //IOHIDManagerSetDeviceMatching(manager, nil)
     let d : CFDictionary = [kIOHIDDeviceUsagePageKey: kHIDPage_GenericDesktop, kIOHIDDeviceUsageKey: kHIDUsage_GD_Keyboard] as CFDictionary
     let k : CFDictionary = [kIOHIDDeviceUsagePageKey: kHIDPage_KeyboardOrKeypad, kIOHIDDeviceUsageKey: kHIDUsage_GD_Keyboard] as CFDictionary
@@ -314,8 +329,8 @@ class DevicesList {
     let devices = IOHIDManagerCopyDevices(manager)
     if let devices = devices as? Set<IOHIDDevice> {
       for device in devices {
-        self.devices.append(self.getDevice(device: device))
-        deviceList.append(getProperties(device: device))
+        let d = self.getDevice(device: device)
+        self.devices[d.uniqueID] = d
       }
     }
     
@@ -323,32 +338,36 @@ class DevicesList {
     
     IOHIDManagerRegisterInputValueCallback(manager, { (context, result, sender, device) in
       if let context = context {
-        let list = Unmanaged<DevicesList>.fromOpaque(context).takeRetainedValue()
-        print("Pointer matched in inputvalue callback \(list)")
+        let weakSelf = Unmanaged<DeviceList>.fromOpaque(context).takeUnretainedValue()
+        weakSelf.delegate?.deviceValueChanged(devices: weakSelf)
       }
-    }, Unmanaged<DevicesList>.passUnretained(self).toOpaque())
+    }, Unmanaged<DeviceList>.passUnretained(self).toOpaque())
     IOHIDManagerRegisterDeviceRemovalCallback(manager, { (context, result, sender, device) in
       if let context = context {
-        let list = Unmanaged<DevicesList>.fromOpaque(context).takeRetainedValue()
-        print("Pointer matched in removal callback \(list)")
+        let weakSelf = Unmanaged<DeviceList>.fromOpaque(context).takeUnretainedValue()
+        let hid = HidDevice(device: device)
+        weakSelf.devices.removeValue(forKey: hid.uniqueID)
+        weakSelf.delegate?.deviceRemoval(devices: weakSelf)
       }
-    }, Unmanaged<DevicesList>.passUnretained(self).toOpaque())
+    }, Unmanaged<DeviceList>.passUnretained(self).toOpaque())
     IOHIDManagerRegisterDeviceMatchingCallback(manager, {(context : UnsafeMutableRawPointer?,
                                                            result : IOReturn,
                                                            sender : UnsafeMutableRawPointer?,
                                                            device : IOHIDDevice) in
       if let context = context {
-        let list = Unmanaged<DevicesList>.fromOpaque(context).takeRetainedValue()
-        print("Pointer matched in matchingcallback \(list)")
+        let weakSelf = Unmanaged<DeviceList>.fromOpaque(context).takeUnretainedValue()
+        let hid = HidDevice(device: device)
+        weakSelf.devices[hid.uniqueID] = hid
+        weakSelf.delegate?.deviceMatches(devices: weakSelf)
       }
       
       if result == kIOReturnSuccess {
-        dump(device)
-        print("Match Success")
+//        dump(device)
+//        print("Match Success")
       } else {
-        print("Match failed")
+//        print("Match failed")
       }
-    }, Unmanaged<DevicesList>.passUnretained(self).toOpaque())
+    }, Unmanaged<DeviceList>.passUnretained(self).toOpaque())
     IOHIDManagerScheduleWithRunLoop(manager, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue)
     IOHIDManagerOpen(manager, 0)
 
@@ -357,16 +376,6 @@ class DevicesList {
   deinit {
     if let manager = self.manager {
       IOHIDManagerClose(manager, 0)
-      
-    }
-  }
-  
-  func handleMatching(_ context : UnsafeMutableRawPointer?, _ result : IOReturn, _ sender : UnsafeMutableRawPointer?, _ device : IOHIDDevice) -> Swift.Void {
-    if result == kIOReturnSuccess {
-      dump(device)
-      print("Match Success")
-    } else {
-      print("Match failed")
     }
   }
   

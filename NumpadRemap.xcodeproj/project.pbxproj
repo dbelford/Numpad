@@ -48,6 +48,7 @@
 		A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */; };
 		A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */; };
 		A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629D2140AA4D00C89350 /* NumpadViewModel.swift */; };
+		A694EC58215AE9D40068EA3D /* DeviceListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC57215AE9D40068EA3D /* DeviceListTest.swift */; };
 		A6972B5E2124A9CF0008BC98 /* Main_old.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */; };
 		A6972B602124B0880008BC98 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6972B5F2124B0880008BC98 /* WindowController.swift */; };
 		A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; };
@@ -169,6 +170,7 @@
 		A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NumpadRemapTests.m; sourceTree = "<group>"; };
 		A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadKeyViewModel.swift; path = Classes/NumpadKeyViewModel.swift; sourceTree = "<group>"; };
 		A684629D2140AA4D00C89350 /* NumpadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadViewModel.swift; path = Classes/NumpadViewModel.swift; sourceTree = "<group>"; };
+		A694EC57215AE9D40068EA3D /* DeviceListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListTest.swift; sourceTree = "<group>"; };
 		A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_old.storyboard; sourceTree = "<group>"; };
 		A6972B5F2124B0880008BC98 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				A65FBFE3214D95A9001385B0 /* NumpadTestsUnhosted.swift */,
+				A694EC57215AE9D40068EA3D /* DeviceListTest.swift */,
 				A65FBFE5214D95A9001385B0 /* Info.plist */,
 			);
 			path = NumpadTestsUnhosted;
@@ -823,6 +826,7 @@
 				A65FBFEA214D9799001385B0 /* DeviceList.swift in Sources */,
 				A65FBFE9214D963E001385B0 /* NumpadTests.m in Sources */,
 				A65FBFE4214D95A9001385B0 /* NumpadTestsUnhosted.swift in Sources */,
+				A694EC58215AE9D40068EA3D /* DeviceListTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
