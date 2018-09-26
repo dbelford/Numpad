@@ -49,6 +49,15 @@
 		A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */; };
 		A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629D2140AA4D00C89350 /* NumpadViewModel.swift */; };
 		A694EC58215AE9D40068EA3D /* DeviceListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC57215AE9D40068EA3D /* DeviceListTest.swift */; };
+		A694EC5A215B134E0068EA3D /* IODeviceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC59215B134E0068EA3D /* IODeviceProperties.swift */; };
+		A694EC5B215B134E0068EA3D /* IODeviceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC59215B134E0068EA3D /* IODeviceProperties.swift */; };
+		A694EC5C215B134E0068EA3D /* IODeviceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC59215B134E0068EA3D /* IODeviceProperties.swift */; };
+		A694EC5E215B137B0068EA3D /* HidDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC5D215B137A0068EA3D /* HidDevice.swift */; };
+		A694EC5F215B137B0068EA3D /* HidDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC5D215B137A0068EA3D /* HidDevice.swift */; };
+		A694EC60215B137B0068EA3D /* HidDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC5D215B137A0068EA3D /* HidDevice.swift */; };
+		A694EC62215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
+		A694EC63215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
+		A694EC64215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
 		A6972B5E2124A9CF0008BC98 /* Main_old.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */; };
 		A6972B602124B0880008BC98 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6972B5F2124B0880008BC98 /* WindowController.swift */; };
 		A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; };
@@ -171,6 +180,9 @@
 		A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadKeyViewModel.swift; path = Classes/NumpadKeyViewModel.swift; sourceTree = "<group>"; };
 		A684629D2140AA4D00C89350 /* NumpadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumpadViewModel.swift; path = Classes/NumpadViewModel.swift; sourceTree = "<group>"; };
 		A694EC57215AE9D40068EA3D /* DeviceListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListTest.swift; sourceTree = "<group>"; };
+		A694EC59215B134E0068EA3D /* IODeviceProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IODeviceProperties.swift; path = Classes/IODeviceProperties.swift; sourceTree = "<group>"; };
+		A694EC5D215B137A0068EA3D /* HidDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HidDevice.swift; path = Classes/HidDevice.swift; sourceTree = "<group>"; };
+		A694EC61215B13990068EA3D /* CFValuePrinting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CFValuePrinting.swift; path = Classes/CFValuePrinting.swift; sourceTree = "<group>"; };
 		A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_old.storyboard; sourceTree = "<group>"; };
 		A6972B5F2124B0880008BC98 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -301,6 +313,8 @@
 				A67A21342128D8CF00FCBF90 /* Keyboard.swift */,
 				A6208F112137347F00AE2535 /* KeyboardConstants.swift */,
 				A6C5B229214B7FC300472F87 /* DeviceList.swift */,
+				A694EC5D215B137A0068EA3D /* HidDevice.swift */,
+				A694EC59215B134E0068EA3D /* IODeviceProperties.swift */,
 				A65B02F92139AF09006D3188 /* ShortcutMappingModel.swift */,
 				A65B02FB2139B376006D3188 /* NRShortcut.swift */,
 			);
@@ -346,6 +360,7 @@
 				A67A212D2125481700FCBF90 /* NSResponder+Log.swift */,
 				A67A21322125F78500FCBF90 /* RACTempBindings.swift */,
 				A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */,
+				A694EC61215B13990068EA3D /* CFValuePrinting.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -813,8 +828,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A694EC5B215B134E0068EA3D /* IODeviceProperties.swift in Sources */,
+				A694EC63215B13990068EA3D /* CFValuePrinting.swift in Sources */,
 				A6C5B22B214B7FC300472F87 /* DeviceList.swift in Sources */,
 				A65B02FF2139C61A006D3188 /* NumpadTests.m in Sources */,
+				A694EC5F215B137B0068EA3D /* HidDevice.swift in Sources */,
 				A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -823,10 +841,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A694EC64215B13990068EA3D /* CFValuePrinting.swift in Sources */,
 				A65FBFEA214D9799001385B0 /* DeviceList.swift in Sources */,
+				A694EC5C215B134E0068EA3D /* IODeviceProperties.swift in Sources */,
 				A65FBFE9214D963E001385B0 /* NumpadTests.m in Sources */,
 				A65FBFE4214D95A9001385B0 /* NumpadTestsUnhosted.swift in Sources */,
 				A694EC58215AE9D40068EA3D /* DeviceListTest.swift in Sources */,
+				A694EC60215B137B0068EA3D /* HidDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,8 +868,10 @@
 				A6426D3821366ADF00D7709E /* Application.swift in Sources */,
 				A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */,
 				A65B02FA2139AF09006D3188 /* ShortcutMappingModel.swift in Sources */,
+				A694EC62215B13990068EA3D /* CFValuePrinting.swift in Sources */,
 				A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */,
 				A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */,
+				A694EC5E215B137B0068EA3D /* HidDevice.swift in Sources */,
 				A6C5B22A214B7FC300472F87 /* DeviceList.swift in Sources */,
 				A6972B602124B0880008BC98 /* WindowController.swift in Sources */,
 				A6360E54211E3594007F31A4 /* NRAppDelegate.swift in Sources */,
@@ -857,6 +880,7 @@
 				A639FDA21B9CBDF20026D03D /* NRPreferencesWindowController.m in Sources */,
 				A67A213121254AD700FCBF90 /* ExpandedNumpadView.swift in Sources */,
 				A6FDC2831B9962F1003FC592 /* NRWindow.m in Sources */,
+				A694EC5A215B134E0068EA3D /* IODeviceProperties.swift in Sources */,
 				A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */,
 				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
 				A67ABC1418D284D100C1D502 /* main.m in Sources */,
