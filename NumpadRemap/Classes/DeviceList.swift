@@ -46,10 +46,62 @@ class DeviceList {
       }
     }
     
-    IOHIDManagerRegisterInputValueCallback(manager, { (context, result, sender, device) in
+    IOHIDManagerRegisterInputValueCallback(manager, { (context, result, sender, value) in
       if let context = context {
         let weakSelf = Unmanaged<DeviceList>.fromOpaque(context).takeUnretainedValue()
         weakSelf.delegate?.deviceValueChanged(devices: weakSelf)
+        
+        if result == kIOReturnSuccess {
+          //        dump(sender)
+          //        dump(value)
+          let el = IOHIDValueGetElement(value)
+          let usage = IOHIDElementGetUsage(el) //Scancode
+          guard (usage >= 4 && usage <= 231) else { return }
+          let usagePage = IOHIDElementGetUsagePage(el)
+          let intVal = IOHIDValueGetIntegerValue(value)
+          let timestamp = IOHIDValueGetTimeStamp(value)
+          //        let name = IOHIDElementGetName(el)
+          //        let _ = IOHIDELementget
+          let dev = IOHIDElementGetDevice(el)
+          let hid = HidDevice(device: dev)
+          let description = hid.duplicatesDeviceDisplayName
+          print(description)
+//          lastDevice = deviceDescription(dev)
+          
+          //        guard let locationP = IOHIDDeviceGetProperty(dev, kIOHIDLocationIDKey as CFString) else { return }
+          //        guard let location = locationP as? Int else { return }
+          //
+          //        let unit = IOHIDElementGetUnit(el)
+          //        if intVal == 0 {
+          ////            guard let device = deviceKeySets[location] else { return }
+          //            guard let keyupKey = deviceKeySets[location]?.removeValue(forKey: usage) else { return }
+          ////            let keyupKey = device.removeValue(forKey: usage)
+          //            depressedKeysByTimestamp[timestamp] = keyupKey
+          //        } else {
+          //            let description = deviceDescription(dev)
+          //            let s = Key(timeStamp: timestamp, HIDCode: usage, deviceLocation: 0, description: description as CFString)
+          //            if (deviceKeySets[location] == nil) {
+          //                deviceKeySets[location] = KeySet()
+          //            }
+          //            deviceKeySets[location]?[usage] = s
+          //        }
+          
+          //        CGEvent.getIntegerValueField(<#T##CGEvent#>)
+          //        UCKeyTranslate()
+          //        let _ = IOHIDValueGet
+          
+          
+          //        print(hidKeyForCode(Int(usage)) ?? "No key found", usagePage, intVal, timestamp, unit)
+          //        printAllProperties(element: el)
+          //        printAllProperties(device: dev)
+          
+          //        let el = IOHIDValueGetElement(value)
+          //        dump(el)
+          print("Value received")
+        } else {
+          print("Value failed")
+        }
+        
       }
     }, Unmanaged<DeviceList>.passUnretained(self).toOpaque())
     

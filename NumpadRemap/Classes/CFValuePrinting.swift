@@ -36,7 +36,7 @@ public func CFValueString(_ property: String, _ value: CFTypeRef) -> String? {
     return "\(n ? "true" : "false" )"
   //  case CFGetTypeID
   default:
-    //    let s = value as? Any
+    let s = value as? Any
     return "\(s)"
     //    return "Did not match CFTypeID"
   }
