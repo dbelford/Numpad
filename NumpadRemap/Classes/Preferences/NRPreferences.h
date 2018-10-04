@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, NRKeyboardType) {
   NRKeyboardTypeUnknown,
   NRKeyboardTypeKeypadNumbers,
   NRKeyboardTypeFullNumpad,
+  NRKeyboardTypeCompact,
   NRKeyboardType10Keyless,
   NRKeyboardTypeFullKeyboard
 };
@@ -43,6 +44,8 @@ extern NSString *const kAppActivationShortcutKey;
 
 @property (assign) NSString *firstVersionInstalled;
 @property (assign) NSString *latestVersionInstalled;
+
+@property (assign, nullable) NSString *presentedDevice;
 
 @property (assign) NSDictionary *appActivationKey;
 

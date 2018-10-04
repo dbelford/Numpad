@@ -73,21 +73,6 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
     self.setup()
   }
   
-  func convertKeyboardType(_ keyboardType : NRKeyboardType) -> KeyboardTypes {
-    switch keyboardType {
-    case .typeUnknown:
-      return .numpad
-    case .typeKeypadNumbers:
-      return .numbers
-    case .typeFullNumpad:
-      return .numpad
-    case .type10Keyless:
-      return .keyboardSm
-    case .typeFullKeyboard:
-      return .keyboardSm
-    }
-  }
-  
   func setup() {
     
     self.hideNumpadNumbers = self.preferences.hideNumpadNumbers
@@ -98,8 +83,8 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
     
     self.observers = [
       self.preferences.observe(\NRPreferences.keyboardType, options: NSKeyValueObservingOptions.new) { [weak self] (preferences, changes) in
-        if let k = self?.preferences.keyboardType, let keyboardType = self?.convertKeyboardType(k) {
-          self?.keyboardType = keyboardType
+        if let k = self?.preferences.keyboardType {
+          self?.keyboardType = KeyboardTypes(k)
           self?.updateShortcuts()
         }
       },

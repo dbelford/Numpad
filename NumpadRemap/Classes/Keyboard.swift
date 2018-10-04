@@ -42,6 +42,26 @@ enum AppBindingStyle : String, Codable {
   case Manual         = "Manual"      //Mapped by user or from a json
   case Frequency      = "Frequency"   //Based on observed statistics
   case Recency        = "Recency"     //App Switcher order
+  
+  // Type safe allValues till swift ~4.2 available
+  // From: https://stackoverflow.com/a/46853256
+  static var allValues: [AppBindingStyle] = {
+    var allValues: [AppBindingStyle] = []
+    switch (AppBindingStyle.Default) {
+    case .Default: allValues.append(.Default); fallthrough
+    case .Dock: allValues.append(.Dock); fallthrough
+    case .Manual: allValues.append(.Manual); fallthrough
+    case .Frequency: allValues.append(.Frequency); fallthrough
+    case .Recency: allValues.append(.Recency);
+    }
+    return allValues
+  }()
+  
+  static var allRawValues: [String] = {
+    return AppBindingStyle.allValues.map({ (type) -> String in
+      return type.rawValue
+    })
+  }()
 }
 
 // Class with String Memebers - Useable from objc

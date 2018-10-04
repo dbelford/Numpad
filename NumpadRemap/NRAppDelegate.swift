@@ -16,7 +16,8 @@ import Cocoa
   @IBOutlet var windowController: NSWindowController!
   
   public lazy var preferencesWindowController : MASPreferencesWindowController = {
-    let vcs = [NRGeneralPreferencesViewController()!]
+    let vcs = [NRGeneralPreferencesViewController()!,
+               DevicePreferencesViewController(deviceList: DeviceList())!]
     let wc = NRPreferencesWindowController(viewControllers: vcs, title: "Preferences")
     
     wc.window?.initialFirstResponder = wc.window?.contentView

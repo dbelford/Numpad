@@ -9,17 +9,54 @@
 import Foundation
 import IOKit.hid
 
-protocol DeviceListDelegate {
-  func devicesChanged()
-  func deviceMatches(devices: DeviceList)
-  func deviceRemoval(devices: DeviceList)
-  func deviceValueChanged(devices: DeviceList)
+protocol DeviceListDelegate: AnyObject {
+  
+}
+
+typealias DeviceMatchesCallback = () -> Void
+typealias DeviceRemovalCallback = () -> Void
+typealias DeviceValueCallback = () -> Void
+
+protocol DeviceListInterface {
+  func onDeviceMatches(_ callback: @escaping DeviceMatchesCallback)
+  func onDeviceRemoval(_ callback: @escaping DeviceRemovalCallback)
+  func onDeviceValue(_ callback: @escaping DeviceValueCallback)
+}
+
+extension DeviceListDelegate {
+  func devicesChanged() {}
+  func deviceMatches(devices: DeviceList)  {}
+  func deviceRemoval(devices: DeviceList)  {}
+  func deviceValueChanged(devices: DeviceList)  {}
+}
+
+
+typealias HidUUID = UInt
+
+public extension Notification.Name {
+  public struct DeviceList {
+    public static let Matching = Notification.Name("com.dbelford.notification.name.devicelist.matching")
+    public static let Removal = Notification.Name("com.dbelford.notification.name.devicelist.removal")
+    public static let Value = Notification.Name("com.dbelford.notification.name.devicelist.value")
+  }
+}
+
+extension Notification {
+  public struct Key {
+    public static let Data = "com.dbelford.notification.key.data"
+  }
+}
+
+struct DeviceListNotifications {
+  let Matching  = "DeviceListMatching"
+  let Removal   = "DeviceListRemoval"
+  let Value     = "DeviceListValue"
 }
 
 class DeviceList {
   var manager : IOHIDManager?
-  var devices : [UInt : HidDevice]
-  var delegate : DeviceListDelegate?
+  var devices : [HidUUID : HidDevice]
+  var delegates : [DeviceListDelegate] = []
 
   init() {
     devices = [:]
@@ -49,7 +86,10 @@ class DeviceList {
     IOHIDManagerRegisterInputValueCallback(manager, { (context, result, sender, value) in
       if let context = context {
         let weakSelf = Unmanaged<DeviceList>.fromOpaque(context).takeUnretainedValue()
-        weakSelf.delegate?.deviceValueChanged(devices: weakSelf)
+//        weakSelf.delegate?.deviceValueChanged(devices: weakSelf)
+//        weakSelf.invokeDeviceValueCallbacks()
+//        weakSelf.notifyValueChanged()
+        NotificationCenter.default.post(name: Notification.Name.DeviceList.Value, object: weakSelf, userInfo: [Notification.Key.Data: "keyvlaueGoesHere"])
         
         if result == kIOReturnSuccess {
           //        dump(sender)
@@ -110,7 +150,10 @@ class DeviceList {
         let weakSelf = Unmanaged<DeviceList>.fromOpaque(context).takeUnretainedValue()
         let hid = HidDevice(device: device)
         weakSelf.devices.removeValue(forKey: hid.uniqueID)
-        weakSelf.delegate?.deviceRemoval(devices: weakSelf)
+//        weakSelf.delegate?.deviceRemoval(devices: weakSelf)
+//        weakSelf.invokeDeviceRemovalCallbacks()
+//        weakSelf.notifyDeviceRemoval()
+        NotificationCenter.default.post(name: Notification.Name.DeviceList.Removal, object: weakSelf, userInfo: [Notification.Key.Data: "removedDeviceGoesHere"])
       }
     }, Unmanaged<DeviceList>.passUnretained(self).toOpaque())
     
@@ -122,7 +165,10 @@ class DeviceList {
         let weakSelf = Unmanaged<DeviceList>.fromOpaque(context).takeUnretainedValue()
         let hid = HidDevice(device: device)
         weakSelf.devices[hid.uniqueID] = hid
-        weakSelf.delegate?.deviceMatches(devices: weakSelf)
+//        weakSelf.delegate?.deviceMatches(devices: weakSelf)
+//        weakSelf.invokeDeviceMatchesCallbacks()
+//        weakSelf.notifyDeviceMatch()
+        NotificationCenter.default.post(name: Notification.Name.DeviceList.Matching, object: weakSelf, userInfo: [Notification.Key.Data: "matchingDeviceGoesHere"])
       }
       
       if result == kIOReturnSuccess { } else { } // Not sure what IOReturn values can happen here...
@@ -130,10 +176,37 @@ class DeviceList {
     IOHIDManagerScheduleWithRunLoop(manager, CFRunLoopGetMain(), CFRunLoopMode.defaultMode.rawValue)
     IOHIDManagerOpen(manager, 0)
   }
+
+  
+  func deviceForIdentifier(identifier: String) -> (HidUUID, HidDevice)? {
+    return self.devices.first { (uuid, device) -> Bool in
+      return device.deviceIdentifier == identifier
+    }
+  }
   
   deinit {
     if let manager = self.manager {
       IOHIDManagerClose(manager, 0)
     }
   }
+  
+  //MARK: Delegates
+  
+  func addDelegate(_ delegate : DeviceListDelegate) {
+    self.delegates.append(delegate)
+  }
+  
+  func removeDelegate(_ adel : DeviceListDelegate) {
+
+    let idx = self.delegates.index{ (del) -> Bool in
+      return adel === del
+    }
+    guard let index = idx else { return }
+    self.delegates.remove(at: index)
+  }
+  
+  func notifyDeviceMatch() { for delegate in self.delegates { delegate.deviceMatches(devices: self) }}
+  func notifyDeviceRemoval() { for delegate in self.delegates { delegate.deviceRemoval(devices: self) }}
+  func notifyValueChanged() { for delegate in self.delegates { delegate.deviceValueChanged(devices: self) }}
+
 }

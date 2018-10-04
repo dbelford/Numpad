@@ -22,7 +22,7 @@ class NumpadViewModel : NSObject, NumpadViewModelActions {
     }
   }
   @objc dynamic var numpadKeys : [NumpadKeyViewModel] = []
-  @objc dynamic var keyboardType : Int
+  @objc dynamic var keyboardType : String
 //  var keyImages : [NSImage] = []
 //  var displayNames : [String] = []
 //  var keyNames : [String] = []
@@ -32,14 +32,14 @@ class NumpadViewModel : NSObject, NumpadViewModelActions {
   var observers = [NSKeyValueObservation]()
   
   override init() {
-    self.keyboardType = 0
+    self.keyboardType = KeyboardTypes.numbers.rawValue//0
     super.init()
 
   }
 
   init(model : ShortcutMappingModel) {
     self.model = model
-    self.keyboardType = 0
+    self.keyboardType = KeyboardTypes.numbers.rawValue//0
     super.init()
     self.setupModel()
   }
@@ -47,7 +47,7 @@ class NumpadViewModel : NSObject, NumpadViewModelActions {
   func setupModel() {
     self.model?.onModelUpdated({ [weak self] (property) in
       if case .keyboardType = property {
-        self?.keyboardType = self?.model?.keyboardType.rawValue ?? 0
+        self?.keyboardType = self?.model?.keyboardType.rawValue ?? KeyboardTypes.numbers.rawValue
       }
 //      if case .shortcuts = property {
 //        self?.buildKeys()
@@ -67,7 +67,7 @@ class NumpadViewModel : NSObject, NumpadViewModelActions {
 
   func updateFromModel() {
     self.hideNumpadNumbers = self.model?.hideNumpadNumbers ?? true
-    self.keyboardType = self.model?.keyboardType.rawValue ?? 0
+    self.keyboardType = self.model?.keyboardType.rawValue ?? KeyboardTypes.numbers.rawValue
     for vm in self.numpadKeys {
       vm.hideNumpadNumbers = self.hideNumpadNumbers
     }

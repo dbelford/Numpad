@@ -10,6 +10,9 @@
 		A61ED1D521127EDF00DF502C /* ActiveAppsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61ED1D421127EDF00DF502C /* ActiveAppsTest.swift */; };
 		A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61ED1DC2112818F00DF502C /* NumpadTests.swift */; };
 		A6208F122137347F00AE2535 /* KeyboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6208F112137347F00AE2535 /* KeyboardConstants.swift */; };
+		A620FF95216422D800D7C604 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620FF94216422D800D7C604 /* NotificationToken.swift */; };
+		A620FF96216422D800D7C604 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620FF94216422D800D7C604 /* NotificationToken.swift */; };
+		A620FF97216422D800D7C604 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620FF94216422D800D7C604 /* NotificationToken.swift */; };
 		A6360E54211E3594007F31A4 /* NRAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBD820211D25C6003EBBDC /* NRAppDelegate.swift */; };
 		A636862A1B7DB08B00001A35 /* DABActiveApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63686271B7DB08B00001A35 /* DABActiveApplications.framework */; };
 		A636862B1B7DB08B00001A35 /* ObjectiveSugar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63686281B7DB08B00001A35 /* ObjectiveSugar.framework */; };
@@ -58,7 +61,11 @@
 		A694EC62215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
 		A694EC63215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
 		A694EC64215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
-		A6972B5E2124A9CF0008BC98 /* Main_old.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */; };
+		A696B2F5215D42D200BCAA16 /* DevicePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696B2F4215D42D200BCAA16 /* DevicePreferencesViewController.swift */; };
+		A696B2F7215D430D00BCAA16 /* DevicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A696B2F6215D430D00BCAA16 /* DevicePreferencesViewController.xib */; };
+		A696B2F9215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696B2F8215D4DA000BCAA16 /* HidDeviceObject.swift */; };
+		A696B2FA215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696B2F8215D4DA000BCAA16 /* HidDeviceObject.swift */; };
+		A696B2FB215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696B2F8215D4DA000BCAA16 /* HidDeviceObject.swift */; };
 		A6972B602124B0880008BC98 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6972B5F2124B0880008BC98 /* WindowController.swift */; };
 		A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; };
 		A6A92CFD1B82FE9400F606A4 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -137,6 +144,7 @@
 		A61ED1DC2112818F00DF502C /* NumpadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadTests.swift; sourceTree = "<group>"; };
 		A61ED1DE2112818F00DF502C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6208F112137347F00AE2535 /* KeyboardConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardConstants.swift; path = Classes/KeyboardConstants.swift; sourceTree = "<group>"; };
+		A620FF94216422D800D7C604 /* NotificationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationToken.swift; path = Classes/NotificationToken.swift; sourceTree = "<group>"; };
 		A63686271B7DB08B00001A35 /* DABActiveApplications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DABActiveApplications.framework; path = Carthage/Build/Mac/DABActiveApplications.framework; sourceTree = "<group>"; };
 		A63686281B7DB08B00001A35 /* ObjectiveSugar.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectiveSugar.framework; path = Carthage/Build/Mac/ObjectiveSugar.framework; sourceTree = "<group>"; };
 		A639FDA01B9CBDF20026D03D /* NRPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRPreferencesWindowController.h; path = Classes/Preferences/NRPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -183,7 +191,9 @@
 		A694EC59215B134E0068EA3D /* IODeviceProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IODeviceProperties.swift; path = Classes/IODeviceProperties.swift; sourceTree = "<group>"; };
 		A694EC5D215B137A0068EA3D /* HidDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HidDevice.swift; path = Classes/HidDevice.swift; sourceTree = "<group>"; };
 		A694EC61215B13990068EA3D /* CFValuePrinting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CFValuePrinting.swift; path = Classes/CFValuePrinting.swift; sourceTree = "<group>"; };
-		A6972B5D2124A9CE0008BC98 /* Main_old.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_old.storyboard; sourceTree = "<group>"; };
+		A696B2F4215D42D200BCAA16 /* DevicePreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DevicePreferencesViewController.swift; path = Classes/Preferences/DevicePreferencesViewController.swift; sourceTree = "<group>"; };
+		A696B2F6215D430D00BCAA16 /* DevicePreferencesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DevicePreferencesViewController.xib; path = Classes/Preferences/DevicePreferencesViewController.xib; sourceTree = "<group>"; };
+		A696B2F8215D4DA000BCAA16 /* HidDeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HidDeviceObject.swift; path = Classes/HidDeviceObject.swift; sourceTree = "<group>"; };
 		A6972B5F2124B0880008BC98 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		A6BBD81F211D25C6003EBBDC /* Numpad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Numpad-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -309,6 +319,7 @@
 				A6208F112137347F00AE2535 /* KeyboardConstants.swift */,
 				A6C5B229214B7FC300472F87 /* DeviceList.swift */,
 				A694EC5D215B137A0068EA3D /* HidDevice.swift */,
+				A696B2F8215D4DA000BCAA16 /* HidDeviceObject.swift */,
 				A694EC59215B134E0068EA3D /* IODeviceProperties.swift */,
 				A65B02F92139AF09006D3188 /* ShortcutMappingModel.swift */,
 				A65B02FB2139B376006D3188 /* NRShortcut.swift */,
@@ -357,6 +368,7 @@
 				A67A212D2125481700FCBF90 /* NSResponder+Log.swift */,
 				A67A21322125F78500FCBF90 /* RACTempBindings.swift */,
 				A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */,
+				A620FF94216422D800D7C604 /* NotificationToken.swift */,
 				A694EC61215B13990068EA3D /* CFValuePrinting.swift */,
 			);
 			name = Extensions;
@@ -533,6 +545,8 @@
 				A6FDC2931B9A55A6003FC592 /* NRGeneralPreferencesViewController.h */,
 				A6FDC2941B9A55A6003FC592 /* NRGeneralPreferencesViewController.m */,
 				A6FDC2951B9A55A6003FC592 /* NRGeneralPreferencesViewController.xib */,
+				A696B2F4215D42D200BCAA16 /* DevicePreferencesViewController.swift */,
+				A696B2F6215D430D00BCAA16 /* DevicePreferencesViewController.xib */,
 				A6FDC28C1B9A4D1A003FC592 /* NRPreferences.h */,
 				A6FDC28D1B9A4D1A003FC592 /* NRPreferences.m */,
 			);
@@ -718,6 +732,7 @@
 				A67ABC1218D284D100C1D502 /* InfoPlist.strings in Resources */,
 				A6C1E09F2145E561005FACB4 /* Main.storyboard in Resources */,
 				A63A1B852123F1F700712BEC /* MainViewController.storyboard in Resources */,
+				A696B2F7215D430D00BCAA16 /* DevicePreferencesViewController.xib in Resources */,
 				A67ABC2018D284D100C1D502 /* Images.xcassets in Resources */,
 				A67ABC1818D284D100C1D502 /* Credits.rtf in Resources */,
 				A6F6873218E0A72200E40A20 /* NRNumpadPreferencesView.xib in Resources */,
@@ -836,8 +851,10 @@
 			files = (
 				A694EC5B215B134E0068EA3D /* IODeviceProperties.swift in Sources */,
 				A694EC63215B13990068EA3D /* CFValuePrinting.swift in Sources */,
+				A620FF96216422D800D7C604 /* NotificationToken.swift in Sources */,
 				A6C5B22B214B7FC300472F87 /* DeviceList.swift in Sources */,
 				A65B02FF2139C61A006D3188 /* NumpadTests.m in Sources */,
+				A696B2FA215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */,
 				A694EC5F215B137B0068EA3D /* HidDevice.swift in Sources */,
 				A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */,
 			);
@@ -850,7 +867,9 @@
 				A694EC64215B13990068EA3D /* CFValuePrinting.swift in Sources */,
 				A65FBFEA214D9799001385B0 /* DeviceList.swift in Sources */,
 				A694EC5C215B134E0068EA3D /* IODeviceProperties.swift in Sources */,
+				A620FF97216422D800D7C604 /* NotificationToken.swift in Sources */,
 				A65FBFE9214D963E001385B0 /* NumpadTests.m in Sources */,
+				A696B2FB215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */,
 				A65FBFE4214D95A9001385B0 /* NumpadTestsUnhosted.swift in Sources */,
 				A694EC58215AE9D40068EA3D /* DeviceListTest.swift in Sources */,
 				A694EC60215B137B0068EA3D /* HidDevice.swift in Sources */,
@@ -874,6 +893,7 @@
 				A6426D3821366ADF00D7709E /* Application.swift in Sources */,
 				A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */,
 				A65B02FA2139AF09006D3188 /* ShortcutMappingModel.swift in Sources */,
+				A696B2F5215D42D200BCAA16 /* DevicePreferencesViewController.swift in Sources */,
 				A694EC62215B13990068EA3D /* CFValuePrinting.swift in Sources */,
 				A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */,
 				A6F6873018E0A6F100E40A20 /* NRNumpadPreferencesView.m in Sources */,
@@ -890,8 +910,10 @@
 				A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */,
 				A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */,
 				A67ABC1418D284D100C1D502 /* main.m in Sources */,
+				A620FF95216422D800D7C604 /* NotificationToken.swift in Sources */,
 				A67A21352128D8CF00FCBF90 /* Keyboard.swift in Sources */,
 				A6FDC2961B9A55A6003FC592 /* NRGeneralPreferencesViewController.m in Sources */,
+				A696B2F9215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */,
 				A63A1B8121234DC700712BEC /* MainViewController.swift in Sources */,
 				A65B02FC2139B376006D3188 /* NRShortcut.swift in Sources */,
 			);

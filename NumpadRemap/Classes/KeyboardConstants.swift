@@ -174,13 +174,13 @@ struct KeyboardLgKeyboardDetails : KeyboardDetailsType {
   var keyOrder = KeyOrders.KeyboardLg
 }
 
-enum KeyboardTypes : Int {
+enum KeyboardTypes : String, RawRepresentable {
   
-  case numpad//(NumpadKeyboardDetails)
-  case numbers//(NumbersKeyboardDetails)
-  case keyboardSm//(KeyboardSmKeyboardDetails)
-  case keyboardMd//(KeyboardMdKeyboardDetails)
-  case keyboardLg//(KeyboardLgKeyboardDetails)
+  case numpad = "Numpad"//(NumpadKeyboardDetails)
+  case numbers = "Numbers" //(NumbersKeyboardDetails)
+  case keyboardSm = "Small Keyboard"//(KeyboardSmKeyboardDetails)
+  case keyboardMd = "Medium Keyboard"//(KeyboardMdKeyboardDetails)
+  case keyboardLg = "Large Keyboard" //(KeyboardLgKeyboardDetails)
   
   func data() -> KeyboardDetailsType {
     switch self {
@@ -196,4 +196,57 @@ enum KeyboardTypes : Int {
       return KeyboardLgKeyboardDetails()
     }
   }
+  
+  init(_ keyboardType : NRKeyboardType) {
+    switch keyboardType {
+    case .typeUnknown:
+      self = .numpad
+    case .typeKeypadNumbers:
+      self = .numbers
+    case .typeFullNumpad:
+      self = .numpad
+    case .typeCompact:
+      self = .keyboardSm
+    case .type10Keyless:
+      self = .keyboardMd
+    case .typeFullKeyboard:
+      self = .keyboardLg
+    }
+  }
+  
+  static func toNRKeyboardType(_ type: KeyboardTypes) -> NRKeyboardType {
+    switch type {
+    case .numbers:
+      return .typeKeypadNumbers
+    case .numpad:
+      return .typeFullNumpad
+    case .keyboardSm:
+      return .typeCompact
+    case .keyboardMd:
+      return .type10Keyless
+    case .keyboardLg:
+      return .typeFullKeyboard
+    }
+  }
+  
+  
+  // Type safe allValues till swift ~4.2 available
+  // From: https://stackoverflow.com/a/46853256
+  static var allValues: [KeyboardTypes] = {
+    var allValues: [KeyboardTypes] = []
+    switch (KeyboardTypes.numbers) {
+    case .numbers: allValues.append(.numbers); fallthrough
+    case .numpad: allValues.append(.numpad); fallthrough
+    case .keyboardSm: allValues.append(.keyboardSm); fallthrough
+    case .keyboardMd: allValues.append(.keyboardMd); fallthrough
+    case .keyboardLg: allValues.append(.keyboardLg);
+    }
+    return allValues
+  }()
+  
+  static var allRawValues: [String] = {
+    return KeyboardTypes.allValues.map({ (type) -> String in
+      return type.rawValue
+    })
+  }()
 }

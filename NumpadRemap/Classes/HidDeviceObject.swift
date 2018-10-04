@@ -1,15 +1,15 @@
 //
-//  HidDevice.swift
+//  HidDeviceObject.swift
 //  NumpadRemap
 //
-//  Created by David Belford on 9/25/18.
+//  Created by David Belford on 9/27/18.
 //  Copyright © 2018 David Belford. All rights reserved.
 //
 
 import Foundation
-import IOKit.hid
 
-struct HidDevice {
+@objc
+class HidDeviceObject : NSObject {
   var transport : String?
   var vendorID : Int?
   var vendorIDSource : Int?
@@ -84,11 +84,11 @@ struct HidDevice {
     }
   }
   
-  // When updating this, update HidDeviceObject
+  // When updating this, update HidDevice
   var deviceIdentifier : String {
     get {
-//      let values = [self.vendorID, self.product, self.serialNumber].compactMap { String(describing: $0) }
-//      let s = self.serialNumber.map { (val) in String(val) }
+      //      let values = [self.vendorID, self.product, self.serialNumber].compactMap { String(describing: $0) }
+      //      let s = self.serialNumber.map { (val) in String(val) }
       let vendorID = self.vendorID.map { String($0) } ?? ""
       let productID = self.productID.map { String($0) } ?? ""
       let version = self.versionNumber.map { String($0) } ?? ""
@@ -121,6 +121,22 @@ struct HidDevice {
     //      //      guard let str = CFValueString(property, value) else { return nil }
     //      return (property, str ?? arr ?? "Unfound")
     //    }
-    
+  }
+  
+  init(deviceStruct d: HidDevice) {
+    self.transport = d.transport
+    self.vendorID = d.vendorID
+    self.vendorIDSource = d.vendorIDSource
+    self.productID = d.productID
+    self.versionNumber = d.versionNumber
+    self.manufacturer = d.manufacturer
+    self.product = d.product
+    self.serialNumber = d.serialNumber
+    self.countryCode = d.countryCode
+    self.locationID = d.locationID
+    self.deviceUsagePairs = d.deviceUsagePairs
+    self.primaryUsage = d.primaryUsage
+    self.primaryUsagePage = d.primaryUsagePage
+    self.uniqueID = d.uniqueID
   }
 }

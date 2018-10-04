@@ -8,7 +8,10 @@
 
 import Foundation
 
-class MainViewController : NSViewController {
+class MainViewController : NSViewController, DeviceListDelegate {
+  var preferences : NRPreferences?
+
+
   lazy var smallMenu = { () -> NSMenu in
     let m = NSMenu(title: "Action Menu")
     let items = [
@@ -88,25 +91,133 @@ class MainViewController : NSViewController {
     
   }
   
+  // MARK: DeviceList & Delegate Methods
+  var deviceListObservers : [NotificationToken]?
+  lazy var devices : DeviceList = {
+    let l = DeviceList()
+    l.addDelegate(self)
+    self.deviceListObservers = [
+      NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Matching, object: l, queue: nil, using: { [weak self, weak l](n) in
+        guard let weakSelf = self, let l = l else { return }
+        self?.deviceMatches(devices: l)
+      }),
+      NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Removal, object: l, queue: nil, using: { [weak self, weak l](n) in
+        guard let weakSelf = self, let l = l else { return }
+        self?.deviceRemoval(devices: l)
+      }),
+      NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Value, object: l, queue: nil, using: { [weak self, weak l](n) in
+        guard let weakSelf = self, let l = l else { return }
+        self?.deviceValueChanged(devices: l)
+      })
+    ]
+    return l
+  }()
+  
+  func deviceRemoval(devices: DeviceList) {
+    self.updateDevicesMenu()
+  }
+  
+  func deviceMatches(devices: DeviceList) {
+    self.updateDevicesMenu()
+  }
+  
+  
+  // MARK: Devices Menu
+  
+  var preferencesObserver : NSKeyValueObservation?
+  lazy var deviceMenu : NSMenu = {
+    return NSMenu(title: "Keyboard Select")
+  }()
+  lazy var deviceDropdownButton : NSPopUpButton = {
+    let dropdown = NSPopUpButton(frame: NSZeroRect, pullsDown: false)
+    dropdown.menu = self.deviceMenu
+//    dropdown.setButtonType(NSButtonType.pop)
+    dropdown.selectItem(at: 0)
+    dropdown.synchronizeTitleAndSelectedItem()
+    dropdown.isBordered = false
+    dropdown.target = self
+    dropdown.action = #selector(selectDevice(sender:))
+    dropdown.translatesAutoresizingMaskIntoConstraints = false
+    dropdown.sizeToFit()
+    return dropdown
+  }()
+  
+  func addDevicesMenu() {
+    self.updateDevicesMenu()
+    self.preferencesObserver = self.preferences?.observe(\NRPreferences.presentedDevice, changeHandler: { [weak self] (preferences, change) in
+      self?.updateDevicesMenu()
+    })
+    self.view.addSubview(self.deviceDropdownButton)
+    self.deviceDropdownButton.sizeToFit()
+    NSLayoutConstraint.activate([
+      self.deviceDropdownButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 7),
+      self.deviceDropdownButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 7),
+      //      dropdown.trailingAnchor.constraint(equalTo: <#T##NSLayoutAnchor<NSLayoutXAxisAnchor>#>, constant: <#T##CGFloat#>)
+      //      dropdown.widthAnchor.constraint(equalToConstant: 148),
+      self.deviceDropdownButton.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
+      self.deviceDropdownButton.heightAnchor.constraint(equalToConstant: 28)
+      ])
+  }
+  
+  
+  func updateDevicesMenu() {
+    self.deviceMenu.removeAllItems()
+    self.devices.devices.forEach { (key, value) in
+      let item = NSMenuItem(title: value.deviceDisplayName, action: nil, keyEquivalent: "")
+      item.identifier = value.deviceIdentifier
+      item.tag = Int(value.uniqueID) // FIXME: Probably don't do this... Maybe create menu from Represented Object
+      self.deviceMenu.addItem( item )
+    }
+    self.updatePresentedDevice()
+  }
+
+  func selectMenuItemForIdentifier(identifier: String) {
+    guard let (uuid, device) = self.devices.deviceForIdentifier(identifier: identifier) else {
+      return
+    }
+
+    let menuItemIndex = self.deviceDropdownButton.indexOfItem(withTag: Int(uuid))
+    let menuItem = self.deviceDropdownButton.item(at: menuItemIndex)
+    if menuItem != nil && menuItem?.identifier == device.deviceIdentifier {
+      debugPrint(menuItemIndex)
+      self.deviceDropdownButton.selectItem(at: menuItemIndex)
+      self.deviceDropdownButton.synchronizeTitleAndSelectedItem()
+      self.deviceDropdownButton.sizeToFit()
+    } else {
+      debugPrint("Need to fix code if reaching here.")
+    }
+  }
+  
+  func updatePresentedDevice() {
+    if let presentedDeviceIdentifier = self.preferences?.presentedDevice as String?  {
+      self.selectMenuItemForIdentifier(identifier: presentedDeviceIdentifier)
+    } else if let identifier = self.deviceDropdownButton.selectedItem?.identifier as NSString? {
+       self.preferences?.presentedDevice = identifier
+    } else {
+      debugPrint("No presented device set.")
+    }
+  }
+  
+  func selectDevice(sender: NSPopUpButton) {
+    
+    guard let identifier = sender.selectedItem?.identifier as NSString? else { return }
+    DispatchQueue.main.async() {
+      self.preferences?.presentedDevice = identifier
+    }
+  }
+  
+  //MARK: Settings Menu
+  
   func settingsMenu() {
-    let m = NSMenu(title: "Keyboard Select")
-//    let devices = getDevices
-    let deviceMenuItems = devices.map { device -> NSMenuItem in
-//      NSMenuItem(title: "Device A", action: <#T##Selector?#>, keyEquivalent: <#T##String#>)
-      
-    }
-    
-    for keyboard in deviceMenuItems {
-      m.addItem(keyboard)
-    }
-    
+
+
     let c = NSMenu(title: "Config")
-    
-//    let configs = getConfigs
-    let configsMenuItems = configs.map { config -> NSMenuItem in
-      
-    }
-    
+
+////    let configs = getConfigs
+//    let configsMenuItems = configs.map { config -> NSMenuItem in
+//
+//    }
+
     let configsForKeyboard = [
       NSMenuItem(title: "Default", action: #selector(MainViewController.selectConfig), keyEquivalent: ""),
       NSMenuItem(title: "New Keyboard Preferences", action: #selector(MainViewController.newKeyboardPreference), keyEquivalent: "")
@@ -125,6 +236,7 @@ class MainViewController : NSViewController {
   }
   
   func setup(preferences: NRPreferences) {
+    self.preferences = preferences
     let model = ShortcutMappingModel(preferences: preferences)
     let vm = NumpadViewModel(model: model)
     let numpadViewController = NumpadViewController(viewModel: vm, model: model)
@@ -141,6 +253,9 @@ class MainViewController : NSViewController {
           ])
       }
       self.addFontButton()
+      self.addDevicesMenu()
     }
   }
+  
+  
 }
