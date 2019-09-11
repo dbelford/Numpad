@@ -28,17 +28,17 @@ class MainViewController : NSViewController, DeviceListDelegate {
   
   @IBOutlet var actionMenu : NSMenu!
   @IBAction func tryTodos(_ sender: NSMenuItem) {
-    NSWorkspace.shared().openFile("/Users/dbelford/Projects/osx.launchpad-remap/TODO.txt", withApplication: "Sublime Text 3.app")
+    NSWorkspace.shared.openFile("/Users/dbelford/Projects/osx.launchpad-remap/TODO.txt", withApplication: "Sublime Text 3.app")
   }
   @IBAction func tryQuit(_ sender: NSMenuItem) {
-    NSRunningApplication.current().terminate()
+    NSRunningApplication.current.terminate()
   }
   @IBAction func tryAbout(_ sender: NSMenuItem) {}
   @IBAction func tryPreferences(_ sender: NSMenuItem) {
     self.doCommand(by: #selector(NRAppDelegate.showPreferencesWindow))
   }
   @IBAction func showMenu(_ sender : NSButton) {
-    if let menu = sender.menu, let event = NSApplication.shared().currentEvent {
+    if let menu = sender.menu, let event = NSApplication.shared.currentEvent {
       NSMenu.popUpContextMenu(menu, with: event, for: sender)
     }
     
@@ -73,7 +73,7 @@ class MainViewController : NSViewController, DeviceListDelegate {
     b.strokeWidth = 0
     b.edgeInsets = NIKEdgeInsets(top: 7, left: 7, bottom: 7, right: 7)
     b.edgeInsetTop = 7
-    b.bezelStyle = NSBezelStyle.regularSquare
+    b.bezelStyle = NSButton.BezelStyle.regularSquare
     b.isBordered = true
     b.translatesAutoresizingMaskIntoConstraints = false
     b.wantsLayer = true
@@ -164,7 +164,7 @@ class MainViewController : NSViewController, DeviceListDelegate {
     self.deviceMenu.removeAllItems()
     self.devices.devices.forEach { (key, value) in
       let item = NSMenuItem(title: value.deviceDisplayName, action: nil, keyEquivalent: "")
-      item.identifier = value.deviceIdentifier
+      item.identifier = NSUserInterfaceItemIdentifier(rawValue: value.deviceIdentifier)
       item.tag = Int(value.uniqueID) // FIXME: Probably don't do this... Maybe create menu from Represented Object
       self.deviceMenu.addItem( item )
     }
@@ -198,7 +198,7 @@ class MainViewController : NSViewController, DeviceListDelegate {
     }
   }
   
-  func selectDevice(sender: NSPopUpButton) {
+  @objc func selectDevice(sender: NSPopUpButton) {
     
     guard let identifier = sender.selectedItem?.identifier as NSString? else { return }
     DispatchQueue.main.async() {
@@ -227,11 +227,11 @@ class MainViewController : NSViewController, DeviceListDelegate {
     }
   }
   
-  func selectConfig() {
+  @objc func selectConfig() {
     
   }
   
-  func newKeyboardPreference() {
+  @objc func newKeyboardPreference() {
     
   }
   

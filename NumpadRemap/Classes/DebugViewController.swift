@@ -13,7 +13,7 @@ class DebugViewController : NSViewController {
   @IBOutlet var pauseButton : NSButton!
   
   
-  override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+  override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     
   }
@@ -32,7 +32,7 @@ class DebugViewController : NSViewController {
   
   @IBAction func pauseClicked(_ sender: Any?) {
     
-    NSApplication.shared().sendAction(#selector(NRAppDelegate.pause(_:)), to: nil, from: sender)
+    NSApplication.shared.sendAction(#selector(NRAppDelegate.pause(_:)), to: nil, from: sender)
     
   }
   

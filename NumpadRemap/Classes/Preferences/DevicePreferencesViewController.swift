@@ -62,10 +62,10 @@ class DevicePreferencesViewController : NRPreferencesViewController, MASPreferen
 //  var identifier: String? = "Devices"
   
   var toolbarItemLabel: String? = NSLocalizedString("Devices", comment: "Device pane title")
-  var toolbarItemImage: NSImage? = NSImage(named: NSImageNameListViewTemplate)
+  var toolbarItemImage: NSImage? = NSImage(named: NSImage.Name.listViewTemplate)
   
   convenience init?(deviceList: DeviceList) {
-    self.init(nibName: "DevicePreferencesViewController", bundle: nil)
+    self.init(nibName: NSNib.Name(rawValue: "DevicePreferencesViewController"), bundle: nil)
     self.preferencesObserver = self.preferences?.observe(\NRPreferences.presentedDevice, changeHandler: { [weak self] (preferences, change) in
       guard let identifier = self?.preferences.presentedDevice as String? else { return }
       let devices = self?.devices?.content as? [HidDeviceObject]
@@ -91,7 +91,7 @@ class DevicePreferencesViewController : NRPreferencesViewController, MASPreferen
 //    self.devices?.content = devices
   }
   
-  override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+  override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
     super.init(nibName: nibNameOrNil, bundle: nil)
   }
   
@@ -134,7 +134,7 @@ class DevicePreferencesViewController : NRPreferencesViewController, MASPreferen
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.identifier = "Devices"
+    self.identifier = NSUserInterfaceItemIdentifier(rawValue: "Devices")
     self.tableView?.delegate = self
   }
   

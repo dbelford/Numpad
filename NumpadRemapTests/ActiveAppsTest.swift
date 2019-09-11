@@ -26,7 +26,7 @@ class ActiveAppsTest: XCTestCase {
     }
     
     func testApps() {
-        let apps = NSWorkspace.shared().runningApplications
+        let apps = NSWorkspace.shared.runningApplications
 //        log(apps);
       
     }

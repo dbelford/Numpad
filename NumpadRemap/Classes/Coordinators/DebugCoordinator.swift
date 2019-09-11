@@ -17,7 +17,7 @@ class DebugCoordinator : Coordinator, WindowCoordinator {
   init (_ windowController: NSWindowController?) {
     
 //    self.windowController = WindowController()
-    self.windowController = NSStoryboard(name: "DebugStoryboard", bundle: nil).instantiateController(withIdentifier: "DebugWindowController") as! NSWindowController
+    self.windowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "DebugStoryboard"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "DebugWindowController")) as! NSWindowController
     self.windowController.window?.initialFirstResponder = self.windowController.window?.contentView
     NSLog("\(String(describing: self.windowController.contentViewController)), \(String(describing: self.windowController.contentViewController?.view))")
 //    (name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ViewController") as UIViewController

@@ -107,7 +107,7 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
     let keyboardData = self.keyboardType.data()
     let orderedKeys = keyboardData.keyOrder.joined()
     let shortcutModels = orderedKeys.map { (key) in
-      return NRShortcut(keyCode: UInt(key), modifier: .command)
+      return NRShortcut(keyCode: UInt(key), modifier: NSEvent.ModifierFlags.command)
     }
     
     var idx = 1
@@ -125,16 +125,16 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
   }
   
   func launchApplication(bundleIdentifier : String) {
-    NSWorkspace.shared().launchApplication(withBundleIdentifier: bundleIdentifier, options: .default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
+    NSWorkspace.shared.launchApplication(withBundleIdentifier: bundleIdentifier, options: NSWorkspace.LaunchOptions.default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
   }
   
   func launchApplication(runningApplication: NSRunningApplication) {
-    let frontPid = NSWorkspace.shared().frontmostApplication?.processIdentifier
+    let frontPid = NSWorkspace.shared.frontmostApplication?.processIdentifier
     let appAlreadyActive = runningApplication.processIdentifier == frontPid
     
     if appAlreadyActive {
       if NRPreferences.sharedInstance().hideOnDeactivate {
-        NSApplication.shared().hide(self)
+        NSApplication.shared.hide(self)
       }
 //      runningApplication.activate(options: [])
       self.launchApplication(index: 0)
@@ -142,7 +142,7 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
       if let bundleIdentifier = runningApplication.bundleIdentifier {
         self.lastProcessIdentifier = frontPid
 //        runningApplication.activate(options: [])
-        runningApplication.activate(options: .activateIgnoringOtherApps)
+        runningApplication.activate(options: NSApplication.ActivationOptions.activateIgnoringOtherApps)
 //        NSWorkspace.shared().launchApplication(withBundleIdentifier: bundleIdentifier, options: .default, additionalEventParamDescriptor: nil, launchIdentifier: nil)
       }
     }
@@ -153,7 +153,7 @@ class ShortcutMappingModel : NSObject, ShortcutMappingModelActions {
   
   func launchApplication(processIdentifier: pid_t) {
     if (processIdentifier == -1) { return; }
-    let matchedApp = NSWorkspace.shared().runningApplications.filter( { (app) -> Bool in
+    let matchedApp = NSWorkspace.shared.runningApplications.filter( { (app) -> Bool in
       return app.processIdentifier == processIdentifier
     }).first
     if let app = matchedApp {

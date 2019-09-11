@@ -28,7 +28,7 @@ import Cocoa
   // MARK: -
   
   func applicationDidFinishLaunching(_ notification: Notification) {
-    NSApplication.shared().presentationOptions = .disableHideApplication
+    NSApplication.shared.presentationOptions = NSApplication.PresentationOptions.disableHideApplication
 
     
 //    NSApplication.shared().mainWindow = self.window
@@ -66,8 +66,8 @@ import Cocoa
 //    }
   }
   
-  func windowShouldClose(_ sender: Any) -> Bool {
-    NSApplication.shared().hide(nil)
+  func windowShouldClose(_ sender: NSWindow) -> Bool {
+    NSApplication.shared.hide(nil)
     return false
   }
   
@@ -86,7 +86,7 @@ import Cocoa
 
   func applicationWillResignActive(_ notification: Notification) {
     if ( NRPreferences.sharedInstance().hideOnDeactivate ) {
-      NSApplication.shared().hide(self)
+      NSApplication.shared.hide(self)
     }
   }
 

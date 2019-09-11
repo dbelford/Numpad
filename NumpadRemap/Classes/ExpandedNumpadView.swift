@@ -131,8 +131,8 @@ class ExpandedNumpadView : BTRView {
         let leading = keyIndex == 0 ? nil : row[keyIndex - 1]
 //        let trailing = keyIndex == row.count - 1 ? nil : row[keyIndex + 1]
         view.mas_makeConstraints { (make) in
-          view.setContentCompressionResistancePriority(NSLayoutPriorityDefaultLow, for: .horizontal)
-          view.setContentCompressionResistancePriority(NSLayoutPriorityDefaultLow, for: .vertical)
+          view.setContentCompressionResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: .horizontal)
+          view.setContentCompressionResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: .vertical)
           make?.left.equalTo()(leading?.mas_right ?? self.mas_left)
           make?.top.equalTo()(aboveView?.mas_bottom ?? self.mas_top)
 
@@ -156,7 +156,7 @@ class ExpandedNumpadView : BTRView {
     })
   }
   
-  func pressedAppButton(_ sender : NRNumpadKeyView) {
+  @objc func pressedAppButton(_ sender : NRNumpadKeyView) {
     if let identifier = sender.identifier, let code = UInt(identifier) {
       self.viewModel?.pressedKeyForKeycode(keycode: code)
 //      self.viewModel?.pressedKey(forKeycode: code)

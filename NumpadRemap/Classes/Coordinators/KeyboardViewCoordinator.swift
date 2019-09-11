@@ -45,7 +45,7 @@ class KeyboardViewCoordinator : Coordinator, WindowCoordinator {
   
   func customize() {
     self.windowController.window?.title = "Numpad Launcher"
-    self.windowController.window?.setFrameAutosaveName("Numpad Launcher")
+    self.windowController.window?.setFrameAutosaveName(NSWindow.FrameAutosaveName(rawValue: "Numpad Launcher"))
     self.windowController.window?.isRestorable = true
   }
   

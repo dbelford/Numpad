@@ -44,7 +44,7 @@ class NumpadViewController : NSViewController {
     self.numpadModel = model
 
     MASShortcutBinder.shared().bindShortcut(withDefaultsKey: kAppActivationShortcutKey) { [weak self] in
-      self?.numpadModel?.launchApplication(runningApplication: NSRunningApplication.current())
+      self?.numpadModel?.launchApplication(runningApplication: NSRunningApplication.current)
     }
   }
   
@@ -82,7 +82,7 @@ class NumpadViewController : NSViewController {
     MASShortcutBinder.shared().bindShortcut(withDefaultsKey: kAppActivationShortcutKey) { [weak self] in
 //      guard let strongSelf = self else { return }
 //      strongSelf.numpadModel?.launch(NSRunningApplication.current())
-      self?.numpadModel?.launchApplication(runningApplication: NSRunningApplication.current())
+      self?.numpadModel?.launchApplication(runningApplication: NSRunningApplication.current)
     }
   }
   
