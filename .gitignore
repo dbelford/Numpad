@@ -3,7 +3,6 @@
 #
 
 *.psd
-*.png
 *.tif
 *.tiff
 Resources/
