@@ -11,6 +11,7 @@ import Cocoa
 
 @objc class NRAppDelegate : NSResponder, NSApplicationDelegate, NSWindowDelegate {
   var keypadWindow: NSWindow?
+  var app : Application?
   @IBOutlet var window: NSWindow?
 //  @IBOutlet var numpadSettingsController : NRNumpadSettingsController!
   @IBOutlet var windowController: NSWindowController!
@@ -28,10 +29,16 @@ import Cocoa
   
   func applicationDidFinishLaunching(_ notification: Notification) {
     NSApplication.shared().presentationOptions = .disableHideApplication
+
     
 //    NSApplication.shared().mainWindow = self.window
 //    self.window?.makeKeyAndOrderFront(self)
-    Application.shared.start()
+    if let wc = self.window?.windowController {
+      self.app = Application(wc)
+      //    self.app = Application(WindowController())
+      app?.start()
+    }
+    
 //    self.window.initialFirstResponder = self.numpadSettingsController.view
 //    self.window.delegate = self
 //
@@ -86,9 +93,20 @@ import Cocoa
   // MARK: - Preferences
   
   @IBAction func showPreferencesWindow(_ sender: Any?) {
-    NSLog("Tried showing")
-    self.preferencesWindowController.showWindow(sender)
-    self.preferencesWindowController.window?.makeKey()
+    self.app?.route(ApplicationWindows.Preferences)
+//    NSLog("Tried showing")
+//    self.preferencesWindowController.showWindow(sender)
+//    self.preferencesWindowController.window?.makeKey()
+  }
+  
+  @IBAction func pause(_ sender: Any?) {
+//    the pause button works now.
+//    the storyboard wasn't working because ViewController broke loading, NSViewController for DebugViewController super class worked
+//    need to figure out if there's a way to fix, or if other things should be in storyboard.
+//    and what useful things to add to debugviewcontroller
+    //    NSLog("Tried showing")
+    //    self.preferencesWindowController.showWindow(sender)
+    //    self.preferencesWindowController.window?.makeKey()
   }
 
   //   MARK: - Etc.

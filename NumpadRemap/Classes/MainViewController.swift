@@ -97,9 +97,9 @@ class MainViewController : NSViewController, DeviceListDelegate {
     let l = DeviceList()
     l.addDelegate(self)
     self.deviceListObservers = [
-      NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Matching, object: l, queue: nil, using: { [weak self, weak l](n) in
+      NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Addition, object: l, queue: nil, using: { [weak self, weak l](n) in
         guard let weakSelf = self, let l = l else { return }
-        self?.deviceMatches(devices: l)
+        self?.deviceAddition(devices: l)
       }),
       NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Removal, object: l, queue: nil, using: { [weak self, weak l](n) in
         guard let weakSelf = self, let l = l else { return }
@@ -117,7 +117,7 @@ class MainViewController : NSViewController, DeviceListDelegate {
     self.updateDevicesMenu()
   }
   
-  func deviceMatches(devices: DeviceList) {
+  func deviceAddition(devices: DeviceList) {
     self.updateDevicesMenu()
   }
   

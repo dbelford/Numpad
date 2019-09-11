@@ -70,7 +70,7 @@ class DeviceListTest: XCTestCase {
       XCTAssert(false, "Failed init.")
       return
     }
-    self.deviceList?.delegate = self.deviceListener
+//    self.deviceList?.delegate = self.deviceListener
     print("\(self.deviceList?.devices[0] as AnyObject)")
     self.wait(for: [deviceListener.expectation], timeout: 25)
     print("WAITING")

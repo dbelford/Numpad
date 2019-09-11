@@ -86,7 +86,8 @@ class ExpandedNumpadView : BTRView {
     self.keyViews = views
     self.subviews.forEach({ (view) in view.removeFromSuperview() })
     views.forEach({ (view) in self.addSubview(view) })
-    self.needsUpdateConstraints = true
+//    self.needsUpdateConstraints = true
+    self.layoutKeys3()
     
   }
   
@@ -98,7 +99,6 @@ class ExpandedNumpadView : BTRView {
   
   override func updateConstraints() {
     super.updateConstraints()
-    self.layoutKeys3()
   }
   
   func layoutKeys3() {

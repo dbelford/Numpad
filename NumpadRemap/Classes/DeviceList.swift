@@ -13,19 +13,19 @@ protocol DeviceListDelegate: AnyObject {
   
 }
 
-typealias DeviceMatchesCallback = () -> Void
+typealias DeviceAdditionCallback = () -> Void
 typealias DeviceRemovalCallback = () -> Void
 typealias DeviceValueCallback = () -> Void
 
 protocol DeviceListInterface {
-  func onDeviceMatches(_ callback: @escaping DeviceMatchesCallback)
+  func onDeviceMatches(_ callback: @escaping DeviceAdditionCallback)
   func onDeviceRemoval(_ callback: @escaping DeviceRemovalCallback)
   func onDeviceValue(_ callback: @escaping DeviceValueCallback)
 }
 
 extension DeviceListDelegate {
   func devicesChanged() {}
-  func deviceMatches(devices: DeviceList)  {}
+  func deviceAddition(devices: DeviceList)  {}
   func deviceRemoval(devices: DeviceList)  {}
   func deviceValueChanged(devices: DeviceList)  {}
 }
@@ -35,7 +35,7 @@ typealias HidUUID = UInt
 
 public extension Notification.Name {
   public struct DeviceList {
-    public static let Matching = Notification.Name("com.dbelford.notification.name.devicelist.matching")
+    public static let Addition = Notification.Name("com.dbelford.notification.name.devicelist.addition")
     public static let Removal = Notification.Name("com.dbelford.notification.name.devicelist.removal")
     public static let Value = Notification.Name("com.dbelford.notification.name.devicelist.value")
   }
@@ -137,7 +137,7 @@ class DeviceList {
           
           //        let el = IOHIDValueGetElement(value)
           //        dump(el)
-          print("Value received")
+          print("Value received \(usage)")
         } else {
           print("Value failed")
         }
@@ -168,7 +168,7 @@ class DeviceList {
 //        weakSelf.delegate?.deviceMatches(devices: weakSelf)
 //        weakSelf.invokeDeviceMatchesCallbacks()
 //        weakSelf.notifyDeviceMatch()
-        NotificationCenter.default.post(name: Notification.Name.DeviceList.Matching, object: weakSelf, userInfo: [Notification.Key.Data: "matchingDeviceGoesHere"])
+        NotificationCenter.default.post(name: Notification.Name.DeviceList.Addition, object: weakSelf, userInfo: [Notification.Key.Data: "added/matchingDeviceGoesHere"])
       }
       
       if result == kIOReturnSuccess { } else { } // Not sure what IOReturn values can happen here...
@@ -187,6 +187,8 @@ class DeviceList {
   deinit {
     if let manager = self.manager {
       IOHIDManagerClose(manager, 0)
+      // Do I need to remove IOHIDManager from runloop or does close do this?
+      // Should there be separate start/stop/cleanup methods?
     }
   }
   
@@ -205,7 +207,7 @@ class DeviceList {
     self.delegates.remove(at: index)
   }
   
-  func notifyDeviceMatch() { for delegate in self.delegates { delegate.deviceMatches(devices: self) }}
+  func notifyDeviceMatch() { for delegate in self.delegates { delegate.deviceAddition(devices: self) }}
   func notifyDeviceRemoval() { for delegate in self.delegates { delegate.deviceRemoval(devices: self) }}
   func notifyValueChanged() { for delegate in self.delegates { delegate.deviceValueChanged(devices: self) }}
 

@@ -16,14 +16,32 @@ class DeviceRow : NSObject {
   var selectedKeyboardType : String
   var selectedBindingType : String
   var preferences : NRPreferences
+  var observers : [NSKeyValueObservation] = [NSKeyValueObservation]()
   
-  init(_ device : HidDeviceObject, _ preferences : NRPreferences) {
+  init(device : HidDeviceObject, preferences : NRPreferences) {
     self.device = device
     self.preferences = preferences
     self.selectedKeyboardType = KeyboardTypes.numpad.rawValue
     self.selectedBindingType = AppBindingStyle.Recency.rawValue
     super.init()
+    self.observers.append(
+      self.preferences.observe(\NRPreferences.keyboardType, changeHandler: { [weak self] (preferences, change) in
+        guard let keyboardType = self?.preferences.keyboardType else { return }
+        self?.selectedKeyboardType = KeyboardTypes(keyboardType).rawValue
+      })
+    )
+    self.observers.append(
+      self.observe(\DeviceRow.selectedKeyboardType) { [weak self](row, change) in
+        guard let weakSelf = self else { return }
+        guard let keyboard = KeyboardTypes(rawValue: weakSelf.selectedKeyboardType) else { return }
+        self?.preferences.keyboardType = keyboard.nrKeyboardType()
+      }
+    )
   }
+}
+
+class KeyboardValueTranformer : ValueTransformer {
+  
 }
 
 @objc
@@ -61,7 +79,7 @@ class DevicePreferencesViewController : NRPreferencesViewController, MASPreferen
       NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Removal, object: self.deviceList, queue: nil, using: { [weak self](notification) in
         self?.updateDevices()
       }),
-      NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Matching, object: self.deviceList, queue: nil, using: { [weak self](notification) in
+      NotificationCenter.default.observe(name: NSNotification.Name.DeviceList.Addition, object: self.deviceList, queue: nil, using: { [weak self](notification) in
         self?.updateDevices()
       })
     ]
@@ -87,16 +105,17 @@ class DevicePreferencesViewController : NRPreferencesViewController, MASPreferen
     let devices = self.deviceList?.devices.map { (uuid, device) -> HidDeviceObject in
       return HidDeviceObject(deviceStruct: device)
     }
-    let r = self.deviceList?.devices.map { (uuid, device) -> NSMutableDictionary in
-      var row : NSMutableDictionary
-      row = [
-        "device" : HidDeviceObject(deviceStruct: device),
-        "keyboardTypes" : KeyboardTypes.allRawValues,
-        "bindingTypes" : AppBindingStyle.allRawValues,
-        "selectedKeyboardType" : KeyboardTypes.numpad.rawValue,
-        "selectedBindingType" : AppBindingStyle.Recency.rawValue
-        ]
-      return row
+    let r = self.deviceList?.devices.map { (uuid, device) -> DeviceRow in
+      return DeviceRow(device: HidDeviceObject(deviceStruct: device), preferences: preferences)
+//      var row : NSMutableDictionary
+//      row = [
+//        "device" : HidDeviceObject(deviceStruct: device),
+//        "keyboardTypes" : KeyboardTypes.allRawValues,
+//        "bindingTypes" : AppBindingStyle.allRawValues,
+//        "selectedKeyboardType" : KeyboardTypes.numpad.rawValue,
+//        "selectedBindingType" : AppBindingStyle.Recency.rawValue
+//        ]
+//      return row
     }
     self.rowData?.content = r
     self.devices?.content = devices

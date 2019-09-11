@@ -27,7 +27,7 @@
 
 - (void)updateConstraints {
     
-    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.superview).insets(NSEdgeInsetsMake(0, 0, 0, 0));
     }];
     

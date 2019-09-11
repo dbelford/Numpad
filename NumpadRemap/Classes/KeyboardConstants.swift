@@ -114,27 +114,31 @@ struct KeyboardProperties {
   ]
   
   static let KeyboardMd = [
-    kVK_Delete : KeyAttributes(width: 1.8, height: 1),
-    kVK_Tab : KeyAttributes(width: 1.8, height: 1),
-    kVK_CapsLock : KeyAttributes(width: 2, height: 1),
-    kVK_Return : KeyAttributes(width: 2, height: 1),
-    kVK_Shift : KeyAttributes(width: 2.2, height: 1),
-    kVK_RightShift : KeyAttributes(width: 2.2, height: 1),
-    kVK_Command : KeyAttributes(width: 1.2, height: 1),
-    kVK_Space : KeyAttributes(width: 5, height: 1, assignable: true, visible: true, doesNotHaveTrailing: false, flexibleWidth: false),
-    kVK_RightShift : KeyAttributes(width: 1.2, height: 1)
+    kVK_Delete : KeyAttributes(width: 1.6, height: 1),
+    kVK_Tab : KeyAttributes(width: 1.6, height: 1),
+    kVK_CapsLock : KeyAttributes(width: 1.8, height: 1),
+    kVK_Return : KeyAttributes(width: 1.8, height: 1),
+    kVK_Shift : KeyAttributes(width: 2.3, height: 1),
+    kVK_RightShift : KeyAttributes(width: 2.3, height: 1),
+    kVK_Command : KeyAttributes(width: 1.3, height: 1),
+    kVK_Space : KeyAttributes(width: 5.0, height: 1, assignable: true, visible: true, doesNotHaveTrailing: false, flexibleWidth: true),
+    kVK_RightCommand : KeyAttributes(width: 1.3, height: 1),
+    kVK_UpArrow : KeyAttributes(width:0.5, height: 1),
+    kVK_DownArrow : KeyAttributes(width:0.5, height: 1)
   ]
   
   static let KeyboardLg = [
-    kVK_Delete : KeyAttributes(width: 1.8, height: 1),
-    kVK_Tab : KeyAttributes(width: 1.8, height: 1),
-    kVK_CapsLock : KeyAttributes(width: 2, height: 1),
-    kVK_Return : KeyAttributes(width: 2, height: 1),
-    kVK_Shift : KeyAttributes(width: 2.2, height: 1),
-    kVK_RightShift : KeyAttributes(width: 2.2, height: 1),
-    kVK_Command : KeyAttributes(width: 1.2, height: 1),
-    kVK_Space : KeyAttributes(width: 5, height: 1, assignable: true, visible: true, doesNotHaveTrailing: false, flexibleWidth: false),
-    kVK_RightShift : KeyAttributes(width: 1.2, height: 1)
+    kVK_Delete : KeyAttributes(width: 1.6, height: 1),
+    kVK_Tab : KeyAttributes(width: 1.6, height: 1),
+    kVK_CapsLock : KeyAttributes(width: 1.8, height: 1),
+    kVK_Return : KeyAttributes(width: 1.8, height: 1),
+    kVK_Shift : KeyAttributes(width: 2.3, height: 1),
+    kVK_RightShift : KeyAttributes(width: 2.3, height: 1),
+    kVK_Command : KeyAttributes(width: 1.3, height: 1),
+    kVK_Space : KeyAttributes(width: 5.0, height: 1, assignable: true, visible: true, doesNotHaveTrailing: false, flexibleWidth: true),
+    kVK_RightCommand : KeyAttributes(width: 1.3, height: 1),
+    kVK_UpArrow : KeyAttributes(width:0.5, height: 1),
+    kVK_DownArrow : KeyAttributes(width:0.5, height: 1)
   ]
 }
 
@@ -212,6 +216,10 @@ enum KeyboardTypes : String, RawRepresentable {
     case .typeFullKeyboard:
       self = .keyboardLg
     }
+  }
+  
+  func nrKeyboardType() -> NRKeyboardType {
+    return KeyboardTypes.toNRKeyboardType(self)
   }
   
   static func toNRKeyboardType(_ type: KeyboardTypes) -> NRKeyboardType {

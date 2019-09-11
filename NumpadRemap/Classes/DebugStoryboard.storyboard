@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="an9-MW-5ou">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="0QL-CA-OI9">
+            <objects>
+                <windowController storyboardIdentifier="DebugWindowController" id="an9-MW-5ou" sceneMemberID="viewController">
+                    <window key="window" title="Debug" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="DebugWindow" animationBehavior="default" id="LZB-gU-hRn">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="294" y="323" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <value key="minSize" type="size" width="480" height="270"/>
+                        <connections>
+                            <outlet property="delegate" destination="an9-MW-5ou" id="o9m-0y-gzz"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="63J-HA-ZNV" kind="relationship" relationship="window.shadowedContentViewController" id="YFU-Jt-wER"/>
+                    </connections>
+                </windowController>
+                <customObject id="xrM-e8-h0t" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="120" y="7"/>
+        </scene>
+        <!--Debug View Controller-->
+        <scene sceneID="QGl-L3-8X5">
+            <objects>
+                <viewController storyboardIdentifier="DebugViewController" id="63J-HA-ZNV" customClass="DebugViewController" customModule="Numpad" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="2Zh-nT-SUH">
+                        <rect key="frame" x="0.0" y="0.0" width="654" height="404"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="nlX-t8-XfT" userLabel="Containing View">
+                                <rect key="frame" x="0.0" y="0.0" width="654" height="404"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f0Y-DN-G6T">
+                                        <rect key="frame" x="303" y="270" width="211" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" placeholderString="Why doesn't this work better" id="YZZ-sQ-NcR">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="RiN-jI-6th" userLabel="Box View">
+                                        <rect key="frame" x="20" y="20" width="614" height="183"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="183" id="sUl-NU-MYm"/>
+                                        </constraints>
+                                    </customView>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H4n-6K-mhY">
+                                        <rect key="frame" x="289" y="311" width="77" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="EUK-MM-dQM"/>
+                                            <constraint firstAttribute="width" constant="65" id="gSk-15-rBL"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="push" title="Pause" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wr1-Ox-blW">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="pauseClicked:" target="63J-HA-ZNV" id="WeK-KF-EZ2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="RiN-jI-6th" firstAttribute="leading" secondItem="nlX-t8-XfT" secondAttribute="leading" constant="20" symbolic="YES" id="0Ad-Fb-5t5"/>
+                                    <constraint firstAttribute="trailing" secondItem="RiN-jI-6th" secondAttribute="trailing" constant="20" symbolic="YES" id="2dl-TL-2NO"/>
+                                    <constraint firstAttribute="bottom" secondItem="RiN-jI-6th" secondAttribute="bottom" constant="20" id="4SH-Nv-i8B"/>
+                                    <constraint firstItem="H4n-6K-mhY" firstAttribute="top" secondItem="nlX-t8-XfT" secondAttribute="top" constant="65" id="ISx-5o-84g"/>
+                                    <constraint firstItem="H4n-6K-mhY" firstAttribute="leading" secondItem="nlX-t8-XfT" secondAttribute="leading" constant="295" id="RhJ-pq-OM0"/>
+                                    <constraint firstAttribute="bottom" secondItem="RiN-jI-6th" secondAttribute="bottom" constant="20" id="YTB-By-uDR"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="nlX-t8-XfT" firstAttribute="centerX" secondItem="2Zh-nT-SUH" secondAttribute="centerX" id="YZq-Ak-3Jz"/>
+                            <constraint firstItem="nlX-t8-XfT" firstAttribute="height" secondItem="2Zh-nT-SUH" secondAttribute="height" id="b7Z-D6-9sX"/>
+                            <constraint firstItem="nlX-t8-XfT" firstAttribute="width" secondItem="2Zh-nT-SUH" secondAttribute="width" id="fkV-J1-WNs"/>
+                            <constraint firstItem="nlX-t8-XfT" firstAttribute="centerY" secondItem="2Zh-nT-SUH" secondAttribute="centerY" id="l6v-Ej-Fmq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pauseButton" destination="H4n-6K-mhY" id="GdO-5e-EeQ"/>
+                    </connections>
+                </viewController>
+                <customObject id="dOd-tf-IV1" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="927" y="-49"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Nmh-x1-6Wm">
+            <objects>
+                <viewController id="Sc3-Sr-rf0" sceneMemberID="viewController">
+                    <view key="view" id="RGq-rY-5ej">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9le-9M-yKL">
+                                <rect key="frame" x="188" y="152" width="76" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="HAa-G1-Eb4" id="rZq-BC-4xh">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="ThW-OL-TTb">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="HAa-G1-Eb4"/>
+                                            <menuItem title="Item 2" id="xVx-Yh-RUt"/>
+                                            <menuItem title="Item 3" id="jlL-o4-CXy"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M9b-Fv-upT">
+                                <rect key="frame" x="127" y="212" width="13" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o0X-Ut-D7m">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="a7j-3r-f8F" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="763" y="430"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Eea-wP-p8r">
+            <objects>
+                <viewController id="bkn-tt-ca8" sceneMemberID="viewController">
+                    <view key="view" id="SgW-4k-ury">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="92m-Y4-ldg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSAddTemplate" width="11" height="11"/>
+    </resources>
+</document>
