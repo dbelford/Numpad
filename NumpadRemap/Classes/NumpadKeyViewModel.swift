@@ -10,14 +10,14 @@ import Foundation
 
 @objc
 class NumpadKeyViewModel : NSObject {
-  let shortcut : NRShortcut!
+  @objc dynamic let shortcut : NRShortcut!
   let identifier : String! // key.StringValue for ordering keys
   
   @objc dynamic var hideNumpadNumbers : Bool = false
-  var keyName : String {                      get { return self.shortcut.keyCodeString} }
-  var applicationBundleIdentifier : String {  get { return shortcut.applicationBundleIdentifier ?? ""} }
-  var displayName : String {                  get { return self.shortcut.keyCodeString } }
-  var image : NSImage? {
+  @objc dynamic var keyName : String {                      get { return self.shortcut.keyCodeString} }
+  @objc dynamic var applicationBundleIdentifier : String {  get { return shortcut.applicationBundleIdentifier ?? ""} }
+  @objc dynamic var displayName : String {                  get { return self.shortcut.keyCodeString } }
+  @objc dynamic var image : NSImage? {
     get {
       guard let pid = self.shortcut.processIdentifier else { return nil }
       return NSRunningApplication(processIdentifier: pid)?.icon

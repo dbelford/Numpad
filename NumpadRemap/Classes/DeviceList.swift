@@ -200,7 +200,7 @@ class DeviceList {
   
   func removeDelegate(_ adel : DeviceListDelegate) {
 
-    let idx = self.delegates.index{ (del) -> Bool in
+    let idx = self.delegates.firstIndex{ (del) -> Bool in
       return adel === del
     }
     guard let index = idx else { return }

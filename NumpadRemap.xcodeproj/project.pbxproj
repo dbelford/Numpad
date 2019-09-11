@@ -11,10 +11,8 @@
 		A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61ED1DC2112818F00DF502C /* NumpadTests.swift */; };
 		A6208F122137347F00AE2535 /* KeyboardConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6208F112137347F00AE2535 /* KeyboardConstants.swift */; };
 		A620FF95216422D800D7C604 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620FF94216422D800D7C604 /* NotificationToken.swift */; };
-		A620FF96216422D800D7C604 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620FF94216422D800D7C604 /* NotificationToken.swift */; };
 		A620FF97216422D800D7C604 /* NotificationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A620FF94216422D800D7C604 /* NotificationToken.swift */; };
 		A621624E217AA19500E5B804 /* KeyboardConfigurationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A621624D217AA19500E5B804 /* KeyboardConfigurationsManager.swift */; };
-		A621624F217AA19500E5B804 /* KeyboardConfigurationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A621624D217AA19500E5B804 /* KeyboardConfigurationsManager.swift */; };
 		A6216250217AA19500E5B804 /* KeyboardConfigurationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A621624D217AA19500E5B804 /* KeyboardConfigurationsManager.swift */; };
 		A6360E54211E3594007F31A4 /* NRAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BBD820211D25C6003EBBDC /* NRAppDelegate.swift */; };
 		A636862A1B7DB08B00001A35 /* DABActiveApplications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63686271B7DB08B00001A35 /* DABActiveApplications.framework */; };
@@ -56,57 +54,43 @@
 		A67ABC3018D284D200C1D502 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A67ABC2E18D284D200C1D502 /* InfoPlist.strings */; };
 		A67ABC3218D284D200C1D502 /* NumpadRemapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A67ABC3118D284D200C1D502 /* NumpadRemapTests.m */; };
 		A67CC824216800FA00655476 /* KeyboardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67CC823216800FA00655476 /* KeyboardConfiguration.swift */; };
-		A67CC825216800FA00655476 /* KeyboardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67CC823216800FA00655476 /* KeyboardConfiguration.swift */; };
 		A67CC826216800FA00655476 /* KeyboardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67CC823216800FA00655476 /* KeyboardConfiguration.swift */; };
 		A684629C2140AA2D00C89350 /* NumpadKeyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629B2140AA2D00C89350 /* NumpadKeyViewModel.swift */; };
 		A684629E2140AA4D00C89350 /* NumpadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A684629D2140AA4D00C89350 /* NumpadViewModel.swift */; };
 		A68A4B6F2177C59E005798CE /* KeyboardConfigurationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68A4B6E2177C59E005798CE /* KeyboardConfigurationTest.swift */; };
 		A694EC58215AE9D40068EA3D /* DeviceListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC57215AE9D40068EA3D /* DeviceListTest.swift */; };
 		A694EC5A215B134E0068EA3D /* IODeviceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC59215B134E0068EA3D /* IODeviceProperties.swift */; };
-		A694EC5B215B134E0068EA3D /* IODeviceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC59215B134E0068EA3D /* IODeviceProperties.swift */; };
 		A694EC5C215B134E0068EA3D /* IODeviceProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC59215B134E0068EA3D /* IODeviceProperties.swift */; };
 		A694EC5E215B137B0068EA3D /* HidDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC5D215B137A0068EA3D /* HidDevice.swift */; };
-		A694EC5F215B137B0068EA3D /* HidDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC5D215B137A0068EA3D /* HidDevice.swift */; };
 		A694EC60215B137B0068EA3D /* HidDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC5D215B137A0068EA3D /* HidDevice.swift */; };
 		A694EC62215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
-		A694EC63215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
 		A694EC64215B13990068EA3D /* CFValuePrinting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694EC61215B13990068EA3D /* CFValuePrinting.swift */; };
 		A696B2F5215D42D200BCAA16 /* DevicePreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696B2F4215D42D200BCAA16 /* DevicePreferencesViewController.swift */; };
 		A696B2F7215D430D00BCAA16 /* DevicePreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A696B2F6215D430D00BCAA16 /* DevicePreferencesViewController.xib */; };
 		A696B2F9215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696B2F8215D4DA000BCAA16 /* HidDeviceObject.swift */; };
-		A696B2FA215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696B2F8215D4DA000BCAA16 /* HidDeviceObject.swift */; };
 		A696B2FB215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A696B2F8215D4DA000BCAA16 /* HidDeviceObject.swift */; };
 		A6972B602124B0880008BC98 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6972B5F2124B0880008BC98 /* WindowController.swift */; };
 		A6A92CFC1B82FE9400F606A4 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; };
 		A6A92CFD1B82FE9400F606A4 /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A6A92CFB1B82FE9400F606A4 /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A6B7B2C122B978F1004FCD34 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BC22B978F0004FCD34 /* AppCoordinatorProtocol.swift */; };
-		A6B7B2C222B978F1004FCD34 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BC22B978F0004FCD34 /* AppCoordinatorProtocol.swift */; };
 		A6B7B2C322B978F1004FCD34 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BC22B978F0004FCD34 /* AppCoordinatorProtocol.swift */; };
 		A6B7B2C422B978F1004FCD34 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BD22B978F0004FCD34 /* CoordinatorProtocol.swift */; };
-		A6B7B2C522B978F1004FCD34 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BD22B978F0004FCD34 /* CoordinatorProtocol.swift */; };
 		A6B7B2C622B978F1004FCD34 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BD22B978F0004FCD34 /* CoordinatorProtocol.swift */; };
 		A6B7B2C722B978F1004FCD34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BE22B978F0004FCD34 /* ViewModel.swift */; };
-		A6B7B2C822B978F1004FCD34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BE22B978F0004FCD34 /* ViewModel.swift */; };
 		A6B7B2C922B978F1004FCD34 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BE22B978F0004FCD34 /* ViewModel.swift */; };
 		A6B7B2CA22B978F1004FCD34 /* VMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BF22B978F0004FCD34 /* VMViewController.swift */; };
-		A6B7B2CB22B978F1004FCD34 /* VMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BF22B978F0004FCD34 /* VMViewController.swift */; };
 		A6B7B2CC22B978F1004FCD34 /* VMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2BF22B978F0004FCD34 /* VMViewController.swift */; };
 		A6B7B2CD22B978F1004FCD34 /* WindowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2C022B978F0004FCD34 /* WindowCoordinatorProtocol.swift */; };
-		A6B7B2CE22B978F1004FCD34 /* WindowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2C022B978F0004FCD34 /* WindowCoordinatorProtocol.swift */; };
 		A6B7B2CF22B978F1004FCD34 /* WindowCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2C022B978F0004FCD34 /* WindowCoordinatorProtocol.swift */; };
 		A6B7B2D222B97A7C004FCD34 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2D122B97A7C004FCD34 /* RootCoordinator.swift */; };
-		A6B7B2D322B97A7C004FCD34 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2D122B97A7C004FCD34 /* RootCoordinator.swift */; };
 		A6B7B2D422B97A7C004FCD34 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2D122B97A7C004FCD34 /* RootCoordinator.swift */; };
 		A6B7B2DA22B97B72004FCD34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2D922B97B72004FCD34 /* ViewController.swift */; };
-		A6B7B2DB22B97B72004FCD34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2D922B97B72004FCD34 /* ViewController.swift */; };
 		A6B7B2DC22B97B72004FCD34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2D922B97B72004FCD34 /* ViewController.swift */; };
 		A6B7B2DE22B9C337004FCD34 /* KeyboardViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2DD22B9C337004FCD34 /* KeyboardViewCoordinator.swift */; };
-		A6B7B2DF22B9C337004FCD34 /* KeyboardViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2DD22B9C337004FCD34 /* KeyboardViewCoordinator.swift */; };
 		A6B7B2E022B9C337004FCD34 /* KeyboardViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B7B2DD22B9C337004FCD34 /* KeyboardViewCoordinator.swift */; };
 		A6C1E09F2145E561005FACB4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6C1E09E2145E4E3005FACB4 /* Main.storyboard */; };
 		A6C5B21D214B252500472F87 /* NumpadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5B21C214B252500472F87 /* NumpadUITests.swift */; };
 		A6C5B22A214B7FC300472F87 /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5B229214B7FC300472F87 /* DeviceList.swift */; };
-		A6C5B22B214B7FC300472F87 /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5B229214B7FC300472F87 /* DeviceList.swift */; };
 		A6DE806E18D7DBA000115F2E /* NRNumpadKeyView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */; };
 		A6F59104212DEDF300ACC761 /* SwiftFourTwoExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */; };
 		A6F6872A18DA287A00E40A20 /* NRWindowContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6F6872918DA287A00E40A20 /* NRWindowContentView.m */; };
@@ -254,7 +238,6 @@
 		A6C5B229214B7FC300472F87 /* DeviceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceList.swift; path = Classes/DeviceList.swift; sourceTree = "<group>"; };
 		A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyView.h; path = Classes/NRNumpadKeyView.h; sourceTree = "<group>"; };
 		A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyView.m; path = Classes/NRNumpadKeyView.m; sourceTree = "<group>"; };
-		A6F24CC323295E4700FFDE0A /* AXSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AXSwift.framework; path = "../../../../../../Users/dbelford/Library/Developer/Xcode/DerivedData/AXSwift-bounpiktwofqbrghreklmimltnwe/Build/Products/Debug/AXSwift.framework"; sourceTree = "<group>"; };
 		A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftFourTwoExtensions.swift; path = Classes/SwiftFourTwoExtensions.swift; sourceTree = "<group>"; };
 		A6F6872818DA287A00E40A20 /* NRWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRWindowContentView.h; path = Classes/NRWindowContentView.h; sourceTree = "<group>"; };
 		A6F6872918DA287A00E40A20 /* NRWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRWindowContentView.m; path = Classes/NRWindowContentView.m; sourceTree = "<group>"; };
@@ -438,7 +421,6 @@
 			isa = PBXGroup;
 			children = (
 				A66BA3EE212A11AE00AB7E4A /* Numpad.entitlements */,
-				A6F24CC323295E4700FFDE0A /* AXSwift.framework */,
 				A6FDC27A1B978A79003FC592 /* DABKit.framework */,
 				A67ABC0D18D284D100C1D502 /* NumpadRemap */,
 				A67ABC2B18D284D100C1D502 /* NumpadRemapTests */,
@@ -751,6 +733,7 @@
 				TargetAttributes = {
 					A61ED1D92112818F00DF502C = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 						TestTargetID = A67ABC0318D284D100C1D502;
 					};
@@ -759,7 +742,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					A67ABC0318D284D100C1D502 = {
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -767,11 +750,12 @@
 						};
 					};
 					A67ABC2418D284D100C1D502 = {
-						LastSwiftMigration = 0940;
+						LastSwiftMigration = 1020;
 						TestTargetID = A67ABC0318D284D100C1D502;
 					};
 					A6C5B219214B252500472F87 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = A67ABC0318D284D100C1D502;
 					};
@@ -897,7 +881,6 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/Mac/AXSwift.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/DABKit.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/ObjectiveSugar.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/ReactiveCocoa.framework",
@@ -905,7 +888,6 @@
 			);
 			name = Carthage;
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AXSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/DABKit.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ObjectiveSugar.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/ReactiveCocoa.framework",
@@ -913,7 +895,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 		BD27B917B613C25A3BC4C756 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -940,24 +922,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6B7B2C222B978F1004FCD34 /* AppCoordinatorProtocol.swift in Sources */,
-				A6B7B2CB22B978F1004FCD34 /* VMViewController.swift in Sources */,
-				A694EC5B215B134E0068EA3D /* IODeviceProperties.swift in Sources */,
-				A6B7B2C522B978F1004FCD34 /* CoordinatorProtocol.swift in Sources */,
-				A67CC825216800FA00655476 /* KeyboardConfiguration.swift in Sources */,
-				A6B7B2DF22B9C337004FCD34 /* KeyboardViewCoordinator.swift in Sources */,
-				A694EC63215B13990068EA3D /* CFValuePrinting.swift in Sources */,
-				A620FF96216422D800D7C604 /* NotificationToken.swift in Sources */,
-				A6B7B2C822B978F1004FCD34 /* ViewModel.swift in Sources */,
-				A6B7B2D322B97A7C004FCD34 /* RootCoordinator.swift in Sources */,
-				A6B7B2CE22B978F1004FCD34 /* WindowCoordinatorProtocol.swift in Sources */,
-				A6C5B22B214B7FC300472F87 /* DeviceList.swift in Sources */,
-				A6B7B2DB22B97B72004FCD34 /* ViewController.swift in Sources */,
 				A65B02FF2139C61A006D3188 /* NumpadTests.m in Sources */,
-				A696B2FA215D4DA000BCAA16 /* HidDeviceObject.swift in Sources */,
-				A694EC5F215B137B0068EA3D /* HidDevice.swift in Sources */,
 				A61ED1DD2112818F00DF502C /* NumpadTests.swift in Sources */,
-				A621624F217AA19500E5B804 /* KeyboardConfigurationsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,7 +1131,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Numpad.app/Contents/MacOS/Numpad";
 			};
 			name = Debug;
@@ -1214,7 +1180,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Numpad.app/Contents/MacOS/Numpad";
 			};
 			name = Release;
@@ -1337,7 +1303,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1376,7 +1342,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -1401,8 +1367,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				"WARNING_CFLAGS[arch=*]" = "-Wpartial-availability";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1429,8 +1394,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemap/Numpad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1457,8 +1421,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemapTests/NumpadRemapTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Numpad.app/Contents/MacOS/Numpad";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1481,8 +1444,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NumpadRemapTests/NumpadRemapTests-Bridging-Header.h";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Numpad.app/Contents/MacOS/Numpad";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1524,7 +1486,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Numpad;
 			};
 			name = Debug;
@@ -1564,7 +1526,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbelford.NumpadUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = Numpad;
 			};
 			name = Release;

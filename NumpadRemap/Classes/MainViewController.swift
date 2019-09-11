@@ -241,8 +241,8 @@ class MainViewController : NSViewController, DeviceListDelegate {
     let vm = NumpadViewModel(model: model)
     let numpadViewController = NumpadViewController(viewModel: vm, model: model)
     if let numpadViewController = numpadViewController {
-      self.addChildViewController(numpadViewController)
-      if let v = self.childViewControllers.first?.view {
+      self.addChild(numpadViewController)
+      if let v = self.children.first?.view {
         self.view.addSubview(v)
         let inset : CGFloat = 3.0 // 3 because keyview inset 4 on a side: 3 + 4 = 7
         NSLayoutConstraint.activate([

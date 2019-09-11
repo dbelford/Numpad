@@ -49,7 +49,7 @@ extension ViewController {
       cvc.willMove(toParent: self)
     }
     
-    addChildViewController(childViewController)
+    addChild(childViewController)
     view.addSubview(childViewController.view)
     
     childViewController.view.mas_makeConstraints { (make) in
@@ -67,16 +67,16 @@ extension ViewController {
   }
   
   func remove(_ childViewController: NSViewController) {
-    let index = childViewControllers.index(of: childViewController)
+    let index = children.firstIndex(of: childViewController)
     if let index = index {
       
       if let cvc = childViewController as? ViewController {
         cvc.willMove(toParent: nil)
       }
       
-      removeChildViewController(at: index)
+      removeChild(at: index)
       childViewController.view.removeFromSuperview()
-      childViewController.removeFromParentViewController()
+      childViewController.removeFromParent()
       
       if let cvc = childViewController as? ViewController {
         cvc.didMove(toParent: nil)

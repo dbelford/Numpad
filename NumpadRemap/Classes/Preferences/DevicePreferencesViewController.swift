@@ -13,7 +13,7 @@ class DeviceRow : NSObject {
   var device : HidDeviceObject
   var keyboardTypes : [String] = KeyboardTypes.allRawValues
   var bindingTypes : [String] = AppBindingStyle.allRawValues
-  var selectedKeyboardType : String
+  @objc dynamic var selectedKeyboardType : String
   var selectedBindingType : String
   var preferences : NRPreferences
   var observers : [NSKeyValueObservation] = [NSKeyValueObservation]()
@@ -62,10 +62,10 @@ class DevicePreferencesViewController : NRPreferencesViewController, MASPreferen
 //  var identifier: String? = "Devices"
   
   var toolbarItemLabel: String? = NSLocalizedString("Devices", comment: "Device pane title")
-  var toolbarItemImage: NSImage? = NSImage(named: NSImage.Name.listViewTemplate)
+  var toolbarItemImage: NSImage? = NSImage(named: NSImage.listViewTemplateName)
   
   convenience init?(deviceList: DeviceList) {
-    self.init(nibName: NSNib.Name(rawValue: "DevicePreferencesViewController"), bundle: nil)
+    self.init(nibName: NSNib.Name("DevicePreferencesViewController"), bundle: nil)
     self.preferencesObserver = self.preferences?.observe(\NRPreferences.presentedDevice, changeHandler: { [weak self] (preferences, change) in
       guard let identifier = self?.preferences.presentedDevice as String? else { return }
       let devices = self?.devices?.content as? [HidDeviceObject]
