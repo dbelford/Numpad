@@ -178,7 +178,7 @@ class MainViewController : NSViewController, DeviceListDelegate {
 
     let menuItemIndex = self.deviceDropdownButton.indexOfItem(withTag: Int(uuid))
     let menuItem = self.deviceDropdownButton.item(at: menuItemIndex)
-    if menuItem != nil && menuItem?.identifier == device.deviceIdentifier {
+    if menuItem != nil && menuItem?.identifier?.rawValue == device.deviceIdentifier {
       debugPrint(menuItemIndex)
       self.deviceDropdownButton.selectItem(at: menuItemIndex)
       self.deviceDropdownButton.synchronizeTitleAndSelectedItem()

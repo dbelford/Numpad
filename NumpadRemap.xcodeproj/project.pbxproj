@@ -40,8 +40,6 @@
 		A65FBFE4214D95A9001385B0 /* NumpadTestsUnhosted.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65FBFE3214D95A9001385B0 /* NumpadTestsUnhosted.swift */; };
 		A65FBFE9214D963E001385B0 /* NumpadTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A65B02FE2139C61A006D3188 /* NumpadTests.m */; };
 		A65FBFEA214D9799001385B0 /* DeviceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C5B229214B7FC300472F87 /* DeviceList.swift */; };
-		A678F7262113B3FD006908C2 /* AXSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A678F7252113B3FD006908C2 /* AXSwift.framework */; };
-		A678F7272113B3FD006908C2 /* AXSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A678F7252113B3FD006908C2 /* AXSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A67A212C2124C2CA00FCBF90 /* NumpadViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A67A212B2124C2CA00FCBF90 /* NumpadViewController.storyboard */; };
 		A67A212E2125481700FCBF90 /* NSResponder+Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A212D2125481700FCBF90 /* NSResponder+Log.swift */; };
 		A67A213121254AD700FCBF90 /* ExpandedNumpadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A213021254AD700FCBF90 /* ExpandedNumpadView.swift */; };
@@ -162,7 +160,6 @@
 				A6A92CFD1B82FE9400F606A4 /* ReactiveCocoa.framework in Embed Frameworks */,
 				A63686311B7DB13B00001A35 /* ObjectiveSugar.framework in Embed Frameworks */,
 				A6FDC27C1B978A79003FC592 /* DABKit.framework in Embed Frameworks */,
-				A678F7272113B3FD006908C2 /* AXSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,7 +201,6 @@
 		A65FBFE3214D95A9001385B0 /* NumpadTestsUnhosted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumpadTestsUnhosted.swift; sourceTree = "<group>"; };
 		A65FBFE5214D95A9001385B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A66BA3EE212A11AE00AB7E4A /* Numpad.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Numpad.entitlements; sourceTree = "<group>"; };
-		A678F7252113B3FD006908C2 /* AXSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AXSwift.framework; path = Carthage/Build/Mac/AXSwift.framework; sourceTree = "<group>"; };
 		A67A212B2124C2CA00FCBF90 /* NumpadViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NumpadViewController.storyboard; sourceTree = "<group>"; };
 		A67A212D2125481700FCBF90 /* NSResponder+Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "NSResponder+Log.swift"; path = "Classes/NSResponder+Log.swift"; sourceTree = "<group>"; };
 		A67A213021254AD700FCBF90 /* ExpandedNumpadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExpandedNumpadView.swift; path = Classes/ExpandedNumpadView.swift; sourceTree = "<group>"; };
@@ -258,6 +254,7 @@
 		A6C5B229214B7FC300472F87 /* DeviceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DeviceList.swift; path = Classes/DeviceList.swift; sourceTree = "<group>"; };
 		A6DE806C18D7DBA000115F2E /* NRNumpadKeyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRNumpadKeyView.h; path = Classes/NRNumpadKeyView.h; sourceTree = "<group>"; };
 		A6DE806D18D7DBA000115F2E /* NRNumpadKeyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRNumpadKeyView.m; path = Classes/NRNumpadKeyView.m; sourceTree = "<group>"; };
+		A6F24CC323295E4700FFDE0A /* AXSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AXSwift.framework; path = "../../../../../../Users/dbelford/Library/Developer/Xcode/DerivedData/AXSwift-bounpiktwofqbrghreklmimltnwe/Build/Products/Debug/AXSwift.framework"; sourceTree = "<group>"; };
 		A6F59103212DEDF300ACC761 /* SwiftFourTwoExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftFourTwoExtensions.swift; path = Classes/SwiftFourTwoExtensions.swift; sourceTree = "<group>"; };
 		A6F6872818DA287A00E40A20 /* NRWindowContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NRWindowContentView.h; path = Classes/NRWindowContentView.h; sourceTree = "<group>"; };
 		A6F6872918DA287A00E40A20 /* NRWindowContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NRWindowContentView.m; path = Classes/NRWindowContentView.m; sourceTree = "<group>"; };
@@ -305,7 +302,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6569F9221110F84003BDBD5 /* libPods-Numpad.a in Frameworks */,
-				A678F7262113B3FD006908C2 /* AXSwift.framework in Frameworks */,
 				A67ABC0818D284D100C1D502 /* Cocoa.framework in Frameworks */,
 				A636862B1B7DB08B00001A35 /* ObjectiveSugar.framework in Frameworks */,
 				A6FDC27B1B978A79003FC592 /* DABKit.framework in Frameworks */,
@@ -442,7 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				A66BA3EE212A11AE00AB7E4A /* Numpad.entitlements */,
-				A678F7252113B3FD006908C2 /* AXSwift.framework */,
+				A6F24CC323295E4700FFDE0A /* AXSwift.framework */,
 				A6FDC27A1B978A79003FC592 /* DABKit.framework */,
 				A67ABC0D18D284D100C1D502 /* NumpadRemap */,
 				A67ABC2B18D284D100C1D502 /* NumpadRemapTests */,
@@ -1395,6 +1391,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";
@@ -1422,6 +1419,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "NumpadRemap/NumpadRemap-Prefix.pch";

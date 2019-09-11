@@ -18,7 +18,7 @@
 #import "NRGeneralPreferencesViewController.h"
 #import "NRPreferencesWindowController.h"
 //#import "NRNumpadSettingsController.h"
-#import "NRNumpadViewModel.h"
+//#import "NRNumpadViewModel.h"
 #import "NRPreferences.h"
 #import "NRNumpadKeyView.h"
 #import "NRWindowContentView.h"

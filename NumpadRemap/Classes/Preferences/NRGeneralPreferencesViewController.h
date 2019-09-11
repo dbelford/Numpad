@@ -9,7 +9,7 @@
 #import "NRPreferencesViewController.h"
 #import <MASPreferences/MASPreferencesViewController.h>
 #import <MASShortcut/Shortcut.h>
-#import "NRNumpadModel.h"
+// #import "NRNumpadModel.h"
 
 @interface NRGeneralPreferencesViewController : NRPreferencesViewController <MASPreferencesViewController>
 

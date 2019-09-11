@@ -23,7 +23,7 @@ class NRShortcut : MASShortcut {
     case processIdentifier
   }
   
-  public init(keyCode : UInt, modifier: NSEvent.NSEvent.ModifierFlags) {
+  public init(keyCode : UInt, modifier: NSEvent.ModifierFlags) {
     super.init(keyCode: keyCode, modifierFlags: modifier.rawValue)
   }
   

@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Butter/Butter.h>
-#import "NRNumpadViewModel.h"
+//#import "NRNumpadViewModel.h"
 #import "NRNumpadKeyViewModel.h"
 
 @class NumpadKeyViewModel;

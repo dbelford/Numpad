@@ -157,7 +157,7 @@ class ExpandedNumpadView : BTRView {
   }
   
   @objc func pressedAppButton(_ sender : NRNumpadKeyView) {
-    if let identifier = sender.identifier, let code = UInt(identifier) {
+    if let identifier = sender.identifier?.rawValue, let code = UInt(identifier) {
       self.viewModel?.pressedKeyForKeycode(keycode: code)
 //      self.viewModel?.pressedKey(forKeycode: code)
     }
